@@ -6,10 +6,6 @@ const SHOWDOWN_DIST = path.join(ROOT, 'library', 'pokemon-showdown', 'dist', 'si
 const OUTPUT_FILE = path.join(ROOT, 'public', 'db', 'champions-calc-data.json');
 const JA_OVERRIDES_FILE = path.join(ROOT, 'public', 'db', 'champions-ja-overrides.json');
 const JA_MISSING_FILE = path.join(ROOT, 'public', 'db', 'champions-ja-missing.json');
-const SPECIES_CSV = path.join(ROOT, 'public', 'db', 'ダメージ計算 - def_pokemon.csv');
-const MOVE_CSV = path.join(ROOT, 'public', 'db', 'ダメージ計算 - list_move2poke.csv');
-const MOVE_STATUS_CSV = path.join(ROOT, 'public', 'db', 'ダメージ計算 - list_movestatus2poke.csv');
-const ABILITY_CSV = path.join(ROOT, 'public', 'db', 'ダメージ計算 - list_ability2poke.csv');
 
 if (!fs.existsSync(SHOWDOWN_DIST)) {
   throw new Error(
@@ -41,38 +37,6 @@ const TYPE_NAME_JA = {
   Stellar: 'ステラ',
 };
 
-const ITEM_NAME_JA = {
-  blackbelt: 'くろおび',
-  blackglasses: 'くろいメガネ',
-  charcoal: 'もくたん',
-  choicescarf: 'こだわりスカーフ',
-  dragonfang: 'りゅうのキバ',
-  focusband: 'きあいのハチマキ',
-  focussash: 'きあいのタスキ',
-  hardstone: 'かたいいし',
-  kingsrock: 'おうじゃのしるし',
-  sitrusberry: 'オボンのみ',
-  leftovers: 'たべのこし',
-  lightball: 'でんきだま',
-  magnet: 'じしゃく',
-  mentalherb: 'メンタルハーブ',
-  metalcoat: 'メタルコート',
-  miracleseed: 'きせきのタネ',
-  mysticwater: 'しんぴのしずく',
-  nevermeltice: 'とけないこおり',
-  poisonbarb: 'どくバリ',
-  quickclaw: 'せんせいのツメ',
-  scopelens: 'ピントレンズ',
-  sharpbeak: 'するどいくちばし',
-  shellbell: 'かいがらのすず',
-  silkscarf: 'シルクのスカーフ',
-  silverpowder: 'ぎんのこな',
-  softsand: 'やわらかいすな',
-  spelltag: 'のろいのおふだ',
-  twistedspoon: 'まがったスプーン',
-  whiteherb: 'しろいハーブ',
-};
-
 const DEFAULT_JA_OVERRIDES = {
   meta: {
     description: 'Fill nameJa / shortDescJa / descJa here. This file overrides generated data.',
@@ -82,50 +46,6 @@ const DEFAULT_JA_OVERRIDES = {
   abilities: {},
   items: {},
 };
-
-function parseCsvLine(line) {
-  const values = [];
-  let current = '';
-  let inQuotes = false;
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index];
-    if (char === '"') {
-      if (inQuotes && line[index + 1] === '"') {
-        current += '"';
-        index += 1;
-      } else {
-        inQuotes = !inQuotes;
-      }
-      continue;
-    }
-    if (char === ',' && !inQuotes) {
-      values.push(current);
-      current = '';
-      continue;
-    }
-    current += char;
-  }
-  values.push(current);
-  return values;
-}
-
-function parseCsvToRecords(filePath) {
-  const text = fs.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, '');
-  const lines = text.split(/\r?\n/).filter(Boolean);
-  if (!lines.length) return [];
-  const headers = parseCsvLine(lines[0]);
-  const records = [];
-  for (let index = 1; index < lines.length; index += 1) {
-    const row = parseCsvLine(lines[index]);
-    if (!row.length) continue;
-    const record = {};
-    for (let h = 0; h < headers.length; h += 1) {
-      record[headers[h]] = row[h] || '';
-    }
-    records.push(record);
-  }
-  return records;
-}
 
 function readJsonFile(filePath, fallback) {
   if (!fs.existsSync(filePath)) return fallback;
@@ -158,53 +78,6 @@ function getOverrideString(overrides, section, id, key) {
   return trimmed || null;
 }
 
-function readMoveJapaneseNameMap() {
-  const moveJaByNum = {};
-
-  const loadMoveNames = filePath => {
-    if (!fs.existsSync(filePath)) return;
-    for (const row of parseCsvToRecords(filePath)) {
-      const moveId = Number(row.ID);
-      const moveName = row['わざ名'];
-      if (!Number.isFinite(moveId) || !moveName || moveName === '#REF!') continue;
-      if (!moveJaByNum[moveId]) moveJaByNum[moveId] = moveName;
-    }
-  };
-
-  loadMoveNames(MOVE_CSV);
-  loadMoveNames(MOVE_STATUS_CSV);
-
-  return moveJaByNum;
-}
-
-function readSpeciesJapaneseNameMap() {
-  const speciesJaById = {};
-  if (!fs.existsSync(SPECIES_CSV)) return speciesJaById;
-
-  for (const row of parseCsvToRecords(SPECIES_CSV)) {
-    const id = String(row.ShowdownKey || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-    const name = String(row['名前(フォルム)'] || row['名前'] || '').trim();
-    if (!id || !name || name === '#REF!') continue;
-    if (!speciesJaById[id]) speciesJaById[id] = name;
-  }
-
-  return speciesJaById;
-}
-
-function readAbilityJapaneseNameMap() {
-  const abilityJaByNum = {};
-  if (!fs.existsSync(ABILITY_CSV)) return abilityJaByNum;
-
-  for (const row of parseCsvToRecords(ABILITY_CSV)) {
-    const abilityId = Number(row.ID);
-    const abilityName = row['特性'];
-    if (!Number.isFinite(abilityId) || !abilityName || abilityName === '#REF!') continue;
-    if (!abilityJaByNum[abilityId]) abilityJaByNum[abilityId] = abilityName;
-  }
-
-  return abilityJaByNum;
-}
-
 function isUsableData(entry) {
   return Boolean(entry && entry.exists && !entry.isNonstandard);
 }
@@ -214,21 +87,6 @@ function isMegaForm(entry) {
   if (typeof entry.forme === 'string' && entry.forme.startsWith('Mega')) return true;
   if (typeof entry.name === 'string' && entry.name.includes('-Mega')) return true;
   return false;
-}
-
-function getMegaStoneTypeFromName(name) {
-  if (typeof name !== 'string') return 'normal';
-  if (name.endsWith('-Mega-X')) return 'x';
-  if (name.endsWith('-Mega-Y')) return 'y';
-  if (name.endsWith('-Mega-Z')) return 'z';
-  return 'normal';
-}
-
-function getMegaJapaneseSuffix(stoneType) {
-  if (stoneType === 'x') return 'X';
-  if (stoneType === 'y') return 'Y';
-  if (stoneType === 'z') return 'Z';
-  return '';
 }
 
 function toId(value) {
@@ -250,18 +108,6 @@ function getMegaBaseId(entry, allSpeciesIds) {
     if (allSpeciesIds.has(baseId)) return baseId;
   }
   return '';
-}
-
-function getAutoSpeciesJapaneseName(entry, allSpeciesIds, speciesJaById) {
-  if (!entry) return null;
-  if (!isMegaForm(entry)) return speciesJaById[entry.id] || null;
-
-  const baseId = getMegaBaseId(entry, allSpeciesIds);
-  const baseNameJa = speciesJaById[baseId];
-  if (!baseNameJa) return speciesJaById[entry.id] || null;
-
-  const suffix = getMegaJapaneseSuffix(getMegaStoneTypeFromName(entry.name));
-  return `メガ${baseNameJa}${suffix}`;
 }
 
 function buildMissingTranslations(data) {
@@ -342,12 +188,8 @@ function buildData() {
   const baseDex = Dex.mod('gen9');
   ensureJaOverridesFile();
   const jaOverrides = normalizeJaOverrides(readJsonFile(JA_OVERRIDES_FILE, DEFAULT_JA_OVERRIDES));
-  const speciesJaById = readSpeciesJapaneseNameMap();
-  const moveJaByNum = readMoveJapaneseNameMap();
-  const abilityJaByNum = readAbilityJapaneseNameMap();
 
   const usableSpecies = dex.species.all().filter(isUsableData);
-
   const allSpeciesIds = new Set(usableSpecies.map(entry => toId(entry.id)));
 
   const megaMap = {};
@@ -356,18 +198,16 @@ function buildData() {
     const baseId = getMegaBaseId(entry, allSpeciesIds);
     if (!baseId) continue;
     if (!megaMap[baseId]) megaMap[baseId] = { defaultId: null, forms: [] };
-    const stoneType = getMegaStoneTypeFromName(entry.name);
     const requiredItemName = entry.requiredItem || entry.requiredItems?.[0] || null;
     const formMeta = {
       id: entry.id,
       name: entry.name,
-      stoneType,
       baseId,
       requiredItemId: requiredItemName ? String(requiredItemName).toLowerCase().replace(/[^a-z0-9]/g, '') : null,
       requiredItemName,
     };
     megaMap[baseId].forms.push(formMeta);
-    if (!megaMap[baseId].defaultId || stoneType === 'normal') megaMap[baseId].defaultId = entry.id;
+    if (!megaMap[baseId].defaultId) megaMap[baseId].defaultId = entry.id;
   }
 
   const species = usableSpecies
@@ -377,7 +217,7 @@ function buildData() {
       spriteId: entry.spriteid || entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || getAutoSpeciesJapaneseName(entry, allSpeciesIds, speciesJaById),
+      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || entry.nameJa,
       baseSpecies: entry.baseSpecies,
       baseSpeciesId: toId(entry.baseSpecies || entry.name),
       forme: entry.forme,
@@ -400,7 +240,7 @@ function buildData() {
       spriteId: entry.spriteid || entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || getAutoSpeciesJapaneseName(entry, allSpeciesIds, speciesJaById),
+      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || entry.nameJa,
       baseSpecies: entry.baseSpecies,
       baseSpeciesId: getMegaBaseId(entry, allSpeciesIds) || toId(entry.baseSpecies || entry.name),
       forme: entry.forme,
@@ -423,7 +263,7 @@ function buildData() {
       id: entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'moves', entry.id, 'nameJa') || moveJaByNum[entry.num] || null,
+      nameJa: getOverrideString(jaOverrides, 'moves', entry.id, 'nameJa') || entry.nameJa,
       type: entry.type,
       category: entry.category,
       basePower: entry.basePower,
@@ -433,8 +273,8 @@ function buildData() {
       target: entry.target,
       shortDesc: entry.shortDesc || null,
       desc: entry.desc || null,
-      shortDescJa: getOverrideString(jaOverrides, 'moves', entry.id, 'shortDescJa'),
-      descJa: getOverrideString(jaOverrides, 'moves', entry.id, 'descJa'),
+      shortDescJa: getOverrideString(jaOverrides, 'moves', entry.id, 'shortDescJa') || entry.shortDescJa,
+      descJa: getOverrideString(jaOverrides, 'moves', entry.id, 'descJa') || entry.descJa,
       ignoreAbility: Boolean(entry.ignoreAbility),
       ignoreImmunity: Boolean(entry.ignoreImmunity),
       breaksProtect: Boolean(entry.breaksProtect),
@@ -456,11 +296,11 @@ function buildData() {
       id: entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'nameJa') || abilityJaByNum[entry.num] || null,
+      nameJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'nameJa') || entry.nameJa,
       shortDesc: entry.shortDesc || null,
       desc: entry.desc || null,
-      shortDescJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'shortDescJa'),
-      descJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'descJa'),
+      shortDescJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'shortDescJa') || entry.shortDescJa,
+      descJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'descJa') || entry.descJa,
       rating: entry.rating,
     }))
     .sort((left, right) => left.name.localeCompare(right.name));
@@ -473,12 +313,12 @@ function buildData() {
       num: entry.num,
       spritenum: Number.isFinite(Number(entry.spritenum)) ? Number(entry.spritenum) : null,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'items', entry.id, 'nameJa') || ITEM_NAME_JA[entry.id] || null,
+      nameJa: getOverrideString(jaOverrides, 'items', entry.id, 'nameJa') || entry.nameJa,
       isBerry: Boolean(entry.isBerry),
       shortDesc: entry.shortDesc || null,
       desc: entry.desc || null,
-      shortDescJa: getOverrideString(jaOverrides, 'items', entry.id, 'shortDescJa'),
-      descJa: getOverrideString(jaOverrides, 'items', entry.id, 'descJa'),
+      shortDescJa: getOverrideString(jaOverrides, 'items', entry.id, 'shortDescJa') || entry.shortDescJa,
+      descJa: getOverrideString(jaOverrides, 'items', entry.id, 'descJa') || entry.descJa,
       fling: entry.fling || null,
     }))
     .sort((left, right) => left.name.localeCompare(right.name));

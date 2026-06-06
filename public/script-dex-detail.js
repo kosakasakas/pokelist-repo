@@ -530,15 +530,9 @@ async function initialize() {
   loadLang();
   loadStorage();
 
-  const [data, speciesCsvRecords, moveCsvRecords, abilityCsvRecords] = await Promise.all([
-    fetchJson('/db/champions-calc-data.json'),
-    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
-  ]);
+  const data = await fetchJson('/db/champions-calc-data.json');
 
   state.data = data;
-  buildJapaneseMaps(speciesCsvRecords, moveCsvRecords, abilityCsvRecords);
 
   if (state.kind === 'ability') {
     state.current = (data.abilities || []).find(entry => entry.id === state.valueId) || null;

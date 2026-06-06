@@ -318,13 +318,9 @@ async function initialize() {
   loadLang();
   loadStorage();
 
-  const [data, speciesCsvRecords] = await Promise.all([
-    fetchJson('/db/champions-calc-data.json'),
-    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
-  ]);
+  const data = await fetchJson('/db/champions-calc-data.json');
 
   state.data = data;
-  setupSpeciesJapaneseMap(speciesCsvRecords);
   buildRows();
   applyI18n();
 

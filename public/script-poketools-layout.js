@@ -68,10 +68,10 @@ function buildLangToggle() {
 function buildNavigationTabs() {
   const pageKey = currentPageKey(window.location.pathname);
   const navItems = [
-    { key: 'pokedex', href: '/pokelist/pokedex.html', icon: 'search', label: '図鑑' },
-    { key: 'box', href: '/pokelist/box-party.html', icon: 'box-seam', label: 'ボックス' },
-    { key: 'damage', href: '/pokelist/damage-calc.html', icon: 'calculator', label: 'ダメージ計算' },
-    { key: 'speed', href: '/pokelist/speed-adjust.html', icon: 'speedometer2', label: '素早さ比較' },
+    { key: 'pokedex', href: '/pokedex.html', icon: 'search', label: '図鑑' },
+    { key: 'box', href: '/box-party.html', icon: 'box-seam', label: 'ボックス' },
+    { key: 'damage', href: '/damage-calc.html', icon: 'calculator', label: 'ダメージ計算' },
+    { key: 'speed', href: '/speed-adjust.html', icon: 'speedometer2', label: '素早さ比較' },
   ];
 
   const nav = navItems.map(item => {
@@ -104,7 +104,7 @@ function mountHeader() {
   headerContainer.innerHTML = `
     <nav class="tool-navbar w-full" aria-label="tool global navigation">
       <div class="tool-header-row">
-        <a class="tool-header-brand" href="/pokelist/box-party.html" aria-label="リスポケ ボックスへ">
+        <a class="tool-header-brand" href="/box-party.html" aria-label="リスポケ ボックスへ">
           <span class="calc-title mb-0">リスポケ</span>
         </a>
         <button class="tool-navbar-toggler" id="tool-nav-toggle" type="button" aria-controls="tool-nav-collapse" aria-expanded="false" aria-label="ナビゲーションを開閉">

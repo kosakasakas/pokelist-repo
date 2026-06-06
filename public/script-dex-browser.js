@@ -690,21 +690,13 @@ async function initialize() {
   parseParams();
   loadLang();
 
-  const [data, speciesCsvRecords, moveCsvRecords, abilityCsvRecords] = await Promise.all([
-    fetchJson('/db/champions-calc-data.json'),
-    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
-  ]);
+  const data = await fetchJson('/db/champions-calc-data.json');
 
   state.data = {
     ...data,
     learnersByMoveId: buildLearnersByMoveId(data),
     abilityUsersByAbilityId: buildAbilityUsersByAbilityId(data),
   };
-  buildSpeciesJapaneseMap(speciesCsvRecords);
-  buildMoveJapaneseMap(moveCsvRecords);
-  buildAbilityJapaneseMap(abilityCsvRecords);
 
   const searchInput = $('dex-search');
   const tabButtons = document.querySelectorAll('[data-tab]');

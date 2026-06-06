@@ -1155,17 +1155,15 @@ async function initialize() {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
-  const [data, rules, speciesCsvRecords] = await Promise.all([
+  const [data, rules] = await Promise.all([
     fetchJson('/db/champions-calc-data.json'),
     fetchJson('/db/speed-adjust-rules.json'),
-    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
   ]);
 
   state.data = data;
   state.rules = rules;
 
   setupLookups();
-  setupSpeciesJapaneseMap(speciesCsvRecords);
   resolveTargetPokemon();
   buildGroupedSpeciesRows();
   createSpeedBuckets();

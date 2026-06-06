@@ -562,15 +562,9 @@ async function initialize() {
   loadLang();
   loadStorage();
 
-  const [data, speciesCsvRecords, moveCsvRecords, abilityCsvRecords] = await Promise.all([
-    fetchJson('/db/champions-calc-data.json'),
-    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
-  ]);
+  const data = await fetchJson('/db/champions-calc-data.json');
 
   state.data = data;
-  buildCsvMaps(speciesCsvRecords, moveCsvRecords, abilityCsvRecords);
   state.currentSpecies = (data.species || []).find(entry => entry.id === state.speciesId)
     || (data.megaSpecies || []).find(entry => entry.id === state.speciesId)
     || null;
