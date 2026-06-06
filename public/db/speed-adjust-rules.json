@@ -1,0 +1,21 @@
+{
+  "format": "VGC 2026 Reg M-A",
+  "abilities": [
+    { "id": "swiftswim", "label": "すいすい", "multiplier": 2 },
+    { "id": "chlorophyll", "label": "ようりょくそ", "multiplier": 2 },
+    { "id": "sandrush", "label": "すなかき", "multiplier": 2 },
+    { "id": "slushrush", "label": "ゆきかき", "multiplier": 2 },
+    { "id": "unburden", "label": "かるわざ", "multiplier": 2 },
+    { "id": "surgesurfer", "label": "サーフテール", "multiplier": 2 },
+    { "id": "steamengine", "label": "じょうききかん", "stage": 6 },
+    { "id": "speedboost", "label": "かそく", "stage": 1 }
+  ],
+  "moves": [
+    { "id": "dragondance", "label": "りゅうのまい", "stage": 1 },
+    { "id": "quiverdance", "label": "ちょうのまい", "stage": 1 },
+    { "id": "clangoroussoul", "label": "ソウルビート", "stage": 1 }
+  ],
+  "items": [
+    { "id": "choicescarf", "label": "こだわりスカーフ", "multiplier": 1.5 }
+  ]
+}

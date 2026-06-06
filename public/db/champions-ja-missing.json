@@ -1,0 +1,1513 @@
+{
+  "meta": {
+    "generatedAt": "2026-06-06T16:02:43.303Z",
+    "description": "Fill this data into champions-ja-overrides.json to override generated Japanese text."
+  },
+  "species": [
+    {
+      "id": "meloettapirouette",
+      "name": "Meloetta-Pirouette",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonarchipelago",
+      "name": "Vivillon-Archipelago",
+      "nameJa": null
+    },
+    {
+      "id": "vivilloncontinental",
+      "name": "Vivillon-Continental",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonelegant",
+      "name": "Vivillon-Elegant",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonfancy",
+      "name": "Vivillon-Fancy",
+      "nameJa": null
+    },
+    {
+      "id": "vivillongarden",
+      "name": "Vivillon-Garden",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonhighplains",
+      "name": "Vivillon-High Plains",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonicysnow",
+      "name": "Vivillon-Icy Snow",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonjungle",
+      "name": "Vivillon-Jungle",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonmarine",
+      "name": "Vivillon-Marine",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonmodern",
+      "name": "Vivillon-Modern",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonmonsoon",
+      "name": "Vivillon-Monsoon",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonocean",
+      "name": "Vivillon-Ocean",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonpokeball",
+      "name": "Vivillon-Pokeball",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonpolar",
+      "name": "Vivillon-Polar",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonriver",
+      "name": "Vivillon-River",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonsandstorm",
+      "name": "Vivillon-Sandstorm",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonsavanna",
+      "name": "Vivillon-Savanna",
+      "nameJa": null
+    },
+    {
+      "id": "vivillonsun",
+      "name": "Vivillon-Sun",
+      "nameJa": null
+    },
+    {
+      "id": "vivillontundra",
+      "name": "Vivillon-Tundra",
+      "nameJa": null
+    },
+    {
+      "id": "floetteeternal",
+      "name": "Floette-Eternal",
+      "nameJa": null
+    },
+    {
+      "id": "gourgeist",
+      "name": "Gourgeist",
+      "nameJa": null
+    },
+    {
+      "id": "gourgeistlarge",
+      "name": "Gourgeist-Large",
+      "nameJa": null
+    },
+    {
+      "id": "gourgeistsmall",
+      "name": "Gourgeist-Small",
+      "nameJa": null
+    },
+    {
+      "id": "gourgeistsuper",
+      "name": "Gourgeist-Super",
+      "nameJa": null
+    },
+    {
+      "id": "miniormeteor",
+      "name": "Minior-Meteor",
+      "nameJa": null
+    },
+    {
+      "id": "mimikyubusted",
+      "name": "Mimikyu-Busted",
+      "nameJa": null
+    },
+    {
+      "id": "cramorantgorging",
+      "name": "Cramorant-Gorging",
+      "nameJa": null
+    },
+    {
+      "id": "cramorantgulping",
+      "name": "Cramorant-Gulping",
+      "nameJa": null
+    },
+    {
+      "id": "polteageistantique",
+      "name": "Polteageist-Antique",
+      "nameJa": null
+    },
+    {
+      "id": "alcremiecaramelswirl",
+      "name": "Alcremie-Caramel-Swirl",
+      "nameJa": null
+    },
+    {
+      "id": "alcremielemoncream",
+      "name": "Alcremie-Lemon-Cream",
+      "nameJa": null
+    },
+    {
+      "id": "alcremiematchacream",
+      "name": "Alcremie-Matcha-Cream",
+      "nameJa": null
+    },
+    {
+      "id": "alcremiemintcream",
+      "name": "Alcremie-Mint-Cream",
+      "nameJa": null
+    },
+    {
+      "id": "alcremierainbowswirl",
+      "name": "Alcremie-Rainbow-Swirl",
+      "nameJa": null
+    },
+    {
+      "id": "alcremierubycream",
+      "name": "Alcremie-Ruby-Cream",
+      "nameJa": null
+    },
+    {
+      "id": "alcremierubyswirl",
+      "name": "Alcremie-Ruby-Swirl",
+      "nameJa": null
+    },
+    {
+      "id": "eiscuenoice",
+      "name": "Eiscue-Noice",
+      "nameJa": null
+    },
+    {
+      "id": "morpekohangry",
+      "name": "Morpeko-Hangry",
+      "nameJa": null
+    },
+    {
+      "id": "mausholdfour",
+      "name": "Maushold-Four",
+      "nameJa": null
+    },
+    {
+      "id": "palafinhero",
+      "name": "Palafin-Hero",
+      "nameJa": null
+    },
+    {
+      "id": "sinistchamasterpiece",
+      "name": "Sinistcha-Masterpiece",
+      "nameJa": null
+    },
+    {
+      "id": "ogerponcornerstonetera",
+      "name": "Ogerpon-Cornerstone-Tera",
+      "nameJa": null
+    },
+    {
+      "id": "ogerponhearthflametera",
+      "name": "Ogerpon-Hearthflame-Tera",
+      "nameJa": null
+    },
+    {
+      "id": "ogerpontealtera",
+      "name": "Ogerpon-Teal-Tera",
+      "nameJa": null
+    },
+    {
+      "id": "ogerponwellspringtera",
+      "name": "Ogerpon-Wellspring-Tera",
+      "nameJa": null
+    },
+    {
+      "id": "terapagosterastal",
+      "name": "Terapagos-Terastal",
+      "nameJa": null
+    },
+    {
+      "id": "floettemega",
+      "name": "Floette-Mega",
+      "nameJa": null
+    }
+  ],
+  "moves": [],
+  "abilities": [
+    {
+      "id": "aerilate",
+      "name": "Aerilate",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
+      "descEn": "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+      "shortDescJa": "このポケモンのノーマルタイプの技がひこうタイプになり、威力が1.2倍になる。",
+      "descJa": "このポケモンのノーマルタイプの技はひこうタイプの技になり、威力が1.2倍になる。この効果は、技のタイプを変更する他の効果の後、イオン デリュージとエレクトリファイの効果の前に発生します。"
+    },
+    {
+      "id": "asoneglastrier",
+      "name": "As One (Glastrier)",
+      "nameJa": null,
+      "shortDescEn": "Combination of the Unnerve and Chilling Neigh Abilities.",
+      "descEn": "Combination of the Unnerve and Chilling Neigh Abilities.",
+      "shortDescJa": "Unnerve と Chilling Neighbor の能力の組み合わせ。",
+      "descJa": "Unnerve と Chilling Neighbor の能力の組み合わせ。"
+    },
+    {
+      "id": "aurabreak",
+      "name": "Aura Break",
+      "nameJa": null,
+      "shortDescEn": "While this Pokemon is active, the Dark Aura and Fairy Aura power modifier is 0.75x.",
+      "descEn": "While this Pokemon is active, the effects of the Dark Aura and Fairy Aura Abilities are reversed, multiplying the power of Dark- and Fairy-type moves, respectively, by 3/4 instead of 1.33.",
+      "shortDescJa": "このポケモンが発動している間、ダークオーラとフェアリーオーラの威力補正は0.75倍になる。",
+      "descJa": "このポケモンが発動している間、ダークオーラとフェアリーオーラの能力の効果が逆転し、ダークタイプとフェアリータイプの技の威力がそれぞれ1.33倍ではなく3/4倍になります。"
+    },
+    {
+      "id": "ballfetch",
+      "name": "Ball Fetch",
+      "nameJa": null,
+      "shortDescEn": "No competitive use.",
+      "descEn": "No competitive use.",
+      "shortDescJa": "競争上の使用はありません。",
+      "descJa": "競争上の使用はありません。"
+    },
+    {
+      "id": "battlebond",
+      "name": "Battle Bond",
+      "nameJa": null,
+      "shortDescEn": "After KOing a Pokemon: raises Attack, Sp. Atk, Speed by 1 stage. Once per battle.",
+      "descEn": "If this Pokemon is a Greninja, its Attack, Special Attack, and Speed are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle.",
+      "shortDescJa": "ポケモンをKOした後：攻撃力とSpが上昇する。攻撃力、速度が1段階上がる。戦闘ごとに 1 回。",
+      "descJa": "このポケモンがグレニンジャの場合、他のポケモンを攻撃して気絶させると、攻撃・特攻・素早さが1段階上がる。この効果は戦闘ごとに 1 回のみ発生します。"
+    },
+    {
+      "id": "beastboost",
+      "name": "Beast Boost",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's highest stat is raised by 1 if it attacks and KOes another Pokemon.",
+      "descEn": "This Pokemon's highest stat is raised by 1 stage if it attacks and knocks out another Pokemon. Stat stage changes are not considered. If multiple stats are tied, Attack, Defense, Special Attack, Special Defense, and Speed are prioritized in that order.",
+      "shortDescJa": "このポケモンの最高ステータスは、他のポケモンを攻撃して倒すと1上がる。",
+      "descJa": "他のポケモンを攻撃して気絶させると、このポケモンの最高ステータスが1段階上がる。ステータスステージの変化は考慮されません。複数のステータスが同点の場合は、攻撃、防御、特攻、特防、素早さの順に優先されます。"
+    },
+    {
+      "id": "colorchange",
+      "name": "Color Change",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's type changes to the type of a move it's hit by, unless it has the type.",
+      "descEn": "This Pokemon's type changes to match the type of the last move that hit it, unless that type is already one of its types. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability.",
+      "shortDescJa": "このポケモンは、タイプを持たない限り、その技を当てたタイプにタイプが変わる。",
+      "descJa": "このポケモンのタイプは、そのタイプがすでにそのタイプのいずれかである場合を除き、最後にヒットした技のタイプに一致するように変化します。この効果は多段ヒット技のすべてのヒット後に適用されます。この動きにシアーフォース能力によって削除された二次効果がある場合、この効果は防止されます。"
+    },
+    {
+      "id": "cottondown",
+      "name": "Cotton Down",
+      "nameJa": null,
+      "shortDescEn": "If this Pokemon is hit, it lowers the Speed of all other Pokemon on the field 1 stage.",
+      "descEn": "When this Pokemon is hit by an attack, the Speed of all other Pokemon on the field is lowered by 1 stage.",
+      "shortDescJa": "このポケモンがヒットすると、フィールド上の他のポケモンすべての『すばやさ』を1段階下げる。",
+      "descJa": "このポケモンが攻撃を受けた時、フィールド上の他のポケモンすべての『すばやさ』を1段階下げる。"
+    },
+    {
+      "id": "darkaura",
+      "name": "Dark Aura",
+      "nameJa": null,
+      "shortDescEn": "While this Pokemon is active, a Dark move used by any Pokemon has 1.33x power.",
+      "descEn": "While this Pokemon is active, the power of Dark-type moves used by active Pokemon is multiplied by 1.33.",
+      "shortDescJa": "このポケモンが発動している間、どのポケモンが使うあくの技の威力は1.33倍になる。",
+      "descJa": "このポケモンが発動している間、発動中のポケモンが使うあくタイプの技の威力は1.33倍になる。"
+    },
+    {
+      "id": "defeatist",
+      "name": "Defeatist",
+      "nameJa": null,
+      "shortDescEn": "While this Pokemon has 1/2 or less of its max HP, its Attack and Sp. Atk are halved.",
+      "descEn": "While this Pokemon has 1/2 or less of its maximum HP, its Attack and Special Attack are halved.",
+      "shortDescJa": "このポケモンのHP、こうげき、SPが最大値の1/2以下のときは、攻撃力が半減する。",
+      "descJa": "このポケモンはHPが最大HPの1/2以下の間、攻撃と特攻が半分になる。"
+    },
+    {
+      "id": "deltastream",
+      "name": "Delta Stream",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, strong winds begin until this Ability is not active in battle.",
+      "descEn": "On switch-in, the weather becomes Delta Stream, which removes the weaknesses of the Flying type from Flying-type Pokemon. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by the Desolate Land or Primordial Sea Abilities.",
+      "shortDescJa": "スイッチインすると、このアビリティが戦闘でアクティブでなくなるまで、強風が始まります。",
+      "descJa": "スイッチインすると天気がデルタストリームになり、ひこうタイプのポケモンからひこうタイプの弱点がなくなる。この天気は、この能力がどのポケモンに対しても有効でなくなるまで、または荒れ果てた土地または原初の海の能力によって天気が変更されるまで、効果が続きます。"
+    },
+    {
+      "id": "desolateland",
+      "name": "Desolate Land",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, extremely harsh sunlight begins until this Ability is not active in battle.",
+      "descEn": "On switch-in, the weather becomes Desolate Land, which includes all the effects of Sunny Day and prevents damaging Water-type moves from executing. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by the Delta Stream or Primordial Sea Abilities.",
+      "shortDescJa": "スイッチを入れると、このアビリティが戦闘でアクティブでなくなるまで、非常に厳しい日差しが降り注ぎます。",
+      "descJa": "スイッチインすると、天気は荒涼とした土地になり、晴れの日のすべての効果が含まれ、ダメージを与える水タイプの動きが実行されなくなります。この天気は、この能力がどのポケモンに対しても有効でなくなるまで、またはデルタストリームまたは原初の海の能力によって天気が変更されるまで、効果が続きます。"
+    },
+    {
+      "id": "dragonize",
+      "name": "Dragonize",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's Normal-type moves become Dragon type and have 1.2x power.",
+      "descEn": "This Pokemon's Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+      "shortDescJa": "このポケモンのノーマルタイプの技がドラゴンタイプになり、威力が1.2倍になる。",
+      "descJa": "このポケモンのノーマルタイプの技はドラゴンタイプの技になり、威力が1.2倍になる。この効果は、技のタイプを変更する他の効果の後、イオン デリュージとエレクトリファイの効果の前に発生します。"
+    },
+    {
+      "id": "embodyaspectcornerstone",
+      "name": "Embody Aspect (Cornerstone)",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, this Pokemon's Defense is raised by 1 stage.",
+      "descEn": "On switch-in, this Pokemon's Defense is raised by 1 stage.",
+      "shortDescJa": "スイッチを入れると、このポケモンの防御力が1段階上がる。",
+      "descJa": "スイッチを入れると、このポケモンの防御力が1段階上がる。"
+    },
+    {
+      "id": "embodyaspecthearthflame",
+      "name": "Embody Aspect (Hearthflame)",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, this Pokemon's Attack is raised by 1 stage.",
+      "descEn": "On switch-in, this Pokemon's Attack is raised by 1 stage.",
+      "shortDescJa": "スイッチを入れると、このポケモンの攻撃が1段階上がる。",
+      "descJa": "スイッチを入れると、このポケモンの攻撃が1段階上がる。"
+    },
+    {
+      "id": "embodyaspectteal",
+      "name": "Embody Aspect (Teal)",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, this Pokemon's Speed is raised by 1 stage.",
+      "descEn": "On switch-in, this Pokemon's Speed is raised by 1 stage.",
+      "shortDescJa": "スイッチを入れると、このポケモンの素早さが1段階上がる。",
+      "descJa": "スイッチを入れると、このポケモンの素早さが1段階上がる。"
+    },
+    {
+      "id": "embodyaspectwellspring",
+      "name": "Embody Aspect (Wellspring)",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, this Pokemon's Special Defense is raised by 1 stage.",
+      "descEn": "On switch-in, this Pokemon's Special Defense is raised by 1 stage.",
+      "shortDescJa": "スイッチを入れると、このポケモンの特防が1段階上がる。",
+      "descJa": "スイッチを入れると、このポケモンの特防が1段階上がる。"
+    },
+    {
+      "id": "emergencyexit",
+      "name": "Emergency Exit",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon switches out when it reaches 1/2 or less of its maximum HP.",
+      "descEn": "When this Pokemon has more than 1/2 its maximum HP and takes damage bringing it to 1/2 or less of its maximum HP, it immediately switches out to a chosen ally. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability. This effect applies to both direct and indirect damage, except Curse and Substitute on use, Belly Drum, Pain Split, and confusion damage.",
+      "shortDescJa": "このポケモンは最大HPの1/2以下になると交代する。",
+      "descJa": "このポケモンの最大HPが1/2を超え、ダメージを受けて最大HPの1/2以下になると、すぐに選んだ味方と交代する。この効果は多段ヒット技のすべてのヒット後に適用されます。この動きにシアーフォース能力によって削除された二次効果がある場合、この効果は防止されます。この効果は、使用時の呪いと身代わり、腹太鼓、痛みの分割、および混乱ダメージを除く、直接的および間接的なダメージの両方に適用されます。"
+    },
+    {
+      "id": "fairyaura",
+      "name": "Fairy Aura",
+      "nameJa": null,
+      "shortDescEn": "While this Pokemon is active, a Fairy move used by any Pokemon has 1.33x power.",
+      "descEn": "While this Pokemon is active, the power of Fairy-type moves used by active Pokemon is multiplied by 1.33.",
+      "shortDescJa": "このポケモンが発動している間、どのポケモンが使うフェアリー技の威力も1.33倍になる。",
+      "descJa": "このポケモンが発動している間、発動中のポケモンが使うフェアリータイプの技の威力は1.33倍になる。"
+    },
+    {
+      "id": "flowergift",
+      "name": "Flower Gift",
+      "nameJa": null,
+      "shortDescEn": "If user is Cherrim and Sunny Day is active, it and allies' Attack and Sp. Def are 1.5x.",
+      "descEn": "If this Pokemon is a Cherrim and Sunny Day is active, it changes to Sunshine Form and the Attack and Special Defense of it and its allies are multiplied by 1.5. These effects are prevented if the Pokemon is holding a Utility Umbrella.",
+      "shortDescJa": "使用者がチェリムでサニーデイがアクティブの場合、それと味方の攻撃力とSpが1になります。防御力は1.5倍。",
+      "descJa": "このポケモンがチェリムでサニーデイが発動している場合、サンシャインフォルムに変化し、このポケモンと味方の攻撃と特防が1.5倍になる。ポケモンがユーティリティアンブレラを持っている場合、これらの効果は防止されます。"
+    },
+    {
+      "id": "forecast",
+      "name": "Forecast",
+      "nameJa": null,
+      "shortDescEn": "Castform's type changes to the current weather condition's type, except Sandstorm.",
+      "descEn": "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm. This effect is prevented if this Pokemon is holding a Utility Umbrella and the weather is Rain Dance or Sunny Day.",
+      "shortDescJa": "Castform のタイプは、砂嵐を除く現在の気象条件のタイプに変わります。",
+      "descJa": "このポケモンがキャストフォームの場合、タイプは砂嵐以外の現在の天候のタイプに変わります。このポケモンがユーティリティ傘を持っていて、天気が雨踊りまたは晴れの場合、この効果は防止されます。"
+    },
+    {
+      "id": "gorillatactics",
+      "name": "Gorilla Tactics",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's Attack is 1.5x, but it can only select the first move it executes.",
+      "descEn": "This Pokemon's Attack is multiplied by 1.5, but it can only select the first move it executes. These effects are prevented while this Pokemon is Dynamaxed.",
+      "shortDescJa": "このポケモンの攻撃は1.5倍ですが、最初に実行する技しか選択できません。",
+      "descJa": "このポケモンの攻撃は1.5倍になるが、最初に実行する技しか選択できない。このポケモンがダイマックスしている間、これらの効果は無効になる。"
+    },
+    {
+      "id": "innardsout",
+      "name": "Innards Out",
+      "nameJa": null,
+      "shortDescEn": "If this Pokemon is KOed with a move, that move's user loses an equal amount of HP.",
+      "descEn": "If this Pokemon is knocked out with a move, that move's user loses HP equal to the amount of damage inflicted on this Pokemon.",
+      "shortDescJa": "このポケモンが技で倒された場合、その技の使用者は同じだけHPを失う。",
+      "descJa": "このポケモンが技で気絶した場合、その技の使い手はこのポケモンに与えたダメージと同じだけHPを失う。"
+    },
+    {
+      "id": "ironbarbs",
+      "name": "Iron Barbs",
+      "nameJa": null,
+      "shortDescEn": "Pokemon making contact with this Pokemon lose 1/8 of their max HP.",
+      "descEn": "Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down.",
+      "shortDescJa": "このポケモンと接触したポケモンは最大HPの1/8を失う。",
+      "descJa": "このポケモンと接触したポケモンは最大HPの1/8（切り捨て）を失う。"
+    },
+    {
+      "id": "megasol",
+      "name": "Mega Sol",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's moves are used as if the effects of Sunny Day were active.",
+      "descEn": "This Pokemon's moves are used as if the effects of Sunny Day were active.",
+      "shortDescJa": "このポケモンの技は、サニーデイの効果が発動したかのように使用されます。",
+      "descJa": "このポケモンの技は、サニーデイの効果が発動したかのように使用されます。"
+    },
+    {
+      "id": "mimicry",
+      "name": "Mimicry",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's types change to match the Terrain. Type reverts when Terrain ends.",
+      "descEn": "This Pokemon's types change to match the active Terrain when this Pokemon acquires this Ability, or whenever a Terrain begins. Electric type during Electric Terrain, Grass type during Grassy Terrain, Fairy type during Misty Terrain, and Psychic type during Psychic Terrain. If this Ability is acquired without an active Terrain, or a Terrain ends, this Pokemon's types become the original types for its species.",
+      "shortDescJa": "このポケモンは地形に合わせてタイプが変化する。 Terrain が終了するとタイプが元に戻ります。",
+      "descJa": "このポケモンがこの能力を獲得したとき、または地形が始まるたびに、このポケモンのタイプはアクティブな地形に一致するように変わります。電気地形では電気タイプ、草地では草タイプ、霧地形ではフェアリータイプ、サイキック地形ではサイキックタイプになります。アクティブな地形なしでこの能力を取得した場合、または地形が終了した場合、このポケモンのタイプはその種族の元のタイプになります。"
+    },
+    {
+      "id": "mummy",
+      "name": "Mummy",
+      "nameJa": null,
+      "shortDescEn": "Pokemon making contact with this Pokemon have their Ability changed to Mummy.",
+      "descEn": "Pokemon making contact with this Pokemon have their Ability changed to Mummy. Does not affect Pokemon with the As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype, Mummy, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Tera Shift, Zen Mode, or Zero to Hero Abilities.",
+      "shortDescJa": "このポケモンと接触したポケモンは能力が「ミイラ」に変化します。",
+      "descJa": "このポケモンと接触したポケモンは能力が「ミイラ」に変化します。アズワン、バトルボンド、昏睡、変装、ガルプミサイル、アイスフェイス、マルチタイプ、ミイラ、パワーコンストラクト、RKSシステム、スクーリング、シールドダウン、スタンスチェンジ、テラシフト、ゼンモード、またはゼロからヒーローの能力を持つポケモンには影響しません。"
+    },
+    {
+      "id": "neuroforce",
+      "name": "Neuroforce",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's attacks that are super effective against the target do 1.25x damage.",
+      "descEn": "This Pokemon's attacks that are super effective against the target have their damage multiplied by 1.25.",
+      "shortDescJa": "このポケモンの特効ワザは対象に1.25倍のダメージを与える。",
+      "descJa": "対象に対して非常に効果的なこのポケモンのワザのダメージは1.25倍になる。"
+    },
+    {
+      "id": "normalize",
+      "name": "Normalize",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's moves are changed to be Normal type and have 1.2x power.",
+      "descEn": "This Pokemon's moves are changed to be Normal type and have their power multiplied by 1.2. This effect comes before other effects that change a move's type.",
+      "shortDescJa": "このポケモンの技はノーマルタイプに変化し、威力が1.2倍になる。",
+      "descJa": "このポケモンの技はノーマルタイプに変化し、威力が1.2倍になる。この効果は、技のタイプを変更する他の効果よりも先に適用されます。"
+    },
+    {
+      "id": "parentalbond",
+      "name": "Parental Bond",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's damaging moves hit twice. The second hit has its damage quartered.",
+      "descEn": "This Pokemon's damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect Doom Desire, Dragon Darts, Dynamax Cannon, Endeavor, Explosion, Final Gambit, Fling, Future Sight, Ice Ball, Rollout, Self-Destruct, any multi-hit move, any move that has multiple targets, or any two-turn move.",
+      "shortDescJa": "このポケモンのダメージ技は2回ヒットする。 2回目の攻撃ではダメージが4分の1になります。",
+      "descJa": "このポケモンのダメージ技は2回ヒットする多段ヒット技になる。 2回目の攻撃ではダメージが4分の1になります。ドゥーム デザイア、ドラゴン ダーツ、ダイマックス キャノン、エンデバー、エクスプロージョン、ファイナル ギャンビット、フリング、フューチャー サイト、アイス ボール、ロールアウト、セルフ デストラクト、マルチヒット ムーブ、複数のターゲットを持つムーブ、または 2 ターンのムーブには影響しません。"
+    },
+    {
+      "id": "pastelveil",
+      "name": "Pastel Veil",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon and its allies cannot be poisoned. On switch-in, cures poisoned allies.",
+      "descEn": "This Pokemon and its allies cannot be poisoned. Gaining this Ability while this Pokemon or its ally is poisoned cures them. If this Ability is being ignored during an effect that causes poison, this Pokemon is cured immediately but its ally is not.",
+      "shortDescJa": "このポケモンとその仲間は毒状態にならない。スイッチインすると、毒状態の味方を治療します。",
+      "descJa": "このポケモンとその仲間は毒状態にならない。このポケモンまたはその仲間が毒状態にあるときにこの能力を得ることで、そのポケモンを治すことができます。毒を引き起こす効果中にこの能力が無視されている場合、このポケモンはすぐに治りますが、味方は治りません。"
+    },
+    {
+      "id": "perishbody",
+      "name": "Perish Body",
+      "nameJa": null,
+      "shortDescEn": "Making contact with this Pokemon starts the Perish Song effect for it and the attacker.",
+      "descEn": "Making contact with this Pokemon starts the Perish Song effect for it and the attacker. This effect does not happen for this Pokemon if the attacker already has a perish count.",
+      "shortDescJa": "このポケモンと接触すると、そのポケモンと攻撃者に「滅びの歌」効果が開始されます。",
+      "descJa": "このポケモンと接触すると、そのポケモンと攻撃者に「滅びの歌」効果が開始されます。攻撃側がすでに消滅カウントを持っている場合、このポケモンにはこの効果は発生しません。"
+    },
+    {
+      "id": "piercingdrill",
+      "name": "Piercing Drill",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's contact moves ignore a target's protection and deal 1/4 the usual damage.",
+      "descEn": "This Pokemon's contact moves ignore a target's protection and deal 1/4 the usual damage.",
+      "shortDescJa": "このポケモンの接触技は対象の守りを無視し、通常の1/4のダメージを与える。",
+      "descJa": "このポケモンの接触技は対象の守りを無視し、通常の1/4のダメージを与える。"
+    },
+    {
+      "id": "poisonpuppeteer",
+      "name": "Poison Puppeteer",
+      "nameJa": null,
+      "shortDescEn": "Pecharunt: If this Pokemon poisons a target, the target also becomes confused.",
+      "descEn": "If this Pokemon is a Pecharunt and poisons or badly poisons a target, the target also becomes confused.",
+      "shortDescJa": "ペシャルント: このポケモンが対象を毒状態にすると、対象も混乱状態になる。",
+      "descJa": "このポケモンがペシャルントで、ターゲットを毒またはひどい毒にすると、ターゲットも混乱状態になります。"
+    },
+    {
+      "id": "powerconstruct",
+      "name": "Power Construct",
+      "nameJa": null,
+      "shortDescEn": "If Zygarde 10%/50%, changes to Complete if at 1/2 max HP or less at end of turn.",
+      "descEn": "If this Pokemon is a Zygarde in its 10% or 50% Forme, it changes to Complete Forme when it has 1/2 or less of its maximum HP at the end of the turn.",
+      "shortDescJa": "ジガルデの場合10%/50%、ターン終了時に最大HPが1/2以下の場合コンプリートに変化。",
+      "descJa": "このポケモンが10％または50％フォルムのジガルデの場合、ターン終了時のHPが最大の1/2以下になるとコンプリートフォルムに変化する。"
+    },
+    {
+      "id": "primordialsea",
+      "name": "Primordial Sea",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, heavy rain begins until this Ability is not active in battle.",
+      "descEn": "On switch-in, the weather becomes Primordial Sea, which includes all the effects of Rain Dance and prevents damaging Fire-type moves from executing. This weather remains in effect until this Ability is no longer active for any Pokemon, or the weather is changed by the Delta Stream or Desolate Land Abilities.",
+      "shortDescJa": "スイッチを入れると、このアビリティが戦闘でアクティブでなくなるまで激しい雨が降り始めます。",
+      "descJa": "スイッチインすると、天気は原初の海になり、レインダンスのすべての効果が含まれ、ダメージを与える火タイプの動きが実行されなくなります。この天候は、この能力がどのポケモンに対しても有効でなくなるまで、またはデルタストリームまたは荒れ果てた土地の能力によって天気が変更されるまで、効果が続きます。"
+    },
+    {
+      "id": "refrigerate",
+      "name": "Refrigerate",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's Normal-type moves become Ice type and have 1.2x power.",
+      "descEn": "This Pokemon's Normal-type moves become Ice-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+      "shortDescJa": "このポケモンのノーマルタイプの技がこおりタイプになり、威力が1.2倍になる。",
+      "descJa": "このポケモンのノーマルタイプの技はこおりタイプの技になり、威力が1.2倍になる。この効果は、技のタイプを変更する他の効果の後、イオン デリュージとエレクトリファイの効果の前に発生します。"
+    },
+    {
+      "id": "rkssystem",
+      "name": "RKS System",
+      "nameJa": null,
+      "shortDescEn": "If this Pokemon is a Silvally, its type changes to match its held Memory.",
+      "descEn": "If this Pokemon is a Silvally, its type changes to match its held Memory.",
+      "shortDescJa": "このポケモンがシルヴァリーの場合、持っているメモリーに合わせてタイプが変わる。",
+      "descJa": "このポケモンがシルヴァリーの場合、持っているメモリーに合わせてタイプが変わる。"
+    },
+    {
+      "id": "schooling",
+      "name": "Schooling",
+      "nameJa": null,
+      "shortDescEn": "If user is Wishiwashi, changes to School Form if it has > 1/4 max HP, else Solo Form.",
+      "descEn": "On switch-in, if this Pokemon is a Wishiwashi that is level 20 or above and has more than 1/4 of its maximum HP left, it changes to School Form. If it is in School Form and its HP drops to 1/4 of its maximum HP or less, it changes to Solo Form at the end of the turn. If it is in Solo Form and its HP is greater than 1/4 its maximum HP at the end of the turn, it changes to School Form.",
+      "shortDescJa": "ユーザーがウィシワシの場合、最大HPが1/4を超える場合はスクールフォームに変更され、それ以外の場合はソロフォームに変更されます。",
+      "descJa": "スイッチイン時、このポケモンがレベル20以上で最大HPの1/4以上残っているウィシワシの場合、スクールフォルムに変化する。スクール形態でHPが最大HPの1/4以下になるとターン終了時にソロ形態に変化する。ソロフォームでターン終了時のHPが最大HPの1/4以上の場合、スクールフォームに変化する。"
+    },
+    {
+      "id": "screencleaner",
+      "name": "Screen Cleaner",
+      "nameJa": null,
+      "shortDescEn": "On switch-in, the effects of Aurora Veil, Light Screen, and Reflect end for both sides.",
+      "descEn": "On switch-in, the effects of Aurora Veil, Light Screen, and Reflect end for both sides.",
+      "shortDescJa": "スイッチインすると、オーロラベール、ライトスクリーン、リフレクトの効果が両面で終了します。",
+      "descJa": "スイッチインすると、オーロラベール、ライトスクリーン、リフレクトの効果が両面で終了します。"
+    },
+    {
+      "id": "spicyspray",
+      "name": "Spicy Spray",
+      "nameJa": null,
+      "shortDescEn": "If this Pokemon is hit by an attack, the attacker becomes burned.",
+      "descEn": "If this Pokemon is hit by an attack, the attacker becomes burned.",
+      "shortDescJa": "このポケモンが攻撃を受けると攻撃者はやけど状態になる。",
+      "descJa": "このポケモンが攻撃を受けると攻撃者はやけど状態になる。"
+    },
+    {
+      "id": "stancechange",
+      "name": "Stance Change",
+      "nameJa": null,
+      "shortDescEn": "If Aegislash, changes Forme to Blade before attacks and Shield before King's Shield.",
+      "descEn": "If this Pokemon is an Aegislash, it changes to Blade Forme before using an attacking move, and changes to Shield Forme before using King's Shield.",
+      "shortDescJa": "アイギスラッシュの場合、攻撃前にフォルムをブレイドに、キングシールドの前にシールドに変化する。",
+      "descJa": "このポケモンがイージスラッシュの場合、攻撃技を使う​​前にブレードフォルムに変化し、キングシールドを使う前にシールドフォルムに変化する。"
+    },
+    {
+      "id": "steelworker",
+      "name": "Steelworker",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon's offensive stat is multiplied by 1.5 while using a Steel-type attack.",
+      "descEn": "This Pokemon's offensive stat is multiplied by 1.5 while using a Steel-type attack.",
+      "shortDescJa": "このポケモンの攻撃ステータスは、スチールタイプの攻撃で1.5倍になります。",
+      "descJa": "このポケモンの攻撃ステータスは、スチールタイプの攻撃で1.5倍になります。"
+    },
+    {
+      "id": "terashell",
+      "name": "Tera Shell",
+      "nameJa": null,
+      "shortDescEn": "Terapagos: If full HP, attacks taken have 0.5x effectiveness unless naturally immune.",
+      "descEn": "If this Pokemon is a Terapagos at full HP, the effectiveness of attacks against it is changed to 0.5 unless this Pokemon is immune to the move. Multi-hit moves retain the same effectiveness throughout the attack.",
+      "shortDescJa": "テラパゴス: HP が満タンの場合、自然免疫を持たない限り、受けた攻撃の有効性は 0.5 倍になります。",
+      "descJa": "このポケモンがHP満タンのテラパゴスの場合、このポケモンがその技に耐性がない限り、それに対する攻撃の効果は0.5に変更されます。複数回ヒットする動きは、攻撃全体を通じて同じ効果を維持します。"
+    },
+    {
+      "id": "terashift",
+      "name": "Tera Shift",
+      "nameJa": null,
+      "shortDescEn": "If this Pokemon is a Terapagos, it transforms into its Terastal Form on entry.",
+      "descEn": "If this Pokemon is a Terapagos, it transforms into its Terastal Form on entry.",
+      "shortDescJa": "このポケモンがテラパゴスの場合、入場時にテラスタルフォームに変身します。",
+      "descJa": "このポケモンがテラパゴスの場合、入場時にテラスタルフォームに変身します。"
+    },
+    {
+      "id": "teraformzero",
+      "name": "Teraform Zero",
+      "nameJa": null,
+      "shortDescEn": "Terapagos: Terastallizing ends the effects of weather and terrain. Once per battle.",
+      "descEn": "Terapagos: Terastallizing ends the effects of weather and terrain. Once per battle.",
+      "shortDescJa": "テラパゴス: テラスタライゼーションにより、天候や地形の影響がなくなります。戦闘ごとに 1 回。",
+      "descJa": "テラパゴス: テラスタライゼーションにより、天候や地形の影響がなくなります。戦闘ごとに 1 回。"
+    },
+    {
+      "id": "unseenfist",
+      "name": "Unseen Fist",
+      "nameJa": "ふかしのこぶし",
+      "shortDescEn": "This Pokemon's contact moves ignore a target's protection and deal 1/4 the usual damage.",
+      "descEn": null,
+      "shortDescJa": "このポケモンの接触技は対象の守りを無視し、通常の1/4のダメージを与える。",
+      "descJa": null
+    },
+    {
+      "id": "victorystar",
+      "name": "Victory Star",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon and its allies' moves have their accuracy multiplied by 1.1.",
+      "descEn": "This Pokemon and its allies' moves have their accuracy multiplied by 1.1.",
+      "shortDescJa": "このポケモンとその仲間の技の命中率は1.1倍になる。",
+      "descJa": "このポケモンとその仲間の技の命中率は1.1倍になる。"
+    },
+    {
+      "id": "wanderingspirit",
+      "name": "Wandering Spirit",
+      "nameJa": null,
+      "shortDescEn": "Pokemon making contact with this Pokemon have their Ability swapped with this one.",
+      "descEn": "Pokemon making contact with this Pokemon have their Ability swapped with this one. Does not affect Pokemon with the Abilities As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Hunger Switch, Ice Face, Illusion, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Protosynthesis, Quark Drive, RKS System, Schooling, Shields Down, Stance Change, Tera Shell, Tera Shift, Teraform Zero, Wonder Guard, Zen Mode, or Zero to Hero.",
+      "shortDescJa": "このポケモンと接触したポケモンは能力がこのポケモンと入れ替わる。",
+      "descJa": "このポケモンと接触したポケモンは能力がこのポケモンと入れ替わる。アズワン、バトルボンド、昏睡、コマンダー、ディスガイズ、エンボディアスペクト、ハンガースイッチ、アイスフェイス、イリュージョン、マルチタイプ、中和ガス、ポイズンパペッティア、パワーコンストラクト、プロトシンセシス、クォークドライブ、RKSシステム、スクーリング、シールドダウン、スタンスチェンジ、テラシェル、テラシフト、テラフォームゼロ、ワンダーガード、ゼンモード、ゼロトゥヒーローの能力を持つポケモンには影響しない。"
+    },
+    {
+      "id": "wimpout",
+      "name": "Wimp Out",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon switches out when it reaches 1/2 or less of its maximum HP.",
+      "descEn": "When this Pokemon has more than 1/2 its maximum HP and takes damage bringing it to 1/2 or less of its maximum HP, it immediately switches out to a chosen ally. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability. This effect applies to both direct and indirect damage, except Curse and Substitute on use, Belly Drum, Pain Split, and confusion damage.",
+      "shortDescJa": "このポケモンは最大HPの1/2以下になると交代する。",
+      "descJa": "このポケモンの最大HPが1/2を超え、ダメージを受けて最大HPの1/2以下になると、すぐに選んだ味方と交代する。この効果は多段ヒット技のすべてのヒット後に適用されます。この動きにシアーフォース能力によって削除された二次効果がある場合、この効果は防止されます。この効果は、使用時の呪いと身代わり、腹太鼓、痛みの分割、および混乱ダメージを除く、直接的および間接的なダメージの両方に適用されます。"
+    },
+    {
+      "id": "wonderguard",
+      "name": "Wonder Guard",
+      "nameJa": null,
+      "shortDescEn": "This Pokemon can only be damaged by supereffective moves and indirect damage.",
+      "descEn": "This Pokemon can only be damaged by supereffective moves and indirect damage.",
+      "shortDescJa": "このポケモンは超効果的な動きと間接ダメージによってのみダメージを受けることができます。",
+      "descJa": "このポケモンは超効果的な動きと間接ダメージによってのみダメージを受けることができます。"
+    },
+    {
+      "id": "zenmode",
+      "name": "Zen Mode",
+      "nameJa": null,
+      "shortDescEn": "If Darmanitan, at end of turn changes Mode to Standard if > 1/2 max HP, else Zen.",
+      "descEn": "If this Pokemon is a Darmanitan or Galarian Darmanitan, it changes to Zen Mode if it has 1/2 or less of its maximum HP at the end of a turn. If Darmanitan's HP is above 1/2 of its maximum HP at the end of a turn, it changes back to Standard Mode.",
+      "shortDescJa": "ダルマニタンの場合、ターン終了時に最大HPの1/2を超える場合はモードをスタンダードに変更し、そうでない場合は禅に変更します。",
+      "descJa": "このポケモンがダルマニタンまたはガラルダルマニタンの場合、ターン終了時のHPが最大の1/2以下になるとゼンモードに変化する。ターン終了時にダルマニタンのHPが最大HPの1/2を超えている場合、スタンダードモードに戻ります。"
+    }
+  ],
+  "items": [
+    {
+      "id": "abomasite",
+      "name": "Abomasite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Abomasnow, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Abomasnow, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "アボマスノーがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "アボマスノーがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "absolite",
+      "name": "Absolite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Absol, this item allows it to Mega Evolve into Mega Absol in battle.",
+      "descEn": "If held by an Absol, this item allows it to Mega Evolve into Mega Absol in battle.",
+      "shortDescJa": "アブソルによって保持されている場合、このアイテムはバトルでメガアブソルにメガ進化することができます。",
+      "descJa": "アブソルによって保持されている場合、このアイテムはバトルでメガアブソルにメガ進化することができます。"
+    },
+    {
+      "id": "aerodactylite",
+      "name": "Aerodactylite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Aerodactyl, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Aerodactyl, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "このアイテムをエアロダクティルが持つと、戦闘中にメガ進化することができます。",
+      "descJa": "このアイテムをエアロダクティルが持つと、戦闘中にメガ進化することができます。"
+    },
+    {
+      "id": "aggronite",
+      "name": "Aggronite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Aggron, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Aggron, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "アグロンがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "アグロンがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "alakazite",
+      "name": "Alakazite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Alakazam, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Alakazam, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "アラカザムがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "アラカザムがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "altarianite",
+      "name": "Altarianite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Altaria, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Altaria, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "アルタリアが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "アルタリアが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "ampharosite",
+      "name": "Ampharosite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Ampharos, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Ampharos, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "アンファロスが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "アンファロスが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "aspearberry",
+      "name": "Aspear Berry",
+      "nameJa": null,
+      "shortDescEn": "Holder is cured if it is frozen. Single use.",
+      "descEn": "Holder is cured if it is frozen. Single use.",
+      "shortDescJa": "ホルダーが凍結すると硬化します。シングルユース。",
+      "descJa": "ホルダーが凍結すると硬化します。シングルユース。"
+    },
+    {
+      "id": "audinite",
+      "name": "Audinite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Audino, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Audino, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "このアイテムをオーディノが持つと戦闘中にメガシンカすることができる。",
+      "descJa": "このアイテムをオーディノが持つと戦闘中にメガシンカすることができる。"
+    },
+    {
+      "id": "babiriberry",
+      "name": "Babiri Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Steel-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Steel-type attack. Single use.",
+      "shortDescJa": "効果抜群のはがねタイプの攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群のはがねタイプの攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "banettite",
+      "name": "Banettite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Banette, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Banette, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "バネットが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "バネットが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "beedrillite",
+      "name": "Beedrillite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Beedrill, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Beedrill, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ビードリルが持つと戦闘中にメガシンカできるアイテムです。",
+      "descJa": "ビードリルが持つと戦闘中にメガシンカできるアイテムです。"
+    },
+    {
+      "id": "blastoisinite",
+      "name": "Blastoisinite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Blastoise, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Blastoise, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "カメックスが持つと戦闘中にメガシンカできるアイテムです。",
+      "descJa": "カメックスが持つと戦闘中にメガシンカできるアイテムです。"
+    },
+    {
+      "id": "brightpowder",
+      "name": "Bright Powder",
+      "nameJa": null,
+      "shortDescEn": "The accuracy of attacks against the holder is 0.9x.",
+      "descEn": "The accuracy of attacks against the holder is 0.9x.",
+      "shortDescJa": "ホルダーに対する攻撃の命中率は0.9倍。",
+      "descJa": "ホルダーに対する攻撃の命中率は0.9倍。"
+    },
+    {
+      "id": "cameruptite",
+      "name": "Cameruptite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Camerupt, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Camerupt, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "カメルプトがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "カメルプトがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "chandelurite",
+      "name": "Chandelurite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Chandelure, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Chandelure, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "シャンデラが持つと戦闘中にメガシンカできるアイテムです。",
+      "descJa": "シャンデラが持つと戦闘中にメガシンカできるアイテムです。"
+    },
+    {
+      "id": "charizarditex",
+      "name": "Charizardite X",
+      "nameJa": null,
+      "shortDescEn": "If held by a Charizard, this item allows it to Mega Evolve into Mega Charizard X.",
+      "descEn": "If held by a Charizard, this item allows it to Mega Evolve into Mega Charizard X.",
+      "shortDescJa": "リザードンが持つとメガリザードンXにメガシンカできるアイテム。",
+      "descJa": "リザードンが持つとメガリザードンXにメガシンカできるアイテム。"
+    },
+    {
+      "id": "charizarditey",
+      "name": "Charizardite Y",
+      "nameJa": null,
+      "shortDescEn": "If held by a Charizard, this item allows it to Mega Evolve into Mega Charizard Y.",
+      "descEn": "If held by a Charizard, this item allows it to Mega Evolve into Mega Charizard Y.",
+      "shortDescJa": "リザードンが持つとメガリザードンYにメガシンカできるアイテム。",
+      "descJa": "リザードンが持つとメガリザードンYにメガシンカできるアイテム。"
+    },
+    {
+      "id": "chartiberry",
+      "name": "Charti Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Rock-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Rock-type attack. Single use.",
+      "shortDescJa": "効果抜群のいわタイプの攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群のいわタイプの攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "cheriberry",
+      "name": "Cheri Berry",
+      "nameJa": null,
+      "shortDescEn": "Holder cures itself if it is paralyzed. Single use.",
+      "descEn": "Holder cures itself if it is paralyzed. Single use.",
+      "shortDescJa": "ホルダーが麻痺しても自動的に回復します。シングルユース。",
+      "descJa": "ホルダーが麻痺しても自動的に回復します。シングルユース。"
+    },
+    {
+      "id": "chesnaughtite",
+      "name": "Chesnaughtite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Chesnaught, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Chesnaught, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "このアイテムをチェスノートが持つと、戦闘中にメガシンカすることができます。",
+      "descJa": "このアイテムをチェスノートが持つと、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "chestoberry",
+      "name": "Chesto Berry",
+      "nameJa": null,
+      "shortDescEn": "Holder wakes up if it is asleep. Single use.",
+      "descEn": "Holder wakes up if it is asleep. Single use.",
+      "shortDescJa": "ホルダーが眠っている場合は目覚めます。シングルユース。",
+      "descJa": "ホルダーが眠っている場合は目覚めます。シングルユース。"
+    },
+    {
+      "id": "chilanberry",
+      "name": "Chilan Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a Normal-type attack. Single use.",
+      "descEn": "Halves damage taken from a Normal-type attack. Single use.",
+      "shortDescJa": "ノーマルタイプの攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "ノーマルタイプの攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "chimechite",
+      "name": "Chimechite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Chimecho, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Chimecho, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "チャイムチョが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "チャイムチョが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "chopleberry",
+      "name": "Chople Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Fighting-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Fighting-type attack. Single use.",
+      "shortDescJa": "強力な格闘タイプの攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "強力な格闘タイプの攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "clefablite",
+      "name": "Clefablite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Clefable, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Clefable, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "クレファブルがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "クレファブルがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "cobaberry",
+      "name": "Coba Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Flying-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Flying-type attack. Single use.",
+      "shortDescJa": "非常に効果的な飛行タイプの攻撃から受けるダメージを半減する。シングルユース。",
+      "descJa": "非常に効果的な飛行タイプの攻撃から受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "colburberry",
+      "name": "Colbur Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Dark-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Dark-type attack. Single use.",
+      "shortDescJa": "効果抜群のあくタイプの攻撃から受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群のあくタイプの攻撃から受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "crabominite",
+      "name": "Crabominite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Crabominable, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Crabominable, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "このアイテムをクラボミナブルが持つと、戦闘中にメガ進化することができます。",
+      "descJa": "このアイテムをクラボミナブルが持つと、戦闘中にメガ進化することができます。"
+    },
+    {
+      "id": "delphoxite",
+      "name": "Delphoxite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Delphox, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Delphox, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "デルフォックスがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "デルフォックスがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "dragoninite",
+      "name": "Dragoninite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Dragonite, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Dragonite, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ドラゴナイトがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ドラゴナイトがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "drampanite",
+      "name": "Drampanite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Drampa, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Drampa, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ドランパが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "ドランパが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "emboarite",
+      "name": "Emboarite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Emboar, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Emboar, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "エンブアールが持つと戦闘中にメガシンカできるアイテムです。",
+      "descJa": "エンブアールが持つと戦闘中にメガシンカできるアイテムです。"
+    },
+    {
+      "id": "excadrite",
+      "name": "Excadrite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Excadrill, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Excadrill, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "エクスカドリルが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "エクスカドリルが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "fairyfeather",
+      "name": "Fairy Feather",
+      "nameJa": null,
+      "shortDescEn": "Holder's Fairy-type attacks have 1.2x power.",
+      "descEn": "Holder's Fairy-type attacks have 1.2x power.",
+      "shortDescJa": "ホルダーのフェアリータイプの攻撃の威力が1.2倍になる。",
+      "descJa": "ホルダーのフェアリータイプの攻撃の威力が1.2倍になる。"
+    },
+    {
+      "id": "feraligite",
+      "name": "Feraligite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Feraligatr, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Feraligatr, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "フェラリガトルがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "フェラリガトルがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "floettite",
+      "name": "Floettite",
+      "nameJa": null,
+      "shortDescEn": "If held by an Eternal Flower Floette, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by an Eternal Flower Floette, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "エターナルフラワーフレットが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "エターナルフラワーフレットが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "froslassite",
+      "name": "Froslassite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Froslass, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Froslass, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "フロラスがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "フロラスがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "galladite",
+      "name": "Galladite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Gallade, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Gallade, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ギャレードがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ギャレードがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "garchompite",
+      "name": "Garchompite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.",
+      "descEn": "If held by a Garchomp, this item allows it to Mega Evolve into Mega Garchomp.",
+      "shortDescJa": "ガーチョンプが持つとメガガーチョンプにメガシンカできるアイテムです。",
+      "descJa": "ガーチョンプが持つとメガガーチョンプにメガシンカできるアイテムです。"
+    },
+    {
+      "id": "gardevoirite",
+      "name": "Gardevoirite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Gardevoir, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Gardevoir, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "サーナイトが持つと戦闘中にメガ進化できるアイテムです。",
+      "descJa": "サーナイトが持つと戦闘中にメガ進化できるアイテムです。"
+    },
+    {
+      "id": "gengarite",
+      "name": "Gengarite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Gengar, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Gengar, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ゲンガーが持つとバトル中にメガシンカできるアイテム。",
+      "descJa": "ゲンガーが持つとバトル中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "glalitite",
+      "name": "Glalitite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Glalie, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Glalie, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "グラリエが持つと戦闘中にメガシンカできるアイテムです。",
+      "descJa": "グラリエが持つと戦闘中にメガシンカできるアイテムです。"
+    },
+    {
+      "id": "glimmoranite",
+      "name": "Glimmoranite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Glimmora, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Glimmora, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "グリモラが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "グリモラが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "golurkite",
+      "name": "Golurkite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Golurk, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Golurk, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ゴルクがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ゴルクがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "greninjite",
+      "name": "Greninjite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Greninja, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Greninja, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "グレニンジャがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "グレニンジャがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "gyaradosite",
+      "name": "Gyaradosite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Gyarados, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Gyarados, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ギャラドスが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "ギャラドスが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "habanberry",
+      "name": "Haban Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Dragon-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Dragon-type attack. Single use.",
+      "shortDescJa": "ドラゴン系の超強力攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "ドラゴン系の超強力攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "hawluchanite",
+      "name": "Hawluchanite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Hawlucha, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Hawlucha, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ハウルチャが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "ハウルチャが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "heracronite",
+      "name": "Heracronite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Heracross, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Heracross, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ヘラクロスが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "ヘラクロスが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "houndoominite",
+      "name": "Houndoominite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Houndoom, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Houndoom, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ハウンドームがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ハウンドームがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "kangaskhanite",
+      "name": "Kangaskhanite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Kangaskhan, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Kangaskhan, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "カンガスカンが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "カンガスカンが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "kasibberry",
+      "name": "Kasib Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Ghost-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Ghost-type attack. Single use.",
+      "shortDescJa": "効果抜群のゴーストタイプの攻撃から受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群のゴーストタイプの攻撃から受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "kebiaberry",
+      "name": "Kebia Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Poison-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Poison-type attack. Single use.",
+      "shortDescJa": "効果抜群の毒系攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群の毒系攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "leppaberry",
+      "name": "Leppa Berry",
+      "nameJa": null,
+      "shortDescEn": "Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use.",
+      "descEn": "Restores 10 PP to the first of the holder's moves to reach 0 PP. Single use.",
+      "shortDescJa": "PPが0になるまでの最初の技のPPを10回復する。シングルユース。",
+      "descJa": "PPが0になるまでの最初の技のPPを10回復する。シングルユース。"
+    },
+    {
+      "id": "lopunnite",
+      "name": "Lopunnite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Lopunny, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Lopunny, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ロパニーがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ロパニーがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "lucarionite",
+      "name": "Lucarionite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario in battle.",
+      "descEn": "If held by a Lucario, this item allows it to Mega Evolve into Mega Lucario in battle.",
+      "shortDescJa": "このアイテムをルカリオが持つと、戦闘中にメガルカリオにメガシンカすることができる。",
+      "descJa": "このアイテムをルカリオが持つと、戦闘中にメガルカリオにメガシンカすることができる。"
+    },
+    {
+      "id": "lumberry",
+      "name": "Lum Berry",
+      "nameJa": null,
+      "shortDescEn": "Holder cures itself if it has a non-volatile status or is confused. Single use.",
+      "descEn": "Holder cures itself if it has a non-volatile status or is confused. Single use.",
+      "shortDescJa": "ホルダーは、不揮発性ステータスまたは混乱状態にある場合に自動的に修復されます。シングルユース。",
+      "descJa": "ホルダーは、不揮発性ステータスまたは混乱状態にある場合に自動的に修復されます。シングルユース。"
+    },
+    {
+      "id": "manectite",
+      "name": "Manectite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Manectric, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Manectric, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "マネクトリックがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "マネクトリックがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "medichamite",
+      "name": "Medichamite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Medicham, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Medicham, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "メディチャムがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "メディチャムがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "meganiumite",
+      "name": "Meganiumite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Meganium, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Meganium, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "メガニウムが持つと戦闘中にメガシンカできるアイテムです。",
+      "descJa": "メガニウムが持つと戦闘中にメガシンカできるアイテムです。"
+    },
+    {
+      "id": "meowsticite",
+      "name": "Meowsticite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Meowstic, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Meowstic, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ニャースティックがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ニャースティックがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "occaberry",
+      "name": "Occa Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Fire-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Fire-type attack. Single use.",
+      "shortDescJa": "非常に効果的な火属性の攻撃から受けるダメージを半減します。シングルユース。",
+      "descJa": "非常に効果的な火属性の攻撃から受けるダメージを半減します。シングルユース。"
+    },
+    {
+      "id": "oranberry",
+      "name": "Oran Berry",
+      "nameJa": null,
+      "shortDescEn": "Restores 10 HP when at 1/2 max HP or less. Single use.",
+      "descEn": "Restores 10 HP when at 1/2 max HP or less. Single use.",
+      "shortDescJa": "最大HPの1/2以下の場合、HPを10回復。シングルユース。",
+      "descJa": "最大HPの1/2以下の場合、HPを10回復。シングルユース。"
+    },
+    {
+      "id": "passhoberry",
+      "name": "Passho Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Water-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Water-type attack. Single use.",
+      "shortDescJa": "効果抜群の水属性の攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群の水属性の攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "payapaberry",
+      "name": "Payapa Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Psychic-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Psychic-type attack. Single use.",
+      "shortDescJa": "非常に効果的なサイキックタイプの攻撃から受けるダメージを半減します。シングルユース。",
+      "descJa": "非常に効果的なサイキックタイプの攻撃から受けるダメージを半減します。シングルユース。"
+    },
+    {
+      "id": "pechaberry",
+      "name": "Pecha Berry",
+      "nameJa": null,
+      "shortDescEn": "Holder is cured if it is poisoned. Single use.",
+      "descEn": "Holder is cured if it is poisoned. Single use.",
+      "shortDescJa": "ホルダーが毒にかかると回復します。シングルユース。",
+      "descJa": "ホルダーが毒にかかると回復します。シングルユース。"
+    },
+    {
+      "id": "persimberry",
+      "name": "Persim Berry",
+      "nameJa": null,
+      "shortDescEn": "Holder is cured if it is confused. Single use.",
+      "descEn": "Holder is cured if it is confused. Single use.",
+      "shortDescJa": "ホルダーが混乱すると治ります。シングルユース。",
+      "descJa": "ホルダーが混乱すると治ります。シングルユース。"
+    },
+    {
+      "id": "pidgeotite",
+      "name": "Pidgeotite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Pidgeot, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Pidgeot, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "このアイテムをピジョットが持つと、戦闘中にメガシンカすることができます。",
+      "descJa": "このアイテムをピジョットが持つと、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "pinsirite",
+      "name": "Pinsirite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Pinsir, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Pinsir, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ピンシールがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ピンシールがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "rawstberry",
+      "name": "Rawst Berry",
+      "nameJa": null,
+      "shortDescEn": "Holder is cured if it is burned. Single use.",
+      "descEn": "Holder is cured if it is burned. Single use.",
+      "shortDescJa": "ホルダーは焼けても治ります。シングルユース。",
+      "descJa": "ホルダーは焼けても治ります。シングルユース。"
+    },
+    {
+      "id": "rindoberry",
+      "name": "Rindo Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Grass-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Grass-type attack. Single use.",
+      "shortDescJa": "非常に効果的な草タイプの攻撃から受けるダメージを半減する。シングルユース。",
+      "descJa": "非常に効果的な草タイプの攻撃から受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "roseliberry",
+      "name": "Roseli Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Fairy-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Fairy-type attack. Single use.",
+      "shortDescJa": "フェアリータイプの超強力攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "フェアリータイプの超強力攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "sablenite",
+      "name": "Sablenite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Sableye, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Sableye, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "サブアイがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "サブアイがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "scizorite",
+      "name": "Scizorite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Scizor, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Scizor, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "シザーが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "シザーが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "scovillainite",
+      "name": "Scovillainite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Scovillain, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Scovillain, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "スコヴィランがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "スコヴィランがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "sharpedonite",
+      "name": "Sharpedonite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Sharpedo, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Sharpedo, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "シャープドがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "シャープドがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "shucaberry",
+      "name": "Shuca Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Ground-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Ground-type attack. Single use.",
+      "shortDescJa": "効果抜群のじめんタイプの攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群のじめんタイプの攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "skarmorite",
+      "name": "Skarmorite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Skarmory, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Skarmory, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "スカーモリーがこのアイテムを持っていると、戦闘中にメガ進化することができます。",
+      "descJa": "スカーモリーがこのアイテムを持っていると、戦闘中にメガ進化することができます。"
+    },
+    {
+      "id": "slowbronite",
+      "name": "Slowbronite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Slowbro (not Galarian Slowbro), this item allows it to Mega Evolve.",
+      "descEn": null,
+      "shortDescJa": "ヤドン（ガラルヤドンではない）が持っている場合、このアイテムを使用するとメガシンカすることができます。",
+      "descJa": null
+    },
+    {
+      "id": "starminite",
+      "name": "Starminite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Starmie, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Starmie, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "スターミーが持つと戦闘中にメガシンカできるアイテム。",
+      "descJa": "スターミーが持つと戦闘中にメガシンカできるアイテム。"
+    },
+    {
+      "id": "steelixite",
+      "name": "Steelixite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Steelix, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Steelix, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "スティーリックスがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "スティーリックスがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "tangaberry",
+      "name": "Tanga Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Bug-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Bug-type attack. Single use.",
+      "shortDescJa": "むし系の超強力攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "むし系の超強力攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "tyranitarite",
+      "name": "Tyranitarite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Tyranitar, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Tyranitar, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ティラニターがこのアイテムを持っていると、戦闘中にメガシンカすることができます。",
+      "descJa": "ティラニターがこのアイテムを持っていると、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "venusaurite",
+      "name": "Venusaurite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Venusaur, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Venusaur, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "このアイテムをフシギバナが持つと、戦闘中にメガシンカすることができます。",
+      "descJa": "このアイテムをフシギバナが持つと、戦闘中にメガシンカすることができます。"
+    },
+    {
+      "id": "victreebelite",
+      "name": "Victreebelite",
+      "nameJa": null,
+      "shortDescEn": "If held by a Victreebel, this item allows it to Mega Evolve in battle.",
+      "descEn": "If held by a Victreebel, this item allows it to Mega Evolve in battle.",
+      "shortDescJa": "ヴィクトリーベルが持つと戦闘中にメガシンカできるアイテムです。",
+      "descJa": "ヴィクトリーベルが持つと戦闘中にメガシンカできるアイテムです。"
+    },
+    {
+      "id": "wacanberry",
+      "name": "Wacan Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Electric-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Electric-type attack. Single use.",
+      "shortDescJa": "効果抜群のでんきタイプの攻撃で受けるダメージを半減する。シングルユース。",
+      "descJa": "効果抜群のでんきタイプの攻撃で受けるダメージを半減する。シングルユース。"
+    },
+    {
+      "id": "yacheberry",
+      "name": "Yache Berry",
+      "nameJa": null,
+      "shortDescEn": "Halves damage taken from a supereffective Ice-type attack. Single use.",
+      "descEn": "Halves damage taken from a supereffective Ice-type attack. Single use.",
+      "shortDescJa": "超効果的な氷タイプの攻撃から受けるダメージを半減する。シングルユース。",
+      "descJa": "超効果的な氷タイプの攻撃から受けるダメージを半減する。シングルユース。"
+    }
+  ]
+}

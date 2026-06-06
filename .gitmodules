@@ -1,0 +1,3 @@
+[submodule "library/pokemon-showdown"]
+	path = library/pokemon-showdown
+	url = https://github.com/kosakasakas/pokemon-showdown.git

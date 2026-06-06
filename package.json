@@ -1,0 +1,15 @@
+{
+  "name": "pokelist",
+  "version": "1.0.0",
+  "description": "Pokelist Tools",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix library/pokemon-showdown install",
+    "setup": "git submodule update --init --recursive",
+    "server": "http-server public -o",
+    "build:showdown": "npm --prefix library/pokemon-showdown run build"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

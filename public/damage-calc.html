@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ポケモンチャンピオンズ ダメージ計算</title>
+    <meta name="description" content="[Gen 9 Champions] VGC 2026 Reg M-A 向けの静的ダメージ計算ツールです。">
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/pokelist/poketools-custom-styles.css">
+  </head>
+  <body class="calc-page">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="/pokelist/index.html">ポケモンチャンピオンズ ツール</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#damage-calc-navbar-collapse" aria-controls="damage-calc-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="damage-calc-navbar-collapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="/pokelist/pokedex.html">図鑑</a></li>
+              <li class="nav-item"><a class="nav-link" href="/pokelist/box-party.html">ボックス</a></li>
+              <li class="nav-item"><a class="nav-link" href="/pokelist/damage-calc.html">ダメージ計算</a></li>
+              <li class="nav-item"><a class="nav-link" href="/pokelist/speed-adjust.html">素早さ比較</a></li>
+              <li class="nav-item"><a class="nav-link" href="/pokelist/index.html">レギュレーション変更</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-fluid py-3 px-3 px-xxl-4">
+      <div class="row g-3 align-items-start calc-shell">
+        <aside class="col-xxl-2 d-none d-xxl-block">
+          <div class="ad-stack">
+            <div class="ad-slot ad-rail" aria-label="left-ad-rail">AD 160x600</div>
+          </div>
+        </aside>
+        <section class="col-12 col-xxl-8">
+      <div id="mobile-top-tabs" class="mobile-top-tabs d-lg-none mb-2" role="tablist" aria-label="mobile-top-tabs">
+        <button id="mobile-tab-settings" class="btn btn-outline-secondary active" type="button" data-tab="settings" aria-selected="true">設定</button>
+        <button id="mobile-tab-result" class="btn btn-outline-secondary" type="button" data-tab="result" aria-selected="false">計算結果</button>
+      </div>
+      <section class="card panel-card mb-3 result-desktop-panel">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span data-i18n="result">計算結果</span>
+          <div class="result-header-actions">
+            <button id="swap-sides-result" class="btn btn-outline-secondary d-lg-none" type="button" title="攻守入替" aria-label="攻守入替"><i class="bi bi-arrow-left-right"></i> 攻守入替</button>
+            <button id="save-calc-memo" class="btn btn-outline-secondary" type="button" title="ダメージ計算メモを保存" aria-label="ダメージ計算メモを保存"><i class="bi bi-bookmark-plus"></i> 計算結果を保存</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="result-capture" class="result-capture">
+            <div class="result-summary-row result-row-shell">
+              <span class="result-row-head-icon" aria-hidden="true" title="攻防サマリー"><i class="bi bi-person-fill"></i></span>
+              <div class="result-side-inline result-side-inline-start">
+                <div id="result-attacker-icons" class="result-side-icons">-</div>
+                <span id="result-attacker-meta" class="result-side-meta mono">-</span>
+                <span id="result-attacker-item-impact" class="result-impact-item" aria-hidden="true"></span>
+                <span id="result-attacker-modifiers" class="result-inline-modifiers"></span>
+              </div>
+              <span class="result-flow-arrow" aria-hidden="true" title="攻撃側から防御側へ"><i class="bi bi-arrow-right"></i></span>
+              <div class="result-side-inline result-side-inline-end">
+                <div id="result-defender-icons" class="result-side-icons">-</div>
+                <span id="result-defender-meta" class="result-side-meta mono">-</span>
+                <span id="result-defender-item-impact" class="result-impact-item" aria-hidden="true"></span>
+                <span id="result-defender-modifiers" class="result-inline-modifiers"></span>
+              </div>
+            </div>
+            <div class="result-move-line result-row-shell">
+              <span class="result-row-head-icon" aria-hidden="true" title="技情報"><i class="bi bi-lightning-charge-fill"></i></span>
+              <span id="result-move" class="result-move-name">-</span>
+              <span id="result-move-meta" class="result-move-inline mono">-</span>
+              <span id="result-stab-effect" class="result-inline-badge result-stab-effect">-</span>
+              <span id="result-type-effect" class="result-type-effect">-</span>
+            </div>
+            <div class="result-damage-row result-row-shell">
+              <span class="result-row-head-icon" aria-hidden="true" title="ダメージとKO"><i class="bi bi-activity"></i></span>
+              <span class="result-value mono" id="result-main">ダメージ - / HP-</span>
+              <span id="result-ko-rate" class="result-ko-summary mono">-</span>
+            </div>
+            <div class="result-random-row result-row-shell">
+              <span class="result-row-head-icon result-random-icon" aria-hidden="true" title="乱数分布"><i class="bi bi-bar-chart-steps"></i></span>
+              <span id="result-extra" class="result-sub mono">-</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="row g-3" id="battle-panels-row">
+        <div class="col-12 col-xxl-4" id="attacker-panel-col">
+          <div class="card panel-card h-100">
+            <div class="card-header" title="攻撃側" aria-label="攻撃側"><span class="d-inline-flex align-items-center gap-1"><i class="bi bi-lightning-charge"></i><span>攻撃側</span></span></div>
+            <div class="card-body">
+              <div class="calc-side-grid mb-2">
+                <div class="calc-side-cell calc-side-cell-top calc-side-cell-wide">
+                  <label class="form-label" for="attacker-species-button" data-i18n="species">ポケモン</label>
+                  <input id="attacker-species" type="hidden">
+                  <div class="calc-side-top-strip">
+                    <div class="calc-side-pokemon-block">
+                      <button id="attacker-species-button" class="btn btn-field calc-side-main-button" type="button"></button>
+                      <div class="calc-side-mega-toggle" title="メガ進化" aria-label="メガ進化">
+                        <input id="attacker-mega-enabled" type="checkbox" hidden disabled>
+                        <button id="attacker-mega-toggle" class="btn calc-mega-toggle-button" type="button" aria-pressed="false">メガOFF</button>
+                      </div>
+                    </div>
+                    <button id="attacker-open-linked-detail" class="btn btn-outline-secondary linked-detail-button calc-side-main-button calc-side-edit-button d-none" type="button" title="紐付けポケモンを編集" aria-label="紐付けポケモンを編集">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="calc-side-cell calc-side-cell-ability">
+                  <label class="form-label" for="attacker-ability-button" data-i18n="ability">とくせい</label>
+                  <input id="attacker-nature" type="hidden">
+                  <input id="attacker-ability" type="hidden">
+                  <button id="attacker-ability-button" class="btn btn-field calc-side-sub-button" type="button" title="とくせい"></button>
+                </div>
+                <div class="calc-side-cell calc-side-cell-item">
+                  <label class="form-label" for="attacker-item-button" data-i18n="item">もちもの</label>
+                  <input id="attacker-item" type="hidden">
+                  <button id="attacker-item-button" class="btn btn-field calc-side-sub-button" type="button" title="もちもの"></button>
+                </div>
+              </div>
+              <hr class="calc-split-line my-2">
+              <div class="mt-3">
+                <div class="compact-stat-editor">
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="attacker" data-stat="hp" data-state="neutral" disabled>H</button>
+                    <span class="mono compact-stat-value" id="attacker-inline-hp">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="attacker-ev-hp" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon ghost-icon" title="ランク補正なし" aria-label="ランク補正なし"></i>
+                    <button id="attacker-preset" class="btn btn-outline-secondary btn-sm compact-preset-button" type="button" title="プリセット" aria-label="プリセット"><i class="bi bi-magic"></i></button>
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="attacker" data-stat="atk" data-state="neutral">A</button>
+                    <span class="mono compact-stat-value" id="attacker-inline-atk">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="attacker-ev-atk" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="32">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補정"></i>
+                    <input id="attacker-rank-atk" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="attacker" data-stat="def" data-state="neutral">B</button>
+                    <span class="mono compact-stat-value" id="attacker-inline-def">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="attacker-ev-def" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="attacker-rank-def" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="attacker" data-stat="spa" data-state="neutral">C</button>
+                    <span class="mono compact-stat-value" id="attacker-inline-spa">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="attacker-ev-spa" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="attacker-rank-spa" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="attacker" data-stat="spd" data-state="neutral">D</button>
+                    <span class="mono compact-stat-value" id="attacker-inline-spd">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="attacker-ev-spd" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="attacker-rank-spd" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="attacker" data-stat="spe" data-state="neutral">S</button>
+                    <span class="mono compact-stat-value" id="attacker-inline-spe">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="attacker-ev-spe" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="attacker-rank-spe" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                </div>
+                <div class="row g-2 mt-2">
+                  <div class="col-12">
+                    <div class="mono compact-stats d-none" id="attacker-stats-summary">Atk - / SpA - / Spe -</div>
+                  </div>
+                </div>
+                <div class="d-grid gap-2 mt-3">
+                  <button id="update-attacker-pokemon" class="btn btn-outline-primary calc-save-button" type="button" title="攻撃側に保存" aria-label="攻撃側に保存"><i class="bi bi-save"></i><span>個体を保存</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-xxl-4" id="settings-panel-col">
+          <div class="card panel-card h-100">
+            <div class="card-header settings-panel-header" title="設定" aria-label="設定">
+              <span class="settings-panel-title">設定</span>
+              <button id="swap-sides" class="btn btn-outline-secondary settings-swap-button" type="button" title="攻守入替" aria-label="攻守入替"><i class="bi bi-arrow-left-right"></i><span>攻守入替</span></button>
+            </div>
+            <div class="card-body">
+              <div class="move-control-grid mb-2">
+                <input id="move-select" type="hidden">
+                <button id="move-button" class="btn btn-field w-100 text-start move-control-move" type="button" title="わざ"></button>
+                <input id="move-type" type="hidden">
+                <button id="move-type-button" class="btn btn-field move-control-type" type="button" title="わざタイプ"></button>
+                <input id="move-category" type="hidden">
+                <button id="move-category-button" class="btn btn-field move-control-category" type="button" title="わざ分類"></button>
+                <input id="move-power" class="form-control mono move-power-inline-input move-control-power" type="number" min="0" max="400" value="80" title="わざ威力">
+              </div>
+              <div class="row g-2 mt-1">
+                <div class="col-12 d-none" id="move-parameter-wrap">
+                  <label class="form-label" for="move-parameter-value" id="move-parameter-label">追加パラメータ</label>
+                  <input id="move-parameter-value" class="form-control mono" type="number" min="0" max="10" value="0">
+                  <div class="small text-muted mt-1" id="move-parameter-help">-</div>
+                </div>
+                <div class="col-12 condition-strip">
+                    <div class="form-label" data-i18n="weather">天候</div>
+                    <div id="weather-toggle" class="badge-toggle" role="group" aria-label="weather">
+                      <button type="button" class="badge-btn icon-badge-btn active" data-group="weather" data-value="none" data-icon-label-key="none" title="なし" aria-label="なし"><i class="bi bi-slash-circle"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="weather" data-value="sun" data-icon-label-key="sun" title="晴れ" aria-label="晴れ"><i class="bi bi-brightness-high"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="weather" data-value="rain" data-icon-label-key="rain" title="雨" aria-label="雨"><i class="bi bi-cloud-rain"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="weather" data-value="sand" data-icon-label-key="sand" title="砂嵐" aria-label="砂嵐"><i class="bi bi-wind"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="weather" data-value="snow" data-icon-label-key="snow" title="雪" aria-label="雪"><i class="bi bi-snow"></i></button>
+                    </div>
+                </div>
+                <div class="col-12 condition-strip">
+                    <div class="form-label" data-i18n="terrain">フィールド</div>
+                    <div id="terrain-toggle" class="badge-toggle" role="group" aria-label="terrain">
+                      <button type="button" class="badge-btn icon-badge-btn active" data-group="terrain" data-value="none" data-icon-label-key="none" title="なし" aria-label="なし"><i class="bi bi-slash-circle"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="terrain" data-value="electric" data-icon-label-key="electricTerrain" title="エレキフィールド" aria-label="エレキフィールド"><i class="bi bi-lightning-charge"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="terrain" data-value="grassy" data-icon-label-key="grassyTerrain" title="グラスフィールド" aria-label="グラスフィールド"><i class="bi bi-flower1"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="terrain" data-value="psychic" data-icon-label-key="psychicTerrain" title="サイコフィールド" aria-label="サイコフィールド"><i class="bi bi-stars"></i></button>
+                      <button type="button" class="badge-btn icon-badge-btn" data-group="terrain" data-value="misty" data-icon-label-key="mistyTerrain" title="ミストフィールド" aria-label="ミストフィールド"><i class="bi bi-cloud-fog2"></i></button>
+                    </div>
+                </div>
+              </div>
+
+              <div class="row g-2 mt-2 text-toggle-section">
+                <div class="col-6">
+                  <div class="form-check form-switch">
+                    <input id="is-crit" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="is-crit" data-i18n="critical">急所</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input id="is-burn" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="is-burn" data-i18n="burn">やけど(攻撃側)</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input id="is-spread" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="is-spread" data-i18n="spreadMove">ダブル補正</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input id="is-helping-hand" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="is-helping-hand" data-i18n="helpingHand">てだすけ</label>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-check form-switch">
+                    <input id="reflect" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="reflect" data-i18n="reflect">リフレクター</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input id="light-screen" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="light-screen" data-i18n="lightScreen">ひかりのかべ</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input id="defender-full-hp" class="form-check-input" type="checkbox" checked>
+                    <label class="form-check-label" for="defender-full-hp" data-i18n="defenderFullHp">防御側HP満タン</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input id="is-friend-guard" class="form-check-input" type="checkbox">
+                    <label class="form-check-label" for="is-friend-guard" data-i18n="friendGuard">フレンドガード</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-2 mt-2">
+                <div class="col-12 d-none" id="hit-count-wrap">
+                  <label class="form-label" for="hit-count" data-i18n="hitCount">ヒット回数</label>
+                  <input id="hit-count" class="form-control mono" type="number" min="1" max="10" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-xxl-4" id="defender-panel-col">
+          <div class="card panel-card h-100">
+            <div class="card-header" title="防御側" aria-label="防御側"><span class="d-inline-flex align-items-center gap-1"><i class="bi bi-shield-shaded"></i><span>防御側</span></span></div>
+            <div class="card-body">
+              <div class="calc-side-grid mb-2">
+                <div class="calc-side-cell calc-side-cell-top calc-side-cell-wide">
+                  <label class="form-label" for="defender-species-button" data-i18n="species">ポケモン</label>
+                  <input id="defender-species" type="hidden">
+                  <div class="calc-side-top-strip">
+                    <div class="calc-side-pokemon-block">
+                      <button id="defender-species-button" class="btn btn-field calc-side-main-button" type="button"></button>
+                      <div class="calc-side-mega-toggle" title="メガ進化" aria-label="メガ進化">
+                        <input id="defender-mega-enabled" type="checkbox" hidden disabled>
+                        <button id="defender-mega-toggle" class="btn calc-mega-toggle-button" type="button" aria-pressed="false">メガOFF</button>
+                      </div>
+                    </div>
+                    <button id="defender-open-linked-detail" class="btn btn-outline-secondary linked-detail-button calc-side-main-button calc-side-edit-button d-none" type="button" title="紐付けポケモンを編集" aria-label="紐付けポケモンを編集">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="calc-side-cell calc-side-cell-ability">
+                  <label class="form-label" for="defender-ability-button" data-i18n="ability">とくせい</label>
+                  <input id="defender-nature" type="hidden">
+                  <input id="defender-ability" type="hidden">
+                  <button id="defender-ability-button" class="btn btn-field calc-side-sub-button" type="button" title="とくせい"></button>
+                </div>
+                <div class="calc-side-cell calc-side-cell-item">
+                  <label class="form-label" for="defender-item-button" data-i18n="item">もちもの</label>
+                  <input id="defender-item" type="hidden">
+                  <button id="defender-item-button" class="btn btn-field calc-side-sub-button" type="button" title="もちもの"></button>
+                </div>
+              </div>
+              <hr class="calc-split-line my-2">
+
+              <div class="mt-3">
+                <div class="compact-stat-editor">
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="defender" data-stat="hp" data-state="neutral" disabled>H</button>
+                    <span class="mono compact-stat-value" id="defender-inline-hp">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="defender-ev-hp" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="32">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <button id="defender-preset" class="btn btn-outline-secondary btn-sm compact-preset-button" type="button" title="プリセット" aria-label="プリセット"><i class="bi bi-magic"></i></button>
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="defender" data-stat="atk" data-state="neutral">A</button>
+                    <span class="mono compact-stat-value" id="defender-inline-atk">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="defender-ev-atk" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="defender-rank-atk" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="defender" data-stat="def" data-state="neutral">B</button>
+                    <span class="mono compact-stat-value" id="defender-inline-def">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="defender-ev-def" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="defender-rank-def" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="defender" data-stat="spa" data-state="neutral">C</button>
+                    <span class="mono compact-stat-value" id="defender-inline-spa">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="defender-ev-spa" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="defender-rank-spa" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="defender" data-stat="spd" data-state="neutral">D</button>
+                    <span class="mono compact-stat-value" id="defender-inline-spd">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="defender-ev-spd" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="defender-rank-spd" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                  <div class="compact-stat-row">
+                    <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="defender" data-stat="spe" data-state="neutral">S</button>
+                    <span class="mono compact-stat-value" id="defender-inline-spe">-</span>
+                    <i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i>
+                    <input id="defender-ev-spe" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    <i class="bi bi-bar-chart-steps compact-stat-icon" title="ランク補正" aria-label="ランク補正"></i>
+                    <input id="defender-rank-spe" class="form-control mono compact-rank-input" type="number" min="-6" max="6" step="1" value="0">
+                  </div>
+                </div>
+                <div class="row g-2 mt-2">
+                  <div class="col-12">
+                    <div class="mono compact-stats d-none" id="defender-stats-summary">HP - / Def - / SpD -</div>
+                  </div>
+                </div>
+                <div class="d-grid gap-2 mt-3">
+                  <button id="update-defender-pokemon" class="btn btn-outline-primary calc-save-button" type="button" title="防御側に保存" aria-label="防御側に保存"><i class="bi bi-save2"></i><span>個体を保存</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </section>
+        <aside class="col-xxl-2 d-none d-xxl-block">
+          <div class="ad-stack">
+            <div class="ad-slot ad-rail" aria-label="right-ad-rail">AD 160x600</div>
+          </div>
+        </aside>
+      </div>
+      <div class="ad-mobile-grid d-xxl-none mt-3">
+        <div class="ad-slot ad-mobile-banner" aria-label="mobile-banner-320x100"></div>
+        <div class="ad-slot ad-mobile-rect" aria-label="mobile-rect-300x250"></div>
+      </div>
+      <div class="ad-bottom-wrap mt-3">
+        <div class="ad-slot ad-banner ad-banner-desktop d-none d-md-flex" aria-label="bottom-banner-728x90">AD 728x90</div>
+        <div class="ad-slot ad-banner ad-banner-mobile d-md-none" aria-label="bottom-banner-320x100"></div>
+      </div>
+    </main>
+
+    <footer class="container text-center py-4 mt-5">
+      <p class="text-muted small">
+        Data source: Pokemon Showdown<br>
+        Pokemon and related names are trademarks of Nintendo, Creatures, and GAME FREAK.<br>
+        &copy; 2026 sakas_poke
+      </p>
+    </footer>
+
+    <div class="modal fade" id="picker-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="picker-title">-</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-pills picker-source-tabs mb-2" id="picker-source-tabs">
+              <li class="nav-item"><button class="nav-link active" data-source="list" type="button">リスト検索</button></li>
+              <li class="nav-item"><button class="nav-link" data-source="box" type="button">ボックス検索</button></li>
+              <li class="nav-item"><button class="nav-link" data-source="party" type="button">パーティ検索</button></li>
+              <li class="nav-item"><button class="nav-link" data-source="linked" type="button">覚えているわざ</button></li>
+            </ul>
+            <input id="picker-search" class="form-control mb-2" type="search" placeholder="Search">
+            <div id="picker-list" class="picker-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="pokemon-detail-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pokemon-detail-title">ポケモン編集</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input id="detail-pokemon-id" type="hidden">
+            <div class="detail-head mb-3">
+              <span class="pokemon-icon-stack" id="detail-head-icon"></span>
+              <div class="detail-head-main">
+                <div class="detail-head-title-row">
+                  <input id="detail-nickname" class="form-control" type="text" maxlength="30" placeholder="ニックネーム" title="ニックネームを編集">
+                  <div class="detail-mega-switch" title="メガ進化" aria-label="メガ進化">
+                    <input id="detail-mega-enabled" type="checkbox" hidden>
+                    <button id="detail-mega-toggle" class="btn detail-mega-toggle" type="button" aria-pressed="false">メガOFF</button>
+                  </div>
+                </div>
+                <div class="detail-head-species-row">
+                  <div class="detail-head-title" id="detail-head-name">-</div>
+                  <div class="detail-head-base-stats mono" id="detail-head-base-stats">H- A- B- C- D- S-</div>
+                </div>
+                <div class="detail-head-sub" id="detail-head-meta">-</div>
+              </div>
+            </div>
+            <div class="detail-layout">
+              <section class="detail-table-section">
+                <div class="detail-section-title">個体情報</div>
+                <div class="detail-info-grid">
+                  <div class="detail-field-group" title="ポケモン種族を選択">
+                    <span class="detail-field-icon"><i class="bi bi-person"></i></span>
+                    <input id="detail-species" type="hidden">
+                    <button id="detail-species-button" class="btn btn-field w-100 text-start" type="button"></button>
+                  </div>
+                  <div class="detail-field-group" title="とくせいを選択">
+                    <span class="detail-field-icon"><i class="bi bi-lightning-charge"></i></span>
+                    <input id="detail-ability" type="hidden">
+                    <button id="detail-ability-button" class="btn btn-field w-100 text-start" type="button"></button>
+                  </div>
+                  <div class="detail-field-group" title="せいかくを選択">
+                    <span class="detail-field-icon"><i class="bi bi-emoji-smile"></i></span>
+                    <input id="detail-nature" type="hidden">
+                    <button id="detail-nature-button" class="btn btn-field w-100 text-start" type="button"></button>
+                  </div>
+                  <div class="detail-field-group" title="もちものを選択">
+                    <span class="detail-field-icon"><i class="bi bi-bag"></i></span>
+                    <input id="detail-item" type="hidden">
+                    <button id="detail-item-button" class="btn btn-field w-100 text-start" type="button"></button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="detail-table-section">
+                <div class="detail-section-title">ステータス</div>
+                <div class="detail-stat-actions-layout">
+                  <div class="detail-compact-stat-editor">
+                    <div class="detail-stat-header">
+                      <span>能力</span>
+                      <span>実数値</span>
+                      <span>EP</span>
+                    </div>
+                    <div class="detail-compact-stat-row">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="hp" data-state="neutral" disabled>H</button><span class="mono compact-stat-value" id="detail-stat-hp">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-hp" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    </div>
+                    <div class="detail-compact-stat-row">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="atk" data-state="neutral">A</button><span class="mono compact-stat-value" id="detail-stat-atk">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-atk" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    </div>
+                    <div class="detail-compact-stat-row">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="def" data-state="neutral">B</button><span class="mono compact-stat-value" id="detail-stat-def">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-def" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    </div>
+                    <div class="detail-compact-stat-row">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spa" data-state="neutral">C</button><span class="mono compact-stat-value" id="detail-stat-spa">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-spa" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    </div>
+                    <div class="detail-compact-stat-row">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spd" data-state="neutral">D</button><span class="mono compact-stat-value" id="detail-stat-spd">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-spd" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    </div>
+                    <div class="detail-compact-stat-row">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spe" data-state="neutral">S</button><span class="mono compact-stat-value" id="detail-stat-spe">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-spe" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                    </div>
+                  </div>
+                  <div class="detail-adjust-buttons d-grid gap-2">
+                    <button id="detail-apply-attacker" class="btn btn-outline-danger btn-sm detail-wide-square-btn" type="button"><i class="bi bi-bullseye"></i><span>攻撃調整</span></button>
+                    <button id="detail-apply-defender" class="btn btn-outline-info btn-sm detail-wide-square-btn" type="button"><i class="bi bi-shield"></i><span>防御調整</span></button>
+                    <button id="detail-apply-speed" class="btn btn-outline-secondary btn-sm detail-wide-square-btn" type="button" title="素早さ調整"><i class="bi bi-speedometer2"></i><span>素早さ調整</span></button>
+                  </div>
+                </div>
+                <div id="detail-ev-warning" class="iv-warning mt-2"><i class="bi bi-exclamation-triangle-fill"></i><span>能力ポイントの合計が上限を超えています</span></div>
+                <div id="detail-ev-remaining" class="small text-muted mt-1">残り能力ポイント: 66</div>
+                <div id="detail-nature-warning" class="small text-muted mt-1 d-none"><i class="bi bi-exclamation-triangle-fill"></i> 性格補正が不正です（+と-をそれぞれ1つずつ、または両方なし）</div>
+              </section>
+
+              <section class="detail-table-section">
+                <div class="detail-section-title">わざ</div>
+                <div class="detail-move-list" id="detail-move-list"></div>
+              </section>
+
+              <div class="detail-warning-list small" id="detail-warning-list"></div>
+
+              <section class="detail-table-section">
+                <div class="detail-section-title">メモ</div>
+                <div class="detail-memo-panel">
+                  <div class="small text-muted mb-1">与ダメージ調整</div>
+                  <div id="detail-calc-history-attacker" class="calc-history-list mb-2"></div>
+                  <div class="small text-muted mb-1">被ダメージ調整</div>
+                  <div id="detail-calc-history-defender" class="calc-history-list mb-2"></div>
+                  <hr class="my-2">
+                  <div class="small text-muted mb-1">素早さ調整</div>
+                  <div id="detail-speed-memo" class="calc-history-list mb-2"></div>
+                  <div class="small text-muted mb-1">その他</div>
+                  <textarea id="detail-notes-other" class="form-control" rows="3" maxlength="500"></textarea>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <div></div>
+            <div class="d-flex gap-2">
+              <button id="detail-delete" class="btn btn-outline-secondary" type="button">削除</button>
+              <button id="detail-save" class="btn btn-primary" type="button">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="confirm-save-calc-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">ダメージ計算メモを保存しますか？</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-0" id="confirm-save-calc-text">保存先を選択してください。</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">キャンセル</button>
+            <button type="button" class="btn btn-outline-danger" id="confirm-save-calc-attacker">攻撃側に保存</button>
+            <button type="button" class="btn btn-outline-info" id="confirm-save-calc-defender">防御側に保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="preset-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="preset-title">プリセット選択</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="preset-list" class="picker-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="/pokelist/script-poketools-layout.js"></script>
+    <script src="/pokelist/script-tailwind-modal-shim.js"></script>
+    <script src="/pokelist/script-damage-calc.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,1110 @@
+0 verbose cli C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node.exe C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\npmrc
+4 silly config load:file:E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\.npmrc
+5 silly config load:file:C:\Users\takahiro.kosaka\.npmrc
+6 silly config load:file:C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\etc\npmrc
+7 verbose title npm install
+8 verbose argv "--prefix" "library/pokemon-showdown" "install"
+9 verbose logfile logs-max:10 dir:C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_27_50_324Z-
+10 verbose logfile C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_27_50_324Z-debug-0.log
+11 silly packumentCache heap:3271557120 maxSize:817889280 maxEntrySize:408944640
+12 silly logfile start cleaning logs, removing 1 files
+13 silly logfile done cleaning log files
+14 silly idealTree buildDeps
+15 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+16 silly placeDep ROOT pokelist@1.0.0 OK for: pokemon-showdown@0.11.10 want: file:../..
+17 silly reify mark retired [
+17 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\aix-ppc64'
+17 silly reify ]
+18 silly reify mark retired [
+18 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-arm'
+18 silly reify ]
+19 silly reify mark retired [
+19 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-arm64'
+19 silly reify ]
+20 silly reify mark retired [
+20 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-x64'
+20 silly reify ]
+21 silly reify mark retired [
+21 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\darwin-arm64'
+21 silly reify ]
+22 silly reify mark retired [
+22 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\darwin-x64'
+22 silly reify ]
+23 silly reify mark retired [
+23 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\freebsd-arm64'
+23 silly reify ]
+24 silly reify mark retired [
+24 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-arm'
+24 silly reify ]
+25 silly reify mark retired [
+25 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\freebsd-x64'
+25 silly reify ]
+26 silly reify mark retired [
+26 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-arm64'
+26 silly reify ]
+27 silly reify mark retired [
+27 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-mips64el'
+27 silly reify ]
+28 silly reify mark retired [
+28 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-loong64'
+28 silly reify ]
+29 silly reify mark retired [
+29 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-ia32'
+29 silly reify ]
+30 silly reify mark retired [
+30 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-ppc64'
+30 silly reify ]
+31 silly reify mark retired [
+31 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-riscv64'
+31 silly reify ]
+32 silly reify mark retired [
+32 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-s390x'
+32 silly reify ]
+33 silly reify mark retired [
+33 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-x64'
+33 silly reify ]
+34 silly reify mark retired [
+34 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\netbsd-arm64'
+34 silly reify ]
+35 silly reify mark retired [
+35 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\netbsd-x64'
+35 silly reify ]
+36 silly reify mark retired [
+36 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\openbsd-x64'
+36 silly reify ]
+37 silly reify mark retired [
+37 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\sunos-x64'
+37 silly reify ]
+38 silly reify mark retired [
+38 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\win32-arm64'
+38 silly reify ]
+39 silly reify mark retired [
+39 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\openbsd-arm64'
+39 silly reify ]
+40 silly reify mark retired [
+40 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\win32-ia32'
+40 silly reify ]
+41 silly reify moves {
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\aix-ppc64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.aix-ppc64-D5GUyLM5',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-arm': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.android-arm-SEEzq40l',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-arm64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.android-arm64-QWBbKiRw',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-x64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.android-x64-KxCunjpJ',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\darwin-arm64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.darwin-arm64-oceMeYjY',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\darwin-x64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.darwin-x64-FiGRdH6J',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\freebsd-arm64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.freebsd-arm64-nFvRdKVn',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-arm': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-arm-ItvbKAeN',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\freebsd-x64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.freebsd-x64-rhNrDTfd',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-arm64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-arm64-fwWwkdF2',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-mips64el': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-mips64el-NifMvOBD',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-loong64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-loong64-zHzMAZVV',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-ia32': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-ia32-9FkG9Trd',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-ppc64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-ppc64-YbFnlDz8',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-riscv64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-riscv64-8tdPykbp',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-s390x': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-s390x-2vS0GQcd',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-x64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.linux-x64-AEAuXT9m',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\netbsd-arm64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.netbsd-arm64-3DcO2nI5',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\netbsd-x64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.netbsd-x64-cuPTbe2O',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\openbsd-x64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.openbsd-x64-G6lgt6PK',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\sunos-x64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.sunos-x64-ckvn67Fi',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\win32-arm64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.win32-arm64-4yx41rQv',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\openbsd-arm64': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.openbsd-arm64-CFF3dv7W',
+41 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\win32-ia32': 'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\.win32-ia32-lHVZi1f1'
+41 silly reify }
+42 silly audit bulk request {
+42 silly audit   '@esbuild/aix-ppc64': [ '0.25.0' ],
+42 silly audit   '@esbuild/android-arm': [ '0.25.0' ],
+42 silly audit   '@esbuild/android-arm64': [ '0.25.0' ],
+42 silly audit   '@esbuild/android-x64': [ '0.25.0' ],
+42 silly audit   '@esbuild/darwin-arm64': [ '0.25.0' ],
+42 silly audit   '@esbuild/darwin-x64': [ '0.25.0' ],
+42 silly audit   '@esbuild/freebsd-arm64': [ '0.25.0' ],
+42 silly audit   '@esbuild/freebsd-x64': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-arm': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-arm64': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-ia32': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-loong64': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-mips64el': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-ppc64': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-riscv64': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-s390x': [ '0.25.0' ],
+42 silly audit   '@esbuild/linux-x64': [ '0.25.0' ],
+42 silly audit   '@esbuild/netbsd-arm64': [ '0.25.0' ],
+42 silly audit   '@esbuild/netbsd-x64': [ '0.25.0' ],
+42 silly audit   '@esbuild/openbsd-arm64': [ '0.25.0' ],
+42 silly audit   '@esbuild/openbsd-x64': [ '0.25.0' ],
+42 silly audit   '@esbuild/sunos-x64': [ '0.25.0' ],
+42 silly audit   '@esbuild/win32-arm64': [ '0.25.0' ],
+42 silly audit   '@esbuild/win32-ia32': [ '0.25.0' ],
+42 silly audit   '@esbuild/win32-x64': [ '0.25.0' ],
+42 silly audit   '@eslint-community/eslint-utils': [ '4.7.0' ],
+42 silly audit   'eslint-visitor-keys': [ '3.4.3', '4.2.1' ],
+42 silly audit   '@eslint-community/regexpp': [ '4.12.1' ],
+42 silly audit   '@eslint/config-array': [ '0.21.0' ],
+42 silly audit   '@eslint/config-helpers': [ '0.3.0' ],
+42 silly audit   '@eslint/core': [ '0.15.1' ],
+42 silly audit   '@eslint/eslintrc': [ '3.3.1' ],
+42 silly audit   globals: [ '14.0.0', '16.0.0' ],
+42 silly audit   '@eslint/js': [ '9.31.0' ],
+42 silly audit   '@eslint/object-schema': [ '2.1.6' ],
+42 silly audit   '@eslint/plugin-kit': [ '0.3.4' ],
+42 silly audit   '@gar/promisify': [ '1.1.3' ],
+42 silly audit   '@humanfs/core': [ '0.19.1' ],
+42 silly audit   '@humanfs/node': [ '0.16.6' ],
+42 silly audit   '@humanwhocodes/retry': [ '0.3.1', '0.4.2' ],
+42 silly audit   '@humanwhocodes/module-importer': [ '1.0.1' ],
+42 silly audit   '@isaacs/cliui': [ '8.0.2' ],
+42 silly audit   'ansi-regex': [ '6.1.0', '5.0.1' ],
+42 silly audit   'ansi-styles': [ '6.2.1', '4.3.0' ],
+42 silly audit   'emoji-regex': [ '9.2.2', '8.0.0' ],
+42 silly audit   'string-width': [ '5.1.2', '4.2.3' ],
+42 silly audit   'strip-ansi': [ '7.1.0', '6.0.1' ],
+42 silly audit   'wrap-ansi': [ '8.1.0', '7.0.0' ],
+42 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+42 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+42 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+42 silly audit   '@npmcli/fs': [ '1.1.1' ],
+42 silly audit   '@npmcli/move-file': [ '1.1.2' ],
+42 silly audit   '@pkgjs/parseargs': [ '0.11.0' ],
+42 silly audit   '@stylistic/eslint-plugin': [ '5.2.2' ],
+42 silly audit   picomatch: [ '4.0.3', '2.3.1' ],
+42 silly audit   '@tootallnate/once': [ '1.1.2' ],
+42 silly audit   '@types/better-sqlite3': [ '7.6.3' ],
+42 silly audit   '@types/cloud-env': [ '0.2.2' ],
+42 silly audit   '@types/estree': [ '1.0.6' ],
+42 silly audit   '@types/json-schema': [ '7.0.15' ],
+42 silly audit   '@types/node': [ '14.18.63' ],
+42 silly audit   '@types/nodemailer': [ '6.4.7' ],
+42 silly audit   '@types/pg': [ '8.6.6' ],
+42 silly audit   '@types/sockjs': [ '0.3.33' ],
+42 silly audit   '@types/sodium-native': [ '2.3.9' ],
+42 silly audit   '@typescript-eslint/eslint-plugin': [ '8.38.0' ],
+42 silly audit   ignore: [ '7.0.5', '5.3.2' ],
+42 silly audit   '@typescript-eslint/parser': [ '8.38.0' ],
+42 silly audit   '@typescript-eslint/project-service': [ '8.38.0' ],
+42 silly audit   '@typescript-eslint/scope-manager': [ '8.38.0' ],
+42 silly audit   '@typescript-eslint/tsconfig-utils': [ '8.38.0' ],
+42 silly audit   '@typescript-eslint/type-utils': [ '8.38.0' ],
+42 silly audit   '@typescript-eslint/types': [ '8.38.0' ],
+42 silly audit   '@typescript-eslint/typescript-estree': [ '8.38.0' ],
+42 silly audit   'brace-expansion': [ '2.0.2', '1.1.11', '2.0.1' ],
+42 silly audit   minimatch: [ '9.0.5', '3.1.2' ],
+42 silly audit   '@typescript-eslint/utils': [ '8.38.0' ],
+42 silly audit   '@typescript-eslint/visitor-keys': [ '8.38.0' ],
+42 silly audit   abbrev: [ '1.1.1' ],
+42 silly audit   acorn: [ '8.15.0' ],
+42 silly audit   'acorn-jsx': [ '5.3.2' ],
+42 silly audit   'agent-base': [ '6.0.2' ],
+42 silly audit   agentkeepalive: [ '4.6.0' ],
+42 silly audit   'aggregate-error': [ '3.1.0' ],
+42 silly audit   ajv: [ '6.12.6' ],
+42 silly audit   aproba: [ '2.0.0' ],
+42 silly audit   'are-we-there-yet': [ '3.0.1' ],
+42 silly audit   argparse: [ '2.0.1' ],
+42 silly audit   'aws-ssl-profiles': [ '1.1.2' ],
+42 silly audit   'balanced-match': [ '1.0.2' ],
+42 silly audit   'base64-js': [ '1.5.1' ],
+42 silly audit   'better-sqlite3': [ '11.10.0' ],
+42 silly audit   bindings: [ '1.5.0' ],
+42 silly audit   bl: [ '4.1.0' ],
+42 silly audit   braces: [ '3.0.3' ],
+42 silly audit   'browser-stdout': [ '1.3.1' ],
+42 silly audit   buffer: [ '5.7.1' ],
+42 silly audit   'buffer-from': [ '1.1.2' ],
+42 silly audit   cacache: [ '15.3.0' ],
+42 silly audit   chownr: [ '2.0.0', '1.1.4' ],
+42 silly audit   callsites: [ '3.1.0' ],
+42 silly audit   camelcase: [ '6.3.0' ],
+42 silly audit   chalk: [ '4.1.2' ],
+42 silly audit   chokidar: [ '4.0.3' ],
+42 silly audit   'clean-stack': [ '2.2.0' ],
+42 silly audit   cliui: [ '8.0.1' ],
+42 silly audit   'cloud-env': [ '0.2.3' ],
+42 silly audit   'color-convert': [ '2.0.1' ],
+42 silly audit   'color-name': [ '1.1.4' ],
+42 silly audit   'color-support': [ '1.1.3' ],
+42 silly audit   'concat-map': [ '0.0.1' ],
+42 silly audit   'console-control-strings': [ '1.1.0' ],
+42 silly audit   'cross-spawn': [ '7.0.6' ],
+42 silly audit   debug: [ '4.4.0', '3.2.7', '2.6.9' ],
+42 silly audit   decamelize: [ '4.0.0' ],
+42 silly audit   'decompress-response': [ '6.0.0' ],
+42 silly audit   'deep-extend': [ '0.6.0' ],
+42 silly audit   'deep-is': [ '0.1.4' ],
+42 silly audit   delegates: [ '1.0.0' ],
+42 silly audit   denque: [ '2.1.0' ],
+42 silly audit   'detect-libc': [ '2.0.1' ],
+42 silly audit   diff: [ '7.0.0' ],
+42 silly audit   docopt: [ '0.6.2' ],
+42 silly audit   eastasianwidth: [ '0.2.0' ],
+42 silly audit   encoding: [ '0.1.13' ],
+42 silly audit   'iconv-lite': [ '0.6.3', '0.4.24' ],
+42 silly audit   'end-of-stream': [ '1.4.4' ],
+42 silly audit   'env-paths': [ '2.2.1' ],
+42 silly audit   'err-code': [ '2.0.3' ],
+42 silly audit   esbuild: [ '0.25.0' ],
+42 silly audit   escalade: [ '3.2.0' ],
+42 silly audit   'escape-string-regexp': [ '4.0.0' ],
+42 silly audit   eslint: [ '9.31.0' ],
+42 silly audit   'eslint-scope': [ '8.4.0' ],
+42 silly audit   espree: [ '10.4.0' ],
+42 silly audit   esquery: [ '1.6.0' ],
+42 silly audit   esrecurse: [ '4.3.0' ],
+42 silly audit   estraverse: [ '5.3.0' ],
+42 silly audit   esutils: [ '2.0.3' ],
+42 silly audit   'expand-template': [ '2.0.3' ],
+42 silly audit   'fast-deep-equal': [ '3.1.3' ],
+42 silly audit   'fast-glob': [ '3.3.3' ],
+42 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+42 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+42 silly audit   'fast-levenshtein': [ '2.0.6' ],
+42 silly audit   fastq: [ '1.19.1' ],
+42 silly audit   'faye-websocket': [ '0.11.4' ],
+42 silly audit   'file-entry-cache': [ '8.0.0' ],
+42 silly audit   'file-uri-to-path': [ '1.0.0' ],
+42 silly audit   'fill-range': [ '7.1.1' ],
+42 silly audit   'find-up': [ '5.0.0' ],
+42 silly audit   flat: [ '5.0.2' ],
+42 silly audit   'flat-cache': [ '4.0.1' ],
+42 silly audit   flatted: [ '3.3.3' ],
+42 silly audit   'foreground-child': [ '3.3.1' ],
+42 silly audit   'signal-exit': [ '4.1.0', '3.0.7' ],
+42 silly audit   'fs-constants': [ '1.0.0' ],
+42 silly audit   'fs-minipass': [ '2.1.0' ],
+42 silly audit   'fs.realpath': [ '1.0.0' ],
+42 silly audit   gauge: [ '4.0.4' ],
+42 silly audit   'wide-align': [ '1.1.5' ],
+42 silly audit   'generate-function': [ '2.3.1' ],
+42 silly audit   'get-caller-file': [ '2.0.5' ],
+42 silly audit   'get-stdin': [ '4.0.1' ],
+42 silly audit   'github-from-package': [ '0.0.0' ],
+42 silly audit   githubhook: [ '1.9.3' ],
+42 silly audit   glob: [ '7.1.6', '10.4.5' ],
+42 silly audit   'graceful-fs': [ '4.2.11' ],
+42 silly audit   graphemer: [ '1.4.0' ],
+42 silly audit   'has-flag': [ '4.0.0' ],
+42 silly audit   'has-unicode': [ '2.0.1' ],
+42 silly audit   he: [ '1.2.0' ],
+42 silly audit   'http-cache-semantics': [ '4.1.1' ],
+42 silly audit   'http-parser-js': [ '0.5.8' ],
+42 silly audit   'http-proxy-agent': [ '4.0.1' ],
+42 silly audit   'https-proxy-agent': [ '5.0.1' ],
+42 silly audit   'humanize-ms': [ '1.2.1' ],
+42 silly audit   ieee754: [ '1.2.1' ],
+42 silly audit   'import-fresh': [ '3.3.1' ],
+42 silly audit   imurmurhash: [ '0.1.4' ],
+42 silly audit   'indent-string': [ '4.0.0' ],
+42 silly audit   'infer-owner': [ '1.0.4' ],
+42 silly audit   inflight: [ '1.0.6' ],
+42 silly audit   inherits: [ '2.0.4' ],
+42 silly audit   ini: [ '1.3.8' ],
+42 silly audit   'ip-address': [ '9.0.5' ],
+42 silly audit   'is-extglob': [ '2.1.1' ],
+42 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+42 silly audit   'is-glob': [ '4.0.3' ],
+42 silly audit   'is-lambda': [ '1.0.1' ],
+42 silly audit   'is-number': [ '7.0.0' ],
+42 silly audit   'is-plain-obj': [ '2.1.0' ],
+42 silly audit   'is-property': [ '1.0.2' ],
+42 silly audit   'is-unicode-supported': [ '0.1.0' ],
+42 silly audit   isexe: [ '2.0.0' ],
+42 silly audit   jackspeak: [ '3.4.3' ],
+42 silly audit   'js-yaml': [ '4.1.0' ],
+42 silly audit   jsbn: [ '1.1.0' ],
+42 silly audit   'json-buffer': [ '3.0.1' ],
+42 silly audit   'json-schema-traverse': [ '0.4.1' ],
+42 silly audit   'json-stable-stringify-without-jsonify': [ '1.0.1' ],
+42 silly audit   keyv: [ '4.5.4' ],
+42 silly audit   levn: [ '0.4.1' ],
+42 silly audit   'locate-path': [ '6.0.0' ],
+42 silly audit   'lodash.merge': [ '4.6.2' ],
+42 silly audit   'log-symbols': [ '4.1.0' ],
+42 silly audit   long: [ '5.2.3' ],
+42 silly audit   'lru-cache': [ '6.0.0', '7.18.3', '10.4.3' ],
+42 silly audit   'lru.min': [ '1.1.2' ],
+42 silly audit   'make-fetch-happen': [ '9.1.0' ],
+42 silly audit   merge2: [ '1.4.1' ],
+42 silly audit   micromatch: [ '4.0.8' ],
+42 silly audit   'mimic-response': [ '3.1.0' ],
+42 silly audit   minipass: [ '3.3.6', '7.1.2', '5.0.0' ],
+42 silly audit   'minipass-collect': [ '1.0.2' ],
+42 silly audit   'minipass-fetch': [ '1.4.1' ],
+42 silly audit   'minipass-flush': [ '1.0.5' ],
+42 silly audit   'minipass-pipeline': [ '1.2.4' ],
+42 silly audit   'minipass-sized': [ '1.0.3' ],
+42 silly audit   minizlib: [ '2.1.2' ],
+42 silly audit   mkdirp: [ '1.0.4' ],
+42 silly audit   'mkdirp-classic': [ '0.5.3' ],
+42 silly audit   mocha: [ '11.7.1' ],
+42 silly audit   'supports-color': [ '8.1.1', '7.2.0' ],
+42 silly audit   ms: [ '2.1.3', '2.0.0' ],
+42 silly audit   multiline: [ '1.0.2' ],
+42 silly audit   mysql2: [ '3.14.2' ],
+42 silly audit   'named-placeholders': [ '1.1.3' ],
+42 silly audit   'napi-build-utils': [ '1.0.2' ],
+42 silly audit   'natural-compare': [ '1.4.0' ],
+42 silly audit   needle: [ '2.9.1' ],
+42 silly audit   negotiator: [ '0.6.4' ],
+42 silly audit   'node-abi': [ '3.30.0' ],
+42 silly audit   'node-addon-api': [ '7.1.1' ],
+42 silly audit   'node-gyp': [ '8.4.1' ],
+42 silly audit   nodemailer: [ '7.0.5' ],
+42 silly audit   nopt: [ '5.0.0' ],
+42 silly audit   npmlog: [ '6.0.2' ],
+42 silly audit   once: [ '1.4.0' ],
+42 silly audit   optionator: [ '0.9.4' ],
+42 silly audit   'p-limit': [ '3.1.0' ],
+42 silly audit   'p-locate': [ '5.0.0' ],
+42 silly audit   'p-map': [ '4.0.0' ],
+42 silly audit   'package-json-from-dist': [ '1.0.1' ],
+42 silly audit   'parent-module': [ '1.0.1' ],
+42 silly audit   'path-exists': [ '4.0.0' ],
+42 silly audit   'path-is-absolute': [ '1.0.1' ],
+42 silly audit   'path-key': [ '3.1.1' ],
+42 silly audit   'path-scurry': [ '1.11.1' ],
+42 silly audit   'permessage-deflate': [ '0.1.7' ],
+42 silly audit   pg: [ '8.16.3' ],
+42 silly audit   'pg-cloudflare': [ '1.2.7' ],
+42 silly audit   'pg-connection-string': [ '2.9.1' ],
+42 silly audit   'pg-int8': [ '1.0.1' ],
+42 silly audit   'pg-pool': [ '3.10.1' ],
+42 silly audit   'pg-protocol': [ '1.10.3' ],
+42 silly audit   'pg-types': [ '2.2.0' ],
+42 silly audit   pgpass: [ '1.0.5' ],
+42 silly audit   picocolors: [ '1.1.1' ],
+42 silly audit   'postgres-array': [ '2.0.0' ],
+42 silly audit   'postgres-bytea': [ '1.0.0' ],
+42 silly audit   'postgres-date': [ '1.0.7' ],
+42 silly audit   'postgres-interval': [ '1.2.0' ],
+42 silly audit   preact: [ '10.11.3' ],
+42 silly audit   'preact-render-to-string': [ '6.5.13' ],
+42 silly audit   'prebuild-install': [ '7.1.1' ],
+42 silly audit   minimist: [ '1.2.7' ],
+42 silly audit   'prelude-ls': [ '1.2.1' ],
+42 silly audit   'probe-image-size': [ '7.2.3' ],
+42 silly audit   'promise-inflight': [ '1.0.1' ],
+42 silly audit   'promise-retry': [ '2.0.1' ],
+42 silly audit   pump: [ '3.0.0' ],
+42 silly audit   punycode: [ '2.3.1' ],
+42 silly audit   'queue-microtask': [ '1.2.3' ],
+42 silly audit   randombytes: [ '2.1.0' ],
+42 silly audit   rc: [ '1.2.8' ],
+42 silly audit   'strip-json-comments': [ '2.0.1', '3.1.1' ],
+42 silly audit   'readable-stream': [ '3.6.2' ],
+42 silly audit   readdirp: [ '4.1.2' ],
+42 silly audit   'require-directory': [ '2.1.1' ],
+42 silly audit   'resolve-from': [ '4.0.0' ],
+42 silly audit   retry: [ '0.12.0' ],
+42 silly audit   reusify: [ '1.1.0' ],
+42 silly audit   rimraf: [ '3.0.2' ],
+42 silly audit   'run-parallel': [ '1.2.0' ],
+42 silly audit   'safe-buffer': [ '5.2.1', '5.1.2' ],
+42 silly audit   'safer-buffer': [ '2.1.2' ],
+42 silly audit   sax: [ '1.2.4' ],
+42 silly audit   semver: [ '7.7.1' ],
+42 silly audit   'seq-queue': [ '0.0.5' ],
+42 silly audit   'serialize-javascript': [ '6.0.2' ],
+42 silly audit   'set-blocking': [ '2.0.0' ],
+42 silly audit   'shebang-command': [ '2.0.0' ],
+42 silly audit   'shebang-regex': [ '3.0.0' ],
+42 silly audit   'simple-concat': [ '1.0.1' ],
+42 silly audit   'simple-get': [ '4.0.1' ],
+42 silly audit   'smart-buffer': [ '4.2.0' ],
+42 silly audit   smogon: [ '3.0.0' ],
+42 silly audit   sockjs: [ '0.3.24' ],
+42 silly audit   uuid: [ '8.3.2' ],
+42 silly audit   socks: [ '2.8.4' ],
+42 silly audit   'socks-proxy-agent': [ '6.2.1' ],
+42 silly audit   'source-map': [ '0.6.1' ],
+42 silly audit   'source-map-support': [ '0.5.21' ],
+42 silly audit   split2: [ '4.1.0' ],
+42 silly audit   'sprintf-js': [ '1.1.3' ],
+42 silly audit   'sql-template-strings': [ '2.2.2' ],
+42 silly audit   sqlite: [ '5.1.1' ],
+42 silly audit   sqlite3: [ '5.1.7' ],
+42 silly audit   sqlstring: [ '2.3.3' ],
+42 silly audit   ssri: [ '8.0.1' ],
+42 silly audit   'stream-parser': [ '0.3.1' ],
+42 silly audit   string_decoder: [ '1.1.1' ],
+42 silly audit   'strip-indent': [ '1.0.1' ],
+42 silly audit   tar: [ '6.2.1' ],
+42 silly audit   'tar-fs': [ '2.1.1' ],
+42 silly audit   'tar-stream': [ '2.2.0' ],
+42 silly audit   'to-regex-range': [ '5.0.1' ],
+42 silly audit   'ts-api-utils': [ '2.1.0' ],
+42 silly audit   'ts-chacha20': [ '1.2.0' ],
+42 silly audit   'tunnel-agent': [ '0.6.0' ],
+42 silly audit   'type-check': [ '0.4.0' ],
+42 silly audit   typescript: [ '5.8.3' ],
+42 silly audit   'typescript-eslint': [ '8.38.0' ],
+42 silly audit   'unique-filename': [ '1.1.1' ],
+42 silly audit   'unique-slug': [ '2.0.2' ],
+42 silly audit   'uri-js': [ '4.4.1' ],
+42 silly audit   'util-deprecate': [ '1.0.2' ],
+42 silly audit   'websocket-driver': [ '0.7.4' ],
+42 silly audit   'websocket-extensions': [ '0.1.4' ],
+42 silly audit   which: [ '2.0.2' ],
+42 silly audit   'word-wrap': [ '1.2.5' ],
+42 silly audit   workerpool: [ '9.3.3' ],
+42 silly audit   wrappy: [ '1.0.2' ],
+42 silly audit   xtend: [ '4.0.2' ],
+42 silly audit   y18n: [ '5.0.8' ],
+42 silly audit   yallist: [ '4.0.0' ],
+42 silly audit   yargs: [ '17.7.2' ],
+42 silly audit   'yargs-parser': [ '21.1.1' ],
+42 silly audit   'yargs-unparser': [ '2.0.0' ],
+42 silly audit   'yocto-queue': [ '0.1.0' ],
+42 silly audit   pokelist: [ '1.0.0' ]
+42 silly audit }
+43 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\win32-ia32
+44 silly reify mark deleted [
+44 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\win32-ia32'
+44 silly reify ]
+45 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\openbsd-arm64
+46 silly reify mark deleted [
+46 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\openbsd-arm64'
+46 silly reify ]
+47 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\win32-arm64
+48 silly reify mark deleted [
+48 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\win32-arm64'
+48 silly reify ]
+49 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\sunos-x64
+50 silly reify mark deleted [
+50 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\sunos-x64'
+50 silly reify ]
+51 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\openbsd-x64
+52 silly reify mark deleted [
+52 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\openbsd-x64'
+52 silly reify ]
+53 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\netbsd-x64
+54 silly reify mark deleted [
+54 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\netbsd-x64'
+54 silly reify ]
+55 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\netbsd-arm64
+56 silly reify mark deleted [
+56 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\netbsd-arm64'
+56 silly reify ]
+57 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-x64
+58 silly reify mark deleted [
+58 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-x64'
+58 silly reify ]
+59 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-s390x
+60 silly reify mark deleted [
+60 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-s390x'
+60 silly reify ]
+61 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-riscv64
+62 silly reify mark deleted [
+62 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-riscv64'
+62 silly reify ]
+63 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-ppc64
+64 silly reify mark deleted [
+64 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-ppc64'
+64 silly reify ]
+65 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-ia32
+66 silly reify mark deleted [
+66 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-ia32'
+66 silly reify ]
+67 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-loong64
+68 silly reify mark deleted [
+68 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-loong64'
+68 silly reify ]
+69 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-mips64el
+70 silly reify mark deleted [
+70 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-mips64el'
+70 silly reify ]
+71 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-arm64
+72 silly reify mark deleted [
+72 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-arm64'
+72 silly reify ]
+73 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\freebsd-x64
+74 silly reify mark deleted [
+74 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\freebsd-x64'
+74 silly reify ]
+75 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\linux-arm
+76 silly reify mark deleted [
+76 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\linux-arm'
+76 silly reify ]
+77 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\freebsd-arm64
+78 silly reify mark deleted [
+78 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\freebsd-arm64'
+78 silly reify ]
+79 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\darwin-x64
+80 silly reify mark deleted [
+80 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\darwin-x64'
+80 silly reify ]
+81 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\darwin-arm64
+82 silly reify mark deleted [
+82 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\darwin-arm64'
+82 silly reify ]
+83 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\android-x64
+84 silly reify mark deleted [
+84 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-x64'
+84 silly reify ]
+85 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\android-arm64
+86 silly reify mark deleted [
+86 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-arm64'
+86 silly reify ]
+87 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\android-arm
+88 silly reify mark deleted [
+88 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\android-arm'
+88 silly reify ]
+89 verbose reify failed optional dependency E:\git\pokeblog\pokelist-repo\library\pokemon-showdown\node_modules\@esbuild\aix-ppc64
+90 silly reify mark deleted [
+90 silly reify   'E:\\git\\pokeblog\\pokelist-repo\\library\\pokemon-showdown\\node_modules\\@esbuild\\aix-ppc64'
+90 silly reify ]
+91 info run pokelist@1.0.0 postinstall ../.. git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+92 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 398ms
+93 silly audit report {
+93 silly audit report   picomatch: [
+93 silly audit report     {
+93 silly audit report       id: 1115549,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-3v7f-55p6-f55p',
+93 silly audit report       title: 'Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '<2.3.2',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1115551,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-3v7f-55p6-f55p',
+93 silly audit report       title: 'Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '>=4.0.0 <4.0.4',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1115552,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-c2c7-rcm5-vvqj',
+93 silly audit report       title: 'Picomatch has a ReDoS vulnerability via extglob quantifiers',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<2.3.2',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1115554,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-c2c7-rcm5-vvqj',
+93 silly audit report       title: 'Picomatch has a ReDoS vulnerability via extglob quantifiers',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=4.0.0 <4.0.4',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   '@tootallnate/once': [
+93 silly audit report     {
+93 silly audit report       id: 1119438,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-vpq2-c234-7xj6',
+93 silly audit report       title: '@tootallnate/once vulnerable to Incorrect Control Flow Scoping',
+93 silly audit report       severity: 'low',
+93 silly audit report       vulnerable_versions: '<2.0.1',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   'brace-expansion': [
+93 silly audit report     {
+93 silly audit report       id: 1105443,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-v6h2-p8h4-qcjw',
+93 silly audit report       title: 'brace-expansion Regular Expression Denial of Service vulnerability',
+93 silly audit report       severity: 'low',
+93 silly audit report       vulnerable_versions: '>=1.0.0 <=1.1.11',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1105444,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-v6h2-p8h4-qcjw',
+93 silly audit report       title: 'brace-expansion Regular Expression Denial of Service vulnerability',
+93 silly audit report       severity: 'low',
+93 silly audit report       vulnerable_versions: '>=2.0.0 <=2.0.1',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1115540,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-f886-m6hf-6m8v',
+93 silly audit report       title: 'brace-expansion: Zero-step sequence causes process hang and memory exhaustion',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '<1.1.13',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1115541,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-f886-m6hf-6m8v',
+93 silly audit report       title: 'brace-expansion: Zero-step sequence causes process hang and memory exhaustion',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '>=2.0.0 <2.0.3',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   minimatch: [
+93 silly audit report     {
+93 silly audit report       id: 1113459,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-3ppc-4f35-3m26',
+93 silly audit report       title: 'minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<3.1.3',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113465,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-3ppc-4f35-3m26',
+93 silly audit report       title: 'minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=9.0.0 <9.0.6',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113538,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-7r86-cg39-jmmj',
+93 silly audit report       title: 'minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<3.1.3',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113544,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-7r86-cg39-jmmj',
+93 silly audit report       title: 'minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=9.0.0 <9.0.7',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113546,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-23c5-xmqv-rm74',
+93 silly audit report       title: 'minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<3.1.4',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113552,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-23c5-xmqv-rm74',
+93 silly audit report       title: 'minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=9.0.0 <9.0.7',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   ajv: [
+93 silly audit report     {
+93 silly audit report       id: 1113714,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-2g4f-4pwh-qvx6',
+93 silly audit report       title: 'ajv has ReDoS when using `$data` option',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '<6.14.0',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   diff: [
+93 silly audit report     {
+93 silly audit report       id: 1112706,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-73rr-hh4g-fpgx',
+93 silly audit report       title: 'jsdiff has a Denial of Service vulnerability in parsePatch and applyPatch',
+93 silly audit report       severity: 'low',
+93 silly audit report       vulnerable_versions: '>=6.0.0 <8.0.3',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   flatted: [
+93 silly audit report     {
+93 silly audit report       id: 1114526,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-25h7-pfq9-p65f',
+93 silly audit report       title: 'flatted vulnerable to unbounded recursion DoS in parse() revive phase',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<3.4.0',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1115357,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-rf6f-7fwh-wjgh',
+93 silly audit report       title: 'Prototype Pollution via parse() in NodeJS flatted',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<=3.4.1',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   glob: [
+93 silly audit report     {
+93 silly audit report       id: 1109842,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-5j98-mcp5-4vw2',
+93 silly audit report       title: 'glob CLI: Command injection via -c/--cmd executes matches with shell:true',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=10.2.0 <10.5.0',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   'ip-address': [
+93 silly audit report     {
+93 silly audit report       id: 1118827,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-v2v4-37r5-5v8g',
+93 silly audit report       title: 'ip-address has XSS in Address6 HTML-emitting methods',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '<=10.1.0',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   'js-yaml': [
+93 silly audit report     {
+93 silly audit report       id: 1112715,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-mh29-5h37-fv8m',
+93 silly audit report       title: 'js-yaml has prototype pollution in merge (<<)',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '>=4.0.0 <4.1.1',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   nodemailer: [
+93 silly audit report     {
+93 silly audit report       id: 1109804,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-mm7p-fcc7-pg87',
+93 silly audit report       title: 'Nodemailer: Email to an unintended domain can occur due to Interpretation Conflict',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '<7.0.7',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113165,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-rcmh-qjqh-p98v',
+93 silly audit report       title: 'Nodemailer’s addressparser is vulnerable to DoS caused by recursive calls',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<=7.0.10',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1115470,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-c7w3-x93f-qmm8',
+93 silly audit report       title: 'Nodemailer has SMTP command injection due to unsanitized `envelope.size` parameter',
+93 silly audit report       severity: 'low',
+93 silly audit report       vulnerable_versions: '<8.0.4',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1116270,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-vvjj-xcjg-gr5g',
+93 silly audit report       title: 'Nodemailer Vulnerable to SMTP Command Injection via CRLF in Transport name Option (EHLO/HELO) ',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '<=8.0.4',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   'serialize-javascript': [
+93 silly audit report     {
+93 silly audit report       id: 1119440,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-qj8w-gfj5-8c6v',
+93 silly audit report       title: 'Serialize JavaScript has CPU Exhaustion Denial of Service via crafted array-like objects',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '>=5.0.0 <7.0.5',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113686,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-5c6j-r48x-rmvq',
+93 silly audit report       title: 'Serialize JavaScript is Vulnerable to RCE via RegExp.flags and Date.prototype.toISOString()',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<=7.0.2',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   uuid: [
+93 silly audit report     {
+93 silly audit report       id: 1119441,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-w5hq-g745-h8pq',
+93 silly audit report       title: 'uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided',
+93 silly audit report       severity: 'moderate',
+93 silly audit report       vulnerable_versions: '<11.1.1',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   tar: [
+93 silly audit report     {
+93 silly audit report       id: 1112659,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-34x7-hfp2-rc4v',
+93 silly audit report       title: 'node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<7.5.7',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113300,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-8qq5-rm4j-mr97',
+93 silly audit report       title: 'node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<=7.5.2',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1113375,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-83g3-92jg-28cx',
+93 silly audit report       title: 'Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<7.5.8',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1114200,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-qffp-2rhf-9h96',
+93 silly audit report       title: 'tar has Hardlink Path Traversal via Drive-Relative Linkpath',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<=7.5.9',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1114302,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-9ppj-qmqm-q256',
+93 silly audit report       title: 'node-tar Symlink Path Traversal via Drive-Relative Linkpath',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<=7.5.10',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1114680,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-r6q2-hw4h-h46w',
+93 silly audit report       title: 'Race Condition in node-tar Path Reservations via Unicode Ligature Collisions on macOS APFS',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '<=7.5.3',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ],
+93 silly audit report   'tar-fs': [
+93 silly audit report     {
+93 silly audit report       id: 1109532,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-vj76-c3g6-qr5v',
+93 silly audit report       title: 'tar-fs has a symlink validation bypass if destination directory is predictable with a specific tarball',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=2.0.0 <2.1.4',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1109543,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-8cj5-5rvv-wf4v',
+93 silly audit report       title: 'tar-fs can extract outside the specified dir with a specific tarball',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=2.0.0 <2.1.3',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     },
+93 silly audit report     {
+93 silly audit report       id: 1109552,
+93 silly audit report       url: 'https://github.com/advisories/GHSA-pq67-2wwv-3xjx',
+93 silly audit report       title: 'tar-fs Vulnerable to Link Following and Path Traversal via Extracting a Crafted tar File',
+93 silly audit report       severity: 'high',
+93 silly audit report       vulnerable_versions: '>=2.0.0 <2.1.2',
+93 silly audit report       cwe: [Array],
+93 silly audit report       cvss: [Object]
+93 silly audit report     }
+93 silly audit report   ]
+93 silly audit report }
+94 silly packumentCache corgi:https://registry.npmjs.org/picomatch cache-miss
+95 silly packumentCache corgi:https://registry.npmjs.org/@tootallnate%2fonce cache-miss
+96 silly packumentCache corgi:https://registry.npmjs.org/brace-expansion cache-miss
+97 silly packumentCache corgi:https://registry.npmjs.org/minimatch cache-miss
+98 silly packumentCache corgi:https://registry.npmjs.org/ajv cache-miss
+99 silly packumentCache corgi:https://registry.npmjs.org/diff cache-miss
+100 silly packumentCache corgi:https://registry.npmjs.org/flatted cache-miss
+101 silly packumentCache corgi:https://registry.npmjs.org/glob cache-miss
+102 silly packumentCache corgi:https://registry.npmjs.org/ip-address cache-miss
+103 silly packumentCache corgi:https://registry.npmjs.org/js-yaml cache-miss
+104 silly packumentCache corgi:https://registry.npmjs.org/nodemailer cache-miss
+105 silly packumentCache corgi:https://registry.npmjs.org/serialize-javascript cache-miss
+106 silly packumentCache corgi:https://registry.npmjs.org/uuid cache-miss
+107 silly packumentCache corgi:https://registry.npmjs.org/tar cache-miss
+108 silly packumentCache corgi:https://registry.npmjs.org/tar-fs cache-miss
+109 http fetch GET 200 https://registry.npmjs.org/ajv 68ms (cache hit)
+110 silly packumentCache corgi:https://registry.npmjs.org/ajv set size:467559 disposed:false
+111 http fetch GET 200 https://registry.npmjs.org/picomatch 76ms (cache hit)
+112 silly packumentCache corgi:https://registry.npmjs.org/picomatch set size:44414 disposed:false
+113 http fetch GET 200 https://registry.npmjs.org/brace-expansion 77ms (cache hit)
+114 silly packumentCache corgi:https://registry.npmjs.org/brace-expansion set size:24623 disposed:false
+115 http fetch GET 200 https://registry.npmjs.org/diff 76ms (cache hit)
+116 silly packumentCache corgi:https://registry.npmjs.org/diff set size:67741 disposed:false
+117 http fetch GET 200 https://registry.npmjs.org/ip-address 76ms (cache hit)
+118 silly packumentCache corgi:https://registry.npmjs.org/ip-address set size:69861 disposed:false
+119 http fetch GET 200 https://registry.npmjs.org/minimatch 80ms (cache hit)
+120 silly packumentCache corgi:https://registry.npmjs.org/minimatch set size:168441 disposed:false
+121 http fetch GET 200 https://registry.npmjs.org/flatted 85ms (cache hit)
+122 silly packumentCache corgi:https://registry.npmjs.org/flatted set size:57858 disposed:false
+123 http fetch GET 200 https://registry.npmjs.org/@tootallnate%2fonce 88ms (cache hit)
+124 silly packumentCache corgi:https://registry.npmjs.org/@tootallnate%2fonce set size:11748 disposed:false
+125 http fetch GET 200 https://registry.npmjs.org/glob 86ms (cache hit)
+126 silly packumentCache corgi:https://registry.npmjs.org/glob set size:199194 disposed:false
+127 http fetch GET 200 https://registry.npmjs.org/nodemailer 87ms (cache hit)
+128 silly packumentCache corgi:https://registry.npmjs.org/nodemailer set size:314778 disposed:false
+129 http fetch GET 200 https://registry.npmjs.org/uuid 95ms (cache hit)
+130 silly packumentCache corgi:https://registry.npmjs.org/uuid set size:81812 disposed:false
+131 http fetch GET 200 https://registry.npmjs.org/js-yaml 98ms (cache hit)
+132 silly packumentCache corgi:https://registry.npmjs.org/js-yaml set size:59520 disposed:false
+133 http fetch GET 200 https://registry.npmjs.org/tar 98ms (cache hit)
+134 silly packumentCache corgi:https://registry.npmjs.org/tar set size:202125 disposed:false
+135 http fetch GET 200 https://registry.npmjs.org/serialize-javascript 102ms (cache hit)
+136 silly packumentCache corgi:https://registry.npmjs.org/serialize-javascript set size:36142 disposed:false
+137 http fetch GET 200 https://registry.npmjs.org/tar-fs 101ms (cache hit)
+138 silly packumentCache corgi:https://registry.npmjs.org/tar-fs set size:55148 disposed:false
+139 silly packumentCache corgi:https://registry.npmjs.org/micromatch cache-miss
+140 http fetch GET 200 https://registry.npmjs.org/micromatch 9ms (cache hit)
+141 silly packumentCache corgi:https://registry.npmjs.org/micromatch set size:71776 disposed:false
+142 silly packumentCache corgi:https://registry.npmjs.org/@stylistic%2feslint-plugin cache-miss
+143 http fetch GET 200 https://registry.npmjs.org/@stylistic%2feslint-plugin 9ms (cache hit)
+144 silly packumentCache corgi:https://registry.npmjs.org/@stylistic%2feslint-plugin set size:91240 disposed:false
+145 silly packumentCache corgi:https://registry.npmjs.org/http-proxy-agent cache-miss
+146 http fetch GET 200 https://registry.npmjs.org/http-proxy-agent 9ms (cache hit)
+147 silly packumentCache corgi:https://registry.npmjs.org/http-proxy-agent set size:24577 disposed:false
+148 silly packumentCache corgi:https://registry.npmjs.org/@eslint%2fconfig-array cache-miss
+149 silly packumentCache corgi:https://registry.npmjs.org/@eslint%2feslintrc cache-miss
+150 silly packumentCache corgi:https://registry.npmjs.org/eslint cache-miss
+151 http fetch GET 200 https://registry.npmjs.org/@eslint%2fconfig-array 12ms (cache hit)
+152 silly packumentCache corgi:https://registry.npmjs.org/@eslint%2fconfig-array set size:19036 disposed:false
+153 http fetch GET 200 https://registry.npmjs.org/@eslint%2feslintrc 14ms (cache hit)
+154 silly packumentCache corgi:https://registry.npmjs.org/@eslint%2feslintrc set size:83205 disposed:false
+155 http fetch GET 200 https://registry.npmjs.org/eslint 17ms (cache hit)
+156 silly packumentCache corgi:https://registry.npmjs.org/eslint set size:1160227 disposed:false
+157 silly packumentCache corgi:https://registry.npmjs.org/@typescript-eslint%2ftypescript-estree cache-miss
+158 silly packumentCache corgi:https://registry.npmjs.org/mocha cache-miss
+159 http fetch GET 200 https://registry.npmjs.org/mocha 13ms (cache hit)
+160 silly packumentCache corgi:https://registry.npmjs.org/mocha set size:449556 disposed:false
+161 http fetch GET 200 https://registry.npmjs.org/@typescript-eslint%2ftypescript-estree 30ms (cache hit)
+162 silly packumentCache corgi:https://registry.npmjs.org/@typescript-eslint%2ftypescript-estree set size:8697261 disposed:false
+163 silly packumentCache corgi:https://registry.npmjs.org/flat-cache cache-miss
+164 http fetch GET 200 https://registry.npmjs.org/flat-cache 9ms (cache hit)
+165 silly packumentCache corgi:https://registry.npmjs.org/flat-cache set size:50282 disposed:false
+166 silly packumentCache corgi:https://registry.npmjs.org/socks cache-miss
+167 http fetch GET 200 https://registry.npmjs.org/socks 9ms (cache hit)
+168 silly packumentCache corgi:https://registry.npmjs.org/socks set size:66905 disposed:false
+169 silly packumentCache corgi:https://registry.npmjs.org/sockjs cache-miss
+170 http fetch GET 200 https://registry.npmjs.org/sockjs 10ms (cache hit)
+171 silly packumentCache corgi:https://registry.npmjs.org/sockjs set size:25891 disposed:false
+172 silly packumentCache corgi:https://registry.npmjs.org/cacache cache-miss
+173 silly packumentCache corgi:https://registry.npmjs.org/node-gyp cache-miss
+174 silly packumentCache corgi:https://registry.npmjs.org/sqlite3 cache-miss
+175 http fetch GET 200 https://registry.npmjs.org/cacache 11ms (cache hit)
+176 silly packumentCache corgi:https://registry.npmjs.org/cacache set size:157757 disposed:false
+177 http fetch GET 200 https://registry.npmjs.org/sqlite3 14ms (cache hit)
+178 silly packumentCache corgi:https://registry.npmjs.org/sqlite3 set size:98714 disposed:false
+179 http fetch GET 200 https://registry.npmjs.org/node-gyp 17ms (cache hit)
+180 silly packumentCache corgi:https://registry.npmjs.org/node-gyp set size:159611 disposed:false
+181 silly packumentCache corgi:https://registry.npmjs.org/prebuild-install cache-miss
+182 http fetch GET 200 https://registry.npmjs.org/prebuild-install 10ms (cache hit)
+183 silly packumentCache corgi:https://registry.npmjs.org/prebuild-install set size:82082 disposed:false
+184 silly packumentCache corgi:https://registry.npmjs.org/make-fetch-happen cache-miss
+185 http fetch GET 200 https://registry.npmjs.org/make-fetch-happen 11ms (cache hit)
+186 silly packumentCache corgi:https://registry.npmjs.org/make-fetch-happen set size:187959 disposed:false
+187 silly packumentCache corgi:https://registry.npmjs.org/socks-proxy-agent cache-miss
+188 http fetch GET 200 https://registry.npmjs.org/socks-proxy-agent 11ms (cache hit)
+189 silly packumentCache corgi:https://registry.npmjs.org/socks-proxy-agent set size:42719 disposed:false
+190 info run pokelist@1.0.0 postinstall { code: 1, signal: null }
+191 verbose stack Error: command failed
+191 verbose stack     at promiseSpawn (C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:22:22)
+191 verbose stack     at spawnWithShell (C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:124:10)
+191 verbose stack     at promiseSpawn (C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\@npmcli\promise-spawn\lib\index.js:12:12)
+191 verbose stack     at runScriptPkg (C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\@npmcli\run-script\lib\run-script-pkg.js:77:13)
+191 verbose stack     at runScript (C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\@npmcli\run-script\lib\run-script.js:9:12)
+191 verbose stack     at C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\rebuild.js:329:17
+191 verbose stack     at run (C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:67:22)
+191 verbose stack     at C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:84:9
+191 verbose stack     at new Promise (<anonymous>)
+191 verbose stack     at callLimit (C:\Users\takahiro.kosaka\AppData\Local\Volta\tools\image\node\20.19.0\node_modules\npm\node_modules\promise-call-limit\dist\commonjs\index.js:35:69)
+192 verbose pkgid pokelist@1.0.0
+193 error code 1
+194 error path E:\git\pokeblog\pokelist-repo
+195 error command failed
+196 error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error code 1
+197 error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error command failed
+197 error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error code 1
+197 error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error command failed
+197 error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error code 1
+197 error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error command failed
+197 error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error code 1
+197 error npm error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error npm error command failed
+197 error npm error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error npm error code 1
+197 error npm error npm error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error npm error npm error command failed
+197 error npm error npm error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error npm error npm error code 1
+197 error npm error npm error npm error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error npm error npm error npm error command failed
+197 error npm error npm error npm error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error npm error npm error npm error code 1
+197 error npm error npm error npm error npm error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error npm error npm error npm error npm error command failed
+197 error npm error npm error npm error npm error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error npm error npm error npm error npm error code 1
+197 error npm error npm error npm error npm error npm error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error npm error npm error npm error npm error npm error command failed
+197 error npm error npm error npm error npm error npm error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error code 1
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error command failed
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error npm error code 1
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error npm error path E:\git\pokeblog\pokelist-repo
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error npm error command failed
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error npm error command C:\WINDOWS\system32\cmd.exe /d /s /c git submodule update --init --recursive && npm --prefix library/pokemon-showdown install
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error npm error 'git' �́A�����R�}���h�܂��͊O���R�}���h�A
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error npm error ����^T\�ȃv���O�����܂��̓o�b�` �t�@�C���Ƃ��ĔF������Ă��܂���B
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_27_199Z-debug-0.log
+197 error npm error npm error npm error npm error npm error npm error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_23_462Z-debug-0.log
+197 error npm error npm error npm error npm error npm error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_19_780Z-debug-0.log
+197 error npm error npm error npm error npm error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_16_091Z-debug-0.log
+197 error npm error npm error npm error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_12_442Z-debug-0.log
+197 error npm error npm error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_08_813Z-debug-0.log
+197 error npm error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_05_177Z-debug-0.log
+197 error npm error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_28_01_507Z-debug-0.log
+197 error npm error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_27_57_735Z-debug-0.log
+197 error npm error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_27_53_978Z-debug-0.log
+198 silly unfinished npm timer reify 1780763271044
+199 silly unfinished npm timer reify:build 1780763271384
+200 silly unfinished npm timer build 1780763271384
+201 silly unfinished npm timer build:links 1780763271386
+202 silly unfinished npm timer build:run:postinstall 1780763271387
+203 silly unfinished npm timer build:run:postinstall:../.. 1780763271387
+204 verbose cwd E:\git\pokeblog\pokelist-repo
+205 verbose os Windows_NT 10.0.26200
+206 verbose node v20.19.0
+207 verbose npm  v10.8.2
+208 verbose exit 1
+209 verbose code 1
+210 error A complete log of this run can be found in: C:\Users\takahiro.kosaka\AppData\Local\npm-cache\_logs\2026-06-06T16_27_50_324Z-debug-0.log
