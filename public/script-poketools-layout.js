@@ -1,6 +1,6 @@
 const TOOL_LAYOUT_LANG_KEY = 'champions-tool-ui-lang-v1';
 const TOOL_LAYOUT_REGULATION_KEY = 'champions-tool-ui-regulation-v1';
-const TOOL_LAYOUT_CONFIG_URL = '/pokelist/layout-config.json';
+const TOOL_LAYOUT_CONFIG_URL = '/layout-config.json';
 const DEFAULT_LAYOUT_CONFIG = {
   footerOwner: 'sakas_poke',
 };

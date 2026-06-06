@@ -600,7 +600,7 @@ function renderSpeedChip(chip) {
   }
   const icon = getShowdownPokemonIconUrl(chip.row.representativeId);
   const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
-  const href = `/pokelist/pokedex-pokemon.html?species=${encodeURIComponent(chip.row.representativeId)}&returnPath=${returnPath}`;
+  const href = `/pokedex-pokemon.html?species=${encodeURIComponent(chip.row.representativeId)}&returnPath=${returnPath}`;
   return `<span class="speed-pokemon-cell"><a class="speed-icon-link" href="${href}">${icon ? `<img class="ps-pokemon-icon" src="${icon}" alt="" loading="lazy">` : ''}</a>${renderRuleBadges(chip)}</span>`;
 }
 
@@ -972,7 +972,7 @@ function openTargetEditModal() {
 
   const host = $('target-box-editor-host');
   const frame = $('target-box-editor-frame');
-  if (frame) frame.src = '/pokelist/box-party.html?embed=detail';
+  if (frame) frame.src = '/box-party.html?embed=detail';
   if (host) {
     host.classList.remove('d-none');
     host.setAttribute('aria-hidden', 'false');
@@ -1046,7 +1046,7 @@ function applyI18n() {
 }
 
 function navigateBack() {
-  const returnPath = state.request?.returnPath || '/pokelist/box-party.html';
+  const returnPath = state.request?.returnPath || '/box-party.html';
   window.location.href = returnPath;
 }
 
@@ -1156,9 +1156,9 @@ async function initialize() {
   });
 
   const [data, rules, speciesCsvRecords] = await Promise.all([
-    fetchJson('/pokelist/db/champions-calc-data.json'),
-    fetchJson('/pokelist/db/speed-adjust-rules.json'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - def_pokemon.csv'),
+    fetchJson('/db/champions-calc-data.json'),
+    fetchJson('/db/speed-adjust-rules.json'),
+    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
   ]);
 
   state.data = data;
@@ -1181,7 +1181,7 @@ async function initialize() {
 }
 
 initialize().catch(error => {
-  console.error(error);
+  console.error('Speed Adjust Init Error:', error);
   const head = $('target-picker-trigger');
   if (head) head.textContent = t('loadFailed');
 });
