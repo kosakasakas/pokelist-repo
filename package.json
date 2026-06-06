@@ -4,10 +4,11 @@
   "description": "Pokelist Tools",
   "private": true,
   "scripts": {
-    "postinstall": "npm --prefix library/pokemon-showdown install",
+    "postinstall": "npm --prefix library/pokemon-showdown install || (cd library/pokemon-showdown && npm install)",
     "setup": "git submodule update --init --recursive",
-    "server": "http-server public -o",
-    "build:showdown": "npm --prefix library/pokemon-showdown run build"
+    "server": "http-server public -o damage-calc.html",
+    "build:showdown": "npm --prefix library/pokemon-showdown run build",
+    "build:data": "node scripts/export-champions-calc-data.js"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

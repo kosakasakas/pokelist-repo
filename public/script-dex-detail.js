@@ -90,7 +90,7 @@ const state = {
   abilityCsvMap: new Map(),
   kind: 'move',
   valueId: '',
-  returnPath: '/pokelist/pokedex.html',
+  returnPath: '/pokedex.html',
   current: null,
 };
 
@@ -244,7 +244,7 @@ function getAbilityLongDescription(ability) {
 }
 
 function getPokemonHref(speciesId) {
-  return `/pokelist/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getMoveCategoryLabel(category) {
@@ -531,10 +531,10 @@ async function initialize() {
   loadStorage();
 
   const [data, speciesCsvRecords, moveCsvRecords, abilityCsvRecords] = await Promise.all([
-    fetchJson('/pokelist/db/champions-calc-data.json'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_ability2poke.csv'),
+    fetchJson('/db/champions-calc-data.json'),
+    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
   ]);
 
   state.data = data;
@@ -550,7 +550,7 @@ async function initialize() {
 
   applyI18n();
   const home = $('detail-home');
-  if (home) home.href = '/pokelist/pokedex.html';
+  if (home) home.href = '/pokedex.html';
   bindEvents();
   renderCurrent();
 }

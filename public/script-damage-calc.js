@@ -2623,10 +2623,9 @@ function openLinkedPokemonDetailFromCalc(side) {
     openPokemonDetail(pokemon.id);
     return;
   }
-  localStorage.setItem(OPEN_DETAIL_REQUEST_KEY, JSON.stringify({ pokemonId: pokemon.id }));
-  window.location.href = '/pokelist/box-party.html';
-}
-
+      localStorage.setItem(OPEN_DETAIL_REQUEST_KEY, JSON.stringify({ pokemonId: pokemon.id }));
+      window.location.href = '/box-party.html';
+    }
 function assignPokemonToPartySlot(partyId, slotIndex, pokemonId) {
   const party = getPartyById(partyId);
   const pokemon = getPokemonById(pokemonId);
@@ -3647,7 +3646,7 @@ function initDetailModal() {
       return;
     }
     localStorage.setItem(PENDING_APPLY_KEY, JSON.stringify({ side: 'attacker', pokemonId: pokemon.id }));
-    window.location.href = '/pokelist/damage-calc.html';
+    window.location.href = '/damage-calc.html';
   });
   $('detail-apply-defender').addEventListener('click', () => {
     const pokemon = saveDetailPokemon();
@@ -3658,7 +3657,7 @@ function initDetailModal() {
       return;
     }
     localStorage.setItem(PENDING_APPLY_KEY, JSON.stringify({ side: 'defender', pokemonId: pokemon.id }));
-    window.location.href = '/pokelist/damage-calc.html';
+    window.location.href = '/damage-calc.html';
   });
   if ($('detail-apply-speed')) $('detail-apply-speed').addEventListener('click', () => {
     const pokemon = saveDetailPokemon();
@@ -3667,7 +3666,7 @@ function initDetailModal() {
       pokemonId: pokemon.id,
       returnPath: window.location.pathname,
     }));
-    window.location.href = '/pokelist/speed-adjust.html';
+    window.location.href = '/speed-adjust.html';
   });
   ['detail-nickname', 'detail-notes-other', 'detail-notes', 'detail-ev-hp', 'detail-ev-atk', 'detail-ev-def', 'detail-ev-spa', 'detail-ev-spd', 'detail-ev-spe'].forEach(id => {
     const node = $(id);
@@ -3702,7 +3701,7 @@ function bindEvents() {
     $('history-back').addEventListener('click', () => {
       const canBack = window.history.length > 1 && document.referrer && document.referrer.startsWith(window.location.origin);
       if (canBack) window.history.back();
-      else window.location.href = '/pokelist/index.html';
+      else window.location.href = '/index.html';
     });
   }
   if ($('swap-sides')) $('swap-sides').addEventListener('click', swapSides);
@@ -3821,12 +3820,12 @@ function bindEvents() {
 }
 
 async function initialize() {
-  const dataResponse = await fetch('/pokelist/db/champions-calc-data.json', { cache: 'no-store' });
+  const dataResponse = await fetch('/db/champions-calc-data.json', { cache: 'no-store' });
   const [moveCsvResult, moveStatusCsvResult, speciesCsvResult, abilityCsvResult] = await Promise.allSettled([
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_movestatus2poke.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_ability2poke.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_movestatus2poke.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
   ]);
   const moveCsv = moveCsvResult.status === 'fulfilled' ? moveCsvResult.value : { headers: [], records: [] };
   const moveStatusCsv = moveStatusCsvResult.status === 'fulfilled' ? moveStatusCsvResult.value : { headers: [], records: [] };

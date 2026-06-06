@@ -259,19 +259,19 @@ function getMoveTypeIcon(type) {
 }
 
 function getPokemonHref(speciesId) {
-  return `/pokelist/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getMoveHref(moveId) {
-  return `/pokelist/pokedex-move.html?move=${encodeURIComponent(moveId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `/pokedex-move.html?move=${encodeURIComponent(moveId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getAbilityHref(abilityId) {
-  return `/pokelist/pokedex-ability.html?ability=${encodeURIComponent(abilityId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `/pokedex-ability.html?ability=${encodeURIComponent(abilityId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getItemHref(itemId) {
-  return `/pokelist/pokedex-item.html?item=${encodeURIComponent(itemId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `/pokedex-item.html?item=${encodeURIComponent(itemId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getItemName(item) {
@@ -691,10 +691,10 @@ async function initialize() {
   loadLang();
 
   const [data, speciesCsvRecords, moveCsvRecords, abilityCsvRecords] = await Promise.all([
-    fetchJson('/pokelist/db/champions-calc-data.json'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_ability2poke.csv'),
+    fetchJson('/db/champions-calc-data.json'),
+    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
   ]);
 
   state.data = {

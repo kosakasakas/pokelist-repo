@@ -17,12 +17,12 @@ var choiceMaxVal;
 
 document.getElementById("main-display-area").style.display ="none";
 
-readCSVData('/pokelist/db/ダメージ計算 - def_pokemon.csv', OnParsePokemonData, OnGaDataFailed);
-readCSVData('/pokelist/db/ダメージ計算 - def_dex_paldea.csv', OnParseDexData, OnGaDataFailed);
-readCSVData('/pokelist/db/ダメージ計算 - list_speed.csv', OnParseSpeedData, OnGaDataFailed);
-readCSVData('/pokelist/db/ダメージ計算 - list_ability2poke.csv', OnParseAbility2PokeData, OnGaDataFailed);
-readCSVData('/pokelist/db/ダメージ計算 - list_move2poke.csv', OnParseMove2PokeData, OnGaDataFailed);
-readCSVData('/pokelist/db/ダメージ計算 - list_movestatus2poke.csv', OnParseMoveStatus2PokeData, OnGaDataFailed);
+readCSVData('db/ダメージ計算 - def_pokemon.csv', OnParsePokemonData, OnGaDataFailed);
+readCSVData('db/ダメージ計算 - def_dex_paldea.csv', OnParseDexData, OnGaDataFailed);
+readCSVData('db/ダメージ計算 - list_speed.csv', OnParseSpeedData, OnGaDataFailed);
+readCSVData('db/ダメージ計算 - list_ability2poke.csv', OnParseAbility2PokeData, OnGaDataFailed);
+readCSVData('db/ダメージ計算 - list_move2poke.csv', OnParseMove2PokeData, OnGaDataFailed);
+readCSVData('db/ダメージ計算 - list_movestatus2poke.csv', OnParseMoveStatus2PokeData, OnGaDataFailed);
 
 //google.script.run.withSuccessHandler(OnParsePokemonData).withFailureHandler(OnGaDataFailed).getPokemonData();
 //google.script.run.withSuccessHandler(OnParseDexData).withFailureHandler(OnGaDataFailed).getDexData();

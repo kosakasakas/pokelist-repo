@@ -67,7 +67,7 @@ const state = {
   moveCsvMap: new Map(),
   abilityCsvMap: new Map(),
   speciesId: '',
-  returnPath: '/pokelist/pokedex.html',
+  returnPath: '/pokedex.html',
   currentSpecies: null,
   moveSearch: '',
 };
@@ -306,7 +306,7 @@ function openSpeedAdjustFromActual(speciesId, ap, natureMultiplier) {
       natureBoost: natureMultiplier > 1,
     },
   }));
-  window.location.href = '/pokelist/speed-adjust.html';
+  window.location.href = '/speed-adjust.html';
 }
 
 function openDamageCalcFromActual(speciesId, statKey, ap, natureMultiplier) {
@@ -314,7 +314,7 @@ function openDamageCalcFromActual(speciesId, statKey, ap, natureMultiplier) {
   storeJumpRecord(record);
   const side = statKey === 'atk' || statKey === 'spa' ? 'attacker' : 'defender';
   localStorage.setItem(PENDING_APPLY_KEY, JSON.stringify({ side, pokemonId: record.id }));
-  window.location.href = '/pokelist/damage-calc.html';
+  window.location.href = '/damage-calc.html';
 }
 
 function handleActualStatJump(event) {
@@ -386,7 +386,7 @@ function renderAbilities(species) {
   node.innerHTML = abilities.map(name => {
     const ability = (state.data?.abilities || []).find(entry => entry.name === name || entry.id === toId(name));
     const abilityName = ability ? getAbilityDisplayName(ability) : name;
-    const href = ability ? `/pokelist/pokedex-ability.html?ability=${encodeURIComponent(ability.id)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}` : '#';
+    const href = ability ? `/pokedex-ability.html?ability=${encodeURIComponent(ability.id)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}` : '#';
     return `<a class="badge text-bg-secondary text-decoration-none" href="${href}">${abilityName}</a>`;
   }).join('');
 }
@@ -438,7 +438,7 @@ function renderEvolution(species) {
     .sort((left, right) => getLocalizedSortValue(getSpeciesDisplayName(left)).localeCompare(getLocalizedSortValue(getSpeciesDisplayName(right)), 'ja'));
 
   node.innerHTML = targets.map(entry => {
-    const href = `/pokelist/pokedex-pokemon.html?species=${encodeURIComponent(entry.id)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+    const href = `/pokedex-pokemon.html?species=${encodeURIComponent(entry.id)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
     return `<a class="badge text-bg-light text-decoration-none" href="${href}">${getSpeciesDisplayName(entry)}</a>`;
   }).join('');
 }
@@ -477,7 +477,7 @@ function renderMoves(species) {
     const category = move.category || 'Status';
     const categoryIcon = `<img class="move-category-icon" src="https://play.pokemonshowdown.com/sprites/categories/${category}.png" alt="${category}" loading="lazy">`;
     const powerValue = category === 'Status' || Number(move.basePower) === 0 ? '-' : move.basePower;
-    const href = `/pokelist/pokedex-move.html?move=${encodeURIComponent(move.id)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+    const href = `/pokedex-move.html?move=${encodeURIComponent(move.id)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
     return `<a class="dex-move-row text-decoration-none" href="${href}">${typeIcon}${categoryIcon}<span>${getMoveDisplayName(move)}</span><span class="badge text-bg-light mono">${powerValue}</span></a>`;
   }).join('');
 }
@@ -563,10 +563,10 @@ async function initialize() {
   loadStorage();
 
   const [data, speciesCsvRecords, moveCsvRecords, abilityCsvRecords] = await Promise.all([
-    fetchJson('/pokelist/db/champions-calc-data.json'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - list_ability2poke.csv'),
+    fetchJson('/db/champions-calc-data.json'),
+    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
+    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
   ]);
 
   state.data = data;

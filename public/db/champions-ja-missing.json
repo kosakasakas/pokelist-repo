@@ -1,9 +1,24 @@
 {
   "meta": {
-    "generatedAt": "2026-06-06T16:02:43.303Z",
+    "generatedAt": "2026-06-06T17:29:31.098Z",
     "description": "Fill this data into champions-ja-overrides.json to override generated Japanese text."
   },
   "species": [
+    {
+      "id": "castformrainy",
+      "name": "Castform-Rainy",
+      "nameJa": null
+    },
+    {
+      "id": "castformsnowy",
+      "name": "Castform-Snowy",
+      "nameJa": null
+    },
+    {
+      "id": "castformsunny",
+      "name": "Castform-Sunny",
+      "nameJa": null
+    },
     {
       "id": "meloettapirouette",
       "name": "Meloetta-Pirouette",
@@ -107,6 +122,11 @@
     {
       "id": "floetteeternal",
       "name": "Floette-Eternal",
+      "nameJa": null
+    },
+    {
+      "id": "aegislashblade",
+      "name": "Aegislash-Blade",
       "nameJa": null
     },
     {

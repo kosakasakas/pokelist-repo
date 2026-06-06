@@ -42,7 +42,7 @@ const normalizeText = text => String(text || '').normalize('NFKC').toLowerCase()
 const state = {
   lang: 'ja',
   mode: 'browse',
-  returnPath: '/pokelist/speed-adjust.html',
+  returnPath: '/speed-adjust.html',
   storage: { box: [], parties: [], calcLinks: { attacker: null, defender: null } },
   data: null,
   speciesNameJaById: new Map(),
@@ -172,7 +172,7 @@ function buildRows() {
 
 function openDetail(speciesId) {
   const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
-  window.location.href = `/pokelist/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${returnPath}`;
+  window.location.href = `/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${returnPath}`;
 }
 
 function filteredRows() {
@@ -208,9 +208,9 @@ function addSpeciesToBox(speciesId) {
 function setAsSpeedTarget(speciesId) {
   localStorage.setItem(SPEED_ADJUST_REQUEST_KEY, JSON.stringify({
     selectedSpeciesId: speciesId,
-    returnPath: '/pokelist/speed-adjust.html',
+    returnPath: '/speed-adjust.html',
   }));
-  window.location.href = '/pokelist/speed-adjust.html';
+  window.location.href = '/speed-adjust.html';
 }
 
 function renderGrid() {
@@ -319,8 +319,8 @@ async function initialize() {
   loadStorage();
 
   const [data, speciesCsvRecords] = await Promise.all([
-    fetchJson('/pokelist/db/champions-calc-data.json'),
-    fetchCsvRecords('/pokelist/db/ダメージ計算 - def_pokemon.csv'),
+    fetchJson('/db/champions-calc-data.json'),
+    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
   ]);
 
   state.data = data;
