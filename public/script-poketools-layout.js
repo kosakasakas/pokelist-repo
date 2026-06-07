@@ -27,14 +27,13 @@ function ensureHeaderStyles() {
   style.id = 'tool-layout-inline-style';
   style.textContent = `
     .calc-header { background: #ffffff; border: 0 !important; box-shadow: none !important; }
-    .tool-header-row { display: flex; align-items: center; gap: 0.6rem; min-height: 52px; flex-wrap: nowrap; justify-content: space-between; }
-    .tool-header-brand { text-decoration: none; color: #111827; font-weight: 700; }
-    .tool-header-right { margin-left: auto; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; min-width: 0; flex: 1 1 auto; }
-    .tool-header-main { flex: 0 0 auto; min-width: 0; position: relative; }
-    .tool-global-nav { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid #d1d5db; border-radius: 10px; overflow: hidden; }
-    .tool-nav-btn { text-decoration: none; color: #4b5563; border-right: 1px solid #e5e7eb; background: #fff; padding: 0.42rem 0.68rem; font-size: 0.84rem; }
-    .tool-nav-btn:last-child { border-right: 0; }
-    .tool-nav-btn.active { background: #eef2ff; color: #1d4ed8; }
+    .tool-header-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: 52px; flex-wrap: wrap; }
+    .tool-header-brand { text-decoration: none; color: #111827; font-weight: 700; flex: 0 0 auto; }
+    .tool-header-right { margin-left: auto; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; min-width: 0; flex: 1 1 auto; flex-wrap: wrap; }
+    .tool-header-main { flex: 1 1 auto; min-width: 0; position: relative; display: flex; justify-content: flex-end; }
+    .tool-global-nav { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: flex-end; }
+    .tool-nav-btn { white-space: nowrap; }
+    .tool-nav-btn.active { background: #6c757d; border-color: #6c757d; color: #fff; }
     .tool-navbar-toggler { display: none; border: 1px solid #d1d5db; border-radius: 0.5rem; background: #fff; width: 36px; height: 36px; }
     .tool-header-reg, .tool-header-lang { flex: 0 0 auto; font-size: 0.77rem; }
     .tool-regulation-control { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0; background: transparent; border: 0; margin: 0; }
@@ -46,10 +45,10 @@ function ensureHeaderStyles() {
     .tool-lang-separator { color: #9ca3af; }
     @media (max-width: 991.98px) {
       .tool-navbar-toggler { display: inline-flex; align-items: center; justify-content: center; }
-      .tool-header-row { flex-wrap: nowrap; gap: 0.35rem; }
-      .tool-header-right { gap: 0.35rem; }
+      .tool-header-row { flex-wrap: wrap; gap: 0.45rem; }
+      .tool-header-right { gap: 0.35rem; width: 100%; }
       .tool-header-brand { font-size: 0.95rem; }
-      .tool-header-main { order: 5; position: static; }
+      .tool-header-main { order: 5; position: static; width: 100%; justify-content: flex-end; }
       .tool-nav-collapse.is-collapsed { display: none; }
       .tool-nav-collapse {
         position: absolute;
@@ -153,7 +152,7 @@ function buildNavigationTabs() {
 
   const nav = navItems.map(item => {
     const active = item.key === pageKey;
-    return `<a class="tool-nav-btn inline-flex items-center justify-center gap-2 border px-3 py-2 text-xs md:text-sm font-medium transition-colors ${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''} href="${item.href}"><i class="bi bi-${item.icon}"></i><span>${item.label}</span></a>`;
+    return `<a class="btn btn-sm ${active ? 'btn-secondary active' : 'btn-outline-secondary'} tool-nav-btn d-inline-flex align-items-center gap-1" ${active ? 'aria-current="page"' : ''} href="${item.href}"><i class="bi bi-${item.icon}"></i><span>${item.label}</span></a>`;
   }).join('');
 
   return `<nav class="tool-global-nav" aria-label="global navigation">${nav}</nav>`;
@@ -175,15 +174,21 @@ function buildRegulationControl() {
 
 function mountHeader() {
   const headerEl = document.querySelector('.calc-header') || document.querySelector('header');
-  const headerContainer = headerEl?.querySelector('.container');
-  if (!headerContainer) return;
+  if (!headerEl) return;
+  let headerContainer = headerEl.querySelector('.container, .container-fluid');
+  if (!headerContainer) {
+    headerContainer = document.createElement('div');
+    headerContainer.className = 'container';
+    headerEl.innerHTML = '';
+    headerEl.appendChild(headerContainer);
+  }
 
   if (!headerEl.classList.contains('calc-header')) {
     headerEl.classList.add('calc-header', 'py-2');
   }
 
   headerContainer.innerHTML = `
-    <nav class="tool-navbar w-full" aria-label="tool global navigation">
+    <nav class="tool-navbar" aria-label="tool global navigation">
       <div class="tool-header-row">
         <a class="tool-header-brand" href="/box-party.html" aria-label="リスポケ ボックスへ">
           <span class="calc-title mb-0">リスポケ</span>

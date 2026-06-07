@@ -461,83 +461,73 @@ function renderEmptyState(container) {
   `;
 }
 
-function renderPokemonResults(container, rows) {
-  container.innerHTML = rows.slice(0, 72).map(row => `
-    <a class="dex-result-card text-decoration-none" href="${getPokemonHref(row.id)}">
-      <div class="dex-result-icon-wrap">
-        <img class="ps-pokemon-icon dex-result-icon" src="${row.iconUrl}" alt="" loading="lazy">
-      </div>
+function renderResultCard(iconHtml, titleHtml, metaHtml, snippetHtml, noteHtml, href) {
+  return `
+    <a class="dex-result-card text-decoration-none shadow-sm" href="${href}">
+      <div class="dex-result-icon-wrap">${iconHtml}</div>
       <div class="dex-result-content">
-        <div class="dex-result-title">${row.name}</div>
-        <div class="dex-chip-row">
-          ${(row.types || []).map(type => `<span class="badge text-bg-light dex-chip"><img class="dex-type-icon" src="${getMoveTypeIcon(type)}" alt="${type}" loading="lazy"></span>`).join('')}
-        </div>
-        <div class="dex-result-note">${t('detail')}</div>
+        <div class="dex-result-title">${titleHtml}</div>
+        ${metaHtml ? `<div class="dex-result-meta dex-meta-pills">${metaHtml}</div>` : ''}
+        ${snippetHtml ? `<div class="dex-result-snippet">${snippetHtml}</div>` : ''}
+        ${noteHtml ? `<div class="dex-result-note">${noteHtml}</div>` : ''}
       </div>
     </a>
-  `).join('');
+  `;
+}
+
+function renderPokemonResults(container, rows) {
+  container.innerHTML = rows.slice(0, 72).map(row => renderResultCard(
+    `<img class="ps-pokemon-icon dex-result-icon" src="${row.iconUrl}" alt="" loading="lazy">`,
+    row.name,
+    (row.types || []).map(type => `<span class="badge text-bg-light dex-chip"><img class="dex-type-icon" src="${getMoveTypeIcon(type)}" alt="${type}" loading="lazy"></span>`).join(''),
+    '',
+    t('detail'),
+    getPokemonHref(row.id),
+  )).join('');
 
   if (!rows.length) renderEmptyState(container);
 }
 
 function renderMoveResults(container, rows) {
-  container.innerHTML = rows.slice(0, 72).map(row => `
-    <a class="dex-result-card text-decoration-none" href="${getMoveHref(row.id)}">
-      <div class="dex-result-icon-wrap">
-        <span class="dex-move-icon-box"><img class="dex-type-icon dex-move-type-icon" src="${getMoveTypeIcon(row.type)}" alt="${row.type}" loading="lazy"></span>
-      </div>
-      <div class="dex-result-content">
-        <div class="dex-result-title">${row.name}</div>
-        <div class="dex-result-meta dex-meta-pills">
-          <span class="badge text-bg-light">${getMoveCategoryLabel(row.category)}</span>
-          <span class="badge text-bg-light mono">${t('movePower', { value: row.category === 'Status' || Number(row.basePower) === 0 ? '-' : row.basePower })}</span>
-          <span class="badge text-bg-light mono">${t('moveAccuracy', { value: formatAccuracy(row.accuracy) })}</span>
-          <span class="badge text-bg-light mono">${t('movePP', { value: row.pp ?? '-' })}</span>
-        </div>
-        <div class="dex-result-snippet">${row.shortDesc || ''}</div>
-        <div class="dex-result-note">${t('moveLearnedBy', { count: (state.data?.learnersByMoveId?.[row.id] || []).length })}</div>
-      </div>
-    </a>
-  `).join('');
+  container.innerHTML = rows.slice(0, 72).map(row => renderResultCard(
+    `<span class="dex-move-icon-box"><img class="dex-type-icon dex-move-type-icon" src="${getMoveTypeIcon(row.type)}" alt="${row.type}" loading="lazy"></span>`,
+    row.name,
+    [
+      `<span class="badge text-bg-light">${getMoveCategoryLabel(row.category)}</span>`,
+      `<span class="badge text-bg-light mono">${t('movePower', { value: row.category === 'Status' || Number(row.basePower) === 0 ? '-' : row.basePower })}</span>`,
+      `<span class="badge text-bg-light mono">${t('moveAccuracy', { value: formatAccuracy(row.accuracy) })}</span>`,
+      `<span class="badge text-bg-light mono">${t('movePP', { value: row.pp ?? '-' })}</span>`,
+    ].join(''),
+    row.shortDesc || '',
+    t('moveLearnedBy', { count: (state.data?.learnersByMoveId?.[row.id] || []).length }),
+    getMoveHref(row.id),
+  )).join('');
 
   if (!rows.length) renderEmptyState(container);
 }
 
 function renderAbilityResults(container, rows) {
-  container.innerHTML = rows.slice(0, 72).map(row => `
-    <a class="dex-result-card text-decoration-none" href="${getAbilityHref(row.id)}">
-      <div class="dex-result-icon-wrap">
-        <div class="dex-ability-icon">Ab</div>
-      </div>
-      <div class="dex-result-content">
-        <div class="dex-result-title">${row.name}</div>
-        <div class="dex-result-meta dex-meta-pills"><span class="badge text-bg-light">${t('abilityUsers', { count: (state.data?.abilityUsersByAbilityId?.[row.id] || []).length })}</span></div>
-        <div class="dex-result-snippet">${row.shortDesc || ''}</div>
-        <div class="dex-result-note">${t('detail')}</div>
-      </div>
-    </a>
-  `).join('');
+  container.innerHTML = rows.slice(0, 72).map(row => renderResultCard(
+    '<div class="dex-ability-icon">Ab</div>',
+    row.name,
+    `<span class="badge text-bg-light">${t('abilityUsers', { count: (state.data?.abilityUsersByAbilityId?.[row.id] || []).length })}</span>`,
+    row.shortDesc || '',
+    t('detail'),
+    getAbilityHref(row.id),
+  )).join('');
 
   if (!rows.length) renderEmptyState(container);
 }
 
 function renderItemResults(container, rows) {
-  container.innerHTML = rows.slice(0, 72).map(row => `
-    <a class="dex-result-card text-decoration-none" href="${getItemHref(row.id)}">
-      <div class="dex-result-icon-wrap">
-        <div class="dex-item-icon">It</div>
-      </div>
-      <div class="dex-result-content">
-        <div class="dex-result-title">${row.name}</div>
-        <div class="dex-result-meta dex-meta-pills">
-          <span class="badge text-bg-light">${t('itemMeta')}</span>
-          ${row.isBerry ? '<span class="badge text-bg-light">Berry</span>' : ''}
-        </div>
-        <div class="dex-result-snippet">${row.shortDesc || ''}</div>
-        <div class="dex-result-note">${t('detail')}</div>
-      </div>
-    </a>
-  `).join('');
+  container.innerHTML = rows.slice(0, 72).map(row => renderResultCard(
+    '<div class="dex-item-icon">It</div>',
+    row.name,
+    [`<span class="badge text-bg-light">${t('itemMeta')}</span>`, row.isBerry ? '<span class="badge text-bg-light">Berry</span>' : ''].join(''),
+    row.shortDesc || '',
+    t('detail'),
+    getItemHref(row.id),
+  )).join('');
 
   if (!rows.length) renderEmptyState(container);
 }
@@ -572,17 +562,7 @@ function renderAllResults(container, rows) {
       ? t('speedTier', { value: row.spe })
       : row.shortDesc || '';
 
-    return `
-      <a class="dex-result-card text-decoration-none" href="${href}">
-        <div class="dex-result-icon-wrap">${icon}</div>
-        <div class="dex-result-content">
-          <div class="dex-result-title">${row.name}</div>
-          <div class="dex-result-meta dex-meta-pills"><span class="badge text-bg-light">${kindLabel}</span></div>
-          <div class="dex-result-snippet">${note}</div>
-          <div class="dex-result-note">${t('detail')}</div>
-        </div>
-      </a>
-    `;
+    return renderResultCard(icon, row.name, `<span class="badge text-bg-light">${kindLabel}</span>`, note, t('detail'), href);
   }).join('');
 
   if (!rows.length) renderEmptyState(container);
