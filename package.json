@@ -8,7 +8,9 @@
     "setup": "git submodule update --init --recursive",
     "server": "http-server public -o damage-calc.html",
     "build:showdown": "npm --prefix library/pokemon-showdown run build",
-    "build:data": "node scripts/export-champions-calc-data.js"
+    "build:data": "node scripts/export-champions-calc-data.js",
+    "build:csv:ja": "node scripts/export-champions-ja-csv.js",
+    "refresh:champions": "npm run build:showdown && npm run build:data && npm run build:csv:ja"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

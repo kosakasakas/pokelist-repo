@@ -97,6 +97,7 @@ const state = {
   speciesCsvMap: new Map(),
   moveCsvMap: new Map(),
   abilityCsvMap: new Map(),
+  itemCsvMap: new Map(),
   query: '',
   activeTab: DEFAULT_TAB,
 };
@@ -155,6 +156,14 @@ async function fetchCsvRecords(url) {
     });
     return record;
   });
+}
+
+async function fetchCsvRecordsSafe(url) {
+  try {
+    return await fetchCsvRecords(url);
+  } catch (_error) {
+    return [];
+  }
 }
 
 function loadLang() {
@@ -216,6 +225,23 @@ function buildAbilityJapaneseMap(records) {
   });
 }
 
+function buildItemJapaneseMap(records) {
+  state.itemCsvMap = new Map();
+  records.forEach(record => {
+    const id = toId(record.ShowdownKey || record.ID || '');
+    const name = String(record['名前'] || record['どうぐ名'] || record['道具名'] || '').trim();
+    if (id && name && !state.itemCsvMap.has(id)) state.itemCsvMap.set(id, name);
+  });
+}
+
+function getItemIconHtml(item) {
+  const spriteNum = Number.isFinite(Number(item?.spritenum)) ? Number(item.spritenum) : Number.isFinite(Number(item?.num)) ? Number(item.num) : null;
+  if (spriteNum === null || spriteNum < 0) return '<div class="dex-item-icon">It</div>';
+  const x = (spriteNum % 16) * 24;
+  const y = Math.floor(spriteNum / 16) * 24;
+  return `<div class="dex-item-icon"><span class="dex-item-icon-sprite" style="background-image:url(https://play.pokemonshowdown.com/sprites/itemicons-sheet.png);background-position:-${x}px -${y}px"></span></div>`;
+}
+
 function getSpeciesName(species) {
   if (state.lang === 'ja') return species.nameJa || state.speciesCsvMap.get(species.id) || species.name || species.id;
   return species.name || species.nameJa || species.id;
@@ -275,7 +301,7 @@ function getItemHref(itemId) {
 }
 
 function getItemName(item) {
-  if (state.lang === 'ja') return item.nameJa || item.name || item.id;
+  if (state.lang === 'ja') return state.itemCsvMap.get(item.id) || item.nameJa || item.name || item.id;
   return item.name || item.nameJa || item.id;
 }
 
@@ -521,7 +547,7 @@ function renderAbilityResults(container, rows) {
 
 function renderItemResults(container, rows) {
   container.innerHTML = rows.slice(0, 72).map(row => renderResultCard(
-    '<div class="dex-item-icon">It</div>',
+    getItemIconHtml(row),
     row.name,
     [`<span class="badge text-bg-light">${t('itemMeta')}</span>`, row.isBerry ? '<span class="badge text-bg-light">Berry</span>' : ''].join(''),
     row.shortDesc || '',
@@ -556,7 +582,7 @@ function renderAllResults(container, rows) {
         ? `<span class="dex-move-icon-box"><img class="dex-type-icon dex-move-type-icon" src="${getMoveTypeIcon(row.type)}" alt="${row.type}" loading="lazy"></span>`
         : row.kind === 'ability'
           ? '<div class="dex-ability-icon">Ab</div>'
-          : '<div class="dex-item-icon">It</div>';
+          : getItemIconHtml(row);
 
     const note = row.kind === 'pokemon'
       ? t('speedTier', { value: row.spe })
@@ -670,13 +696,23 @@ async function initialize() {
   parseParams();
   loadLang();
 
-  const data = await fetchJson('/db/champions-calc-data.json');
+  const [data, speciesRecords, moveRecords, abilityRecords, itemRecords] = await Promise.all([
+    fetchJson('/db/champions-calc-data.json'),
+    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
+    fetchCsvRecordsSafe('/csv/champions-moves.csv'),
+    fetchCsvRecordsSafe('/csv/champions-abilities.csv'),
+    fetchCsvRecordsSafe('/csv/champions-items.csv'),
+  ]);
 
   state.data = {
     ...data,
     learnersByMoveId: buildLearnersByMoveId(data),
     abilityUsersByAbilityId: buildAbilityUsersByAbilityId(data),
   };
+  if (speciesRecords.length) buildSpeciesJapaneseMap(speciesRecords);
+  if (moveRecords.length) buildMoveJapaneseMap(moveRecords);
+  if (abilityRecords.length) buildAbilityJapaneseMap(abilityRecords);
+  if (itemRecords.length) buildItemJapaneseMap(itemRecords);
 
   const searchInput = $('dex-search');
   const tabButtons = document.querySelectorAll('[data-tab]');

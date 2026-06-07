@@ -299,6 +299,7 @@ const state = {
   abilitiesById: new Map(),
   abilityByNum: new Map(),
   abilityNameJaById: new Map(),
+  itemNameJaById: new Map(),
   itemsById: new Map(),
   typeEffectiveness: {},
   megaMap: {},
@@ -395,12 +396,6 @@ function setupDetailEmbedLayout() {
         border-radius: 12px;
         overflow: hidden;
       }
-      body.embed-detail-mode .detail-head {
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 0.65rem;
-        background: #f8fafc;
-      }
       @media (max-width: 767.98px) {
         body.embed-detail-mode #pokemon-detail-modal .modal-dialog {
           margin: 0;
@@ -454,85 +449,7 @@ function setupDetailStandaloneLayout() {
 }
 
 function ensureDetailDialogStyles() {
-  if (isDetailStandaloneMode()) return;
-  if (document.getElementById('detail-dialog-inline-style')) return;
-  const style = document.createElement('style');
-  style.id = 'detail-dialog-inline-style';
-  style.textContent = `
-    .detail-head {
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      padding: 0.65rem;
-      background: #f8fafc;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.65rem;
-      align-items: start;
-    }
-    .detail-head .pokemon-icon-stack { width: 64px; height: 64px; position: relative; display: inline-flex; }
-    .detail-head .ps-pokemon-icon { width: 64px; height: 64px; object-fit: contain; }
-    .detail-head-main { min-width: 0; }
-    .detail-head-title-row { display: flex; gap: 0.5rem; align-items: center; }
-    .detail-head-species-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.45rem; }
-    .detail-head-title { font-weight: 700; font-size: 1.05rem; }
-    .detail-head-base-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.35rem; color: #475569; }
-    .detail-head-base-total { font-weight: 700; color: #1d4ed8; }
-    .ps-item-icon {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      background-image: url(https://play.pokemonshowdown.com/sprites/itemicons-sheet.png);
-      background-repeat: no-repeat;
-      image-rendering: pixelated;
-      vertical-align: middle;
-      flex: 0 0 24px;
-    }
-    .detail-head .pokemon-icon-stack .ps-item-icon {
-      position: absolute;
-      right: -4px;
-      bottom: -2px;
-      border-radius: 6px;
-      background-color: rgba(255,255,255,0.9);
-      border: 1px solid rgba(148,163,184,0.35);
-    }
-    .detail-compact-stat-row {
-      display: grid;
-      grid-template-columns: 52px 64px 1fr;
-      gap: 0.4rem;
-      align-items: center;
-      margin-bottom: 0.35rem;
-    }
-    .detail-stat-actions-layout { display: block; }
-    .detail-compact-stat-editor { max-width: 520px; }
-    .detail-adjust-buttons { margin-top: 0.5rem; }
-    .stat-mod-cycle-btn[data-side="detail"][data-state="plus"] {
-      background: #dcfce7;
-      border-color: #16a34a;
-      color: #166534;
-    }
-    .stat-mod-cycle-btn[data-side="detail"][data-state="neutral"] {
-      background: #fff;
-      border-color: #d1d5db;
-      color: #374151;
-    }
-    .stat-mod-cycle-btn[data-side="detail"][data-state="minus"] {
-      background: #fee2e2;
-      border-color: #ef4444;
-      color: #7f1d1d;
-    }
-    .detail-compact-stat-row .stat-11n-highlight {
-      background: #dcfce7 !important;
-      border-color: #22c55e !important;
-      color: #166534 !important;
-      font-weight: 700;
-    }
-    @media (max-width: 767.98px) {
-      .detail-head { grid-template-columns: 1fr; }
-      .detail-head .pokemon-icon-stack { width: 56px; height: 56px; }
-      .detail-head .ps-pokemon-icon { width: 56px; height: 56px; }
-    }
-  `;
-  document.head.appendChild(style);
+  // Keep dialog visuals in static CSS/Bootstrap classes only.
 }
 
 function populateDetailEvSelectOptions() {
@@ -790,6 +707,7 @@ function displaySpeciesName(species) {
       || species.name;
     if (typeof species.name === 'string' && species.name.endsWith('-Mega-X')) return `${baseJa}(メガX)`;
     if (typeof species.name === 'string' && species.name.endsWith('-Mega-Y')) return `${baseJa}(メガY)`;
+    if (typeof species.name === 'string' && species.name.endsWith('-Mega-Z')) return `${baseJa}(メガZ)`;
     if (typeof species.name === 'string' && species.name.includes('-Mega')) return `${baseJa}(メガ)`;
     if (species.forme) return `${baseJa}(${translateFormeJa(species.forme)})`;
     return baseJa;
@@ -808,7 +726,9 @@ function displayEntryName(entry) {
 }
 
 function displayItemName(item) {
-  return state.lang === 'ja' ? (item.nameJa || ITEM_NAME_JA_FALLBACK[item.id] || item.name) : item.name;
+  return state.lang === 'ja'
+    ? (state.itemNameJaById.get(item.id) || item.nameJa || ITEM_NAME_JA_FALLBACK[item.id] || item.name)
+    : item.name;
 }
 
 function isGenericMegaStone(itemId) {
@@ -825,9 +745,28 @@ function getMegaStoneType(itemId) {
 function getMegaForms(baseSpeciesId) {
   const megaMeta = state.megaMap[baseSpeciesId];
   if (!megaMeta) return [];
-  if (Array.isArray(megaMeta.forms)) return megaMeta.forms;
-  if (megaMeta.id) return [{ id: megaMeta.id, stoneType: 'normal' }];
+  if (Array.isArray(megaMeta.forms)) {
+    return megaMeta.forms.map(form => ({
+      ...form,
+      stoneType: inferMegaStoneType(form),
+    }));
+  }
+  if (megaMeta.id) return [{ id: megaMeta.id, stoneType: inferMegaStoneType({ id: megaMeta.id }) }];
   return [];
+}
+
+function inferMegaStoneType(form = {}) {
+  const explicit = String(form.stoneType || '').toLowerCase();
+  if (explicit === 'x' || explicit === 'y' || explicit === 'z' || explicit === 'normal') return explicit;
+  const requiredItemId = String(form.requiredItemId || '').toLowerCase();
+  if (requiredItemId.endsWith('x')) return 'x';
+  if (requiredItemId.endsWith('y')) return 'y';
+  if (requiredItemId.endsWith('z')) return 'z';
+  const formId = String(form.id || '').toLowerCase();
+  if (formId.endsWith('megax')) return 'x';
+  if (formId.endsWith('megay')) return 'y';
+  if (formId.endsWith('megaz')) return 'z';
+  return 'normal';
 }
 
 function getMegaFormForSpecies(speciesId, itemId = 'megastone') {
@@ -875,7 +814,7 @@ function getMoveCategoryIconUrl(category) {
 
 function renderGenericMegaStoneIcon(stoneType = 'normal') {
   const label = stoneType === 'x' ? 'X' : (stoneType === 'y' ? 'Y' : (stoneType === 'z' ? 'Z' : 'M'));
-  return `<span class="generic-mega-stone-icon" data-stone-type="${stoneType}">${label}</span>`;
+  return `<span class="ps-item-icon generic-mega-stone-icon" data-stone-type="${stoneType}" aria-label="Mega stone ${label}">${label}</span>`;
 }
 
 function getShowdownItemIconPosition(itemId) {
@@ -1084,7 +1023,13 @@ function buildNatureOptions() {
 }
 
 function buildMoveOptions() {
-  return sortByDisplayName(state.data.moves, displayEntryName).map(move => ({ value: move.id, label: displayEntryName(move) }));
+  return sortByDisplayName(state.data.moves, displayEntryName).map(move => ({
+    value: move.id,
+    label: displayEntryName(move),
+    moveType: move.type,
+    moveCategory: move.category,
+    movePower: move.basePower,
+  }));
 }
 
 function buildMoveTypeOptions() {
@@ -1108,7 +1053,7 @@ function buildItemOptions() {
     if (itemId === 'megastoney') return { id: 'megastoney', name: 'Mega Stone Y', nameJa: 'メガストーンY' };
     if (itemId === 'megastonez') return { id: 'megastonez', name: 'Mega Stone Z', nameJa: 'メガストーンZ' };
     return state.itemsById.get(itemId);
-  }).filter(Boolean).map(item => ({ value: item.id, label: displayItemName(item) }));
+  }).filter(Boolean).map(item => ({ value: item.id, label: displayItemName(item), itemId: item.id }));
 }
 
 function buildAbilityOptions(speciesId, megaEnabled, itemId = '') {
@@ -1159,7 +1104,23 @@ function buildLearnsetOptions(speciesId) {
   const sourceMoves = learnedMoveIds.size
     ? [...learnedMoveIds].map(moveId => state.movesById.get(moveId)).filter(Boolean)
     : [...state.data.moves];
-  return sortByDisplayName(sourceMoves, displayEntryName).map(move => ({ value: move.id, label: displayEntryName(move) }));
+  return sortByDisplayName(sourceMoves, displayEntryName).map(move => ({
+    value: move.id,
+    label: displayEntryName(move),
+    moveType: move.type,
+    moveCategory: move.category,
+    movePower: move.basePower,
+  }));
+}
+
+function buildSpeciesPickerOptions() {
+  return sortByDisplayName(state.displaySpecies, displaySpeciesName).map(species => ({
+    value: species.id,
+    label: displaySpeciesName(species),
+    iconSpeciesId: species.id,
+    iconMegaEnabled: false,
+    iconItemId: '',
+  }));
 }
 
 function canSpeciesLearnMove(speciesId, moveId) {
@@ -1288,15 +1249,26 @@ function syncNatureModifierSelectors(prefix) {
   }
   document.querySelectorAll(`.stat-mod-cycle-btn[data-side="${prefix}"]`).forEach(button => {
     const labelMap = { hp: 'H', atk: 'A', def: 'B', spa: 'C', spd: 'D', spe: 'S' };
+    const usePercentLabel = prefix === 'detail';
     if (button.dataset.stat === 'hp') {
       button.dataset.state = 'neutral';
-      button.textContent = 'H';
+      if (usePercentLabel) {
+        button.textContent = '+-0%';
+      } else {
+        button.textContent = 'H';
+      }
       return;
     }
     const stateValue = button.dataset.stat === nature.plus ? 'plus' : (button.dataset.stat === nature.minus ? 'minus' : 'neutral');
     button.dataset.state = stateValue;
     const base = labelMap[button.dataset.stat] || '';
-    button.textContent = stateValue === 'plus' ? `${base}+` : (stateValue === 'minus' ? `${base}-` : base);
+    if (usePercentLabel) {
+      if (stateValue === 'plus') button.textContent = '▲10%';
+      else if (stateValue === 'minus') button.textContent = '▼10%';
+      else button.textContent = '+-0%';
+    } else {
+      button.textContent = stateValue === 'plus' ? `${base}+` : (stateValue === 'minus' ? `${base}-` : base);
+    }
   });
 }
 
@@ -1407,10 +1379,16 @@ function fillTypeSelect() {
   fillMoveCategoryField($('move-category')?.value || 'Special');
 }
 
-function setupLocalizedNameMapsFromData() {
+function setupLocalizedNameMapsFromData(speciesRecords = [], moveRecords = [], abilityRecords = [], itemRecords = []) {
   state.moveNameJaById = new Map();
   (state.data?.moves || []).forEach(move => {
     if (move?.id && move?.nameJa) state.moveNameJaById.set(move.id, move.nameJa);
+  });
+  moveRecords.forEach(record => {
+    const moveNum = Number(record.ID);
+    const ja = String(record['わざ名'] || '').trim();
+    const moveId = Number.isFinite(moveNum) ? state.moveByNum.get(moveNum) : '';
+    if (moveId && ja && !state.moveNameJaById.has(moveId)) state.moveNameJaById.set(moveId, ja);
   });
 
   state.speciesNameJaById = new Map();
@@ -1418,10 +1396,31 @@ function setupLocalizedNameMapsFromData() {
     if (!species?.id || !species?.nameJa) return;
     if (!state.speciesNameJaById.has(species.id)) state.speciesNameJaById.set(species.id, species.nameJa);
   });
+  speciesRecords.forEach(record => {
+    const id = toId(record.ShowdownKey || '');
+    const ja = String(record['名前(フォルム)'] || record['名前'] || '').trim();
+    if (id && ja && !state.speciesNameJaById.has(id)) state.speciesNameJaById.set(id, ja);
+  });
 
   state.abilityNameJaById = new Map();
   (state.data?.abilities || []).forEach(ability => {
     if (ability?.id && ability?.nameJa) state.abilityNameJaById.set(ability.id, ability.nameJa);
+  });
+  abilityRecords.forEach(record => {
+    const abilityNum = Number(record.ID);
+    const ja = String(record['特性'] || '').trim();
+    const abilityId = Number.isFinite(abilityNum) ? state.abilityByNum.get(abilityNum) : '';
+    if (abilityId && ja && !state.abilityNameJaById.has(abilityId)) state.abilityNameJaById.set(abilityId, ja);
+  });
+
+  state.itemNameJaById = new Map();
+  (state.data?.items || []).forEach(item => {
+    if (item?.id && item?.nameJa) state.itemNameJaById.set(item.id, item.nameJa);
+  });
+  itemRecords.forEach(record => {
+    const itemId = toId(record.ShowdownKey || record.ID || '');
+    const ja = String(record['どうぐ名'] || record['道具名'] || record['アイテム名'] || record['名前'] || '').trim();
+    if (itemId && ja && !state.itemNameJaById.has(itemId)) state.itemNameJaById.set(itemId, ja);
   });
 
   state.learnsetBySpeciesNum = new Map();
@@ -1431,6 +1430,14 @@ function setupLocalizedNameMapsFromData() {
     if (!state.learnsetBySpeciesNum.has(species.num)) state.learnsetBySpeciesNum.set(species.num, new Set());
     moveIds.forEach(moveId => state.learnsetBySpeciesNum.get(species.num).add(moveId));
   });
+}
+
+async function fetchCsvRecordsSafe(url) {
+  try {
+    return await fetchCsvRecords(url);
+  } catch (_error) {
+    return [];
+  }
 }
 
 function refreshConditionToggleLabels() {
@@ -2182,21 +2189,15 @@ function applyDetail11nHighlight(plusStats, stats) {
     const node = $(nodeId);
     const evNode = $(`detail-ev-${stat}`);
     if (!node) return;
-    const boosted = Array.isArray(plusStats) && plusStats.includes(stat);
-    const value = toNumber(stats[stat]);
-    const is11n = Boolean(boosted && value > 0 && value % 11 === 0);
-    node.classList.toggle('stat-11n-highlight', is11n);
-    if (evNode) evNode.classList.toggle('stat-11n-highlight', is11n);
+    node.classList.remove('stat-11n-highlight');
+    if (evNode) evNode.classList.remove('stat-11n-highlight');
   });
 
   document.querySelectorAll('.stat-mod-cycle-btn[data-side="detail"]').forEach(button => {
     const stat = button.dataset.stat;
     if (!stat || stat === 'hp') return;
     const stateValue = button.dataset.state || 'neutral';
-    const boosted = Array.isArray(plusStats) && plusStats.includes(stat);
-    const value = toNumber(stats[stat]);
-    const is11n = Boolean(boosted && value > 0 && value % 11 === 0);
-    button.classList.toggle('stat-11n-highlight', is11n);
+    button.classList.remove('stat-11n-highlight');
     button.dataset.state = stateValue;
   });
 }
@@ -2308,7 +2309,13 @@ function updateDetailMegaIcon(itemId = '') {
   megaButton.disabled = !canUse;
   megaButton.classList.toggle('is-on', isOn);
   megaButton.setAttribute('aria-pressed', isOn ? 'true' : 'false');
-  megaButton.textContent = canUse ? (isOn ? 'メガON' : 'メガOFF') : 'メガ不可';
+  const stoneType = getMegaStoneType(itemId || '');
+  let label = 'メガ';
+  if (stoneType === 'x') label = 'メガX';
+  else if (stoneType === 'y') label = 'メガY';
+  else if (stoneType === 'z') label = 'メガZ';
+  megaButton.textContent = label;
+  megaButton.dataset.stoneType = stoneType || 'normal';
 }
 
 function getPartyMemberships(pokemonId) {
@@ -2562,10 +2569,10 @@ function renderBoxList() {
     const warnings = getPokemonWarnings(pokemon);
     const memberships = getPartyMemberships(pokemon.id);
     const card = document.createElement('div');
-    card.className = 'entity-card compact-entity-card';
+    card.className = 'card shadow-sm border mb-2 position-relative entity-card compact-entity-card';
     card.draggable = true;
     card.innerHTML = `
-      <div class="entity-card-head">
+      <div class="card-body p-2 d-flex align-items-center justify-content-center entity-card-head">
         ${renderPokemonIconStack(pokemon.speciesId, Boolean(pokemon.megaEnabled), pokemon.itemId, displayPokemonName(pokemon))}
       </div>
       ${(memberships.length || warnings.length) ? `<span class="badge rounded-pill ${warnings.length ? 'text-bg-warning' : 'text-bg-light'} card-corner-badge">${memberships.length || '!'}</span>` : ''}
@@ -2610,15 +2617,15 @@ function renderPartyList() {
   $('party-count-badge').textContent = String(state.storage.parties.length);
   state.storage.parties.forEach(party => {
     const card = document.createElement('div');
-    card.className = 'party-card';
+    card.className = 'card shadow-sm border mb-3 party-card';
     card.innerHTML = `
-      <div class="party-card-head">
+      <div class="card-body p-2 party-card-head">
         <div class="party-name-wrap">
           <input class="form-control form-control-sm party-name-input" data-party-id="${party.id}" value="${party.name}">
           <button class="btn btn-sm remove-party-button" data-party-id="${party.id}" type="button" aria-label="パーティ削除"><i class="bi bi-x-lg"></i></button>
         </div>
       </div>
-      <div class="party-slots"></div>
+      <div class="card-body pt-0 party-slots"></div>
     `;
     const slots = card.querySelector('.party-slots');
     party.slots.forEach((pokemonId, index) => {
@@ -2804,7 +2811,7 @@ function renderDetailWarnings(pokemon) {
     ...getPokemonWarnings(pokemon, '', { includeMoveWarning }),
     ...memberships.flatMap(entry => getPokemonWarnings(pokemon, getPartyById(entry.partyId)?.regulation || '', { includeMoveWarning })),
   ])];
-  $('detail-warning-list').innerHTML = warnings.length ? warnings.map(warning => `<div><i class="bi bi-exclamation-triangle-fill text-warning"></i> ${warning}</div>`).join('') : '<div class="text-muted">警告はありません。</div>';
+  $('detail-warning-list').innerHTML = warnings.length ? warnings.map(warning => `<div><i class="bi bi-exclamation-triangle-fill text-warning"></i> ${warning}</div>`).join('') : '';
 }
 
 function buildHistoryInputForPokemon(pokemon, entry) {
@@ -2966,21 +2973,13 @@ function renderDetailMoveList(pokemon) {
     row.className = 'detail-move-row';
     row.innerHTML = `
       <input id="${fieldId}" type="hidden">
-      <button id="${buttonId}" class="btn btn-field flex-grow-1 text-start detail-move-button" type="button"></button>
-      <button class="btn btn-outline-secondary btn-sm detail-move-clear" type="button" data-field-id="${fieldId}"><i class="bi bi-x"></i></button>
+      <button id="${buttonId}" class="btn btn-outline-secondary text-start detail-move-button" type="button"></button>
     `;
     container.appendChild(row);
     setPickerField(fieldId, [{ value: '', label: '未設定' }, ...buildLearnsetOptions(pokemon.speciesId)], pokemon.moveIds[index] || '');
     refreshDetailMoveButton(fieldId);
     $(buttonId).addEventListener('click', () => openPicker(fieldId));
   }
-  container.querySelectorAll('.detail-move-clear').forEach(button => {
-    button.addEventListener('click', () => {
-      $(button.dataset.fieldId).value = '';
-      updatePickerButtonLabel(button.dataset.fieldId);
-      refreshDetailMoveButton(button.dataset.fieldId);
-    });
-  });
 }
 
 function refreshDetailMoveButton(fieldId) {
@@ -2996,11 +2995,30 @@ function refreshDetailMoveButton(fieldId) {
   const categoryIcon = getMoveCategoryIconUrl(move.category);
   const powerText = move.basePower != null ? String(move.basePower) : '-';
   button.innerHTML = `
-    ${typeIcon ? `<img class="move-type-icon-chip" src="${typeIcon}" alt="${move.type}" loading="lazy">` : ''}
-    ${categoryIcon ? `<img class="move-category-icon-chip" src="${categoryIcon}" alt="${move.category}" loading="lazy">` : ''}
-    <span>${displayEntryName(move)}</span>
-    <span class="detail-move-power mono">威力 ${powerText}</span>
+    <span class="move-picker-item">
+      <span class="move-picker-item-main">
+        ${typeIcon ? `<img class="move-type-icon-chip" src="${typeIcon}" alt="" loading="lazy">` : ''}
+        ${categoryIcon ? `<img class="move-category-icon-chip" src="${categoryIcon}" alt="" loading="lazy">` : ''}
+        <span class="move-picker-name">${displayEntryName(move)}</span>
+      </span>
+      <span class="move-picker-damage mono">威力 ${powerText}</span>
+    </span>
   `;
+}
+
+function openNewBoxSpeciesPicker() {
+  if (!state.picker.modal) return;
+  state.dynamicPickerMeta['new-box-species'] = { titleKey: 'pickerSpecies' };
+  state.pickerOptions['new-box-species'] = buildSpeciesPickerOptions();
+  state.picker.currentField = 'new-box-species';
+  state.picker.sideContext = null;
+  state.picker.source = 'list';
+  $('picker-title').textContent = t('pickerSpecies');
+  $('picker-search').value = '';
+  refreshPickerSourceTabs();
+  renderPickerList('');
+  $('picker-modal').dataset.layered = '0';
+  state.picker.modal.show();
 }
 
 function renderDetailHeadSummary(pokemon) {
@@ -3183,10 +3201,19 @@ function createPickerOptionsFromLinkedAttackerMoves() {
 function renderMovePickerItem(option) {
   const move = state.movesById.get(option.value);
   if (!move) return option.label;
-  const typeName = state.lang === 'ja' ? ((state.data.types || []).find(type => type.name === move.type)?.nameJa || move.type) : move.type;
-  const categoryName = state.lang === 'ja' ? ({ Physical: '物理', Special: '特殊', Status: '変化' }[move.category] || move.category) : move.category;
+  const typeIcon = getMoveTypeIconUrl(move.type);
+  const categoryIcon = getMoveCategoryIconUrl(move.category);
   const powerText = move.basePower != null ? String(move.basePower) : '-';
-  return `<span class="move-picker-item"><span class="move-picker-name">${option.label}</span><span class="move-picker-meta">${typeName} ${categoryName} <span class="move-picker-damage" title="わざ威力">${powerText}</span></span></span>`;
+  return `
+    <span class="move-picker-item">
+      <span class="move-picker-item-main">
+        ${typeIcon ? `<img class="move-type-icon-chip" src="${typeIcon}" alt="" loading="lazy">` : ''}
+        ${categoryIcon ? `<img class="move-category-icon-chip" src="${categoryIcon}" alt="" loading="lazy">` : ''}
+        <span class="move-picker-name">${option.label}</span>
+      </span>
+      <span class="move-picker-damage mono">威力 ${powerText}</span>
+    </span>
+  `;
 }
 
 function renderPickerList(query) {
@@ -3248,6 +3275,8 @@ function renderPickerList(query) {
       if (fieldId === 'party-slot') {
         const target = state.picker.partySlotTarget;
         if (target) assignPokemonToPartySlot(target.partyId, target.slotIndex, option.value);
+      } else if (fieldId === 'new-box-species') {
+        createNewBoxPokemon({ ...emptyPokemonRecord(), speciesId: option.value });
       } else 
       if (isSpeciesField && state.picker.source !== 'list') {
         const side = fieldId.startsWith('attacker') ? 'attacker' : 'defender';
@@ -3874,8 +3903,7 @@ function bindEvents() {
     updateLinkedPokemonFromSide('defender');
   });
   if ($('add-box-pokemon')) $('add-box-pokemon').addEventListener('click', () => {
-    if (hasCalcPage() && !validateSideNatureForSave('attacker')) return;
-    createNewBoxPokemon(hasCalcPage() ? createPokemonRecordFromSide('attacker') : emptyPokemonRecord());
+    openNewBoxSpeciesPicker();
   });
   if ($('attacker-preset')) $('attacker-preset').addEventListener('click', () => openPresetModal('attacker'));
   if ($('defender-preset')) $('defender-preset').addEventListener('click', () => openPresetModal('defender'));
@@ -3934,7 +3962,13 @@ function bindEvents() {
       const current = button.dataset.state || 'neutral';
       const next = current === 'neutral' ? 'plus' : (current === 'plus' ? 'minus' : 'neutral');
       button.dataset.state = next;
-      button.textContent = next === 'plus' ? `${base}+` : (next === 'minus' ? `${base}-` : base);
+      if (side === 'detail') {
+        if (next === 'plus') button.textContent = '▲10%';
+        else if (next === 'minus') button.textContent = '▼10%';
+        else button.textContent = '+-0%';
+      } else {
+        button.textContent = next === 'plus' ? `${base}+` : (next === 'minus' ? `${base}-` : base);
+      }
       applyNatureFromModifierSelectors(side);
       if (side === 'detail') {
         updateDetailStatSummaries();
@@ -3976,14 +4010,20 @@ function bindEvents() {
 }
 
 async function initialize() {
-  const dataResponse = await fetch('/db/champions-calc-data.json', { cache: 'no-store' });
+  const [dataResponse, speciesRecords, moveRecords, abilityRecords, itemRecords] = await Promise.all([
+    fetch('/db/champions-calc-data.json', { cache: 'no-store' }),
+    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
+    fetchCsvRecordsSafe('/csv/champions-moves.csv'),
+    fetchCsvRecordsSafe('/csv/champions-abilities.csv'),
+    fetchCsvRecordsSafe('/csv/champions-items.csv'),
+  ]);
   if (!dataResponse.ok) throw new Error(`Failed to load data: ${dataResponse.status}`);
   state.data = await dataResponse.json();
   ensureDetailDialogStyles();
   populateDetailEvSelectOptions();
   setupLookups(state.data);
   state.availableFormats = [currentFormatLabel()];
-  setupLocalizedNameMapsFromData();
+  setupLocalizedNameMapsFromData(speciesRecords, moveRecords, abilityRecords, itemRecords);
   loadLanguagePreference();
   loadStorage();
   initPickerModal();

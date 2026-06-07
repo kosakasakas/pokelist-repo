@@ -128,6 +128,14 @@ async function fetchCsvRecords(url) {
   });
 }
 
+async function fetchCsvRecordsSafe(url) {
+  try {
+    return await fetchCsvRecords(url);
+  } catch (_error) {
+    return [];
+  }
+}
+
 function loadLang() {
   try {
     const saved = localStorage.getItem(LANG_STORAGE_KEY);
@@ -562,9 +570,17 @@ async function initialize() {
   loadLang();
   loadStorage();
 
-  const data = await fetchJson('/db/champions-calc-data.json');
+  const [data, speciesRecords, moveRecords, abilityRecords] = await Promise.all([
+    fetchJson('/db/champions-calc-data.json'),
+    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
+    fetchCsvRecordsSafe('/csv/champions-moves.csv'),
+    fetchCsvRecordsSafe('/csv/champions-abilities.csv'),
+  ]);
 
   state.data = data;
+  if (speciesRecords.length || moveRecords.length || abilityRecords.length) {
+    buildCsvMaps(speciesRecords, moveRecords, abilityRecords);
+  }
   state.currentSpecies = (data.species || []).find(entry => entry.id === state.speciesId)
     || (data.megaSpecies || []).find(entry => entry.id === state.speciesId)
     || null;

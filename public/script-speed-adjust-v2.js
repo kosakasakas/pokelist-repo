@@ -145,6 +145,7 @@ const state = {
   targetSearchModal: null,
   targetSearchScope: 'all',
   saveFeedbackTimer: null,
+  detailHostListenerBound: false,
 };
 
 function t(key, vars = {}) {
@@ -229,6 +230,14 @@ async function fetchCsvRecords(url) {
     headers.forEach((h, i) => { r[h] = vals[i] || ''; });
     return r;
   });
+}
+
+async function fetchCsvRecordsSafe(url) {
+  try {
+    return await fetchCsvRecords(url);
+  } catch (_error) {
+    return [];
+  }
 }
 
 function loadLanguagePreference() {
@@ -1011,9 +1020,17 @@ function openTargetEditModal() {
   saveStorage();
   persistLastTargetState();
   localStorage.setItem(OPEN_DETAIL_REQUEST_KEY, JSON.stringify({ pokemonId: state.targetPokemon.id }));
-
-  const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
-  window.location.href = `/box-party.html?detail=standalone&returnPath=${returnPath}`;
+  const host = $('target-box-editor-host');
+  const frame = $('target-box-editor-frame');
+  if (!host || !frame) {
+    const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
+    window.location.href = `/box-party.html?detail=standalone&returnPath=${returnPath}`;
+    return;
+  }
+  host.classList.remove('d-none');
+  host.setAttribute('aria-hidden', 'false');
+  frame.style.visibility = 'hidden';
+  frame.src = '/box-party.html?embed=detail';
 }
 
 function closeTargetEditHost() {
@@ -1170,6 +1187,21 @@ function bindEvents() {
     });
   });
 
+  if (!state.detailHostListenerBound) {
+    window.addEventListener('message', event => {
+      if (event.origin !== window.location.origin) return;
+      const type = event.data?.type;
+      if (type === 'champions-detail-ready') {
+        const frame = $('target-box-editor-frame');
+        if (frame) frame.style.visibility = 'visible';
+      }
+      if (type === 'champions-detail-closed') {
+        closeTargetEditHost();
+      }
+    });
+    state.detailHostListenerBound = true;
+  }
+
 }
 
 async function initialize() {
@@ -1186,15 +1218,17 @@ async function initialize() {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
-  const [data, rules] = await Promise.all([
+  const [data, rules, speciesRecords] = await Promise.all([
     fetchJson('/db/champions-calc-data.json'),
     fetchJson('/db/speed-adjust-rules.json'),
+    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
   ]);
 
   state.data = data;
   state.rules = rules;
 
   setupLookups();
+  if (speciesRecords.length) setupSpeciesJapaneseMap(speciesRecords);
   resolveTargetPokemon();
   buildGroupedSpeciesRows();
   createSpeedBuckets();

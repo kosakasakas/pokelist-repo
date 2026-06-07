@@ -27,50 +27,73 @@ function ensureHeaderStyles() {
   style.id = 'tool-layout-inline-style';
   style.textContent = `
     .calc-header { background: #ffffff; border: 0 !important; box-shadow: none !important; }
-    .tool-header-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: 52px; flex-wrap: wrap; }
-    .tool-header-brand { text-decoration: none; color: #111827; font-weight: 700; flex: 0 0 auto; }
-    .tool-header-right { margin-left: auto; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; min-width: 0; flex: 1 1 auto; flex-wrap: wrap; }
-    .tool-header-main { flex: 1 1 auto; min-width: 0; position: relative; display: flex; justify-content: flex-end; }
-    .tool-global-nav { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: flex-end; }
+    .tool-header-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: 52px; flex-wrap: nowrap; }
+    .tool-header-brand { text-decoration: none; color: #111827; font-weight: 700; flex: 0 0 auto; white-space: nowrap; }
+    .tool-header-right { margin-left: auto; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; min-width: 0; flex: 1 1 auto; flex-wrap: nowrap; }
+    .tool-header-main { flex: 1 1 auto; min-width: 0; display: flex; justify-content: flex-end; }
+    .tool-global-nav { display: flex; flex-wrap: nowrap; gap: 0.35rem; justify-content: flex-end; overflow-x: auto; scrollbar-width: thin; }
     .tool-nav-btn { white-space: nowrap; }
     .tool-nav-btn.active { background: #6c757d; border-color: #6c757d; color: #fff; }
-    .tool-navbar-toggler { display: none; border: 1px solid #d1d5db; border-radius: 0.5rem; background: #fff; width: 36px; height: 36px; }
-    .tool-header-reg, .tool-header-lang { flex: 0 0 auto; font-size: 0.77rem; }
+    .tool-header-reg, .tool-header-lang { flex: 0 0 auto; font-size: 1rem; }
     .tool-regulation-control { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0; background: transparent; border: 0; margin: 0; }
     .tool-regulation-label { color: #6b7280; }
-    .tool-regulation-select { border: 0; background: transparent; outline: none; appearance: auto; font-size: 0.77rem; padding: 0 0.1rem; }
+    .tool-regulation-select { border: 0; background: transparent; outline: none; appearance: auto; font-size: 1rem; padding: 0 0.1rem; }
     .tool-lang-toggle { display: inline-flex; align-items: center; gap: 0.24rem; border: 0; padding: 0; }
     .tool-lang-toggle .nav-link { border: 0; background: transparent; padding: 0.1rem 0.35rem; border-radius: 999px; }
     .tool-lang-toggle .nav-link.active { background: #111827; color: #fff; }
     .tool-lang-separator { color: #9ca3af; }
+    .tool-nav-toggler { display: none; flex: 0 0 auto; border: 1px solid #d1d5db; border-radius: 0.5rem; background: #fff; padding: 0.25rem 0.45rem; cursor: pointer; font-size: 1rem; line-height: 1; }
+    .tool-nav-panel {
+      display: block;
+    }
+    .tool-nav-panel.is-collapsed { display: none; }
+    .tool-footer {
+      margin-top: 1rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.28);
+      background: #ffffff;
+    }
+    .tool-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.85rem 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      color: #64748b;
+      font-size: 0.74rem;
+      line-height: 1.45;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+    .tool-footer-copyright {
+      margin-top: 0.1rem;
+      font-weight: 600;
+      color: #475569;
+      letter-spacing: 0.04em;
+    }
     @media (max-width: 991.98px) {
-      .tool-navbar-toggler { display: inline-flex; align-items: center; justify-content: center; }
-      .tool-header-row { flex-wrap: wrap; gap: 0.45rem; }
-      .tool-header-right { gap: 0.35rem; width: 100%; }
+      .tool-header-row { gap: 0.35rem; }
+      .tool-header-right { gap: 0.3rem; }
       .tool-header-brand { font-size: 0.95rem; }
-      .tool-header-main { order: 5; position: static; width: 100%; justify-content: flex-end; }
-      .tool-nav-collapse.is-collapsed { display: none; }
-      .tool-nav-collapse {
+      .tool-header-main { display: none; }
+      .tool-nav-toggler { display: inline-flex; align-items: center; justify-content: center; }
+      .tool-nav-panel {
         position: absolute;
+        top: 100%;
         left: 0;
         right: 0;
-        top: calc(100% + 6px);
-        z-index: 1100;
-      }
-      .tool-global-nav {
-        border-radius: 8px;
-        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.12);
+        z-index: 1090;
         background: #fff;
-      }
-      .tool-nav-btn {
-        flex: 1 1 50%;
-        border-right: 1px solid #e5e7eb;
         border-bottom: 1px solid #e5e7eb;
-        padding: 0.5rem 0.55rem;
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.12);
+        padding: 0.5rem 0.75rem;
       }
-      .tool-nav-btn:nth-child(2n) { border-right: 0; }
-      .tool-nav-btn:nth-last-child(-n + 2) { border-bottom: 0; }
-      .tool-header-reg, .tool-header-lang { font-size: 0.72rem; }
+      .tool-global-nav { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: flex-start; overflow-x: visible; }
+      .tool-nav-btn { flex: 1 1 calc(50% - 0.35rem); border-radius: 0.5rem; }
+      .tool-header-reg, .tool-header-lang { font-size: 1rem; }
+    }
+    @media (max-width: 575.98px) {
+      .tool-footer-inner { padding-bottom: 1.2rem; }
     }
   `;
   document.head.appendChild(style);
@@ -152,7 +175,7 @@ function buildNavigationTabs() {
 
   const nav = navItems.map(item => {
     const active = item.key === pageKey;
-    return `<a class="btn btn-sm ${active ? 'btn-secondary active' : 'btn-outline-secondary'} tool-nav-btn d-inline-flex align-items-center gap-1" ${active ? 'aria-current="page"' : ''} href="${item.href}"><i class="bi bi-${item.icon}"></i><span>${item.label}</span></a>`;
+    return `<a class="btn ${active ? 'btn-secondary active' : 'btn-outline-secondary'} tool-nav-btn d-inline-flex align-items-center gap-1" ${active ? 'aria-current="page"' : ''} href="${item.href}"><i class="bi bi-${item.icon}"></i><span>${item.label}</span></a>`;
   }).join('');
 
   return `<nav class="tool-global-nav" aria-label="global navigation">${nav}</nav>`;
@@ -175,27 +198,24 @@ function buildRegulationControl() {
 function mountHeader() {
   const headerEl = document.querySelector('.calc-header') || document.querySelector('header');
   if (!headerEl) return;
-  let headerContainer = headerEl.querySelector('.container, .container-fluid');
-  if (!headerContainer) {
-    headerContainer = document.createElement('div');
-    headerContainer.className = 'container';
-    headerEl.innerHTML = '';
-    headerEl.appendChild(headerContainer);
-  }
+  const hasFluid = Boolean(headerEl.querySelector('.container-fluid'));
+  const containerClass = hasFluid ? 'container-fluid' : 'container';
+  headerEl.innerHTML = `<div class="${containerClass}"></div>`;
+  const headerContainer = headerEl.firstElementChild;
 
   if (!headerEl.classList.contains('calc-header')) {
     headerEl.classList.add('calc-header', 'py-2');
   }
 
   headerContainer.innerHTML = `
-    <nav class="tool-navbar" aria-label="tool global navigation">
+    <nav class="tool-navbar" aria-label="tool global navigation" style="position:relative">
       <div class="tool-header-row">
         <a class="tool-header-brand" href="/box-party.html" aria-label="リスポケ ボックスへ">
           <span class="calc-title mb-0">リスポケ</span>
         </a>
         <div class="tool-header-right">
           <div class="tool-header-main" aria-label="tool controls">
-            <div class="tool-nav-collapse is-collapsed" id="tool-nav-collapse">${buildNavigationTabs()}</div>
+            ${buildNavigationTabs()}
           </div>
           <div class="tool-header-reg" aria-label="regulation controls">
             ${buildRegulationControl()}
@@ -203,10 +223,13 @@ function mountHeader() {
           <div class="tool-header-lang" aria-label="language controls">
             ${buildLangToggle()}
           </div>
-          <button class="tool-navbar-toggler" id="tool-nav-toggle" type="button" aria-controls="tool-nav-collapse" aria-expanded="false" aria-label="ナビゲーションを開閉">
-            <i class="bi bi-list"></i>
+          <button class="tool-nav-toggler" id="tool-nav-toggler" type="button" aria-label="ナビゲーション" aria-expanded="false">
+            <i class="bi bi-list" aria-hidden="true"></i>
           </button>
         </div>
+      </div>
+      <div class="tool-nav-panel is-collapsed" id="tool-nav-panel" aria-label="ページナビゲーション">
+        ${buildNavigationTabs()}
       </div>
     </nav>
   `;
@@ -244,38 +267,21 @@ function mountHeader() {
     });
   });
 
-  const toggle = document.getElementById('tool-nav-toggle');
-  const collapse = document.getElementById('tool-nav-collapse');
-  const mobileQuery = window.matchMedia('(max-width: 991.98px)');
-  const syncMobileNav = () => {
-    if (!toggle || !collapse) return;
-    if (mobileQuery.matches) {
-      collapse.classList.add('is-collapsed');
-      toggle.setAttribute('aria-expanded', 'false');
-    } else {
-      collapse.classList.remove('is-collapsed');
-      toggle.setAttribute('aria-expanded', 'true');
-    }
-  };
-
-  if (toggle && collapse) {
-    toggle.addEventListener('click', () => {
-      const collapsed = collapse.classList.toggle('is-collapsed');
-      toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+  const toggler = document.getElementById('tool-nav-toggler');
+  const navPanel = document.getElementById('tool-nav-panel');
+  if (toggler && navPanel) {
+    toggler.addEventListener('click', () => {
+      const collapsed = navPanel.classList.toggle('is-collapsed');
+      toggler.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
     });
-    collapse.querySelectorAll('a').forEach(anchor => {
-      anchor.addEventListener('click', () => {
-        if (mobileQuery.matches) {
-          collapse.classList.add('is-collapsed');
-          toggle.setAttribute('aria-expanded', 'false');
-        }
+    navPanel.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navPanel.classList.add('is-collapsed');
+        toggler.setAttribute('aria-expanded', 'false');
       });
     });
-    mobileQuery.addEventListener('change', syncMobileNav);
-    syncMobileNav();
   }
 }
-
 async function loadLayoutConfig() {
   try {
     const response = await fetch(TOOL_LAYOUT_CONFIG_URL, { cache: 'no-store' });
@@ -298,9 +304,8 @@ function mountFooter(config = DEFAULT_LAYOUT_CONFIG) {
   const footerOwner = String(config?.footerOwner || DEFAULT_LAYOUT_CONFIG.footerOwner);
   footer.innerHTML = `
     <div class="tool-footer-inner">
-      <span>Data source: <a href="https://pokemonshowdown.com/" target="_blank" rel="noopener noreferrer">Pokemon Showdown</a></span>
       <span>Pokemon and related names are trademarks of Nintendo, Creatures, and GAME FREAK.</span>
-      <span>© ${new Date().getFullYear()} ${escapeHtml(footerOwner)}</span>
+      <span class="tool-footer-copyright">© ${new Date().getFullYear()} ${escapeHtml(footerOwner)}. All rights reserved.</span>
     </div>
   `;
   document.body.appendChild(footer);

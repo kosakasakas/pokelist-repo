@@ -88,6 +88,7 @@ const state = {
   speciesCsvMap: new Map(),
   moveCsvMap: new Map(),
   abilityCsvMap: new Map(),
+  itemCsvMap: new Map(),
   kind: 'move',
   valueId: '',
   returnPath: '/pokedex.html',
@@ -150,6 +151,14 @@ async function fetchCsvRecords(url) {
   });
 }
 
+async function fetchCsvRecordsSafe(url) {
+  try {
+    return await fetchCsvRecords(url);
+  } catch (_error) {
+    return [];
+  }
+}
+
 function loadLang() {
   try {
     const saved = localStorage.getItem(LANG_STORAGE_KEY);
@@ -184,7 +193,7 @@ function parseParams() {
   if (returnPath) state.returnPath = returnPath;
 }
 
-function buildJapaneseMaps(speciesRecords, moveRecords, abilityRecords) {
+function buildJapaneseMaps(speciesRecords, moveRecords, abilityRecords, itemRecords = []) {
   state.speciesCsvMap = new Map();
   speciesRecords.forEach(record => {
     const id = toId(record.ShowdownKey || '');
@@ -204,6 +213,13 @@ function buildJapaneseMaps(speciesRecords, moveRecords, abilityRecords) {
     const id = Number(record.ID);
     const name = String(record['特性'] || '').trim();
     if (Number.isFinite(id) && name && !state.abilityCsvMap.has(id)) state.abilityCsvMap.set(id, name);
+  });
+
+  state.itemCsvMap = new Map();
+  itemRecords.forEach(record => {
+    const id = toId(record.ShowdownKey || record.ID || '');
+    const name = String(record['名前'] || record['どうぐ名'] || record['道具名'] || '').trim();
+    if (id && name && !state.itemCsvMap.has(id)) state.itemCsvMap.set(id, name);
   });
 }
 
@@ -408,8 +424,16 @@ function renderAbility(ability) {
 }
 
 function getItemDisplayName(item) {
-  if (state.lang === 'ja') return item.nameJa || item.name || item.id;
+  if (state.lang === 'ja') return state.itemCsvMap.get(item.id) || item.nameJa || item.name || item.id;
   return item.name || item.nameJa || item.id;
+}
+
+function getItemIconHtml(item) {
+  const spriteNum = Number.isFinite(Number(item?.spritenum)) ? Number(item.spritenum) : Number.isFinite(Number(item?.num)) ? Number(item.num) : null;
+  if (spriteNum === null || spriteNum < 0) return '<div class="dex-item-icon">It</div>';
+  const x = (spriteNum % 16) * 24;
+  const y = Math.floor(spriteNum / 16) * 24;
+  return `<div class="dex-item-icon"><span class="dex-item-icon-sprite" style="background-image:url(https://play.pokemonshowdown.com/sprites/itemicons-sheet.png);background-position:-${x}px -${y}px"></span></div>`;
 }
 
 function getItemDescription(item) {
@@ -446,7 +470,7 @@ function renderItem(item) {
     <section class="card panel-card mb-3">
       <div class="card-body">
         <div class="dex-detail-head">
-          <div class="dex-item-icon">It</div>
+          ${getItemIconHtml(item)}
           <div>
             <div id="dex-detail-name" class="dex-detail-name">${getItemDisplayName(item)}</div>
           </div>
@@ -530,15 +554,16 @@ async function initialize() {
   loadLang();
   loadStorage();
 
-  const [data, speciesRecords, moveRecords, abilityRecords] = await Promise.all([
+  const [data, speciesRecords, moveRecords, abilityRecords, itemRecords] = await Promise.all([
     fetchJson('/db/champions-calc-data.json'),
-    fetchCsvRecords('/csv/champions-pokemon.csv'),
-    fetchCsvRecords('/csv/champions-moves.csv'),
-    fetchCsvRecords('/csv/champions-abilities.csv'),
+    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
+    fetchCsvRecordsSafe('/csv/champions-moves.csv'),
+    fetchCsvRecordsSafe('/csv/champions-abilities.csv'),
+    fetchCsvRecordsSafe('/csv/champions-items.csv'),
   ]);
 
   state.data = data;
-  buildJapaneseMaps(speciesRecords, moveRecords, abilityRecords);
+  buildJapaneseMaps(speciesRecords, moveRecords, abilityRecords, itemRecords);
 
   if (state.kind === 'ability') {
     state.current = (data.abilities || []).find(entry => entry.id === state.valueId) || null;
