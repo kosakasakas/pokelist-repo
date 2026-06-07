@@ -35,13 +35,60 @@ function ensureHeaderStyles() {
     .tool-nav-btn { white-space: nowrap; }
     .tool-nav-btn.active { background: #6c757d; border-color: #6c757d; color: #fff; }
     .tool-header-reg, .tool-header-lang { flex: 0 0 auto; font-size: 1rem; }
-    .tool-regulation-control { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0; background: transparent; border: 0; margin: 0; }
-    .tool-regulation-label { color: #6b7280; }
-    .tool-regulation-select { border: 0; background: transparent; outline: none; appearance: auto; font-size: 1rem; padding: 0 0.1rem; }
-    .tool-lang-toggle { display: inline-flex; align-items: center; gap: 0.24rem; border: 0; padding: 0; }
-    .tool-lang-toggle .nav-link { border: 0; background: transparent; padding: 0.1rem 0.35rem; border-radius: 999px; }
-    .tool-lang-toggle .nav-link.active { background: #111827; color: #fff; }
-    .tool-lang-separator { color: #9ca3af; }
+    .tool-regulation-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.55rem;
+      background: #f8fafc;
+      border: 1px solid #dbe4ee;
+      border-radius: 999px;
+      margin: 0;
+      color: #334155;
+    }
+    .tool-regulation-label {
+      color: #475569;
+      font-size: 0.86rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.22rem;
+    }
+    .tool-regulation-select {
+      border: 0;
+      background: transparent;
+      outline: none;
+      appearance: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0;
+      color: #0f172a;
+      cursor: pointer;
+    }
+    .tool-lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15rem;
+      border: 1px solid #dbe4ee;
+      background: #f8fafc;
+      border-radius: 999px;
+      padding: 0.16rem;
+    }
+    .tool-lang-toggle .nav-link {
+      border: 0;
+      background: transparent;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.18rem 0.48rem;
+      border-radius: 999px;
+      line-height: 1.1;
+    }
+    .tool-lang-toggle .nav-link.active {
+      background: #334155;
+      color: #fff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.2);
+    }
+    .tool-lang-separator { display: none; }
     .tool-nav-toggler { display: none; flex: 0 0 auto; border: 1px solid #d1d5db; border-radius: 0.5rem; background: #fff; padding: 0.25rem 0.45rem; cursor: pointer; font-size: 1rem; line-height: 1; }
     .tool-nav-panel {
       display: block;
@@ -270,15 +317,29 @@ function mountHeader() {
   const toggler = document.getElementById('tool-nav-toggler');
   const navPanel = document.getElementById('tool-nav-panel');
   if (toggler && navPanel) {
+    const closePanel = () => {
+      navPanel.classList.add('is-collapsed');
+      toggler.setAttribute('aria-expanded', 'false');
+    };
     toggler.addEventListener('click', () => {
       const collapsed = navPanel.classList.toggle('is-collapsed');
       toggler.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
     });
     navPanel.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navPanel.classList.add('is-collapsed');
-        toggler.setAttribute('aria-expanded', 'false');
+        closePanel();
       });
+    });
+    document.addEventListener('click', event => {
+      if (navPanel.classList.contains('is-collapsed')) return;
+      const target = event.target;
+      if (navPanel.contains(target) || toggler.contains(target)) return;
+      closePanel();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      if (navPanel.classList.contains('is-collapsed')) return;
+      closePanel();
     });
   }
 }

@@ -351,12 +351,21 @@ function getNatureSpeedMultiplier(target) {
 
 function setupSpeciesJapaneseMap(records) {
   state.speciesNameJaById = new Map();
-  records.forEach(record => {
-    const id = toId(record.ShowdownKey || '');
-    const ja = String(record['名前(フォルム)'] || record['名前'] || '').trim();
+  Object.entries(records || {}).forEach(([id, entry]) => {
+    const ja = String(entry?.nameJa || '').trim();
     if (!id || !ja) return;
     if (!state.speciesNameJaById.has(id)) state.speciesNameJaById.set(id, ja);
   });
+}
+
+function getItemIconStyle(itemId) {
+  const item = state.itemsById.get(itemId);
+  if (!item) return '';
+  const iconNum = Number.isFinite(Number(item.spritenum)) ? Number(item.spritenum) : Number(item.num);
+  if (!Number.isFinite(iconNum)) return '';
+  const x = (iconNum % 16) * 24;
+  const y = Math.floor(iconNum / 16) * 24;
+  return `background-image:url(https://play.pokemonshowdown.com/sprites/itemicons-sheet.png);background-position:-${x}px -${y}px;`;
 }
 
 function setupLookups() {
@@ -403,11 +412,27 @@ function getEffectiveSpeciesId(speciesId, megaEnabled, itemId = '') {
   const baseId = state.megaMap[speciesId] ? speciesId : toId(state.speciesById.get(speciesId)?.baseSpecies || '');
   const megaMeta = state.megaMap[baseId];
   if (!megaMeta) return speciesId;
-  const forms = Array.isArray(megaMeta.forms) ? megaMeta.forms : (megaMeta.id ? [{ id: megaMeta.id, stoneType: 'normal' }] : []);
+  const forms = Array.isArray(megaMeta.forms)
+    ? megaMeta.forms.map(form => ({ ...form, stoneType: inferMegaStoneType(form) }))
+    : (megaMeta.id ? [{ id: megaMeta.id, stoneType: inferMegaStoneType({ id: megaMeta.id }) }] : []);
   if (!forms.length) return speciesId;
   const stone = itemId === 'megastonex' ? 'x' : itemId === 'megastoney' ? 'y' : itemId === 'megastonez' ? 'z' : 'normal';
   const f = forms.find(form => form.stoneType === stone) || forms.find(form => form.stoneType === 'normal') || forms[0];
   return f?.id || speciesId;
+}
+
+function inferMegaStoneType(form = {}) {
+  const explicit = String(form.stoneType || '').toLowerCase();
+  if (explicit === 'x' || explicit === 'y' || explicit === 'z' || explicit === 'normal') return explicit;
+  const requiredItemId = String(form.requiredItemId || '').toLowerCase();
+  if (requiredItemId.endsWith('x')) return 'x';
+  if (requiredItemId.endsWith('y')) return 'y';
+  if (requiredItemId.endsWith('z')) return 'z';
+  const formId = String(form.id || '').toLowerCase();
+  if (formId.endsWith('megax')) return 'x';
+  if (formId.endsWith('megay')) return 'y';
+  if (formId.endsWith('megaz')) return 'z';
+  return 'normal';
 }
 
 function canUseScarf(species) { return Boolean(species) && !species.requiredItem; }
@@ -742,8 +767,9 @@ function getPartyEntries() {
         record: pokemon,
         label,
         search: normalizeText(`${pokemon.nickname || ''} ${getSpeciesName(species)} ${party.name || ''}`),
-        sub: `${t('sourceParty')} / ${(party.name || 'Party')} #${index + 1}`,
+        sub: `${party.name || (state.lang === 'ja' ? 'パーティ' : 'Party')} #${index + 1}`,
         iconUrl: getShowdownPokemonIconUrl(pokemon.speciesId),
+        itemIconStyle: getItemIconStyle(pokemon.itemId || ''),
       });
     });
   });
@@ -831,9 +857,13 @@ function renderScarfToggle() {
 function renderMegaToggle() {
   const input = $('target-mega-enabled');
   const button = $('target-mega-toggle');
+  const wrap = document.querySelector('.speed-mega-toggle-wrap');
+  const group = document.querySelector('.speed-toggle-group');
   if (!input || !button) return;
   const enabled = hasMega(state.targetPokemon?.speciesId || '');
   button.classList.toggle('d-none', !enabled);
+  if (wrap) wrap.classList.toggle('d-none', !enabled);
+  if (group) group.classList.toggle('single-toggle', !enabled);
   const checked = Boolean(state.targetPokemon?.megaEnabled && enabled);
   input.checked = checked;
   input.disabled = !enabled;
@@ -850,7 +880,7 @@ function renderNatureToggle() {
   button.classList.remove('mode-plus', 'mode-minus', 'mode-neutral');
   button.classList.add(mode === 'plus' ? 'mode-plus' : (mode === 'minus' ? 'mode-minus' : 'mode-neutral'));
   button.setAttribute('aria-pressed', String(mode !== 'neutral'));
-  if (text) text.textContent = mode === 'plus' ? '+10%' : (mode === 'minus' ? '-10%' : '±0%');
+  if (text) text.textContent = mode === 'plus' ? '▲10%' : (mode === 'minus' ? '▼10%' : '+-0%');
 }
 
 function renderTargetPanel() {
@@ -873,9 +903,10 @@ function renderTargetPanel() {
   const icon = species ? getShowdownPokemonIconUrl(species.id) : '';
   const speciesName = getSpeciesName(species || state.speciesById.get(target.speciesId));
   const nickname = String(target.nickname || '').trim();
-  const name = nickname || speciesName;
   const fullTitle = nickname ? `${nickname} (${speciesName})` : speciesName;
-  headMain.innerHTML = `${icon ? `<img class="ps-pokemon-icon" src="${icon}" alt="" loading="lazy">` : ''}<span title="${escapeHtmlText(fullTitle)}">${escapeHtmlText(name)}</span>`;
+  headMain.innerHTML = icon ? `<img class="ps-pokemon-icon" src="${icon}" alt="" loading="lazy">` : '<i class="bi bi-question-circle" aria-hidden="true"></i>';
+  headMain.title = fullTitle;
+  headMain.setAttribute('aria-label', fullTitle);
 
   const speApNode = $('target-spe-ap');
   const speRankNode = $('target-spe-rank');
@@ -908,6 +939,35 @@ function ensureTargetLinkedToBox() {
   return { linked: true, created: true };
 }
 
+function ensureTargetLinkedToBoxWithConfirm() {
+  if (!state.targetPokemon) return { linked: false, created: false };
+  if (state.targetSource.kind === 'box' && state.targetPokemon.id) {
+    return ensureTargetLinkedToBox();
+  }
+  const confirmed = window.confirm(state.lang === 'ja'
+    ? 'この対象はボックスに紐づいていません。ボックスへ新規作成してから個体編集を開きますか？'
+    : 'This target is not linked to your box. Create a new box Pokemon and open the editor?');
+  if (!confirmed) return { linked: false, created: false };
+  return ensureTargetLinkedToBox();
+}
+
+function applyNatureModeToNatureField() {
+  if (!state.targetPokemon) return;
+  const mode = state.targetPokemon.natureBoostMode || 'neutral';
+  const natureId = String(state.targetPokemon.nature || 'hardy');
+  if (mode === 'plus') {
+    if (!SPEED_PLUS_NATURES.has(natureId)) state.targetPokemon.nature = 'timid';
+    return;
+  }
+  if (mode === 'minus') {
+    if (!SPEED_MINUS_NATURES.has(natureId)) state.targetPokemon.nature = 'brave';
+    return;
+  }
+  if (SPEED_PLUS_NATURES.has(natureId) || SPEED_MINUS_NATURES.has(natureId)) {
+    state.targetPokemon.nature = 'hardy';
+  }
+}
+
 function updateTargetFromInputs() {
   if (!state.targetPokemon) return;
   const ap = clamp(toNumber($('target-spe-ap')?.value, 0), 0, 32);
@@ -928,6 +988,8 @@ function updateTargetFromInputs() {
     state.targetPokemon.itemId = state.targetPrevItemId || '';
   }
 
+  applyNatureModeToNatureField();
+
   renderTargetPanel();
   renderSpeedTable(true);
   persistLastTargetState();
@@ -936,18 +998,21 @@ function updateTargetFromInputs() {
 function getRowSearchKey(row) { return state.lang === 'ja' ? row.searchJa : row.searchEn; }
 
 function getAllSpeciesEntries() {
-  return state.rowData.map(row => {
-    const species = state.speciesById.get(row.representativeId);
+  const speciesList = [...(state.data?.species || []), ...(state.data?.megaSpecies || [])];
+  return speciesList.map(species => {
+    const ja = getSpeciesName(species);
+    const en = String(species?.name || '');
     return {
-      id: `all-${row.representativeId}`,
+      id: `all-${species.id}`,
       type: 'all',
-      speciesId: row.representativeId,
-      label: getSpeciesName(species),
-      search: getRowSearchKey(row),
-      sub: t('sourceAll'),
-      iconUrl: getShowdownPokemonIconUrl(row.representativeId),
+      speciesId: species.id,
+      label: ja,
+      search: normalizeText(`${ja} ${en}`),
+      sub: '',
+      iconUrl: getShowdownPokemonIconUrl(species.id),
+      itemIconStyle: '',
     };
-  });
+  }).sort((a, b) => a.label.localeCompare(b.label, state.lang === 'ja' ? 'ja' : 'en'));
 }
 
 function getBoxEntries() {
@@ -961,8 +1026,9 @@ function getBoxEntries() {
       record,
       label,
       search: normalizeText(`${nickname} ${getSpeciesName(species)}`),
-      sub: t('sourceBox'),
+      sub: '',
       iconUrl: getShowdownPokemonIconUrl(record.speciesId),
+      itemIconStyle: getItemIconStyle(record.itemId || ''),
     };
   });
 }
@@ -973,13 +1039,23 @@ function getSearchEntries() {
   return getAllSpeciesEntries();
 }
 
+function createTargetRecordFromSpeciesId(speciesId) {
+  const species = state.speciesById.get(speciesId);
+  const isMegaForm = Boolean(species?.forme && String(species.forme).startsWith('Mega'));
+  if (!isMegaForm) return normalizePokemonRecord(defaultPokemonRecord(speciesId));
+  const baseId = toId(species?.baseSpecies || species?.baseSpeciesId || '') || speciesId;
+  const record = normalizePokemonRecord(defaultPokemonRecord(baseId));
+  record.megaEnabled = true;
+  return record;
+}
+
 function applySearchSelection(entry) {
   if (!entry) return;
   if (entry.type === 'box' || entry.type === 'party') {
     state.targetPokemon = entry.record;
     state.targetSource = { kind: 'box' };
   } else {
-    state.targetPokemon = normalizePokemonRecord(defaultPokemonRecord(entry.speciesId));
+    state.targetPokemon = createTargetRecordFromSpeciesId(entry.speciesId);
     state.targetSource = { kind: 'list' };
   }
   renderTargetPanel();
@@ -996,7 +1072,7 @@ function renderTargetSearchList() {
   const entries = getSearchEntries().filter(e => !query || e.search.includes(query)).slice(0, 250);
 
   list.innerHTML = entries.map(entry => {
-    return `<button class="target-search-item" type="button" data-entry-id="${entry.id}"><span class="target-search-item-main">${entry.iconUrl ? `<img class="ps-pokemon-icon" src="${entry.iconUrl}" alt="" loading="lazy">` : ''}<span>${entry.label}</span></span><span class="target-search-item-sub">${entry.sub}</span></button>`;
+    return `<button class="list-group-item list-group-item-action target-search-item" type="button" data-entry-id="${entry.id}"><span class="target-search-item-main">${entry.iconUrl ? `<img class="ps-pokemon-icon" src="${entry.iconUrl}" alt="" loading="lazy">` : ''}${entry.itemIconStyle ? `<span class="ps-item-icon" style="${entry.itemIconStyle}" aria-hidden="true"></span>` : ''}<span class="target-search-item-label">${entry.label}</span></span>${entry.sub ? `<span class="badge text-bg-light target-search-item-sub">${entry.sub}</span>` : ''}</button>`;
   }).join('');
 
   const byId = new Map(entries.map(entry => [entry.id, entry]));
@@ -1015,7 +1091,7 @@ function openTargetSearchModal() {
 function openTargetEditModal() {
   if (!state.targetPokemon) return;
   updateTargetFromInputs();
-  const result = ensureTargetLinkedToBox();
+  const result = ensureTargetLinkedToBoxWithConfirm();
   if (!result.linked || !state.targetPokemon?.id) return;
   saveStorage();
   persistLastTargetState();
@@ -1167,15 +1243,6 @@ function bindEvents() {
 
   $('target-edit-detail')?.addEventListener('click', openTargetEditModal);
 
-  $('speed-save-only')?.addEventListener('click', () => {
-    updateTargetFromInputs();
-    const result = ensureTargetLinkedToBox();
-    if (!result.linked) return;
-    saveStorage();
-    persistLastTargetState();
-    showSaveFeedback(result.created ? 'saveAdded' : 'saveUpdated');
-  });
-
   $('speed-history-back')?.addEventListener('click', handleHistoryBack);
 
   document.querySelectorAll('#lang-tabs [data-lang]').forEach(button => {
@@ -1218,17 +1285,17 @@ async function initialize() {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
-  const [data, rules, speciesRecords] = await Promise.all([
+  const [data, rules, jaTranslations] = await Promise.all([
     fetchJson('/db/champions-calc-data.json'),
     fetchJson('/db/speed-adjust-rules.json'),
-    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
+    fetchJson('/db/champions-ja-translations.json').catch(() => ({})),
   ]);
 
   state.data = data;
   state.rules = rules;
 
   setupLookups();
-  if (speciesRecords.length) setupSpeciesJapaneseMap(speciesRecords);
+  setupSpeciesJapaneseMap(jaTranslations?.species || {});
   resolveTargetPokemon();
   buildGroupedSpeciesRows();
   createSpeedBuckets();

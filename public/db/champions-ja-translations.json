@@ -1,9 +1,968 @@
 {
   "meta": {
-    "description": "Fill nameJa / shortDescJa / descJa here. This file overrides generated data.",
-    "generatedFromMissingAt": "2026-06-07T20:16:57.182Z"
+    "generatedAt": "2026-06-07T20:16:57.164Z",
+    "source": "champions-calc-data",
+    "locale": "ja"
   },
-  "species": {},
+  "species": {
+    "venusaur": {
+      "nameJa": "フシギバナ"
+    },
+    "charizard": {
+      "nameJa": "リザードン"
+    },
+    "blastoise": {
+      "nameJa": "カメックス"
+    },
+    "beedrill": {
+      "nameJa": "スピアー"
+    },
+    "pidgeot": {
+      "nameJa": "ピジョット"
+    },
+    "arbok": {
+      "nameJa": "アーボック"
+    },
+    "pikachu": {
+      "nameJa": "ピカチュウ"
+    },
+    "raichu": {
+      "nameJa": "ライチュウ"
+    },
+    "raichualola": {
+      "nameJa": "ライチュウ"
+    },
+    "clefable": {
+      "nameJa": "ピクシー"
+    },
+    "ninetales": {
+      "nameJa": "キュウコン"
+    },
+    "ninetalesalola": {
+      "nameJa": "キュウコン"
+    },
+    "arcanine": {
+      "nameJa": "ウインディ"
+    },
+    "arcaninehisui": {
+      "nameJa": "ウインディ"
+    },
+    "alakazam": {
+      "nameJa": "フーディン"
+    },
+    "machamp": {
+      "nameJa": "カイリキー"
+    },
+    "victreebel": {
+      "nameJa": "ウツボット"
+    },
+    "slowbro": {
+      "nameJa": "ヤドラン"
+    },
+    "slowbrogalar": {
+      "nameJa": "ヤドラン"
+    },
+    "gengar": {
+      "nameJa": "ゲンガー"
+    },
+    "kangaskhan": {
+      "nameJa": "ガルーラ"
+    },
+    "starmie": {
+      "nameJa": "スターミー"
+    },
+    "pinsir": {
+      "nameJa": "カイロス"
+    },
+    "tauros": {
+      "nameJa": "ケンタロス"
+    },
+    "taurospaldeaaqua": {
+      "nameJa": "ケンタロス"
+    },
+    "taurospaldeablaze": {
+      "nameJa": "ケンタロス"
+    },
+    "taurospaldeacombat": {
+      "nameJa": "ケンタロス"
+    },
+    "gyarados": {
+      "nameJa": "ギャラドス"
+    },
+    "ditto": {
+      "nameJa": "メタモン"
+    },
+    "vaporeon": {
+      "nameJa": "シャワーズ"
+    },
+    "jolteon": {
+      "nameJa": "サンダース"
+    },
+    "flareon": {
+      "nameJa": "ブースター"
+    },
+    "aerodactyl": {
+      "nameJa": "プテラ"
+    },
+    "snorlax": {
+      "nameJa": "カビゴン"
+    },
+    "dragonite": {
+      "nameJa": "カイリュー"
+    },
+    "meganium": {
+      "nameJa": "メガニウム"
+    },
+    "typhlosion": {
+      "nameJa": "バクフーン"
+    },
+    "typhlosionhisui": {
+      "nameJa": "バクフーン"
+    },
+    "feraligatr": {
+      "nameJa": "オーダイル"
+    },
+    "ariados": {
+      "nameJa": "アリアドス"
+    },
+    "ampharos": {
+      "nameJa": "デンリュウ"
+    },
+    "azumarill": {
+      "nameJa": "マリルリ"
+    },
+    "politoed": {
+      "nameJa": "ニョロトノ"
+    },
+    "espeon": {
+      "nameJa": "エーフィ"
+    },
+    "umbreon": {
+      "nameJa": "ブラッキー"
+    },
+    "slowking": {
+      "nameJa": "ヤドキング"
+    },
+    "slowkinggalar": {
+      "nameJa": "ヤドキング"
+    },
+    "forretress": {
+      "nameJa": "フォレトス"
+    },
+    "steelix": {
+      "nameJa": "ハガネール"
+    },
+    "scizor": {
+      "nameJa": "ハッサム"
+    },
+    "heracross": {
+      "nameJa": "ヘラクロス"
+    },
+    "skarmory": {
+      "nameJa": "エアームド"
+    },
+    "houndoom": {
+      "nameJa": "ヘルガー"
+    },
+    "tyranitar": {
+      "nameJa": "バンギラス"
+    },
+    "pelipper": {
+      "nameJa": "ペリッパー"
+    },
+    "gardevoir": {
+      "nameJa": "サーナイト"
+    },
+    "sableye": {
+      "nameJa": "ヤミラミ"
+    },
+    "aggron": {
+      "nameJa": "ボスゴドラ"
+    },
+    "medicham": {
+      "nameJa": "チャーレム"
+    },
+    "manectric": {
+      "nameJa": "ライボルト"
+    },
+    "sharpedo": {
+      "nameJa": "サメハダー"
+    },
+    "camerupt": {
+      "nameJa": "バクーダ"
+    },
+    "torkoal": {
+      "nameJa": "コータス"
+    },
+    "altaria": {
+      "nameJa": "チルタリス"
+    },
+    "milotic": {
+      "nameJa": "ミロカロス"
+    },
+    "castform": {
+      "nameJa": "ポワルン"
+    },
+    "castformrainy": {
+      "nameJa": "ポワルン"
+    },
+    "castformsnowy": {
+      "nameJa": "ポワルン"
+    },
+    "castformsunny": {
+      "nameJa": "ポワルン"
+    },
+    "banette": {
+      "nameJa": "ジュペッタ"
+    },
+    "chimecho": {
+      "nameJa": "チリーン"
+    },
+    "absol": {
+      "nameJa": "アブソル"
+    },
+    "glalie": {
+      "nameJa": "オニゴーリ"
+    },
+    "torterra": {
+      "nameJa": "ドダイトス"
+    },
+    "infernape": {
+      "nameJa": "ゴウカザル"
+    },
+    "empoleon": {
+      "nameJa": "エンペルト"
+    },
+    "luxray": {
+      "nameJa": "レントラー"
+    },
+    "roserade": {
+      "nameJa": "ロズレイド"
+    },
+    "rampardos": {
+      "nameJa": "ラムパルド"
+    },
+    "bastiodon": {
+      "nameJa": "トリデプス"
+    },
+    "lopunny": {
+      "nameJa": "ミミロップ"
+    },
+    "spiritomb": {
+      "nameJa": "ミカルゲ"
+    },
+    "garchomp": {
+      "nameJa": "ガブリアス"
+    },
+    "lucario": {
+      "nameJa": "ルカリオ"
+    },
+    "hippowdon": {
+      "nameJa": "カバルドン"
+    },
+    "toxicroak": {
+      "nameJa": "ドクロッグ"
+    },
+    "abomasnow": {
+      "nameJa": "ユキノオー"
+    },
+    "weavile": {
+      "nameJa": "マニューラ"
+    },
+    "rhyperior": {
+      "nameJa": "ドサイドン"
+    },
+    "leafeon": {
+      "nameJa": "リーフィア"
+    },
+    "glaceon": {
+      "nameJa": "グレイシア"
+    },
+    "gliscor": {
+      "nameJa": "グライオン"
+    },
+    "mamoswine": {
+      "nameJa": "マンムー"
+    },
+    "gallade": {
+      "nameJa": "エルレイド"
+    },
+    "froslass": {
+      "nameJa": "ユキメノコ"
+    },
+    "rotom": {
+      "nameJa": "ロトム"
+    },
+    "rotomfan": {
+      "nameJa": "ロトム"
+    },
+    "rotomfrost": {
+      "nameJa": "ロトム"
+    },
+    "rotomheat": {
+      "nameJa": "ロトム"
+    },
+    "rotommow": {
+      "nameJa": "ロトム"
+    },
+    "rotomwash": {
+      "nameJa": "ロトム"
+    },
+    "serperior": {
+      "nameJa": "ジャローダ"
+    },
+    "emboar": {
+      "nameJa": "エンブオー"
+    },
+    "samurott": {
+      "nameJa": "ダイケンキ"
+    },
+    "samurotthisui": {
+      "nameJa": "ダイケンキ"
+    },
+    "watchog": {
+      "nameJa": "ミルホッグ"
+    },
+    "liepard": {
+      "nameJa": "レパルダス"
+    },
+    "simisage": {
+      "nameJa": "ヤナッキー"
+    },
+    "simisear": {
+      "nameJa": "バオッキー"
+    },
+    "simipour": {
+      "nameJa": "ヒヤッキー"
+    },
+    "excadrill": {
+      "nameJa": "ドリュウズ"
+    },
+    "audino": {
+      "nameJa": "タブンネ"
+    },
+    "conkeldurr": {
+      "nameJa": "ローブシン"
+    },
+    "whimsicott": {
+      "nameJa": "エルフーン"
+    },
+    "krookodile": {
+      "nameJa": "ワルビアル"
+    },
+    "cofagrigus": {
+      "nameJa": "デスカーン"
+    },
+    "garbodor": {
+      "nameJa": "ダストダス"
+    },
+    "zoroark": {
+      "nameJa": "ゾロアーク"
+    },
+    "zoroarkhisui": {
+      "nameJa": "ゾロアーク"
+    },
+    "reuniclus": {
+      "nameJa": "ランクルス"
+    },
+    "vanilluxe": {
+      "nameJa": "バイバニラ"
+    },
+    "emolga": {
+      "nameJa": "エモンガ"
+    },
+    "chandelure": {
+      "nameJa": "シャンデラ"
+    },
+    "beartic": {
+      "nameJa": "ツンベアー"
+    },
+    "stunfisk": {
+      "nameJa": "マッギョ"
+    },
+    "stunfiskgalar": {
+      "nameJa": "マッギョ"
+    },
+    "golurk": {
+      "nameJa": "ゴルーグ"
+    },
+    "hydreigon": {
+      "nameJa": "サザンドラ"
+    },
+    "volcarona": {
+      "nameJa": "ウルガモス"
+    },
+    "meloettapirouette": {
+      "nameJa": "メロエッタ"
+    },
+    "chesnaught": {
+      "nameJa": "ブリガロン"
+    },
+    "delphox": {
+      "nameJa": "マフォクシー"
+    },
+    "greninja": {
+      "nameJa": "ゲッコウガ"
+    },
+    "diggersby": {
+      "nameJa": "ブルッポ"
+    },
+    "talonflame": {
+      "nameJa": "ファイアロー"
+    },
+    "vivillon": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonarchipelago": {
+      "nameJa": "ビビヨン"
+    },
+    "vivilloncontinental": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonelegant": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonfancy": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillongarden": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonhighplains": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonicysnow": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonjungle": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonmarine": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonmodern": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonmonsoon": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonocean": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonpokeball": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonpolar": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonriver": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonsandstorm": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonsavanna": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillonsun": {
+      "nameJa": "ビビヨン"
+    },
+    "vivillontundra": {
+      "nameJa": "ビビヨン"
+    },
+    "floetteeternal": {
+      "nameJa": "フラエッテ"
+    },
+    "florges": {
+      "nameJa": "フラージェス"
+    },
+    "pangoro": {
+      "nameJa": "ゴロンダ"
+    },
+    "furfrou": {
+      "nameJa": "トリミアン"
+    },
+    "meowstic": {
+      "nameJa": "ニャオニクス"
+    },
+    "meowsticf": {
+      "nameJa": "ニャオニクス"
+    },
+    "aegislash": {
+      "nameJa": "ギルガルド"
+    },
+    "aegislashblade": {
+      "nameJa": "ギルガルド"
+    },
+    "aromatisse": {
+      "nameJa": "Aromatisse"
+    },
+    "slurpuff": {
+      "nameJa": "ペロリーム"
+    },
+    "clawitzer": {
+      "nameJa": "ブロスター"
+    },
+    "heliolisk": {
+      "nameJa": "エレザード"
+    },
+    "tyrantrum": {
+      "nameJa": "ガチゴラス"
+    },
+    "aurorus": {
+      "nameJa": "アマルルガ"
+    },
+    "sylveon": {
+      "nameJa": "ニンフィア"
+    },
+    "hawlucha": {
+      "nameJa": "ルチャブル"
+    },
+    "dedenne": {
+      "nameJa": "デデンネ"
+    },
+    "goodra": {
+      "nameJa": "ヌメルゴン"
+    },
+    "goodrahisui": {
+      "nameJa": "ヌメルゴン"
+    },
+    "klefki": {
+      "nameJa": "クレッフィ"
+    },
+    "trevenant": {
+      "nameJa": "オーロット"
+    },
+    "gourgeist": {
+      "nameJa": "パンプジン"
+    },
+    "gourgeistlarge": {
+      "nameJa": "パンプジン"
+    },
+    "gourgeistsmall": {
+      "nameJa": "パンプジン"
+    },
+    "gourgeistsuper": {
+      "nameJa": "パンプジン"
+    },
+    "avalugg": {
+      "nameJa": "クレベース"
+    },
+    "avalugghisui": {
+      "nameJa": "クレベース"
+    },
+    "noivern": {
+      "nameJa": "オンバーン"
+    },
+    "decidueye": {
+      "nameJa": "ジュナイパー"
+    },
+    "decidueyehisui": {
+      "nameJa": "ジュナイパー"
+    },
+    "incineroar": {
+      "nameJa": "ガオガエン"
+    },
+    "primarina": {
+      "nameJa": "アシレーヌ"
+    },
+    "toucannon": {
+      "nameJa": "ドデカバシ"
+    },
+    "crabominable": {
+      "nameJa": "ユキヒバゴ"
+    },
+    "lycanroc": {
+      "nameJa": "ルガルガン"
+    },
+    "lycanrocdusk": {
+      "nameJa": "ルガルガン"
+    },
+    "lycanrocmidnight": {
+      "nameJa": "ルガルガン"
+    },
+    "toxapex": {
+      "nameJa": "ドヒドイデ"
+    },
+    "mudsdale": {
+      "nameJa": "バンバドロ"
+    },
+    "araquanid": {
+      "nameJa": "オニシズクモ"
+    },
+    "salazzle": {
+      "nameJa": "エンニュート"
+    },
+    "tsareena": {
+      "nameJa": "アマージョ"
+    },
+    "oranguru": {
+      "nameJa": "ヤレユータン"
+    },
+    "passimian": {
+      "nameJa": "ナゲツケサル"
+    },
+    "miniormeteor": {
+      "nameJa": "メテノ"
+    },
+    "mimikyu": {
+      "nameJa": "ミミッキュ"
+    },
+    "mimikyubusted": {
+      "nameJa": "ミミッキュ"
+    },
+    "drampa": {
+      "nameJa": "ジジーロン"
+    },
+    "kommoo": {
+      "nameJa": "ジャラランガ"
+    },
+    "corviknight": {
+      "nameJa": "アーマーガア"
+    },
+    "flapple": {
+      "nameJa": "アップリュー"
+    },
+    "appletun": {
+      "nameJa": "タルップル"
+    },
+    "sandaconda": {
+      "nameJa": "サダイジャ"
+    },
+    "cramorantgorging": {
+      "nameJa": "ウッウ"
+    },
+    "cramorantgulping": {
+      "nameJa": "ウッウ"
+    },
+    "polteageist": {
+      "nameJa": "ポットデス"
+    },
+    "polteageistantique": {
+      "nameJa": "ポットデス"
+    },
+    "hatterene": {
+      "nameJa": "ブリムオン"
+    },
+    "mrrime": {
+      "nameJa": "Mr.ライム"
+    },
+    "runerigus": {
+      "nameJa": "イシヘンジン"
+    },
+    "alcremie": {
+      "nameJa": "マホイップ"
+    },
+    "alcremiecaramelswirl": {
+      "nameJa": "マホイップ"
+    },
+    "alcremielemoncream": {
+      "nameJa": "マホイップ"
+    },
+    "alcremiematchacream": {
+      "nameJa": "マホイップ"
+    },
+    "alcremiemintcream": {
+      "nameJa": "マホイップ"
+    },
+    "alcremierainbowswirl": {
+      "nameJa": "マホイップ"
+    },
+    "alcremierubycream": {
+      "nameJa": "マホイップ"
+    },
+    "alcremierubyswirl": {
+      "nameJa": "マホイップ"
+    },
+    "eiscuenoice": {
+      "nameJa": "コオリッポ"
+    },
+    "morpeko": {
+      "nameJa": "モルペコ"
+    },
+    "morpekohangry": {
+      "nameJa": "モルペコ"
+    },
+    "dragapult": {
+      "nameJa": "ドラパルト"
+    },
+    "wyrdeer": {
+      "nameJa": "アヤシシ"
+    },
+    "kleavor": {
+      "nameJa": "キリキザン"
+    },
+    "basculegion": {
+      "nameJa": "バスラオ"
+    },
+    "basculegionf": {
+      "nameJa": "バスラオ"
+    },
+    "sneasler": {
+      "nameJa": "オオニューラ"
+    },
+    "meowscarada": {
+      "nameJa": "マスカーニャ"
+    },
+    "skeledirge": {
+      "nameJa": "ラウドボーン"
+    },
+    "quaquaval": {
+      "nameJa": "ウェーニバル"
+    },
+    "maushold": {
+      "nameJa": "イッカネズミ"
+    },
+    "mausholdfour": {
+      "nameJa": "イッカネズミ"
+    },
+    "garganacl": {
+      "nameJa": "キョジオーン"
+    },
+    "armarouge": {
+      "nameJa": "ソウブレイズ"
+    },
+    "ceruledge": {
+      "nameJa": "ソウブレイズ"
+    },
+    "bellibolt": {
+      "nameJa": "デンヂムシ"
+    },
+    "scovillain": {
+      "nameJa": "スパイスシチュー"
+    },
+    "espathra": {
+      "nameJa": "エスパテル"
+    },
+    "tinkaton": {
+      "nameJa": "デカヌチャン"
+    },
+    "palafin": {
+      "nameJa": "イルカマン"
+    },
+    "palafinhero": {
+      "nameJa": "イルカマン"
+    },
+    "orthworm": {
+      "nameJa": "スナノケガワ"
+    },
+    "glimmora": {
+      "nameJa": "グリムスナール"
+    },
+    "farigiraf": {
+      "nameJa": "リキキリン"
+    },
+    "kingambit": {
+      "nameJa": "ドドゲザン"
+    },
+    "sinistcha": {
+      "nameJa": "ヤバソチャ"
+    },
+    "sinistchamasterpiece": {
+      "nameJa": "ヤバソチャ"
+    },
+    "ogerponcornerstonetera": {
+      "nameJa": "オーガポン"
+    },
+    "ogerponhearthflametera": {
+      "nameJa": "オーガポン"
+    },
+    "ogerpontealtera": {
+      "nameJa": "オーガポン"
+    },
+    "ogerponwellspringtera": {
+      "nameJa": "オーガポン"
+    },
+    "archaludon": {
+      "nameJa": "アーカルドン"
+    },
+    "hydrapple": {
+      "nameJa": "ドラパルト"
+    },
+    "terapagosterastal": {
+      "nameJa": "テラパゴス"
+    },
+    "venusaurmega": {
+      "nameJa": "Venusaur-Mega"
+    },
+    "charizardmegax": {
+      "nameJa": "Charizard-Mega-X"
+    },
+    "charizardmegay": {
+      "nameJa": "Charizard-Mega-Y"
+    },
+    "blastoisemega": {
+      "nameJa": "Blastoise-Mega"
+    },
+    "beedrillmega": {
+      "nameJa": "Beedrill-Mega"
+    },
+    "pidgeotmega": {
+      "nameJa": "Pidgeot-Mega"
+    },
+    "clefablemega": {
+      "nameJa": "Clefable-Mega"
+    },
+    "alakazammega": {
+      "nameJa": "Alakazam-Mega"
+    },
+    "victreebelmega": {
+      "nameJa": "Victreebel-Mega"
+    },
+    "slowbromega": {
+      "nameJa": "Slowbro-Mega"
+    },
+    "gengarmega": {
+      "nameJa": "Gengar-Mega"
+    },
+    "kangaskhanmega": {
+      "nameJa": "Kangaskhan-Mega"
+    },
+    "starmiemega": {
+      "nameJa": "Starmie-Mega"
+    },
+    "pinsirmega": {
+      "nameJa": "Pinsir-Mega"
+    },
+    "gyaradosmega": {
+      "nameJa": "Gyarados-Mega"
+    },
+    "aerodactylmega": {
+      "nameJa": "Aerodactyl-Mega"
+    },
+    "dragonitemega": {
+      "nameJa": "Dragonite-Mega"
+    },
+    "meganiummega": {
+      "nameJa": "Meganium-Mega"
+    },
+    "feraligatrmega": {
+      "nameJa": "Feraligatr-Mega"
+    },
+    "ampharosmega": {
+      "nameJa": "Ampharos-Mega"
+    },
+    "steelixmega": {
+      "nameJa": "Steelix-Mega"
+    },
+    "scizormega": {
+      "nameJa": "Scizor-Mega"
+    },
+    "heracrossmega": {
+      "nameJa": "Heracross-Mega"
+    },
+    "skarmorymega": {
+      "nameJa": "Skarmory-Mega"
+    },
+    "houndoommega": {
+      "nameJa": "Houndoom-Mega"
+    },
+    "tyranitarmega": {
+      "nameJa": "Tyranitar-Mega"
+    },
+    "gardevoirmega": {
+      "nameJa": "Gardevoir-Mega"
+    },
+    "sableyemega": {
+      "nameJa": "Sableye-Mega"
+    },
+    "aggronmega": {
+      "nameJa": "Aggron-Mega"
+    },
+    "medichammega": {
+      "nameJa": "Medicham-Mega"
+    },
+    "manectricmega": {
+      "nameJa": "Manectric-Mega"
+    },
+    "sharpedomega": {
+      "nameJa": "Sharpedo-Mega"
+    },
+    "cameruptmega": {
+      "nameJa": "Camerupt-Mega"
+    },
+    "altariamega": {
+      "nameJa": "Altaria-Mega"
+    },
+    "banettemega": {
+      "nameJa": "Banette-Mega"
+    },
+    "chimechomega": {
+      "nameJa": "Chimecho-Mega"
+    },
+    "absolmega": {
+      "nameJa": "Absol-Mega"
+    },
+    "glaliemega": {
+      "nameJa": "Glalie-Mega"
+    },
+    "lopunnymega": {
+      "nameJa": "Lopunny-Mega"
+    },
+    "garchompmega": {
+      "nameJa": "Garchomp-Mega"
+    },
+    "lucariomega": {
+      "nameJa": "Lucario-Mega"
+    },
+    "abomasnowmega": {
+      "nameJa": "Abomasnow-Mega"
+    },
+    "gallademega": {
+      "nameJa": "Gallade-Mega"
+    },
+    "froslassmega": {
+      "nameJa": "Froslass-Mega"
+    },
+    "emboarmega": {
+      "nameJa": "Emboar-Mega"
+    },
+    "excadrillmega": {
+      "nameJa": "Excadrill-Mega"
+    },
+    "audinomega": {
+      "nameJa": "Audino-Mega"
+    },
+    "chandeluremega": {
+      "nameJa": "Chandelure-Mega"
+    },
+    "golurkmega": {
+      "nameJa": "Golurk-Mega"
+    },
+    "chesnaughtmega": {
+      "nameJa": "Chesnaught-Mega"
+    },
+    "delphoxmega": {
+      "nameJa": "Delphox-Mega"
+    },
+    "greninjamega": {
+      "nameJa": "Greninja-Mega"
+    },
+    "floettemega": {
+      "nameJa": "Floette-Mega"
+    },
+    "meowsticfmega": {
+      "nameJa": "Meowstic-F-Mega"
+    },
+    "meowsticmmega": {
+      "nameJa": "Meowstic-M-Mega"
+    },
+    "hawluchamega": {
+      "nameJa": "Hawlucha-Mega"
+    },
+    "crabominablemega": {
+      "nameJa": "Crabominable-Mega"
+    },
+    "drampamega": {
+      "nameJa": "Drampa-Mega"
+    },
+    "scovillainmega": {
+      "nameJa": "Scovillain-Mega"
+    },
+    "glimmoramega": {
+      "nameJa": "Glimmora-Mega"
+    }
+  },
   "moves": {
     "accelerock": {
       "nameJa": "Accelerock",

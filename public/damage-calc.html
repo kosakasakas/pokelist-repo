@@ -62,7 +62,7 @@
             <div class="result-damage-row result-row-shell">
               <span class="result-row-head-icon" aria-hidden="true" title="ダメージとKO"><i class="bi bi-activity"></i></span>
               <span class="result-value mono" id="result-main">ダメージ - / HP-</span>
-              <span id="result-ko-rate" class="result-ko-summary mono">-</span>
+              <span class="result-ko-chip"><i class="bi bi-bullseye" aria-hidden="true"></i><span id="result-ko-rate" class="result-ko-summary mono">-</span></span>
             </div>
             <div class="result-random-row result-row-shell">
               <span class="result-row-head-icon result-random-icon" aria-hidden="true" title="乱数分布"><i class="bi bi-bar-chart-steps"></i></span>
@@ -73,8 +73,8 @@
       </section>
 
       <div class="row g-3" id="battle-panels-row">
-        <div class="col-12 col-xxl-4" id="attacker-panel-col">
-          <div class="card panel-card h-100">
+        <div class="col-12 col-xxl-4 calc-mobile-battle-panel" id="attacker-panel-col">
+          <div class="card panel-card h-100 calc-side-panel-card">
             <div class="card-header" title="攻撃側" aria-label="攻撃側"><span class="d-inline-flex align-items-center gap-1"><i class="bi bi-lightning-charge"></i><span>攻撃側</span></span></div>
             <div class="card-body">
               <div class="calc-side-grid mb-2">
@@ -172,7 +172,7 @@
         </div>
 
         <div class="col-12 col-xxl-4" id="settings-panel-col">
-          <div class="card panel-card h-100">
+          <div class="card panel-card h-100 settings-panel-card">
             <div class="card-header settings-panel-header" title="設定" aria-label="設定">
               <span class="settings-panel-title">設定</span>
               <button id="swap-sides" class="btn btn-outline-secondary settings-swap-button" type="button" title="攻守入替" aria-label="攻守入替"><i class="bi bi-arrow-left-right"></i><span>攻守入替</span></button>
@@ -185,7 +185,10 @@
                 <button id="move-type-button" class="btn btn-outline-secondary move-control-type" type="button" title="わざタイプ"></button>
                 <input id="move-category" type="hidden">
                 <button id="move-category-button" class="btn btn-outline-secondary move-control-category" type="button" title="わざ分類"></button>
-                <input id="move-power" class="form-control mono move-power-inline-input move-control-power" type="number" min="0" max="400" value="80" title="わざ威力">
+                <div class="move-control-power-wrap">
+                  <span class="move-control-power-icon" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
+                  <input id="move-power" class="form-control mono move-power-inline-input move-control-power" type="number" min="0" max="400" value="80" title="わざ威力">
+                </div>
               </div>
               <div class="row g-2 mt-1">
                 <div class="col-12 d-none" id="move-parameter-wrap">
@@ -193,7 +196,9 @@
                   <input id="move-parameter-value" class="form-control mono" type="number" min="0" max="10" value="0">
                   <div class="small text-muted mt-1" id="move-parameter-help">-</div>
                 </div>
-                <div class="col-12 condition-strip">
+                <div class="col-12">
+                  <div class="condition-cluster-grid">
+                  <div class="condition-strip">
                     <div class="form-label" data-i18n="weather">天候</div>
                     <div id="weather-toggle" class="badge-toggle" role="group" aria-label="weather">
                       <button type="button" class="badge-btn icon-badge-btn active" data-group="weather" data-value="none" data-icon-label-key="none" title="なし" aria-label="なし"><i class="bi bi-slash-circle"></i></button>
@@ -202,8 +207,9 @@
                       <button type="button" class="badge-btn icon-badge-btn" data-group="weather" data-value="sand" data-icon-label-key="sand" title="砂嵐" aria-label="砂嵐"><i class="bi bi-wind"></i></button>
                       <button type="button" class="badge-btn icon-badge-btn" data-group="weather" data-value="snow" data-icon-label-key="snow" title="雪" aria-label="雪"><i class="bi bi-snow"></i></button>
                     </div>
-                </div>
-                <div class="col-12 condition-strip">
+                  </div>
+                  <div class="condition-strip-divider" aria-hidden="true"></div>
+                  <div class="condition-strip">
                     <div class="form-label" data-i18n="terrain">フィールド</div>
                     <div id="terrain-toggle" class="badge-toggle" role="group" aria-label="terrain">
                       <button type="button" class="badge-btn icon-badge-btn active" data-group="terrain" data-value="none" data-icon-label-key="none" title="なし" aria-label="なし"><i class="bi bi-slash-circle"></i></button>
@@ -212,6 +218,8 @@
                       <button type="button" class="badge-btn icon-badge-btn" data-group="terrain" data-value="psychic" data-icon-label-key="psychicTerrain" title="サイコフィールド" aria-label="サイコフィールド"><i class="bi bi-stars"></i></button>
                       <button type="button" class="badge-btn icon-badge-btn" data-group="terrain" data-value="misty" data-icon-label-key="mistyTerrain" title="ミストフィールド" aria-label="ミストフィールド"><i class="bi bi-cloud-fog2"></i></button>
                     </div>
+                  </div>
+                  </div>
                 </div>
               </div>
 
@@ -264,8 +272,8 @@
           </div>
         </div>
 
-        <div class="col-12 col-xxl-4" id="defender-panel-col">
-          <div class="card panel-card h-100">
+        <div class="col-12 col-xxl-4 calc-mobile-battle-panel" id="defender-panel-col">
+          <div class="card panel-card h-100 calc-side-panel-card">
             <div class="card-header" title="防御側" aria-label="防御側"><span class="d-inline-flex align-items-center gap-1"><i class="bi bi-shield-shaded"></i><span>防御側</span></span></div>
             <div class="card-body">
               <div class="calc-side-grid mb-2">
@@ -362,6 +370,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div id="mobile-battle-tabs" class="mobile-battle-tabs d-lg-none" role="tablist" aria-label="mobile-battle-tabs">
+        <button id="mobile-battle-tab-attacker" class="btn btn-outline-secondary active" type="button" aria-selected="true">攻撃側</button>
+        <button id="mobile-battle-tab-defender" class="btn btn-outline-secondary" type="button" aria-selected="false">防御側</button>
       </div>
         </section>
         <aside class="col-xxl-2 d-none d-xxl-block">

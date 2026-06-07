@@ -116,6 +116,11 @@
       .speed-target-picker {
         justify-content: flex-start;
         gap: 0.4rem;
+        height: 42px;
+        min-height: 42px;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        overflow: hidden;
       }
       .speed-target-picker > span {
         overflow: hidden;
@@ -123,7 +128,10 @@
         white-space: nowrap;
       }
       .speed-target-picker .ps-pokemon-icon {
-        max-height: 24px;
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        flex: 0 0 32px;
       }
 
       .speed-target-speed-box {
@@ -167,6 +175,10 @@
         padding: 2px;
       }
 
+      .speed-toggle-group.single-toggle {
+        grid-template-columns: 1fr;
+      }
+
       .speed-toggle-group .btn {
         border: 0;
         border-radius: 999px;
@@ -188,6 +200,7 @@
         width: 24px;
         height: 24px;
         background-repeat: no-repeat;
+        background-size: 384px 1152px;
         image-rendering: pixelated;
         vertical-align: middle;
         flex: 0 0 24px;
@@ -198,6 +211,35 @@
         align-items: center;
         gap: 0.25rem;
         white-space: nowrap;
+      }
+
+      .target-search-list {
+        max-height: 56vh;
+        overflow-y: auto;
+      }
+
+      .target-search-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .target-search-item-main {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        min-width: 0;
+      }
+
+      .target-search-item-label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .target-search-item-sub {
+        flex: 0 0 auto;
       }
 
       @media (max-width: 576px) {
@@ -360,7 +402,6 @@
 
         <div class="speed-cell-nature">
           <button id="target-nature-cycle" class="btn btn-outline-secondary w-100 speed-target-control-btn" type="button" data-bs-toggle="tooltip" data-i18n-title="naturePlus" title="性格補正を切替">
-            <i class="bi bi-emoji-smile"></i>
             <span id="target-nature-cycle-text">±0%</span>
           </button>
         </div>
@@ -379,16 +420,6 @@
           </div>
         </div>
 
-        <div class="speed-cell-save">
-          <div class="d-grid">
-            <button id="speed-save-only" class="btn btn-primary speed-target-control-btn" type="button">
-              <i class="bi bi-save"></i>
-              <span data-i18n="save">個体を保存</span>
-            </button>
-          </div>
-        </div>
-
-        <div id="speed-save-feedback" class="speed-save-feedback" role="status" aria-live="polite"></div>
       </div>
     </aside>
 
@@ -406,7 +437,7 @@
               <button type="button" class="btn btn-outline-secondary" data-scope="party" data-i18n="partyList">パーティ</button>
             </div>
             <input id="target-search-input" class="form-control mb-2" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="ポケモン名で検索">
-            <div id="target-search-list" class="target-search-list"></div>
+            <div id="target-search-list" class="target-search-list list-group"></div>
           </div>
         </div>
       </div>

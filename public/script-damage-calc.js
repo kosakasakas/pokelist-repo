@@ -506,6 +506,42 @@ function initMobileTopTabs() {
   handleViewport(mediaQuery);
 }
 
+function setMobileBattleTab(tab) {
+  const isDefender = tab === 'defender';
+  document.body.classList.toggle('mobile-battle-attacker', !isDefender);
+  document.body.classList.toggle('mobile-battle-defender', isDefender);
+  const attackerButton = $('mobile-battle-tab-attacker');
+  const defenderButton = $('mobile-battle-tab-defender');
+  if (attackerButton) {
+    attackerButton.classList.toggle('active', !isDefender);
+    attackerButton.setAttribute('aria-selected', String(!isDefender));
+  }
+  if (defenderButton) {
+    defenderButton.classList.toggle('active', isDefender);
+    defenderButton.setAttribute('aria-selected', String(isDefender));
+  }
+}
+
+function initMobileBattleTabs() {
+  const root = $('mobile-battle-tabs');
+  if (!root) return;
+  const attackerButton = $('mobile-battle-tab-attacker');
+  const defenderButton = $('mobile-battle-tab-defender');
+  if (attackerButton) attackerButton.addEventListener('click', () => setMobileBattleTab('attacker'));
+  if (defenderButton) defenderButton.addEventListener('click', () => setMobileBattleTab('defender'));
+  const mediaQuery = window.matchMedia('(max-width: 991.98px)');
+  const handleViewport = event => {
+    if (event.matches) {
+      setMobileBattleTab('attacker');
+    } else {
+      document.body.classList.remove('mobile-battle-attacker', 'mobile-battle-defender');
+    }
+  };
+  if (typeof mediaQuery.addEventListener === 'function') mediaQuery.addEventListener('change', handleViewport);
+  else if (typeof mediaQuery.addListener === 'function') mediaQuery.addListener(handleViewport);
+  handleViewport(mediaQuery);
+}
+
 function getSideNatureOverridesFromButtons(side) {
   const plusStats = [];
   const minusStats = [];
@@ -944,8 +980,9 @@ function renderPickerButtonAsIcon(fieldId, button, value) {
     if (iconUrl) {
       button.classList.add('icon-picker-btn');
       button.classList.add('calc-species-picker-btn');
-      button.innerHTML = `<span class="entity-icons"><img class="ps-pokemon-icon" src="${iconUrl}" alt="" loading="lazy" onerror="this.style.display='none'"><span>${label}</span></span>`;
+      button.innerHTML = `<span class="calc-species-icon-wrap"><img class="ps-pokemon-icon" src="${iconUrl}" alt="" loading="lazy" onerror="this.style.display='none'"></span>`;
       button.title = label;
+      button.setAttribute('aria-label', label);
       return true;
     }
   }
@@ -1023,7 +1060,7 @@ function buildNatureOptions() {
 }
 
 function buildMoveOptions() {
-  return sortByDisplayName(state.data.moves, displayEntryName).map(move => ({
+  return sortByDisplayName((state.data.moves || []).filter(move => move?.category !== 'Status'), displayEntryName).map(move => ({
     value: move.id,
     label: displayEntryName(move),
     moveType: move.type,
@@ -1114,7 +1151,8 @@ function buildLearnsetOptions(speciesId) {
 }
 
 function buildSpeciesPickerOptions() {
-  return sortByDisplayName(state.displaySpecies, displaySpeciesName).map(species => ({
+  const pickerSpecies = [...state.displaySpecies, ...(state.data?.megaSpecies || [])];
+  return sortByDisplayName(pickerSpecies, displaySpeciesName).map(species => ({
     value: species.id,
     label: displaySpeciesName(species),
     iconSpeciesId: species.id,
@@ -1379,48 +1417,43 @@ function fillTypeSelect() {
   fillMoveCategoryField($('move-category')?.value || 'Special');
 }
 
-function setupLocalizedNameMapsFromData(speciesRecords = [], moveRecords = [], abilityRecords = [], itemRecords = []) {
+function setupLocalizedNameMapsFromData(jaTranslations = null) {
+  const speciesMap = jaTranslations?.species && typeof jaTranslations.species === 'object' ? jaTranslations.species : {};
+  const moveMap = jaTranslations?.moves && typeof jaTranslations.moves === 'object' ? jaTranslations.moves : {};
+  const abilityMap = jaTranslations?.abilities && typeof jaTranslations.abilities === 'object' ? jaTranslations.abilities : {};
+  const itemMap = jaTranslations?.items && typeof jaTranslations.items === 'object' ? jaTranslations.items : {};
+
   state.moveNameJaById = new Map();
   (state.data?.moves || []).forEach(move => {
     if (move?.id && move?.nameJa) state.moveNameJaById.set(move.id, move.nameJa);
-  });
-  moveRecords.forEach(record => {
-    const moveNum = Number(record.ID);
-    const ja = String(record['わざ名'] || '').trim();
-    const moveId = Number.isFinite(moveNum) ? state.moveByNum.get(moveNum) : '';
-    if (moveId && ja && !state.moveNameJaById.has(moveId)) state.moveNameJaById.set(moveId, ja);
+    const mapEntry = moveMap?.[move?.id];
+    const mappedName = String(mapEntry?.nameJa || '').trim();
+    if (move?.id && mappedName && !state.moveNameJaById.has(move.id)) state.moveNameJaById.set(move.id, mappedName);
   });
 
   state.speciesNameJaById = new Map();
   [...(state.data?.species || []), ...(state.data?.megaSpecies || [])].forEach(species => {
     if (!species?.id || !species?.nameJa) return;
     if (!state.speciesNameJaById.has(species.id)) state.speciesNameJaById.set(species.id, species.nameJa);
-  });
-  speciesRecords.forEach(record => {
-    const id = toId(record.ShowdownKey || '');
-    const ja = String(record['名前(フォルム)'] || record['名前'] || '').trim();
-    if (id && ja && !state.speciesNameJaById.has(id)) state.speciesNameJaById.set(id, ja);
+    const mapEntry = speciesMap?.[species?.id];
+    const mappedName = String(mapEntry?.nameJa || '').trim();
+    if (species?.id && mappedName && !state.speciesNameJaById.has(species.id)) state.speciesNameJaById.set(species.id, mappedName);
   });
 
   state.abilityNameJaById = new Map();
   (state.data?.abilities || []).forEach(ability => {
     if (ability?.id && ability?.nameJa) state.abilityNameJaById.set(ability.id, ability.nameJa);
-  });
-  abilityRecords.forEach(record => {
-    const abilityNum = Number(record.ID);
-    const ja = String(record['特性'] || '').trim();
-    const abilityId = Number.isFinite(abilityNum) ? state.abilityByNum.get(abilityNum) : '';
-    if (abilityId && ja && !state.abilityNameJaById.has(abilityId)) state.abilityNameJaById.set(abilityId, ja);
+    const mapEntry = abilityMap?.[ability?.id];
+    const mappedName = String(mapEntry?.nameJa || '').trim();
+    if (ability?.id && mappedName && !state.abilityNameJaById.has(ability.id)) state.abilityNameJaById.set(ability.id, mappedName);
   });
 
   state.itemNameJaById = new Map();
   (state.data?.items || []).forEach(item => {
     if (item?.id && item?.nameJa) state.itemNameJaById.set(item.id, item.nameJa);
-  });
-  itemRecords.forEach(record => {
-    const itemId = toId(record.ShowdownKey || record.ID || '');
-    const ja = String(record['どうぐ名'] || record['道具名'] || record['アイテム名'] || record['名前'] || '').trim();
-    if (itemId && ja && !state.itemNameJaById.has(itemId)) state.itemNameJaById.set(itemId, ja);
+    const mapEntry = itemMap?.[item?.id];
+    const mappedName = String(mapEntry?.nameJa || '').trim();
+    if (item?.id && mappedName && !state.itemNameJaById.has(item.id)) state.itemNameJaById.set(item.id, mappedName);
   });
 
   state.learnsetBySpeciesNum = new Map();
@@ -2515,7 +2548,7 @@ function syncDetailMegaToggle(selectedAbilityId = '') {
   if (!$('detail-species') || !$('detail-mega-enabled')) return;
   const speciesId = $('detail-species').value;
   const megaToggle = $('detail-mega-enabled');
-  const megaWrap = megaToggle.closest('.mega-switch') || megaToggle.closest('.form-check');
+  const megaWrap = megaToggle.closest('.detail-mega-switch') || megaToggle.closest('.mega-switch') || megaToggle.closest('.form-check');
   const itemInput = $('detail-item');
   const canMega = hasMega(speciesId);
   megaToggle.disabled = !canMega;
@@ -3058,7 +3091,10 @@ function populateDetailForm(pokemon) {
   $('detail-ev-spd').value = clamp(toNumber(pokemon.evs.spd), 0, 32);
   if ($('detail-ev-spe')) $('detail-ev-spe').value = clamp(toNumber(pokemon.evs.spe), 0, 32);
   $('detail-mega-enabled').checked = Boolean(pokemon.megaEnabled);
-  fillSpeciesField('detail-species', pokemon.speciesId);
+  const detailSpecies = state.data?.megaSpecies?.some(species => species.id === pokemon.speciesId)
+    ? (state.speciesById.get(pokemon.speciesId)?.baseSpeciesId || pokemon.speciesId)
+    : pokemon.speciesId;
+  fillSpeciesField('detail-species', detailSpecies);
   fillNatureFields($('attacker-nature')?.value || 'modest', $('defender-nature')?.value || 'bold', pokemon.nature);
   fillItemField('detail-item', pokemon.itemId || '');
   syncDetailMegaToggle(pokemon.abilityId || '');
@@ -3195,7 +3231,10 @@ function refreshPickerSourceTabs() {
 function createPickerOptionsFromLinkedAttackerMoves() {
   const linked = getPokemonById(state.storage.calcLinks.attacker);
   if (!linked || !Array.isArray(linked.moveIds)) return [];
-  return linked.moveIds.map(moveId => state.movesById.get(moveId)).filter(Boolean).map(move => ({ value: move.id, label: displayEntryName(move) }));
+  return linked.moveIds
+    .map(moveId => state.movesById.get(moveId))
+    .filter(move => Boolean(move) && move.category !== 'Status')
+    .map(move => ({ value: move.id, label: displayEntryName(move) }));
 }
 
 function renderMovePickerItem(option) {
@@ -4010,20 +4049,18 @@ function bindEvents() {
 }
 
 async function initialize() {
-  const [dataResponse, speciesRecords, moveRecords, abilityRecords, itemRecords] = await Promise.all([
+  const [dataResponse, jaTranslationsResponse] = await Promise.all([
     fetch('/db/champions-calc-data.json', { cache: 'no-store' }),
-    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
-    fetchCsvRecordsSafe('/csv/champions-moves.csv'),
-    fetchCsvRecordsSafe('/csv/champions-abilities.csv'),
-    fetchCsvRecordsSafe('/csv/champions-items.csv'),
+    fetch('/db/champions-ja-translations.json', { cache: 'no-store' }),
   ]);
   if (!dataResponse.ok) throw new Error(`Failed to load data: ${dataResponse.status}`);
   state.data = await dataResponse.json();
+  const jaTranslations = jaTranslationsResponse.ok ? await jaTranslationsResponse.json() : null;
   ensureDetailDialogStyles();
   populateDetailEvSelectOptions();
   setupLookups(state.data);
   state.availableFormats = [currentFormatLabel()];
-  setupLocalizedNameMapsFromData(speciesRecords, moveRecords, abilityRecords, itemRecords);
+  setupLocalizedNameMapsFromData(jaTranslations);
   loadLanguagePreference();
   loadStorage();
   initPickerModal();
@@ -4031,6 +4068,7 @@ async function initialize() {
   initConfirmSaveModal();
   initPresetModal();
   initMobileTopTabs();
+  initMobileBattleTabs();
   applyI18n();
   refreshConditionToggleLabels();
   applyCompactFieldTitles();

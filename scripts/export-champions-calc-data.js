@@ -4,8 +4,13 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const SHOWDOWN_DIST = path.join(ROOT, 'library', 'pokemon-showdown', 'dist', 'sim', 'index.js');
 const OUTPUT_FILE = path.join(ROOT, 'public', 'db', 'champions-calc-data.json');
+const JA_TRANSLATIONS_FILE = path.join(ROOT, 'public', 'db', 'champions-ja-translations.json');
 const JA_OVERRIDES_FILE = path.join(ROOT, 'public', 'db', 'champions-ja-overrides.json');
 const JA_MISSING_FILE = path.join(ROOT, 'public', 'db', 'champions-ja-missing.json');
+const CSV_POKEMON_FILE = path.join(ROOT, 'public', 'csv', 'champions-pokemon.csv');
+const CSV_MOVES_FILE = path.join(ROOT, 'public', 'csv', 'champions-moves.csv');
+const CSV_ABILITIES_FILE = path.join(ROOT, 'public', 'csv', 'champions-abilities.csv');
+const CSV_ITEMS_FILE = path.join(ROOT, 'public', 'csv', 'champions-items.csv');
 
 if (!fs.existsSync(SHOWDOWN_DIST)) {
   throw new Error(
@@ -93,6 +98,84 @@ function toId(value) {
   return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
+function parseCsvLine(line) {
+  const values = [];
+  let current = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i += 1) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        current += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+    if (ch === ',' && !inQuotes) {
+      values.push(current);
+      current = '';
+      continue;
+    }
+    current += ch;
+  }
+  values.push(current);
+  return values;
+}
+
+function readCsvRows(filePath) {
+  if (!fs.existsSync(filePath)) return [];
+  const raw = fs.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, '');
+  const lines = raw.split(/\r?\n/).filter(line => line.trim());
+  if (!lines.length) return [];
+  const headers = parseCsvLine(lines[0]).map(header => String(header || '').trim());
+  return lines.slice(1).map(line => {
+    const values = parseCsvLine(line);
+    const row = {};
+    headers.forEach((header, index) => {
+      row[header] = values[index] != null ? String(values[index]).trim() : '';
+    });
+    return row;
+  });
+}
+
+function buildJaFallbackMaps() {
+  const speciesJaById = new Map();
+  readCsvRows(CSV_POKEMON_FILE).forEach(row => {
+    const id = toId(row.ShowdownKey || row.ID || '');
+    const ja = String(row['名前(フォルム)'] || row['名前'] || '').trim();
+    if (!id || !ja) return;
+    if (!speciesJaById.has(id)) speciesJaById.set(id, ja);
+  });
+
+  const moveJaByNum = new Map();
+  readCsvRows(CSV_MOVES_FILE).forEach(row => {
+    const num = Number(row.ID);
+    const ja = String(row['わざ名'] || row['名前'] || '').trim();
+    if (!Number.isFinite(num) || !ja) return;
+    if (!moveJaByNum.has(num)) moveJaByNum.set(num, ja);
+  });
+
+  const abilityJaByNum = new Map();
+  readCsvRows(CSV_ABILITIES_FILE).forEach(row => {
+    const num = Number(row.ID);
+    const ja = String(row['特性'] || row['名前'] || '').trim();
+    if (!Number.isFinite(num) || !ja) return;
+    if (!abilityJaByNum.has(num)) abilityJaByNum.set(num, ja);
+  });
+
+  const itemJaById = new Map();
+  readCsvRows(CSV_ITEMS_FILE).forEach(row => {
+    const id = toId(row.ShowdownKey || row.ID || '');
+    const ja = String(row['どうぐ名'] || row['道具名'] || row['アイテム名'] || row['名前'] || '').trim();
+    if (!id || !ja) return;
+    if (!itemJaById.has(id)) itemJaById.set(id, ja);
+  });
+
+  return { speciesJaById, moveJaByNum, abilityJaByNum, itemJaById };
+}
+
 function getMegaBaseId(entry, allSpeciesIds) {
   if (!entry) return '';
   const id = toId(entry.id);
@@ -111,52 +194,143 @@ function getMegaBaseId(entry, allSpeciesIds) {
 }
 
 function buildMissingTranslations(data) {
+  const species = [...(data.species || []), ...(data.megaSpecies || [])]
+    .filter(entry => !entry.nameJa)
+    .map(entry => ({
+      id: entry.id,
+      name: entry.name,
+      nameJa: '',
+    }));
+
+  const moves = (data.moves || [])
+    .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
+    .map(entry => ({
+      id: entry.id,
+      name: entry.name,
+      nameJa: entry.nameJa || '',
+      shortDescEn: entry.shortDesc || '',
+      descEn: entry.desc || '',
+      shortDescJa: '',
+      descJa: '',
+    }));
+
+  const abilities = (data.abilities || [])
+    .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
+    .map(entry => ({
+      id: entry.id,
+      name: entry.name,
+      nameJa: entry.nameJa || '',
+      shortDescEn: entry.shortDesc || '',
+      descEn: entry.desc || '',
+      shortDescJa: '',
+      descJa: '',
+    }));
+
+  const items = (data.items || [])
+    .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
+    .map(entry => ({
+      id: entry.id,
+      name: entry.name,
+      nameJa: entry.nameJa || '',
+      shortDescEn: entry.shortDesc || '',
+      descEn: entry.desc || '',
+      shortDescJa: '',
+      descJa: '',
+    }));
+
   return {
     meta: {
       generatedAt: new Date().toISOString(),
-      description: 'Fill this data into champions-ja-overrides.json to override generated Japanese text.',
+      description: 'Fill shortDescJa/descJa/nameJa and copy into champions-ja-overrides.json.',
     },
-    species: [...(data.species || []), ...(data.megaSpecies || [])]
-      .filter(entry => !entry.nameJa)
-      .map(entry => ({
-        id: entry.id,
-        name: entry.name,
-        nameJa: null,
-      })),
-    moves: (data.moves || [])
-      .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
-      .map(entry => ({
-        id: entry.id,
-        name: entry.name,
-        nameJa: entry.nameJa,
-        shortDescEn: entry.shortDesc,
-        descEn: entry.desc,
-        shortDescJa: entry.shortDescJa,
-        descJa: entry.descJa,
-      })),
-    abilities: (data.abilities || [])
-      .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
-      .map(entry => ({
-        id: entry.id,
-        name: entry.name,
-        nameJa: entry.nameJa,
-        shortDescEn: entry.shortDesc,
-        descEn: entry.desc,
-        shortDescJa: entry.shortDescJa,
-        descJa: entry.descJa,
-      })),
-    items: (data.items || [])
-      .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
-      .map(entry => ({
-        id: entry.id,
-        name: entry.name,
-        nameJa: entry.nameJa,
-        shortDescEn: entry.shortDesc,
-        descEn: entry.desc,
-        shortDescJa: entry.shortDescJa,
-        descJa: entry.descJa,
-      })),
+    species,
+    moves,
+    abilities,
+    items,
   };
+}
+
+function buildJaTranslations(data) {
+  const translations = {
+    meta: {
+      generatedAt: new Date().toISOString(),
+      source: 'champions-calc-data',
+      locale: 'ja',
+    },
+    species: {},
+    moves: {},
+    abilities: {},
+    items: {},
+  };
+
+  [...(data.species || []), ...(data.megaSpecies || [])].forEach(entry => {
+    translations.species[entry.id] = {
+      nameJa: entry.nameJa || '',
+    };
+  });
+  (data.moves || []).forEach(entry => {
+    translations.moves[entry.id] = {
+      nameJa: entry.nameJa || '',
+      shortDescJa: entry.shortDescJa || '',
+      descJa: entry.descJa || '',
+    };
+  });
+  (data.abilities || []).forEach(entry => {
+    translations.abilities[entry.id] = {
+      nameJa: entry.nameJa || '',
+      shortDescJa: entry.shortDescJa || '',
+      descJa: entry.descJa || '',
+    };
+  });
+  (data.items || []).forEach(entry => {
+    translations.items[entry.id] = {
+      nameJa: entry.nameJa || '',
+      shortDescJa: entry.shortDescJa || '',
+      descJa: entry.descJa || '',
+    };
+  });
+
+  return translations;
+}
+
+function buildOverridesTemplateFromMissing(missing) {
+  const overrides = {
+    meta: {
+      description: 'Fill nameJa / shortDescJa / descJa here. This file overrides generated data.',
+      generatedFromMissingAt: new Date().toISOString(),
+    },
+    species: {},
+    moves: {},
+    abilities: {},
+    items: {},
+  };
+
+  (missing.species || []).forEach(entry => {
+    overrides.species[entry.id] = { nameJa: entry.nameJa || '' };
+  });
+  (missing.moves || []).forEach(entry => {
+    overrides.moves[entry.id] = {
+      nameJa: entry.nameJa || '',
+      shortDescJa: entry.shortDescJa || '',
+      descJa: entry.descJa || '',
+    };
+  });
+  (missing.abilities || []).forEach(entry => {
+    overrides.abilities[entry.id] = {
+      nameJa: entry.nameJa || '',
+      shortDescJa: entry.shortDescJa || '',
+      descJa: entry.descJa || '',
+    };
+  });
+  (missing.items || []).forEach(entry => {
+    overrides.items[entry.id] = {
+      nameJa: entry.nameJa || '',
+      shortDescJa: entry.shortDescJa || '',
+      descJa: entry.descJa || '',
+    };
+  });
+
+  return overrides;
 }
 
 function getTypeEffectivenessTable(dex) {
@@ -188,6 +362,7 @@ function buildData() {
   const baseDex = Dex.mod('gen9');
   ensureJaOverridesFile();
   const jaOverrides = normalizeJaOverrides(readJsonFile(JA_OVERRIDES_FILE, DEFAULT_JA_OVERRIDES));
+  const jaFallback = buildJaFallbackMaps();
 
   const usableSpecies = dex.species.all().filter(isUsableData);
   const allSpeciesIds = new Set(usableSpecies.map(entry => toId(entry.id)));
@@ -217,7 +392,7 @@ function buildData() {
       spriteId: entry.spriteid || entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || entry.nameJa,
+      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || entry.nameJa || jaFallback.speciesJaById.get(entry.id) || '',
       baseSpecies: entry.baseSpecies,
       baseSpeciesId: toId(entry.baseSpecies || entry.name),
       forme: entry.forme,
@@ -240,7 +415,7 @@ function buildData() {
       spriteId: entry.spriteid || entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || entry.nameJa,
+      nameJa: getOverrideString(jaOverrides, 'species', entry.id, 'nameJa') || entry.nameJa || jaFallback.speciesJaById.get(entry.id) || '',
       baseSpecies: entry.baseSpecies,
       baseSpeciesId: getMegaBaseId(entry, allSpeciesIds) || toId(entry.baseSpecies || entry.name),
       forme: entry.forme,
@@ -263,7 +438,7 @@ function buildData() {
       id: entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'moves', entry.id, 'nameJa') || entry.nameJa,
+      nameJa: getOverrideString(jaOverrides, 'moves', entry.id, 'nameJa') || entry.nameJa || jaFallback.moveJaByNum.get(Number(entry.num)) || '',
       type: entry.type,
       category: entry.category,
       basePower: entry.basePower,
@@ -296,7 +471,7 @@ function buildData() {
       id: entry.id,
       num: entry.num,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'nameJa') || entry.nameJa,
+      nameJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'nameJa') || entry.nameJa || jaFallback.abilityJaByNum.get(Number(entry.num)) || '',
       shortDesc: entry.shortDesc || null,
       desc: entry.desc || null,
       shortDescJa: getOverrideString(jaOverrides, 'abilities', entry.id, 'shortDescJa') || entry.shortDescJa,
@@ -313,7 +488,7 @@ function buildData() {
       num: entry.num,
       spritenum: Number.isFinite(Number(entry.spritenum)) ? Number(entry.spritenum) : null,
       name: entry.name,
-      nameJa: getOverrideString(jaOverrides, 'items', entry.id, 'nameJa') || entry.nameJa,
+      nameJa: getOverrideString(jaOverrides, 'items', entry.id, 'nameJa') || entry.nameJa || jaFallback.itemJaById.get(entry.id) || '',
       isBerry: Boolean(entry.isBerry),
       shortDesc: entry.shortDesc || null,
       desc: entry.desc || null,
@@ -361,10 +536,21 @@ function buildData() {
 }
 
 const data = buildData();
+const missing = buildMissingTranslations(data);
+const jaTranslations = buildJaTranslations(data);
+const shouldResetJaOverrides = process.argv.includes('--reset-ja');
+
 fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
 fs.writeFileSync(OUTPUT_FILE, JSON.stringify(data, null, 2), 'utf8');
-fs.writeFileSync(JA_MISSING_FILE, JSON.stringify(buildMissingTranslations(data), null, 2), 'utf8');
+fs.writeFileSync(JA_TRANSLATIONS_FILE, JSON.stringify(jaTranslations, null, 2), 'utf8');
+fs.writeFileSync(JA_MISSING_FILE, JSON.stringify(missing, null, 2), 'utf8');
+if (shouldResetJaOverrides) {
+  const template = buildOverridesTemplateFromMissing(missing);
+  fs.writeFileSync(JA_OVERRIDES_FILE, JSON.stringify(template, null, 2), 'utf8');
+}
 
 console.log(`Generated: ${OUTPUT_FILE}`);
+console.log(`Generated: ${JA_TRANSLATIONS_FILE}`);
 console.log(`Generated: ${JA_MISSING_FILE}`);
+if (shouldResetJaOverrides) console.log(`Reset: ${JA_OVERRIDES_FILE}`);
 console.log(`species=${data.species.length}, moves=${data.moves.length}, abilities=${data.abilities.length}, items=${data.items.length}, types=${data.types.length}`);
