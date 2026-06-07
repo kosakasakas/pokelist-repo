@@ -5,6 +5,83 @@ const DEFAULT_LAYOUT_CONFIG = {
   footerOwner: 'sakas_poke',
 };
 
+function ensureGlobalFont() {
+  if (!document.getElementById('noto-sans-jp-font-link')) {
+    const link = document.createElement('link');
+    link.id = 'noto-sans-jp-font-link';
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap';
+    document.head.appendChild(link);
+  }
+  if (!document.getElementById('noto-sans-jp-font-style')) {
+    const style = document.createElement('style');
+    style.id = 'noto-sans-jp-font-style';
+    style.textContent = 'html, body, button, input, select, textarea { font-family: "Noto Sans JP", sans-serif !important; }';
+    document.head.appendChild(style);
+  }
+}
+
+function ensureHeaderStyles() {
+  if (document.getElementById('tool-layout-inline-style')) return;
+  const style = document.createElement('style');
+  style.id = 'tool-layout-inline-style';
+  style.textContent = `
+    .calc-header { background: #ffffff; border: 0 !important; box-shadow: none !important; }
+    .tool-header-row { display: flex; align-items: center; gap: 0.6rem; min-height: 52px; flex-wrap: nowrap; justify-content: space-between; }
+    .tool-header-brand { text-decoration: none; color: #111827; font-weight: 700; }
+    .tool-header-right { margin-left: auto; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; min-width: 0; flex: 1 1 auto; }
+    .tool-header-main { flex: 0 0 auto; min-width: 0; position: relative; }
+    .tool-global-nav { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid #d1d5db; border-radius: 10px; overflow: hidden; }
+    .tool-nav-btn { text-decoration: none; color: #4b5563; border-right: 1px solid #e5e7eb; background: #fff; padding: 0.42rem 0.68rem; font-size: 0.84rem; }
+    .tool-nav-btn:last-child { border-right: 0; }
+    .tool-nav-btn.active { background: #eef2ff; color: #1d4ed8; }
+    .tool-navbar-toggler { display: none; border: 1px solid #d1d5db; border-radius: 0.5rem; background: #fff; width: 36px; height: 36px; }
+    .tool-header-reg, .tool-header-lang { flex: 0 0 auto; font-size: 0.77rem; }
+    .tool-regulation-control { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0; background: transparent; border: 0; margin: 0; }
+    .tool-regulation-label { color: #6b7280; }
+    .tool-regulation-select { border: 0; background: transparent; outline: none; appearance: auto; font-size: 0.77rem; padding: 0 0.1rem; }
+    .tool-lang-toggle { display: inline-flex; align-items: center; gap: 0.24rem; border: 0; padding: 0; }
+    .tool-lang-toggle .nav-link { border: 0; background: transparent; padding: 0.1rem 0.35rem; border-radius: 999px; }
+    .tool-lang-toggle .nav-link.active { background: #111827; color: #fff; }
+    .tool-lang-separator { color: #9ca3af; }
+    @media (max-width: 991.98px) {
+      .tool-navbar-toggler { display: inline-flex; align-items: center; justify-content: center; }
+      .tool-header-row { flex-wrap: nowrap; gap: 0.35rem; }
+      .tool-header-right { gap: 0.35rem; }
+      .tool-header-brand { font-size: 0.95rem; }
+      .tool-header-main { order: 5; position: static; }
+      .tool-nav-collapse.is-collapsed { display: none; }
+      .tool-nav-collapse {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 6px);
+        z-index: 1100;
+      }
+      .tool-global-nav {
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.12);
+        background: #fff;
+      }
+      .tool-nav-btn {
+        flex: 1 1 50%;
+        border-right: 1px solid #e5e7eb;
+        border-bottom: 1px solid #e5e7eb;
+        padding: 0.5rem 0.55rem;
+      }
+      .tool-nav-btn:nth-child(2n) { border-right: 0; }
+      .tool-nav-btn:nth-last-child(-n + 2) { border-bottom: 0; }
+      .tool-header-reg, .tool-header-lang { font-size: 0.72rem; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function isEmbedDetailContext() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('embed') === 'detail';
+}
+
 function escapeHtml(text) {
   return String(text || '')
     .replace(/&/g, '&amp;')
@@ -88,18 +165,22 @@ function buildRegulationControl() {
   const regulationLabel = lang === 'ja' ? 'レギュ' : 'Reg';
   return `
     <label class="tool-regulation-control" for="tool-regulation-select" aria-label="対象レギュレーション">
-      <span class="tool-regulation-label"><i class="bi bi-list-ul" aria-hidden="true"></i>${regulationLabel}</span>
+      <span class="tool-regulation-label">${regulationLabel}</span>
       <select id="tool-regulation-select" class="tool-regulation-select" name="regulation">
-        <option value="M-A" ${regulation === 'M-A' ? 'selected' : ''}>M-A</option>
+        <option value="M-A" ${regulation === 'M-A' ? 'selected' : ''}>MA-1</option>
       </select>
-      <i class="bi bi-chevron-down tool-regulation-caret" aria-hidden="true"></i>
     </label>
   `;
 }
 
 function mountHeader() {
-  const headerContainer = document.querySelector('.calc-header .container');
+  const headerEl = document.querySelector('.calc-header') || document.querySelector('header');
+  const headerContainer = headerEl?.querySelector('.container');
   if (!headerContainer) return;
+
+  if (!headerEl.classList.contains('calc-header')) {
+    headerEl.classList.add('calc-header', 'py-2');
+  }
 
   headerContainer.innerHTML = `
     <nav class="tool-navbar w-full" aria-label="tool global navigation">
@@ -107,17 +188,19 @@ function mountHeader() {
         <a class="tool-header-brand" href="/box-party.html" aria-label="リスポケ ボックスへ">
           <span class="calc-title mb-0">リスポケ</span>
         </a>
-        <button class="tool-navbar-toggler" id="tool-nav-toggle" type="button" aria-controls="tool-nav-collapse" aria-expanded="false" aria-label="ナビゲーションを開閉">
-          <i class="bi bi-list"></i>
-        </button>
-        <div class="tool-header-main" aria-label="tool controls">
-          <div class="tool-nav-collapse is-collapsed" id="tool-nav-collapse">${buildNavigationTabs()}</div>
-        </div>
-        <div class="tool-header-reg" aria-label="regulation controls">
-          ${buildRegulationControl()}
-        </div>
-        <div class="tool-header-lang" aria-label="language controls">
-          ${buildLangToggle()}
+        <div class="tool-header-right">
+          <div class="tool-header-main" aria-label="tool controls">
+            <div class="tool-nav-collapse is-collapsed" id="tool-nav-collapse">${buildNavigationTabs()}</div>
+          </div>
+          <div class="tool-header-reg" aria-label="regulation controls">
+            ${buildRegulationControl()}
+          </div>
+          <div class="tool-header-lang" aria-label="language controls">
+            ${buildLangToggle()}
+          </div>
+          <button class="tool-navbar-toggler" id="tool-nav-toggle" type="button" aria-controls="tool-nav-collapse" aria-expanded="false" aria-label="ナビゲーションを開閉">
+            <i class="bi bi-list"></i>
+          </button>
         </div>
       </div>
     </nav>
@@ -141,7 +224,18 @@ function mountHeader() {
   syncRegulationLabel();
   document.querySelectorAll('#lang-tabs [data-lang]').forEach(button => {
     button.addEventListener('click', () => {
-      window.setTimeout(syncRegulationLabel, 0);
+      const lang = button.dataset.lang;
+      if (!lang || (lang !== 'ja' && lang !== 'en')) return;
+      try {
+        localStorage.setItem(TOOL_LAYOUT_LANG_KEY, lang);
+      } catch (_error) {
+        // ignore
+      }
+      document.querySelectorAll('#lang-tabs [data-lang]').forEach(node => {
+        node.classList.toggle('active', node.dataset.lang === lang);
+      });
+      syncRegulationLabel();
+      window.dispatchEvent(new CustomEvent('poketools:langchange', { detail: { lang } }));
     });
   });
 
@@ -208,6 +302,9 @@ function mountFooter(config = DEFAULT_LAYOUT_CONFIG) {
 }
 
 async function initializeToolLayout() {
+  ensureGlobalFont();
+  if (isEmbedDetailContext()) return;
+  ensureHeaderStyles();
   const layoutConfig = await loadLayoutConfig();
   mountHeader();
   mountFooter(layoutConfig);

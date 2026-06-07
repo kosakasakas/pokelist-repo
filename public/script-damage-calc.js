@@ -348,11 +348,204 @@ function isDetailEmbedMode() {
   return params.get('embed') === 'detail';
 }
 
+function isDetailStandaloneMode() {
+  if (!hasManagerPage()) return false;
+  const params = new URLSearchParams(window.location.search);
+  return params.get('detail') === 'standalone';
+}
+
+function getStandaloneReturnPath() {
+  const params = new URLSearchParams(window.location.search);
+  const fallback = '/speed-adjust.html';
+  const raw = params.get('returnPath');
+  if (!raw) return fallback;
+  try {
+    const decoded = decodeURIComponent(raw);
+    return decoded.startsWith('/') ? decoded : fallback;
+  } catch (_error) {
+    return fallback;
+  }
+}
+
 function setupDetailEmbedLayout() {
   if (!isDetailEmbedMode()) return;
   document.body.classList.add('embed-detail-mode');
   document.querySelector('header.calc-header')?.classList.add('d-none');
   document.querySelector('main')?.classList.add('d-none');
+  document.getElementById('tool-footer')?.classList.add('d-none');
+
+  if (!document.getElementById('embed-detail-inline-style')) {
+    const style = document.createElement('style');
+    style.id = 'embed-detail-inline-style';
+    style.textContent = `
+      body.embed-detail-mode { background: transparent !important; margin: 0; }
+      body.embed-detail-mode .modal-backdrop { display: none !important; }
+      body.embed-detail-mode #pokemon-detail-modal {
+        display: block !important;
+        position: fixed;
+        inset: 0;
+        background: transparent;
+      }
+      body.embed-detail-mode #pokemon-detail-modal .modal-dialog {
+        margin: 0.8rem auto;
+        max-width: min(1080px, 96vw);
+      }
+      body.embed-detail-mode #pokemon-detail-modal .modal-content {
+        border: 1px solid #dbe3ed;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      body.embed-detail-mode .detail-head {
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 0.65rem;
+        background: #f8fafc;
+      }
+      @media (max-width: 767.98px) {
+        body.embed-detail-mode #pokemon-detail-modal .modal-dialog {
+          margin: 0;
+          max-width: 100vw;
+          height: 100vh;
+        }
+        body.embed-detail-mode #pokemon-detail-modal .modal-content {
+          height: 100vh;
+          border-radius: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
+function setupDetailStandaloneLayout() {
+  if (!isDetailStandaloneMode()) return;
+  document.body.classList.add('detail-standalone-mode');
+  document.querySelector('header.calc-header')?.classList.add('d-none');
+  document.querySelector('main')?.classList.add('d-none');
+  document.getElementById('tool-footer')?.classList.add('d-none');
+  if (document.getElementById('detail-standalone-inline-style')) return;
+  const style = document.createElement('style');
+  style.id = 'detail-standalone-inline-style';
+  style.textContent = `
+    body.detail-standalone-mode { background: #ffffff; }
+    body.detail-standalone-mode #pokemon-detail-modal {
+      display: block !important;
+      position: fixed;
+      inset: 0;
+      background: #f8fafc;
+    }
+    body.detail-standalone-mode #pokemon-detail-modal .modal-dialog {
+      margin: 0.9rem auto;
+      max-width: min(1120px, 98vw);
+    }
+    @media (max-width: 767.98px) {
+      body.detail-standalone-mode #pokemon-detail-modal .modal-dialog {
+        margin: 0;
+        max-width: 100vw;
+        height: 100vh;
+      }
+      body.detail-standalone-mode #pokemon-detail-modal .modal-content {
+        height: 100vh;
+        border-radius: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function ensureDetailDialogStyles() {
+  if (isDetailStandaloneMode()) return;
+  if (document.getElementById('detail-dialog-inline-style')) return;
+  const style = document.createElement('style');
+  style.id = 'detail-dialog-inline-style';
+  style.textContent = `
+    .detail-head {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 0.65rem;
+      background: #f8fafc;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.65rem;
+      align-items: start;
+    }
+    .detail-head .pokemon-icon-stack { width: 64px; height: 64px; position: relative; display: inline-flex; }
+    .detail-head .ps-pokemon-icon { width: 64px; height: 64px; object-fit: contain; }
+    .detail-head-main { min-width: 0; }
+    .detail-head-title-row { display: flex; gap: 0.5rem; align-items: center; }
+    .detail-head-species-row { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.45rem; }
+    .detail-head-title { font-weight: 700; font-size: 1.05rem; }
+    .detail-head-base-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.35rem; color: #475569; }
+    .detail-head-base-total { font-weight: 700; color: #1d4ed8; }
+    .ps-item-icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-image: url(https://play.pokemonshowdown.com/sprites/itemicons-sheet.png);
+      background-repeat: no-repeat;
+      image-rendering: pixelated;
+      vertical-align: middle;
+      flex: 0 0 24px;
+    }
+    .detail-head .pokemon-icon-stack .ps-item-icon {
+      position: absolute;
+      right: -4px;
+      bottom: -2px;
+      border-radius: 6px;
+      background-color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(148,163,184,0.35);
+    }
+    .detail-compact-stat-row {
+      display: grid;
+      grid-template-columns: 52px 64px 1fr;
+      gap: 0.4rem;
+      align-items: center;
+      margin-bottom: 0.35rem;
+    }
+    .detail-stat-actions-layout { display: block; }
+    .detail-compact-stat-editor { max-width: 520px; }
+    .detail-adjust-buttons { margin-top: 0.5rem; }
+    .stat-mod-cycle-btn[data-side="detail"][data-state="plus"] {
+      background: #dcfce7;
+      border-color: #16a34a;
+      color: #166534;
+    }
+    .stat-mod-cycle-btn[data-side="detail"][data-state="neutral"] {
+      background: #fff;
+      border-color: #d1d5db;
+      color: #374151;
+    }
+    .stat-mod-cycle-btn[data-side="detail"][data-state="minus"] {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #7f1d1d;
+    }
+    .detail-compact-stat-row .stat-11n-highlight {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #166534 !important;
+      font-weight: 700;
+    }
+    @media (max-width: 767.98px) {
+      .detail-head { grid-template-columns: 1fr; }
+      .detail-head .pokemon-icon-stack { width: 56px; height: 56px; }
+      .detail-head .ps-pokemon-icon { width: 56px; height: 56px; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function populateDetailEvSelectOptions() {
+  ['hp', 'atk', 'def', 'spa', 'spd', 'spe'].forEach(stat => {
+    const select = $(`detail-ev-${stat}`);
+    if (!select || select.tagName !== 'SELECT' || select.options.length) return;
+    for (let i = 0; i <= 32; i += 1) {
+      const option = document.createElement('option');
+      option.value = String(i);
+      option.textContent = String(i);
+      select.appendChild(option);
+    }
+  });
 }
 
 function setMobileTopTab(tab) {
@@ -1214,99 +1407,29 @@ function fillTypeSelect() {
   fillMoveCategoryField($('move-category')?.value || 'Special');
 }
 
-function parseCsvLine(line) {
-  const values = [];
-  let current = '';
-  let inQuotes = false;
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index];
-    if (char === '"') {
-      if (inQuotes && line[index + 1] === '"') {
-        current += '"';
-        index += 1;
-      } else {
-        inQuotes = !inQuotes;
-      }
-      continue;
-    }
-    if (char === ',' && !inQuotes) {
-      values.push(current);
-      current = '';
-      continue;
-    }
-    current += char;
-  }
-  values.push(current);
-  return values;
-}
-
-async function fetchCsvRecords(url) {
-  const response = await fetch(url, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Failed to load CSV: ${url}`);
-  const text = (await response.text()).replace(/^\uFEFF/, '');
-  const lines = text.split(/\r?\n/).filter(Boolean);
-  const headers = parseCsvLine(lines[0] || '');
-  const records = lines.slice(1).map(line => {
-    const values = parseCsvLine(line);
-    const record = {};
-    headers.forEach((header, index) => {
-      record[header] = values[index] || '';
-    });
-    return record;
-  });
-  return { headers, records };
-}
-
-function setupLearnsetData(headers, records) {
-  const ruleHeaders = headers.filter(header => !['ID', 'わざ名', '優先度'].includes(header));
-  state.learnsetBySpeciesNum = new Map();
+function setupLocalizedNameMapsFromData() {
   state.moveNameJaById = new Map();
-  const moveIdByName = new Map();
-  state.data.moves.forEach(move => {
-    moveIdByName.set(normalizeSearchText(move.name), move.id);
-    if (move.nameJa) moveIdByName.set(normalizeSearchText(move.nameJa), move.id);
+  (state.data?.moves || []).forEach(move => {
+    if (move?.id && move?.nameJa) state.moveNameJaById.set(move.id, move.nameJa);
   });
-  records.forEach(record => {
-    let moveId = state.moveByNum.get(Number(record.ID));
-    const csvMoveNameJa = String(record['わざ名'] || '').trim();
-    const nameMatchedMoveId = csvMoveNameJa ? moveIdByName.get(normalizeSearchText(csvMoveNameJa)) : null;
-    if (moveId && nameMatchedMoveId && moveId !== nameMatchedMoveId) moveId = nameMatchedMoveId;
-    if (!moveId && nameMatchedMoveId) moveId = nameMatchedMoveId;
-    if (!moveId) return;
-    if (csvMoveNameJa) {
-      state.moveNameJaById.set(moveId, csvMoveNameJa);
-      moveIdByName.set(normalizeSearchText(csvMoveNameJa), moveId);
-    }
-    const speciesNums = new Set();
-    ruleHeaders.forEach(header => {
-      String(record[header] || '').split(',').map(value => Number(value.trim())).filter(Number.isFinite).forEach(num => speciesNums.add(num));
-    });
-    speciesNums.forEach(num => {
-      if (!state.learnsetBySpeciesNum.has(num)) state.learnsetBySpeciesNum.set(num, new Set());
-      state.learnsetBySpeciesNum.get(num).add(moveId);
-    });
-  });
-}
 
-function setupSpeciesJapaneseMap(records) {
   state.speciesNameJaById = new Map();
-  records.forEach(record => {
-    const showdownId = toId(record.ShowdownKey || '');
-    const nameJa = String(record['名前(フォルム)'] || record['名前'] || '').trim();
-    if (!showdownId || !nameJa) return;
-    if (!state.speciesNameJaById.has(showdownId)) state.speciesNameJaById.set(showdownId, nameJa);
+  [...(state.data?.species || []), ...(state.data?.megaSpecies || [])].forEach(species => {
+    if (!species?.id || !species?.nameJa) return;
+    if (!state.speciesNameJaById.has(species.id)) state.speciesNameJaById.set(species.id, species.nameJa);
   });
-}
 
-function setupAbilityJapaneseMap(records) {
   state.abilityNameJaById = new Map();
-  records.forEach(record => {
-    const abilityNum = Number(record.ID);
-    const nameJa = String(record['特性'] || '').trim();
-    if (!Number.isFinite(abilityNum) || !nameJa) return;
-    const abilityId = state.abilityByNum.get(abilityNum);
-    if (!abilityId) return;
-    if (!state.abilityNameJaById.has(abilityId)) state.abilityNameJaById.set(abilityId, nameJa);
+  (state.data?.abilities || []).forEach(ability => {
+    if (ability?.id && ability?.nameJa) state.abilityNameJaById.set(ability.id, ability.nameJa);
+  });
+
+  state.learnsetBySpeciesNum = new Map();
+  state.learnsetBySpeciesId.forEach((moveIds, speciesId) => {
+    const species = state.speciesById.get(speciesId);
+    if (!species || !Number.isFinite(species.num)) return;
+    if (!state.learnsetBySpeciesNum.has(species.num)) state.learnsetBySpeciesNum.set(species.num, new Set());
+    moveIds.forEach(moveId => state.learnsetBySpeciesNum.get(species.num).add(moveId));
   });
 }
 
@@ -2057,10 +2180,24 @@ function applyDetail11nHighlight(plusStats, stats) {
   };
   Object.entries(statToNode).forEach(([stat, nodeId]) => {
     const node = $(nodeId);
+    const evNode = $(`detail-ev-${stat}`);
     if (!node) return;
     const boosted = Array.isArray(plusStats) && plusStats.includes(stat);
     const value = toNumber(stats[stat]);
-    node.classList.toggle('stat-11n-highlight', Boolean(boosted && value > 0 && value % 11 === 0));
+    const is11n = Boolean(boosted && value > 0 && value % 11 === 0);
+    node.classList.toggle('stat-11n-highlight', is11n);
+    if (evNode) evNode.classList.toggle('stat-11n-highlight', is11n);
+  });
+
+  document.querySelectorAll('.stat-mod-cycle-btn[data-side="detail"]').forEach(button => {
+    const stat = button.dataset.stat;
+    if (!stat || stat === 'hp') return;
+    const stateValue = button.dataset.state || 'neutral';
+    const boosted = Array.isArray(plusStats) && plusStats.includes(stat);
+    const value = toNumber(stats[stat]);
+    const is11n = Boolean(boosted && value > 0 && value % 11 === 0);
+    button.classList.toggle('stat-11n-highlight', is11n);
+    button.dataset.state = stateValue;
   });
 }
 
@@ -2876,6 +3013,10 @@ function renderDetailHeadSummary(pokemon) {
   if ($('detail-head-base-stats')) {
     const baseStats = species?.baseStats || {};
     $('detail-head-base-stats').textContent = `H${baseStats.hp ?? '-'} A${baseStats.atk ?? '-'} B${baseStats.def ?? '-'} C${baseStats.spa ?? '-'} D${baseStats.spd ?? '-'} S${baseStats.spe ?? '-'}`;
+    if ($('detail-head-base-total')) {
+      const sum = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'].reduce((acc, stat) => acc + toNumber(baseStats[stat], 0), 0);
+      $('detail-head-base-total').textContent = `合計 ${sum}`;
+    }
   }
   if ($('detail-head-meta')) {
     const typeIcons = (species?.types || []).map(typeName => {
@@ -3676,11 +3817,26 @@ function initDetailModal() {
       const pokemon = readDetailPokemonFromForm();
       if (pokemon) refreshDetailDerivedViews(pokemon);
     });
+    node.addEventListener('change', () => {
+      updateDetailStatSummaries();
+      const pokemon = readDetailPokemonFromForm();
+      if (pokemon) refreshDetailDerivedViews(pokemon);
+    });
   });
 
   $('pokemon-detail-modal').addEventListener('hidden.bs.modal', () => {
-    if (!isDetailEmbedMode()) return;
-    window.parent?.postMessage({ type: 'champions-detail-closed' }, window.location.origin);
+    if (isDetailEmbedMode()) {
+      window.parent?.postMessage({ type: 'champions-detail-closed' }, window.location.origin);
+      return;
+    }
+    if (!isDetailStandaloneMode()) return;
+    window.location.href = getStandaloneReturnPath();
+  });
+  $('pokemon-detail-modal').addEventListener('shown.bs.modal', () => {
+    if (isDetailEmbedMode()) {
+      window.parent?.postMessage({ type: 'champions-detail-ready' }, window.location.origin);
+      return;
+    }
   });
 }
 
@@ -3821,23 +3977,13 @@ function bindEvents() {
 
 async function initialize() {
   const dataResponse = await fetch('/db/champions-calc-data.json', { cache: 'no-store' });
-  const [moveCsvResult, moveStatusCsvResult, speciesCsvResult, abilityCsvResult] = await Promise.allSettled([
-    fetchCsvRecords('/db/ダメージ計算 - list_move2poke.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_movestatus2poke.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - def_pokemon.csv'),
-    fetchCsvRecords('/db/ダメージ計算 - list_ability2poke.csv'),
-  ]);
-  const moveCsv = moveCsvResult.status === 'fulfilled' ? moveCsvResult.value : { headers: [], records: [] };
-  const moveStatusCsv = moveStatusCsvResult.status === 'fulfilled' ? moveStatusCsvResult.value : { headers: [], records: [] };
-  const speciesCsv = speciesCsvResult.status === 'fulfilled' ? speciesCsvResult.value : { headers: [], records: [] };
-  const abilityCsv = abilityCsvResult.status === 'fulfilled' ? abilityCsvResult.value : { headers: [], records: [] };
   if (!dataResponse.ok) throw new Error(`Failed to load data: ${dataResponse.status}`);
   state.data = await dataResponse.json();
+  ensureDetailDialogStyles();
+  populateDetailEvSelectOptions();
   setupLookups(state.data);
   state.availableFormats = [currentFormatLabel()];
-  setupLearnsetData(moveCsv.headers, [...moveCsv.records, ...moveStatusCsv.records]);
-  setupSpeciesJapaneseMap(speciesCsv.records);
-  setupAbilityJapaneseMap(abilityCsv.records);
+  setupLocalizedNameMapsFromData();
   loadLanguagePreference();
   loadStorage();
   initPickerModal();
@@ -3851,6 +3997,7 @@ async function initialize() {
   updateLangTabs();
   setupDefaults();
   setupDetailEmbedLayout();
+  setupDetailStandaloneLayout();
   bindEvents();
   if (hasCalcPage()) {
     try {
@@ -3877,13 +4024,16 @@ async function initialize() {
     try {
       const openRequest = JSON.parse(localStorage.getItem(OPEN_DETAIL_REQUEST_KEY) || 'null');
       if (openRequest?.pokemonId && getPokemonById(openRequest.pokemonId)) openPokemonDetail(openRequest.pokemonId);
+      else if (isDetailStandaloneMode()) window.location.href = getStandaloneReturnPath();
     } catch (_error) {
       // ignore invalid persisted state
     }
     localStorage.removeItem(OPEN_DETAIL_REQUEST_KEY);
   }
-  renderManagerViews();
-  calculateAndRender();
+  if (!isDetailStandaloneMode()) {
+    renderManagerViews();
+    calculateAndRender();
+  }
 }
 
 initialize().catch(error => {

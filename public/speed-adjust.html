@@ -44,6 +44,238 @@
         from { background-color: #aee2ff; }
         to { background-color: transparent; }
       }
+      .speed-focus-row {
+        background-color: rgba(255, 193, 7, 0.08);
+      }
+      .speed-column-pulse {
+        animation: speed-column-pulse 1.1s ease-in-out infinite;
+      }
+      @keyframes speed-column-pulse {
+        0%, 100% { box-shadow: inset 0 0 0 0 rgba(255, 193, 7, 0); }
+        50% { box-shadow: inset 0 0 0 999px rgba(255, 193, 7, 0.22); }
+      }
+
+      .speed-target-main {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.5rem;
+      }
+      @media (min-width: 768px) {
+        .speed-target-main {
+          grid-template-columns: repeat(8, minmax(0, 1fr));
+        }
+      }
+
+      .speed-cell-pokemon { grid-column: span 2; }
+      .speed-cell-edit { grid-column: span 1; }
+      .speed-cell-toggle { grid-column: span 1; }
+      .speed-cell-speed { grid-column: span 2; }
+      .speed-cell-nature { grid-column: span 2; }
+      .speed-cell-ap { grid-column: span 2; }
+      .speed-cell-rank { grid-column: span 2; }
+      .speed-cell-save { grid-column: span 4; }
+      @media (min-width: 768px) {
+        .speed-cell-speed { grid-column: span 1; }
+        .speed-cell-nature { grid-column: span 1; }
+        .speed-cell-ap { grid-column: span 2; }
+        .speed-cell-rank { grid-column: span 2; }
+        .speed-cell-save { grid-column: span 2; }
+
+        .speed-cell-pokemon,
+        .speed-cell-edit,
+        .speed-cell-toggle {
+          grid-row: 1;
+        }
+        .speed-cell-speed,
+        .speed-cell-nature,
+        .speed-cell-ap,
+        .speed-cell-rank,
+        .speed-cell-save {
+          grid-row: 2;
+        }
+      }
+
+      .speed-target-main[data-edit-visible="0"] .speed-cell-pokemon {
+        grid-column: span 3;
+      }
+      .speed-target-main[data-edit-visible="0"] .speed-cell-edit {
+        display: none;
+      }
+
+      .speed-target-control-btn,
+      .speed-target-main .input-group,
+      .speed-target-main .form-select {
+        min-height: 42px;
+      }
+
+      .speed-target-main .input-group-text {
+        min-width: 40px;
+        justify-content: center;
+      }
+
+      .speed-target-picker {
+        justify-content: flex-start;
+        gap: 0.4rem;
+      }
+      .speed-target-picker > span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .speed-target-picker .ps-pokemon-icon {
+        max-height: 24px;
+      }
+
+      .speed-target-speed-box {
+        height: 42px;
+        border: 1px solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+        background: var(--bs-body-bg);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        width: 100%;
+      }
+      .speed-target-speed-box .bi {
+        color: #c68a00;
+      }
+
+      #target-nature-cycle.mode-plus {
+        background: #d1fae5;
+        border-color: #10b981;
+        color: #065f46;
+      }
+      #target-nature-cycle.mode-neutral {
+        background: #fff;
+        border-color: var(--bs-border-color);
+        color: var(--bs-body-color);
+      }
+      #target-nature-cycle.mode-minus {
+        background: #fee2e2;
+        border-color: #ef4444;
+        color: #7f1d1d;
+      }
+
+      .speed-toggle-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+        border: 1px solid var(--bs-border-color);
+        border-radius: 999px;
+        background: #fff;
+        padding: 2px;
+      }
+
+      .speed-toggle-group .btn {
+        border: 0;
+        border-radius: 999px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .speed-toggle-group .btn.is-on,
+      .speed-toggle-group .btn.active {
+        background: var(--bs-primary);
+        color: #fff;
+      }
+      .speed-toggle-group .btn:not(.is-on):not(.active) {
+        background: transparent;
+        color: var(--bs-secondary-color);
+      }
+
+      .ps-item-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        image-rendering: pixelated;
+        vertical-align: middle;
+        flex: 0 0 24px;
+      }
+
+      .speed-scarf-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 576px) {
+        #target-mega-toggle,
+        #target-scarf {
+          font-size: 0.72rem;
+          padding-left: 0.4rem;
+          padding-right: 0.4rem;
+          letter-spacing: 0;
+        }
+      }
+
+      .ad-mobile-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+      .ad-bottom-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .ad-slot {
+        border: 1px solid #d8dee6;
+        border-radius: 8px;
+        background: #fff;
+        color: #7b8794;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+      }
+      .ad-rail { min-height: 600px; }
+      .ad-mobile-banner { min-height: 100px; }
+      .ad-mobile-rect { min-height: 250px; }
+      .ad-banner-desktop { min-height: 90px; width: min(100%, 728px); }
+      .ad-banner-mobile { min-height: 100px; width: min(100%, 320px); }
+
+      @media (max-width: 767.98px) {
+        .ad-mobile-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .target-box-editor-host {
+        position: fixed;
+        inset: 0;
+        z-index: 1200;
+        background: rgba(15, 23, 42, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .target-box-editor-surface {
+        width: min(1280px, 98vw);
+        height: min(900px, 92vh);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 20px 50px rgba(2, 6, 23, 0.35);
+        background: #fff;
+      }
+      .target-box-editor-frame {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+      @media (max-width: 767.98px) {
+        .target-box-editor-host {
+          padding: 0.25rem;
+        }
+        .target-box-editor-surface {
+          width: 100vw;
+          height: 100vh;
+          border-radius: 0;
+        }
+      }
     </style>
   </head>
   <body class="speed-adjust-page d-flex flex-column">
@@ -94,13 +326,6 @@
               </thead>
               <tbody id="speed-table-body"></tbody>
             </table>
-            <footer class="text-center py-4">
-              <p class="text-muted small">
-                Data source: Pokemon Showdown<br>
-                Pokemon and related names are trademarks of Nintendo, Creatures, and GAME FREAK.<br>
-                &copy; 2026 sakas_poke
-              </p>
-            </footer>
           </div>
         </section>
 
@@ -110,67 +335,77 @@
           </div>
         </aside>
       </div>
+      <div class="ad-mobile-grid d-xxl-none mt-3">
+        <div class="ad-slot ad-mobile-banner" aria-label="mobile-banner-320x100">AD 320x100</div>
+        <div class="ad-slot ad-mobile-rect" aria-label="mobile-rect-300x250">AD 300x250</div>
+      </div>
+      <div class="ad-bottom-wrap mt-3">
+        <div class="ad-slot ad-banner ad-banner-desktop d-none d-md-flex" aria-label="bottom-banner-728x90">AD 728x90</div>
+        <div class="ad-slot ad-banner ad-banner-mobile d-md-none" aria-label="bottom-banner-320x100">AD 320x100</div>
+      </div>
     </main>
 
     <aside class="speed-target-panel fixed-bottom bg-body-tertiary p-3 shadow-lg" id="speed-target-panel">
-      <div class="speed-target-main container">
-        <div class="row g-2 align-items-center">
-          <!-- 1段目 -->
-          <div class="col-12 col-md-6">
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-primary w-100" id="target-picker-trigger" type="button" data-bs-toggle="tooltip" title="調整するポケモンを選択">
-                <span data-i18n="loadingTarget">調整対象を読み込み中...</span>
-              </button>
-              <button id="target-edit-detail" class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-i18n-title="editPokemon" title="詳細編集">
-                <i class="bi bi-pencil-square"></i>
-              </button>
+      <div class="speed-target-main container" data-edit-visible="1">
+        <div class="speed-cell-pokemon">
+          <button class="btn btn-outline-primary w-100 speed-target-control-btn speed-target-picker" id="target-picker-trigger" type="button" data-bs-toggle="tooltip" title="調整するポケモンを選択">
+            <span data-i18n="loadingTarget">調整対象を読み込み中...</span>
+          </button>
+        </div>
+
+        <div class="speed-cell-edit">
+          <button id="target-edit-detail" class="btn btn-outline-secondary w-100 speed-target-control-btn" type="button" data-bs-toggle="tooltip" data-i18n-title="editPokemon" title="詳細編集">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+        </div>
+
+        <div class="speed-cell-toggle">
+          <div class="speed-toggle-group">
+            <div class="speed-mega-toggle-wrap" data-bs-toggle="tooltip" data-i18n-title="megaEvolution" title="メガ進化" aria-label="メガ進化">
+              <input id="target-mega-enabled" type="checkbox" hidden>
+              <button id="target-mega-toggle" class="btn btn-outline-secondary w-100 speed-target-control-btn" type="button" aria-pressed="false">メガ</button>
             </div>
-          </div>
-          <div class="col-12 col-md-6">
-             <div class="btn-group w-100">
-                <div class="speed-mega-toggle-wrap" data-bs-toggle="tooltip" data-i18n-title="megaEvolution" title="メガ進化" aria-label="メガ進化">
-                    <input id="target-mega-enabled" type="checkbox" hidden>
-                    <button id="target-mega-toggle" class="btn btn-outline-secondary" type="button" aria-pressed="false">メガ</button>
-                </div>
-                <button id="target-scarf" class="btn btn-outline-secondary speed-scarf-toggle" type="button" data-bs-toggle="tooltip" data-i18n-title="scarf" title="こだわりスカーフ" aria-pressed="false"></button>
-              </div>
-          </div>
-          <!-- 2段目 -->
-          <div class="col-6 col-sm-3">
-              <div class="text-center">
-                <span class="fs-4 fw-bold mono" id="target-current-speed">-</span>
-                <small class="text-muted d-block" data-i18n-title="speedValue">実数値</small>
-              </div>
-          </div>
-          <div class="col-6 col-sm-3">
-            <button id="target-nature-cycle" class="btn btn-outline-secondary w-100" type="button" data-bs-toggle="tooltip" data-i18n-title="naturePlus" title="性格補正を切替">
-              <i class="bi bi-emoji-smile"></i>
-              <span id="target-nature-cycle-text">±0%</span>
-            </button>
-          </div>
-          <!-- 3段目 -->
-          <div class="col-6 col-sm-3">
-              <div class="input-group" data-bs-toggle="tooltip" data-i18n-title="apLabel" title="能力ポイント">
-                <span class="input-group-text"><i class="bi bi-lightning-charge"></i></span>
-                <select id="target-spe-ap" class="form-select"></select>
-              </div>
-          </div>
-          <div class="col-6 col-sm-3">
-            <div class="input-group" data-bs-toggle="tooltip" data-i18n-title="rankLabel" title="ランク">
-              <span class="input-group-text"><i class="bi bi-graph-up-arrow"></i></span>
-              <select id="target-spe-rank" class="form-select"></select>
-            </div>
-          </div>
-          <!-- 4段目 -->
-          <div class="col-12">
-            <div class="d-grid">
-              <button id="speed-save-only" class="btn btn-primary" type="button">
-                <i class="bi bi-save"></i>
-                <span data-i18n="save">個体を保存</span>
-              </button>
-            </div>
+            <button id="target-scarf" class="btn btn-outline-secondary w-100 speed-target-control-btn speed-scarf-toggle" type="button" data-bs-toggle="tooltip" data-i18n-title="scarf" title="こだわりスカーフ" aria-pressed="false"></button>
           </div>
         </div>
+
+        <div class="speed-cell-speed">
+          <div class="speed-target-speed-box mono fw-bold" title="実数値" aria-label="実数値">
+            <i class="bi bi-speedometer2" aria-hidden="true"></i>
+            <span id="target-current-speed">-</span>
+          </div>
+        </div>
+
+        <div class="speed-cell-nature">
+          <button id="target-nature-cycle" class="btn btn-outline-secondary w-100 speed-target-control-btn" type="button" data-bs-toggle="tooltip" data-i18n-title="naturePlus" title="性格補正を切替">
+            <i class="bi bi-emoji-smile"></i>
+            <span id="target-nature-cycle-text">±0%</span>
+          </button>
+        </div>
+
+        <div class="speed-cell-ap">
+          <div class="input-group" data-bs-toggle="tooltip" data-i18n-title="apLabel" title="能力ポイント">
+            <span class="input-group-text"><i class="bi bi-lightning-charge"></i></span>
+            <select id="target-spe-ap" class="form-select"></select>
+          </div>
+        </div>
+
+        <div class="speed-cell-rank">
+          <div class="input-group" data-bs-toggle="tooltip" data-i18n-title="rankLabel" title="ランク">
+            <span class="input-group-text"><i class="bi bi-graph-up-arrow"></i></span>
+            <select id="target-spe-rank" class="form-select"></select>
+          </div>
+        </div>
+
+        <div class="speed-cell-save">
+          <div class="d-grid">
+            <button id="speed-save-only" class="btn btn-primary speed-target-control-btn" type="button">
+              <i class="bi bi-save"></i>
+              <span data-i18n="save">個体を保存</span>
+            </button>
+          </div>
+        </div>
+
         <div id="speed-save-feedback" class="speed-save-feedback" role="status" aria-live="polite"></div>
       </div>
     </aside>
@@ -202,6 +437,7 @@
     </div>
 
     <script src="/script-poketools-layout.js"></script>
+    <script src="/script-ads.js"></script>
     <script src="/script-tailwind-modal-shim.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="/script-speed-adjust-v2.js"></script>

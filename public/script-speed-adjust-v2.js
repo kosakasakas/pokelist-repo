@@ -33,7 +33,7 @@ const I18N = {
     searchPlaceholder: 'ポケモン名で検索',
     speedValue: '実数値',
     groupList: '対象群',
-    save: '保存',
+    save: '個体を保存',
     apLabel: '能力ポイント',
     rankLabel: 'ランク',
     naturePlus: '性格補正を切替 (+10% / -10% / 0%)',
@@ -79,7 +79,7 @@ const I18N = {
     searchPlaceholder: 'Filter by Pokemon',
     speedValue: 'Speed',
     groupList: 'Groups',
-    save: 'Save',
+    save: 'Save Pokemon',
     apLabel: 'Effort points',
     rankLabel: 'Rank',
     naturePlus: 'Toggle nature modifier (+10% / -10% / 0%)',
@@ -636,19 +636,27 @@ function renderGroupLabel(group, chips) {
 
 function renderGroupRows(grouped, focusGroup, isFocusRow) {
   const selfChips = [];
-  const normalRows = GROUPS.map(group => {
+  const orderedGroups = [...GROUPS].sort((a, b) => {
+    if (a.key === focusGroup) return -1;
+    if (b.key === focusGroup) return 1;
+    return 0;
+  });
+
+  const normalRows = orderedGroups.map(group => {
     const chips = grouped[group.key] || [];
     if (!chips.length) return '';
     const groupSelfChips = chips.filter(chip => chip?.isSelf);
     groupSelfChips.forEach(chip => selfChips.push(chip));
     const normalChips = chips.filter(chip => !chip?.isSelf);
     if (!normalChips.length) return '';
-    const hl = isFocusRow && focusGroup === group.key ? 'speed-group-highlight' : '';
-    return `<div class="speed-group ${hl}"><span class="badge ${group.badge} speed-group-label">${renderGroupLabel(group, chips)}</span><span class="speed-chip-list">${normalChips.map(renderSpeedChip).join('')}</span></div>`;
+    const isFocusGroup = focusGroup === group.key;
+    const hl = (isFocusRow && isFocusGroup) ? 'speed-group-highlight speed-column-pulse' : '';
+    const anchor = (isFocusRow && isFocusGroup && !selfChips.length) ? ' speed-focus-anchor' : '';
+    return `<div class="speed-group ${hl}${anchor}"><span class="badge ${group.badge} speed-group-label">${renderGroupLabel(group, chips)}</span><span class="speed-chip-list">${normalChips.map(renderSpeedChip).join('')}</span></div>`;
   }).join('');
 
   const selfGroup = selfChips.length
-    ? `<div class="speed-group speed-group-self"><span class="badge text-bg-danger speed-group-label">自分</span><span class="speed-chip-list">${selfChips.map(renderSpeedChip).join('')}</span></div>`
+    ? `<div class="speed-group speed-group-self${isFocusRow ? ' speed-group-highlight speed-column-pulse speed-focus-anchor' : ''}"><span class="badge text-bg-danger speed-group-label">自分</span><span class="speed-chip-list">${selfChips.map(renderSpeedChip).join('')}</span></div>`
     : '';
 
   return `${selfGroup}${normalRows}`;
@@ -681,12 +689,27 @@ function renderSpeedTable(keepFocus = false) {
 
   tbody.innerHTML = html;
 
-  const focus = tbody.querySelector('.speed-focus-row');
-  if (focus && (keepFocus || !state.didInitialFocus)) {
-    focus.scrollIntoView({ block: 'center' });
+  const focusRowId = `speed-row-${currentSpeed}`;
+  const focusRow = $(focusRowId) || tbody.querySelector('.speed-focus-row');
+  if (focusRow && (keepFocus || !state.didInitialFocus)) {
+    const container = document.querySelector('.table-container');
+    if (container && container.contains(focusRow)) {
+      const moveFocus = () => {
+        const rowRect = focusRow.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        const headerHeight = document.querySelector('#speed-table thead')?.getBoundingClientRect().height || 0;
+        const mobileOffset = window.matchMedia('(max-width: 767.98px)').matches ? 14 : 8;
+        const top = Math.max(0, container.scrollTop + (rowRect.top - containerRect.top) - headerHeight - mobileOffset);
+        const behavior = keepFocus && !window.matchMedia('(max-width: 767.98px)').matches ? 'smooth' : 'auto';
+        container.scrollTo({ top, behavior });
+      };
+      requestAnimationFrame(() => requestAnimationFrame(moveFocus));
+    } else {
+      focusRow.scrollIntoView({ block: 'start' });
+    }
     if (keepFocus) {
-        focus.classList.add('highlight-row');
-        setTimeout(() => focus.classList.remove('highlight-row'), 1500);
+      focusRow.classList.add('highlight-row');
+      setTimeout(() => focusRow.classList.remove('highlight-row'), 1500);
     }
     state.didInitialFocus = true;
   }
@@ -772,18 +795,28 @@ function hasMega(speciesId) {
 function renderScarfToggle() {
   const button = $('target-scarf');
   if (!button) return;
-  const isMegaOn = Boolean(state.targetPokemon?.megaEnabled);
-  button.classList.toggle('d-none', isMegaOn);
-  if (isMegaOn) {
+
+  const species = state.speciesById.get(state.targetPokemon?.speciesId || '');
+  const hasMegaForm = hasMega(state.targetPokemon?.speciesId || '');
+  const canShowScarf = canUseScarf(species);
+
+  button.classList.toggle('d-none', !canShowScarf);
+  if (!canShowScarf) {
     button.dataset.active = '0';
     button.innerHTML = '';
     return;
   }
+
   const active = Boolean(state.targetPokemon?.itemId === 'choicescarf');
   button.classList.toggle('active', active);
   button.setAttribute('aria-pressed', String(active));
   button.dataset.active = active ? '1' : '0';
-  button.innerHTML = `<span class="ps-item-icon" style="${state.scarfIconStyle}"></span>`;
+
+  const icon = state.scarfIconStyle
+    ? `<span class="ps-item-icon" style="${state.scarfIconStyle}" aria-hidden="true"></span>`
+    : '<i class="bi bi-bag" aria-hidden="true"></i>';
+  const label = '';
+  button.innerHTML = `<span class="speed-scarf-label">${icon}${label}</span>`;
 }
 
 function renderMegaToggle() {
@@ -813,12 +846,19 @@ function renderNatureToggle() {
 
 function renderTargetPanel() {
   const headMain = $('target-picker-trigger');
+  const panel = $('speed-target-panel')?.querySelector('.speed-target-main');
+  const editButton = $('target-edit-detail');
   if (!headMain) return;
   const target = state.targetPokemon;
   if (!target) {
     headMain.textContent = t('noTarget');
+    if (panel) panel.dataset.editVisible = '0';
+    if (editButton) editButton.classList.add('d-none');
     return;
   }
+
+  if (panel) panel.dataset.editVisible = '1';
+  if (editButton) editButton.classList.remove('d-none');
 
   const species = getTargetEffectiveSpecies() || state.speciesById.get(target.speciesId);
   const icon = species ? getShowdownPokemonIconUrl(species.id) : '';
@@ -863,8 +903,10 @@ function updateTargetFromInputs() {
   if (!state.targetPokemon) return;
   const ap = clamp(toNumber($('target-spe-ap')?.value, 0), 0, 32);
   const rank = clamp(toNumber($('target-spe-rank')?.value, 0), -6, 6);
-  const scarf = $('target-scarf')?.dataset.active === '1';
+  let scarf = $('target-scarf')?.dataset.active === '1';
   const mega = Boolean($('target-mega-enabled')?.checked);
+
+  if (mega) scarf = false;
 
   state.targetPokemon.evs.spe = ap;
   state.targetPokemon.ranks.spe = rank;
@@ -970,13 +1012,8 @@ function openTargetEditModal() {
   persistLastTargetState();
   localStorage.setItem(OPEN_DETAIL_REQUEST_KEY, JSON.stringify({ pokemonId: state.targetPokemon.id }));
 
-  const host = $('target-box-editor-host');
-  const frame = $('target-box-editor-frame');
-  if (frame) frame.src = '/box-party.html?embed=detail';
-  if (host) {
-    host.classList.remove('d-none');
-    host.setAttribute('aria-hidden', 'false');
-  }
+  const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
+  window.location.href = `/box-party.html?detail=standalone&returnPath=${returnPath}`;
 }
 
 function closeTargetEditHost() {
@@ -986,7 +1023,10 @@ function closeTargetEditHost() {
     host.setAttribute('aria-hidden', 'true');
   }
   const frame = $('target-box-editor-frame');
-  if (frame) frame.src = 'about:blank';
+  if (frame) {
+    frame.style.visibility = 'hidden';
+    frame.src = 'about:blank';
+  }
   syncTargetAfterBoxEditorClose();
 }
 
@@ -1001,13 +1041,13 @@ function syncTargetAfterBoxEditorClose() {
   persistLastTargetState();
 }
 
-function populateSelect(selectId, start, end, prefix = '') {
+function populateSelect(selectId, start, end, withPlus = true) {
     const select = $(selectId);
     if (!select) return;
     for (let i = start; i <= end; i++) {
         const option = document.createElement('option');
         option.value = i;
-        option.textContent = i > 0 ? `+${i}` : String(i);
+    option.textContent = withPlus && i > 0 ? `+${i}` : String(i);
         select.appendChild(option);
     }
 }
@@ -1072,7 +1112,10 @@ function bindEvents() {
 
   $('target-scarf')?.addEventListener('click', () => {
     const node = $('target-scarf');
+    const megaInput = $('target-mega-enabled');
+    if (!node || node.classList.contains('d-none')) return;
     node.dataset.active = node.dataset.active === '1' ? '0' : '1';
+    if (node.dataset.active === '1' && megaInput && !megaInput.disabled) megaInput.checked = false;
     updateTargetFromInputs();
   });
 
@@ -1127,18 +1170,6 @@ function bindEvents() {
     });
   });
 
-  window.addEventListener('message', event => {
-    if (event.origin !== window.location.origin) return;
-    if (event.data?.type === 'champions-detail-closed') return;
-    closeTargetEditHost();
-  });
-
-  window.addEventListener('keydown', event => {
-    if (event.key !== 'Escape') return;
-    const host = $('target-box-editor-host');
-    if (!host || host.classList.contains('d-none')) return;
-    closeTargetEditHost();
-  });
 }
 
 async function initialize() {
@@ -1146,7 +1177,7 @@ async function initialize() {
   loadStorage();
   loadRequest();
 
-  populateSelect('target-spe-ap', 0, 32);
+  populateSelect('target-spe-ap', 0, 32, false);
   populateSelect('target-spe-rank', -6, 6);
 
   // Initialize tooltips

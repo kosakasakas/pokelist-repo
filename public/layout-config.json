@@ -1,3 +1,16 @@
 {
-  "footerOwner": "sakas_poke"
+  "footerOwner": "sakas_poke",
+  "ads": {
+    "enabled": false,
+    "provider": "adsense",
+    "adsenseClient": "",
+    "slots": {
+      "left-ad-rail": "",
+      "right-ad-rail": "",
+      "mobile-banner-320x100": "",
+      "mobile-rect-300x250": "",
+      "bottom-banner-728x90": "",
+      "bottom-banner-320x100": ""
+    }
+  }
 }

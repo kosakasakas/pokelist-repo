@@ -145,31 +145,34 @@
                 </div>
                 <div class="detail-head-species-row">
                   <div class="detail-head-title" id="detail-head-name">-</div>
-                  <div class="detail-head-base-stats mono" id="detail-head-base-stats">H- A- B- C- D- S-</div>
+                  <div class="detail-head-sub" id="detail-head-meta">-</div>
                 </div>
-                <div class="detail-head-sub" id="detail-head-meta">-</div>
+                <div class="detail-head-base-row">
+                  <div class="detail-head-base-stats mono" id="detail-head-base-stats">H- A- B- C- D- S-</div>
+                  <div class="detail-head-base-total mono" id="detail-head-base-total">合計 -</div>
+                </div>
               </div>
             </div>
             <div class="detail-layout">
               <section class="detail-table-section">
                 <div class="detail-section-title">個体情報</div>
-                <div class="detail-info-grid">
-                  <div class="detail-field-group" title="ポケモン種族を選択">
+                <div class="row g-2">
+                  <div class="col-12 col-md-6 detail-field-group" title="ポケモン種族を選択">
                     <span class="detail-field-icon"><i class="bi bi-person"></i></span>
                     <input id="detail-species" type="hidden">
                     <button id="detail-species-button" class="btn btn-field w-100 text-start" type="button"></button>
                   </div>
-                  <div class="detail-field-group" title="とくせいを選択">
+                  <div class="col-12 col-md-6 detail-field-group" title="とくせいを選択">
                     <span class="detail-field-icon"><i class="bi bi-lightning-charge"></i></span>
                     <input id="detail-ability" type="hidden">
                     <button id="detail-ability-button" class="btn btn-field w-100 text-start" type="button"></button>
                   </div>
-                  <div class="detail-field-group" title="せいかくを選択">
+                  <div class="col-12 col-md-6 detail-field-group" title="せいかくを選択">
                     <span class="detail-field-icon"><i class="bi bi-emoji-smile"></i></span>
                     <input id="detail-nature" type="hidden">
                     <button id="detail-nature-button" class="btn btn-field w-100 text-start" type="button"></button>
                   </div>
-                  <div class="detail-field-group" title="もちものを選択">
+                  <div class="col-12 col-md-6 detail-field-group" title="もちものを選択">
                     <span class="detail-field-icon"><i class="bi bi-bag"></i></span>
                     <input id="detail-item" type="hidden">
                     <button id="detail-item-button" class="btn btn-field w-100 text-start" type="button"></button>
@@ -187,33 +190,33 @@
                       <span>EP</span>
                     </div>
                     <div class="detail-compact-stat-row">
-                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="hp" data-state="neutral" disabled>H</button><span class="mono compact-stat-value" id="detail-stat-hp">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-hp" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="hp" data-state="neutral" disabled>H</button><span class="mono compact-stat-value" id="detail-stat-hp">-</span><select id="detail-ev-hp" class="form-select mono compact-stat-input detail-ev-select"></select>
                     </div>
                     <div class="detail-compact-stat-row">
-                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="atk" data-state="neutral">A</button><span class="mono compact-stat-value" id="detail-stat-atk">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-atk" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="atk" data-state="neutral">A</button><span class="mono compact-stat-value" id="detail-stat-atk">-</span><select id="detail-ev-atk" class="form-select mono compact-stat-input detail-ev-select"></select>
                     </div>
                     <div class="detail-compact-stat-row">
-                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="def" data-state="neutral">B</button><span class="mono compact-stat-value" id="detail-stat-def">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-def" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="def" data-state="neutral">B</button><span class="mono compact-stat-value" id="detail-stat-def">-</span><select id="detail-ev-def" class="form-select mono compact-stat-input detail-ev-select"></select>
                     </div>
                     <div class="detail-compact-stat-row">
-                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spa" data-state="neutral">C</button><span class="mono compact-stat-value" id="detail-stat-spa">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-spa" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spa" data-state="neutral">C</button><span class="mono compact-stat-value" id="detail-stat-spa">-</span><select id="detail-ev-spa" class="form-select mono compact-stat-input detail-ev-select"></select>
                     </div>
                     <div class="detail-compact-stat-row">
-                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spd" data-state="neutral">D</button><span class="mono compact-stat-value" id="detail-stat-spd">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-spd" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spd" data-state="neutral">D</button><span class="mono compact-stat-value" id="detail-stat-spd">-</span><select id="detail-ev-spd" class="form-select mono compact-stat-input detail-ev-select"></select>
                     </div>
                     <div class="detail-compact-stat-row">
-                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spe" data-state="neutral">S</button><span class="mono compact-stat-value" id="detail-stat-spe">-</span><i class="bi bi-lightning-charge compact-stat-icon" title="能力ポイント" aria-label="能力ポイント"></i><input id="detail-ev-spe" class="form-control mono compact-stat-input" type="number" min="0" max="32" step="1" value="0">
+                      <button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="detail" data-stat="spe" data-state="neutral">S</button><span class="mono compact-stat-value" id="detail-stat-spe">-</span><select id="detail-ev-spe" class="form-select mono compact-stat-input detail-ev-select"></select>
                     </div>
-                  </div>
-                  <div class="detail-adjust-buttons d-grid gap-2">
-                    <button id="detail-apply-attacker" class="btn btn-outline-danger btn-sm detail-wide-square-btn" type="button"><i class="bi bi-bullseye"></i><span>攻撃調整</span></button>
-                    <button id="detail-apply-defender" class="btn btn-outline-info btn-sm detail-wide-square-btn" type="button"><i class="bi bi-shield"></i><span>防御調整</span></button>
-                    <button id="detail-apply-speed" class="btn btn-outline-secondary btn-sm detail-wide-square-btn" type="button" title="素早さ調整"><i class="bi bi-speedometer2"></i><span>素早さ調整</span></button>
                   </div>
                 </div>
                 <div id="detail-ev-warning" class="iv-warning mt-2"><i class="bi bi-exclamation-triangle-fill"></i><span>能力ポイントの合計が上限を超えています</span></div>
                 <div id="detail-ev-remaining" class="small text-muted mt-1">残り能力ポイント: 66</div>
                 <div id="detail-nature-warning" class="small text-muted mt-1 d-none"><i class="bi bi-exclamation-triangle-fill"></i> 性格補正が不正です（+と-をそれぞれ1つずつ、または両方なし）</div>
+                <div class="detail-adjust-buttons d-grid gap-2">
+                  <button id="detail-apply-attacker" class="btn btn-outline-danger btn-sm detail-wide-square-btn" type="button"><i class="bi bi-bullseye"></i><span>攻撃調整</span></button>
+                  <button id="detail-apply-defender" class="btn btn-outline-info btn-sm detail-wide-square-btn" type="button"><i class="bi bi-shield"></i><span>防御調整</span></button>
+                  <button id="detail-apply-speed" class="btn btn-outline-secondary btn-sm detail-wide-square-btn" type="button" title="素早さ調整"><i class="bi bi-speedometer2"></i><span>素早さ調整</span></button>
+                </div>
               </section>
 
               <section class="detail-table-section">
@@ -251,6 +254,7 @@
     </div>
 
     <script src="/script-poketools-layout.js"></script>
+    <script src="/script-ads.js"></script>
     <script src="/script-tailwind-modal-shim.js"></script>
     <script src="/script-damage-calc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
