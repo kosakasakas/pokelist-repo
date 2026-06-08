@@ -42,7 +42,7 @@
                 <span id="result-attacker-item-impact" class="result-impact-item" aria-hidden="true"></span>
                 <span id="result-attacker-modifiers" class="result-inline-modifiers"></span>
               </div>
-              <span class="result-flow-arrow" aria-hidden="true" title="攻撃側から防御側へ"><i class="bi bi-arrow-right"></i></span>
+              <button id="result-flow-swap-button" class="result-flow-arrow result-flow-swap-button" type="button" title="攻守入れ替え" aria-label="攻守入れ替え"><i class="bi bi-arrow-right"></i></button>
               <div class="result-side-inline result-side-inline-end">
                 <div id="result-defender-icons" class="result-side-icons">-</div>
                 <span id="result-defender-meta" class="result-side-meta mono">-</span>
@@ -52,8 +52,8 @@
             </div>
             <div class="result-move-line result-row-shell">
               <span class="result-row-head-icon" aria-hidden="true" title="技情報"><i class="bi bi-lightning-charge-fill"></i></span>
-              <span id="result-move" class="result-move-name">-</span>
-              <span id="result-move-meta" class="result-move-inline mono">-</span>
+              <span id="result-move" class="result-move-name" role="button" title="わざを選択" aria-label="わざを選択">-</span>
+              <span id="result-move-meta" class="result-move-inline mono" role="button" title="わざを選択" aria-label="わざを選択">-</span>
               <span id="result-move-item-impact" class="result-impact-item" aria-hidden="true"></span>
               <span id="result-move-modifiers" class="result-inline-modifiers result-inline-modifiers-move"></span>
               <span id="result-stab-effect" class="result-inline-badge result-stab-effect">-</span>
@@ -172,8 +172,8 @@
 
         <div class="col-12 col-xxl-4" id="settings-panel-col">
           <div class="card panel-card h-100 settings-panel-card">
-            <div class="card-header settings-panel-header" title="設定" aria-label="設定">
-              <span class="settings-panel-title">設定</span>
+            <div class="card-header settings-panel-header" title="状況" aria-label="状況">
+              <span class="settings-panel-title" data-i18n="battleSettings">状況</span>
               <button id="swap-sides" class="btn btn-outline-secondary settings-swap-button" type="button" title="攻守入替" aria-label="攻守入替"><i class="bi bi-arrow-left-right"></i><span>攻守入替</span></button>
             </div>
             <div class="card-body">
@@ -370,10 +370,10 @@
         </div>
       </div>
       <div id="mobile-battle-tabs" class="mobile-battle-tabs d-lg-none" role="tablist" aria-label="mobile-battle-tabs">
+        <button id="mobile-battle-tab-result" class="btn btn-outline-secondary" type="button" aria-selected="false">結果</button>
         <button id="mobile-battle-tab-attacker" class="btn btn-outline-secondary" type="button" aria-selected="false">攻撃</button>
         <button id="mobile-battle-tab-defender" class="btn btn-outline-secondary" type="button" aria-selected="false">防御</button>
-        <button id="mobile-battle-tab-settings" class="btn btn-outline-secondary active" type="button" aria-selected="true">設定</button>
-        <button id="mobile-battle-tab-result" class="btn btn-outline-secondary" type="button" aria-selected="false">結果</button>
+        <button id="mobile-battle-tab-settings" class="btn btn-outline-secondary active" type="button" aria-selected="true" data-i18n="battleSettings">状況</button>
       </div>
         </section>
         <aside class="col-xxl-2 d-none d-xxl-block">

@@ -17,7 +17,7 @@ const I18N = {
     apDef: '能力ポイント Def',
     apSpd: '能力ポイント SpD',
     actualStats: '実数値',
-    battleSettings: 'わざとバトル設定',
+    battleSettings: '状況',
     move: 'わざ',
     type: 'タイプ',
     category: '分類',
@@ -55,6 +55,18 @@ const I18N = {
     pickerNature: 'せいかくを選択',
     pickerItem: 'もちものを選択',
     pickerSpecies: 'ポケモンを選択',
+    pickerImportShowdown: 'Pokepaste（Showdown形式）から読み込み',
+    pickerImportOpenButton: 'アイコン + Pokepaste',
+    pickerImportTitle: 'Pokepaste 読み込み',
+    pickerImportPlaceholder: 'ここに Showdown 形式の構築テキストを貼り付け',
+    pickerImportButton: '読み込んで追加',
+    close: '閉じる',
+    pickerImportSuccess: '{count}体をボックスへ追加しました。',
+    pickerImportNoValid: '読み込めるポケモンが見つかりませんでした。',
+    detailExportPokepaste: 'Pokepaste出力',
+    detailExportTitle: 'Pokepaste 出力',
+    detailExportCopy: 'コピー',
+    detailExportCopied: 'Pokepaste をコピーしました。',
     pickerAbility: 'とくせいを選択',
     statusMoveError: 'このわざは変化技のためダメージは 0 です。',
     noDamageError: '威力0のためダメージは 0 です。',
@@ -95,7 +107,7 @@ const I18N = {
     apDef: 'Stat Points Def',
     apSpd: 'Stat Points SpD',
     actualStats: 'Actual Stats',
-    battleSettings: 'Move & Battle Settings',
+    battleSettings: 'Situation',
     move: 'Move',
     type: 'Type',
     category: 'Category',
@@ -133,6 +145,18 @@ const I18N = {
     pickerNature: 'Select Nature',
     pickerItem: 'Select Item',
     pickerSpecies: 'Select Pokemon',
+    pickerImportShowdown: 'Import from Pokepaste (Showdown format)',
+    pickerImportOpenButton: 'Icon + Pokepaste',
+    pickerImportTitle: 'Pokepaste Import',
+    pickerImportPlaceholder: 'Paste Showdown team text here',
+    pickerImportButton: 'Import and add',
+    close: 'Close',
+    pickerImportSuccess: 'Added {count} Pokemon to box.',
+    pickerImportNoValid: 'No valid Pokemon were found in pasted text.',
+    detailExportPokepaste: 'Export Pokepaste',
+    detailExportTitle: 'Pokepaste Export',
+    detailExportCopy: 'Copy',
+    detailExportCopied: 'Copied Pokepaste text.',
     pickerAbility: 'Select Ability',
     statusMoveError: 'Status move. Damage is 0.',
     noDamageError: 'Power is 0. Damage is 0.',
@@ -313,8 +337,10 @@ const state = {
   pickerOptions: {},
   dynamicPickerMeta: {},
   picker: { currentField: '', modal: null, source: 'list', sideContext: null, partySlotTarget: null },
+  pickerImport: { modal: null },
   preset: { modal: null, side: 'attacker' },
   detail: { modal: null, editingPokemonId: null },
+  detailExport: { modal: null },
   confirmSave: { modal: null, role: null },
   storage: { box: [], parties: [], calcLinks: { attacker: null, defender: null } },
   availableFormats: ['[Gen 9 Champions] VGC 2026 Reg M-A'],
@@ -325,10 +351,16 @@ const state = {
   mobileSwipeAnimTimer: null,
 };
 
-const MOBILE_BATTLE_TAB_ORDER = ['attacker', 'defender', 'settings', 'result'];
+const MOBILE_BATTLE_TAB_ORDER = ['result', 'attacker', 'defender', 'settings'];
 
 const $ = id => document.getElementById(id);
-const t = key => I18N[state.lang][key] || key;
+const t = (key, vars = {}) => {
+  let text = I18N[state.lang][key] || key;
+  Object.entries(vars).forEach(([name, value]) => {
+    text = text.replace(`{${name}}`, String(value));
+  });
+  return text;
+};
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const toNumber = (value, fallback = 0) => Number.isFinite(Number(value)) ? Number(value) : fallback;
 const toId = text => String(text || '').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -522,7 +554,7 @@ function getMobileTabDirection(fromTab, toTab) {
 }
 
 function setMobileBattleTab(tab, options = {}) {
-  const normalized = ['attacker', 'defender', 'settings', 'result'].includes(tab) ? tab : 'settings';
+  const normalized = ['result', 'attacker', 'defender', 'settings'].includes(tab) ? tab : 'settings';
   const current = getCurrentMobileBattleTab();
   const direction = options.direction || getMobileTabDirection(current, normalized);
   const shouldAnimate = options.animate !== false
@@ -633,7 +665,7 @@ function initMobileBattleTabs() {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)');
   const handleViewport = event => {
     if (event.matches) {
-      setMobileBattleTab('attacker', { animate: false });
+      setMobileBattleTab('result', { animate: false });
     } else {
       document.body.classList.remove('mobile-panel-attacker', 'mobile-panel-settings', 'mobile-panel-defender', 'mobile-panel-result');
       document.body.classList.remove('mobile-swipe-forward', 'mobile-swipe-backward');
@@ -1099,6 +1131,21 @@ function sortByDisplayName(entries, labelFn) {
   return [...entries].sort((left, right) => labelFn(left).localeCompare(labelFn(right), state.lang === 'ja' ? 'ja' : 'en'));
 }
 
+function getMoveTypeSortIndex(typeName) {
+  const index = (state.data?.types || []).findIndex(type => type?.name === typeName);
+  return index >= 0 ? index : Number.MAX_SAFE_INTEGER;
+}
+
+function sortMovesByTypeThenName(moves) {
+  return [...moves].sort((left, right) => {
+    const typeIndexDiff = getMoveTypeSortIndex(left?.type) - getMoveTypeSortIndex(right?.type);
+    if (typeIndexDiff !== 0) return typeIndexDiff;
+    const leftName = normalizeSearchText(displayEntryName(left));
+    const rightName = normalizeSearchText(displayEntryName(right));
+    return leftName.localeCompare(rightName, state.lang === 'ja' ? 'ja' : 'en');
+  });
+}
+
 function speciesDamageSignature(entry) {
   return JSON.stringify({ baseSpecies: entry.baseSpecies, types: entry.types, stats: entry.baseStats, abilities: entry.abilities });
 }
@@ -1316,7 +1363,7 @@ function buildLearnsetOptions(speciesId) {
   const sourceMoves = learnedMoveIds.size
     ? [...learnedMoveIds].map(moveId => state.movesById.get(moveId)).filter(Boolean)
     : [...state.data.moves];
-  return sortByDisplayName(sourceMoves, displayEntryName).map(move => ({
+  return sortMovesByTypeThenName(sourceMoves).map(move => ({
     value: move.id,
     label: displayEntryName(move),
     moveType: move.type,
@@ -1818,6 +1865,7 @@ function applyI18n() {
     const key = node.getAttribute('data-i18n');
     if (I18N[state.lang][key]) node.textContent = I18N[state.lang][key];
   });
+  if ($('detail-export-pokepaste')) $('detail-export-pokepaste').textContent = t('detailExportPokepaste');
   if ($('picker-search')) $('picker-search').placeholder = t('pickerSearch');
 }
 
@@ -2257,6 +2305,7 @@ function renderResult(result, input = null) {
         let mapped = iconMap[mod] || null;
         if (!mapped && mod.startsWith(weatherPrefix)) mapped = { icon: 'bi-cloud-sun-fill', short: '天' };
         if (!mapped && mod.startsWith(terrainPrefix)) mapped = { icon: 'bi-globe2', short: '地' };
+        if (!mapped && mod.startsWith('R:')) mapped = { icon: 'bi-graph-up-arrow', short: 'R' };
         if (!mapped) {
           return `<span class="result-mod-icon ${kind}" title="${escapeHtml(mod)}">${escapeHtml(mod.slice(0, 1))}</span>`;
         }
@@ -2342,6 +2391,28 @@ function renderResult(result, input = null) {
   const moveRowMods = attackerMods.filter(mod => moveRelatedMods.has(mod));
   const attackerPokemonRowMods = attackerMods.filter(mod => isWeatherOrTerrainMod(mod));
   const defenderPokemonRowMods = defenderMods.slice();
+  const buildRankBadgeText = (label, value) => {
+    const numeric = clamp(toNumber(value), -6, 6);
+    if (!numeric) return '';
+    const sign = numeric > 0 ? `+${numeric}` : `${numeric}`;
+    return `R:${label}${sign}`;
+  };
+  const attackerRankBadgeMods = [
+    buildRankBadgeText('A', input.attackerRankAtk),
+    buildRankBadgeText('B', input.attackerRankDef),
+    buildRankBadgeText('C', input.attackerRankSpa),
+    buildRankBadgeText('D', input.attackerRankSpd),
+    buildRankBadgeText('S', input.attackerRankSpe),
+  ].filter(Boolean);
+  const defenderRankBadgeMods = [
+    buildRankBadgeText('A', input.defenderRankAtk),
+    buildRankBadgeText('B', input.defenderRankDef),
+    buildRankBadgeText('C', input.defenderRankSpa),
+    buildRankBadgeText('D', input.defenderRankSpd),
+    buildRankBadgeText('S', input.defenderRankSpe),
+  ].filter(Boolean);
+  attackerPokemonRowMods.push(...attackerRankBadgeMods);
+  defenderPokemonRowMods.push(...defenderRankBadgeMods);
   if (input.reflect && input.moveCategory === 'Physical' && !defenderPokemonRowMods.includes(t('reflect'))) defenderPokemonRowMods.push(t('reflect'));
   if (input.lightScreen && input.moveCategory === 'Special' && !defenderPokemonRowMods.includes(t('lightScreen'))) defenderPokemonRowMods.push(t('lightScreen'));
   if (input.isFriendGuard && !defenderPokemonRowMods.includes(t('friendGuard'))) defenderPokemonRowMods.push(t('friendGuard'));
@@ -3395,10 +3466,277 @@ function openNewBoxSpeciesPicker() {
   state.picker.source = 'list';
   $('picker-title').textContent = t('pickerSpecies');
   $('picker-search').value = '';
+  renderPickerCreateActions();
   refreshPickerSourceTabs();
   renderPickerList('');
   $('picker-modal').dataset.layered = '0';
   state.picker.modal.show();
+}
+
+function buildImportNameCandidates(name) {
+  const raw = String(name || '').trim();
+  if (!raw) return [];
+  const candidates = new Set([raw]);
+  candidates.add(raw.replace(/\s+/g, ' '));
+  candidates.add(raw.replace(/[’']/g, ''));
+  return [...candidates];
+}
+
+function resolveSpeciesIdFromImportName(name) {
+  const candidates = buildImportNameCandidates(name);
+  for (const candidate of candidates) {
+    const id = toId(candidate);
+    if (state.speciesById.has(id)) return id;
+  }
+  const allSpecies = [...(state.data.species || []), ...(state.data.megaSpecies || [])];
+  for (const species of allSpecies) {
+    const names = [species.id, species.name, species.nameJa, species.baseSpecies].map(value => normalizeSearchText(value));
+    if (candidates.some(candidate => names.includes(normalizeSearchText(candidate)))) return species.id;
+  }
+  return '';
+}
+
+function resolveAbilityIdFromImportName(name) {
+  const candidates = buildImportNameCandidates(name);
+  for (const candidate of candidates) {
+    const id = toId(candidate);
+    if (state.abilitiesById.has(id)) return id;
+  }
+  for (const ability of state.data.abilities || []) {
+    const names = [ability.id, ability.name, ability.nameJa].map(value => normalizeSearchText(value));
+    if (candidates.some(candidate => names.includes(normalizeSearchText(candidate)))) return ability.id;
+  }
+  return '';
+}
+
+function resolveItemIdFromImportName(name) {
+  const candidates = buildImportNameCandidates(name);
+  for (const candidate of candidates) {
+    const id = toId(candidate);
+    if (state.itemsById.has(id)) return id;
+  }
+  for (const item of state.itemsById.values()) {
+    const names = [item.id, item.name, item.nameJa].map(value => normalizeSearchText(value));
+    if (candidates.some(candidate => names.includes(normalizeSearchText(candidate)))) return item.id;
+  }
+  return '';
+}
+
+function resolveMoveIdFromImportName(name) {
+  const cleaned = String(name || '').replace(/\[[^\]]+\]/g, '').trim();
+  const candidates = buildImportNameCandidates(cleaned);
+  for (const candidate of candidates) {
+    const id = toId(candidate);
+    if (state.movesById.has(id)) return id;
+  }
+  for (const move of state.data.moves || []) {
+    const names = [move.id, move.name, move.nameJa].map(value => normalizeSearchText(value));
+    if (candidates.some(candidate => names.includes(normalizeSearchText(candidate)))) return move.id;
+  }
+  return '';
+}
+
+function resolveNatureIdFromImportName(name) {
+  const normalized = normalizeSearchText(String(name || '').trim());
+  const found = NATURES.find(nature => [nature.id, nature.en, nature.ja].some(value => normalizeSearchText(value) === normalized));
+  return found?.id || 'hardy';
+}
+
+function convertShowdownEvToChampions(ev) {
+  return clamp(Math.round(toNumber(ev, 0) / 8), 0, 32);
+}
+
+function parseShowdownImportSet(blockText) {
+  const lines = String(blockText || '').split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+  if (!lines.length) return null;
+
+  const firstLine = lines[0];
+  const [leftPartRaw, itemPartRaw = ''] = firstLine.split('@');
+  const leftPart = String(leftPartRaw || '').trim().replace(/\s*\((M|F)\)\s*$/i, '').trim();
+  let nickname = '';
+  let speciesName = leftPart;
+  const bracketMatch = leftPart.match(/^(.*)\(([^()]+)\)\s*$/);
+  if (bracketMatch) {
+    nickname = String(bracketMatch[1] || '').trim();
+    speciesName = String(bracketMatch[2] || '').trim();
+  }
+
+  const speciesId = resolveSpeciesIdFromImportName(speciesName);
+  if (!speciesId) return null;
+
+  const record = emptyPokemonRecord();
+  record.nickname = nickname;
+  record.speciesId = speciesId;
+  record.itemId = resolveItemIdFromImportName(itemPartRaw.trim());
+
+  for (const line of lines.slice(1)) {
+    if (/^Ability\s*:/i.test(line)) {
+      record.abilityId = resolveAbilityIdFromImportName(line.replace(/^Ability\s*:/i, '').trim());
+      continue;
+    }
+    if (/^EVs\s*:/i.test(line)) {
+      const body = line.replace(/^EVs\s*:/i, '').trim();
+      body.split('/').forEach(segment => {
+        const match = segment.trim().match(/^(\d+)\s*(HP|Atk|Def|SpA|SpD|Spe)$/i);
+        if (!match) return;
+        const value = convertShowdownEvToChampions(match[1]);
+        const statKey = {
+          hp: 'hp', atk: 'atk', def: 'def', spa: 'spa', spd: 'spd', spe: 'spe',
+        }[String(match[2]).toLowerCase()];
+        if (statKey) record.evs[statKey] = value;
+      });
+      continue;
+    }
+    if (/Nature$/i.test(line)) {
+      const natureName = line.replace(/Nature$/i, '').trim();
+      record.nature = resolveNatureIdFromImportName(natureName);
+      continue;
+    }
+    if (/^-/i.test(line)) {
+      const moveName = line.replace(/^-+\s*/, '').trim();
+      const moveId = resolveMoveIdFromImportName(moveName);
+      if (moveId && record.moveIds.length < 4) record.moveIds.push(moveId);
+    }
+  }
+  return normalizePokemonRecord(record);
+}
+
+function importShowdownTextToBox(text) {
+  const blocks = String(text || '').split(/\n\s*\n/).map(block => block.trim()).filter(Boolean);
+  const imported = blocks.map(parseShowdownImportSet).filter(Boolean);
+  if (!imported.length) {
+    window.alert(t('pickerImportNoValid'));
+    return;
+  }
+  state.storage.box.push(...imported);
+  saveStorage();
+  renderManagerViews();
+  window.alert(t('pickerImportSuccess', { count: imported.length }));
+  if (state.pickerImport.modal) state.pickerImport.modal.hide();
+  if (state.picker.modal) state.picker.modal.hide();
+}
+
+function buildPokepasteTextFromPokemon(pokemon) {
+  if (!pokemon) return '';
+  const effectiveSpecies = getEffectiveSpecies(pokemon.speciesId, Boolean(pokemon.megaEnabled), pokemon.itemId || '')
+    || state.speciesById.get(pokemon.speciesId);
+  const speciesName = String(effectiveSpecies?.name || '').trim() || pokemon.speciesId;
+  const nickname = String(pokemon.nickname || '').trim();
+  const itemName = String(state.itemsById.get(pokemon.itemId || '')?.name || '').trim();
+  const abilityName = String(state.abilitiesById.get(pokemon.abilityId || '')?.name || '').trim();
+  const natureName = String(getNatureById(pokemon.nature || 'hardy')?.en || 'Hardy').trim();
+  const moveNames = (Array.isArray(pokemon.moveIds) ? pokemon.moveIds : [])
+    .map(moveId => String(state.movesById.get(moveId || '')?.name || '').trim())
+    .filter(Boolean)
+    .slice(0, 4);
+
+  const headerBase = nickname && nickname !== speciesName ? `${nickname} (${speciesName})` : speciesName;
+  const lines = [itemName ? `${headerBase} @ ${itemName}` : headerBase];
+  if (abilityName) lines.push(`Ability: ${abilityName}`);
+
+  const statLabels = [
+    ['hp', 'HP'],
+    ['atk', 'Atk'],
+    ['def', 'Def'],
+    ['spa', 'SpA'],
+    ['spd', 'SpD'],
+    ['spe', 'Spe'],
+  ];
+  const evParts = statLabels
+    .map(([key, label]) => {
+      const championsAp = clamp(toNumber(pokemon.evs?.[key], 0), 0, 32);
+      const showdownEv = clamp(championsAp * 8, 0, 252);
+      if (!showdownEv) return '';
+      return `${showdownEv} ${label}`;
+    })
+    .filter(Boolean);
+  if (evParts.length) lines.push(`EVs: ${evParts.join(' / ')}`);
+
+  lines.push(`${natureName} Nature`);
+  moveNames.forEach(moveName => {
+    lines.push(`- ${moveName}`);
+  });
+  return lines.join('\n');
+}
+
+function openDetailPokepasteExportModal() {
+  if (!state.detailExport.modal) return;
+  const pokemon = readDetailPokemonFromForm() || getCurrentDetailPokemon();
+  if (!pokemon) return;
+  if ($('detail-export-title')) $('detail-export-title').textContent = t('detailExportTitle');
+  if ($('detail-export-copy')) $('detail-export-copy').textContent = t('detailExportCopy');
+  if ($('detail-export-text')) $('detail-export-text').value = buildPokepasteTextFromPokemon(pokemon);
+  state.detailExport.modal.show();
+}
+
+async function copyDetailPokepasteText() {
+  const text = $('detail-export-text')?.value || '';
+  if (!text) return;
+  try {
+    if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(text);
+    else {
+      $('detail-export-text')?.focus();
+      $('detail-export-text')?.select();
+      document.execCommand('copy');
+    }
+    window.alert(t('detailExportCopied'));
+  } catch (_error) {
+    window.alert(t('detailExportCopied'));
+  }
+}
+
+function syncCalcSidesFromEditedPokemon(pokemonId) {
+  if (!hasCalcPage()) return false;
+  const pokemon = getPokemonById(pokemonId);
+  if (!pokemon) return false;
+  let touched = false;
+  if (state.storage.calcLinks.attacker === pokemonId) {
+    applyStoredPokemonToSide('attacker', pokemon, { silent: true });
+    touched = true;
+  }
+  if (state.storage.calcLinks.defender === pokemonId) {
+    applyStoredPokemonToSide('defender', pokemon, { silent: true });
+    touched = true;
+  }
+  if (touched) {
+    saveStorage();
+    renderManagerViews();
+    updateStatSummaries();
+    calculateAndRender();
+  }
+  return touched;
+}
+
+function openPickerImportModal() {
+  if (!state.pickerImport.modal) return;
+  if ($('picker-import-title')) $('picker-import-title').textContent = t('pickerImportTitle');
+  if ($('picker-import-text')) {
+    $('picker-import-text').value = '';
+    $('picker-import-text').setAttribute('placeholder', t('pickerImportPlaceholder'));
+  }
+  if ($('picker-import-close')) $('picker-import-close').textContent = t('close');
+  if ($('picker-import-button')) $('picker-import-button').innerHTML = `<i class="bi bi-upload"></i> ${t('pickerImportButton')}`;
+  $('picker-import-modal').dataset.layered = '1';
+  state.pickerImport.modal.show();
+}
+
+function renderPickerCreateActions() {
+  const container = $('picker-create-actions');
+  if (!container) return;
+  if (state.picker.currentField !== 'new-box-species') {
+    container.classList.add('d-none');
+    container.innerHTML = '';
+    return;
+  }
+
+  container.classList.remove('d-none');
+  container.innerHTML = `
+    <button id="picker-open-import-modal" class="btn btn-outline-primary btn-sm d-inline-flex align-items-center gap-2" type="button">
+      <i class="bi bi-upload"></i><span>${t('pickerImportOpenButton')}</span>
+    </button>
+  `;
+  const importOpenButton = $('picker-open-import-modal');
+  if (importOpenButton) importOpenButton.addEventListener('click', openPickerImportModal);
 }
 
 function renderDetailHeadSummary(pokemon) {
@@ -3500,8 +3838,11 @@ function saveDetailPokemon() {
   const index = state.storage.box.findIndex(pokemon => pokemon.id === updated.id);
   if (index === -1) return null;
   state.storage.box[index] = updated;
-  saveStorage();
-  renderManagerViews();
+  const synced = syncCalcSidesFromEditedPokemon(updated.id);
+  if (!synced) {
+    saveStorage();
+    renderManagerViews();
+  }
   populateDetailForm(updated);
   return updated;
 }
@@ -3760,6 +4101,7 @@ function openPicker(fieldId) {
   const meta = getPickerMeta(fieldId);
   $('picker-title').textContent = t(meta?.titleKey || 'pickerMove');
   if (!shouldShowPickerSources(fieldId)) state.picker.source = 'list';
+  renderPickerCreateActions();
   refreshPickerSourceTabs();
   $('picker-search').value = '';
   renderPickerList('');
@@ -4197,6 +4539,7 @@ function initPickerModal() {
     state.picker.currentField = '';
     state.picker.partySlotTarget = null;
     $('picker-search').value = '';
+    renderPickerCreateActions();
     $('picker-modal').dataset.layered = '0';
     $('picker-modal').style.zIndex = '';
     document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
@@ -4210,6 +4553,32 @@ function initPickerModal() {
       renderPickerList($('picker-search').value.trim());
     });
   });
+}
+
+function initPickerImportModal() {
+  if (!$('picker-import-modal')) return;
+  state.pickerImport.modal = new bootstrap.Modal($('picker-import-modal'));
+  $('picker-import-modal').addEventListener('shown.bs.modal', () => {
+    $('picker-import-modal').style.zIndex = '1095';
+    const backdrops = document.querySelectorAll('.modal-backdrop.show');
+    const topBackdrop = backdrops[backdrops.length - 1];
+    if (topBackdrop) topBackdrop.style.zIndex = '1090';
+    $('picker-import-text')?.focus();
+  });
+  $('picker-import-modal').addEventListener('hidden.bs.modal', () => {
+    $('picker-import-modal').style.zIndex = '';
+    $('picker-import-modal').dataset.layered = '0';
+    if ($('picker-import-text')) $('picker-import-text').value = '';
+    document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+      backdrop.style.zIndex = '';
+    });
+  });
+  if ($('picker-import-button')) {
+    $('picker-import-button').addEventListener('click', () => {
+      const text = $('picker-import-text')?.value || '';
+      importShowdownTextToBox(text);
+    });
+  }
 }
 
 function initDetailModal() {
@@ -4233,6 +4602,7 @@ function initDetailModal() {
     const saved = saveDetailPokemon();
     if (saved) state.detail.modal.hide();
   });
+  if ($('detail-export-pokepaste')) $('detail-export-pokepaste').addEventListener('click', openDetailPokepasteExportModal);
   $('detail-delete').addEventListener('click', removeDetailPokemon);
   $('detail-apply-attacker').addEventListener('click', () => {
     const pokemon = saveDetailPokemon();
@@ -4296,6 +4666,12 @@ function initDetailModal() {
   });
 }
 
+function initDetailExportModal() {
+  if (!$('detail-export-modal')) return;
+  state.detailExport.modal = new bootstrap.Modal($('detail-export-modal'));
+  if ($('detail-export-copy')) $('detail-export-copy').addEventListener('click', copyDetailPokepasteText);
+}
+
 function initConfirmSaveModal() {
   if (!$('confirm-save-calc-modal')) return;
   state.confirmSave.modal = new bootstrap.Modal($('confirm-save-calc-modal'));
@@ -4323,6 +4699,9 @@ function bindEvents() {
   if ($('defender-open-linked-detail')) $('defender-open-linked-detail').addEventListener('click', () => openLinkedPokemonDetailFromCalc('defender'));
   if ($('result-attacker-icons')) $('result-attacker-icons').addEventListener('click', () => openOrCreateLinkedPokemonDetailFromCalc('attacker'));
   if ($('result-defender-icons')) $('result-defender-icons').addEventListener('click', () => openOrCreateLinkedPokemonDetailFromCalc('defender'));
+  if ($('result-flow-swap-button')) $('result-flow-swap-button').addEventListener('click', swapSides);
+  if ($('result-move')) $('result-move').addEventListener('click', () => openPicker('move-select'));
+  if ($('result-move-meta')) $('result-move-meta').addEventListener('click', () => openPicker('move-select'));
   if ($('update-attacker-pokemon')) $('update-attacker-pokemon').addEventListener('click', () => {
     if (!window.confirm('データを保存しますか？')) return;
     updateLinkedPokemonFromSide('attacker');
@@ -4465,7 +4844,9 @@ async function initialize() {
   loadLanguagePreference();
   loadStorage();
   initPickerModal();
+  initPickerImportModal();
   initDetailModal();
+  initDetailExportModal();
   initConfirmSaveModal();
   initPresetModal();
   initMobileBattleTabs();

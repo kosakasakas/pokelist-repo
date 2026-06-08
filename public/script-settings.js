@@ -39,6 +39,7 @@ const I18N = {
     googleLoading: 'Driveから読み込み中...',
     googleCancelled: 'キャンセルしました。',
     googleConflictPrompt: 'Drive上のバックアップが他の端末/タブで更新されています。上書き保存しますか？',
+    googleOverwritePrompt: 'Drive上に既存バックアップがあります。上書き保存しますか？',
     googleSaved: 'Driveへ保存しました。',
     googleLoaded: 'Driveから読込しました。ページを再読み込みすると反映されます。',
     googleNoBackup: 'Drive上にバックアップが見つかりません。',
@@ -66,6 +67,7 @@ const I18N = {
     googleLoading: 'Loading from Drive...',
     googleCancelled: 'Cancelled.',
     googleConflictPrompt: 'Backup on Drive was updated from another tab/device. Overwrite it anyway?',
+    googleOverwritePrompt: 'A backup already exists on Drive. Overwrite it?',
     googleSaved: 'Saved to Drive.',
     googleLoaded: 'Loaded from Drive. Reload page to reflect.',
     googleNoBackup: 'No backup found on Drive.',
@@ -499,6 +501,12 @@ async function saveBackupToDrive() {
   }
   const existing = await findBackupFile();
   const lastKnownModifiedTime = loadRemoteBackupModifiedTime();
+  if (existing?.id && !lastKnownModifiedTime) {
+    const shouldOverwrite = window.confirm(t('googleOverwritePrompt'));
+    if (!shouldOverwrite) {
+      throw new Error(t('googleCancelled'));
+    }
+  }
   if (existing?.modifiedTime && lastKnownModifiedTime && existing.modifiedTime !== lastKnownModifiedTime) {
     const shouldOverwrite = window.confirm(t('googleConflictPrompt'));
     if (!shouldOverwrite) {

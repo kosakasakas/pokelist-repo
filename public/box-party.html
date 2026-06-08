@@ -98,6 +98,24 @@
       </div>
     </div>
 
+    <div class="modal fade" id="picker-import-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="picker-import-title">Pokepaste</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <textarea id="picker-import-text" class="form-control" rows="8" placeholder="Paste Showdown team text here"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button id="picker-import-close" class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">Close</button>
+            <button id="picker-import-button" class="btn btn-primary" type="button"><i class="bi bi-upload"></i> Import</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="modal fade" id="pokemon-detail-modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
@@ -214,9 +232,28 @@
           <div class="modal-footer justify-content-between">
             <div></div>
             <div class="d-flex gap-2 detail-footer-actions">
+              <button id="detail-export-pokepaste" class="btn btn-outline-secondary px-4" type="button">Pokepaste出力</button>
               <button id="detail-delete" class="btn btn-outline-secondary px-4" type="button">削除</button>
               <button id="detail-save" class="btn btn-primary px-4" type="button">保存</button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="detail-export-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="detail-export-title">Pokepaste 出力</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <textarea id="detail-export-text" class="form-control" rows="9" readonly></textarea>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">閉じる</button>
+            <button id="detail-export-copy" class="btn btn-primary" type="button">コピー</button>
           </div>
         </div>
       </div>

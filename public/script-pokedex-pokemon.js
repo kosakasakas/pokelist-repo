@@ -183,6 +183,19 @@ function getLocalizedSortValue(text) {
   return normalizeText(String(text || '').replace(/[\u30a1-\u30f6]/g, char => String.fromCharCode(char.charCodeAt(0) - 0x60)));
 }
 
+function getMoveTypeSortIndex(typeName) {
+  const index = (state.data?.types || []).findIndex(type => type?.name === typeName);
+  return index >= 0 ? index : Number.MAX_SAFE_INTEGER;
+}
+
+function sortMovesByTypeThenName(moves) {
+  return [...moves].sort((left, right) => {
+    const typeIndexDiff = getMoveTypeSortIndex(left?.type) - getMoveTypeSortIndex(right?.type);
+    if (typeIndexDiff !== 0) return typeIndexDiff;
+    return getLocalizedSortValue(getMoveDisplayName(left)).localeCompare(getLocalizedSortValue(getMoveDisplayName(right)), 'ja');
+  });
+}
+
 function buildCsvMaps(translations = {}) {
   state.speciesCsvMap = new Map();
   Object.entries(translations.species || {}).forEach(([id, entry]) => {
@@ -470,14 +483,15 @@ function renderMoves(species) {
     .map(id => state.data.moves.find(move => move.id === id))
     .filter(Boolean)
     .filter(move => !query || normalizeText(`${getMoveDisplayName(move)} ${move.name || ''}`).includes(query))
-    .sort((a, b) => getLocalizedSortValue(getMoveDisplayName(a)).localeCompare(getLocalizedSortValue(getMoveDisplayName(b)), 'ja'));
+    ;
+  const sortedMoves = sortMovesByTypeThenName(moves);
 
-  if (!moves.length) {
+  if (!sortedMoves.length) {
     node.innerHTML = `<span class="text-muted">${t('noMoves')}</span>`;
     return;
   }
 
-  node.innerHTML = moves.map(move => {
+  node.innerHTML = sortedMoves.map(move => {
     const typeIcon = `<img class="move-type-icon-chip" src="https://play.pokemonshowdown.com/sprites/types/${move.type}.png" alt="${move.type}" loading="lazy">`;
     const category = move.category || 'Status';
     const categoryIcon = `<img class="move-category-icon" src="https://play.pokemonshowdown.com/sprites/categories/${category}.png" alt="${category}" loading="lazy">`;
