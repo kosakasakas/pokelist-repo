@@ -265,6 +265,7 @@ const OPEN_DETAIL_REQUEST_KEY = 'champions-open-detail-request-v1';
 const SPEED_ADJUST_REQUEST_KEY = 'champions-speed-adjust-request-v1';
 const SPEED_ADJUST_ROW_CACHE_KEY = 'champions-speed-adjust-row-cache-v1';
 const LAST_SELECTED_SIDES_KEY = 'champions-calc-last-selected-sides-v1';
+const DOUBLE_BATTLE_MODE_KEY = 'champions-tool-ui-double-battle-v1';
 const MAX_CALC_HISTORY = 10;
 const PARTY_SLOT_COUNT = 6;
 const DETAIL_EV_TOTAL_MAX = 66;
@@ -677,6 +678,17 @@ function persistLanguagePreference() {
   } catch (_error) {
     // ignore storage errors
   }
+}
+
+function readDoubleBattleModeEnabled() {
+  try {
+    const value = localStorage.getItem(DOUBLE_BATTLE_MODE_KEY);
+    if (value === '0' || value === 'false') return false;
+    if (value === '1' || value === 'true') return true;
+  } catch (_error) {
+    // ignore storage errors
+  }
+  return true;
 }
 
 function currentFormatLabel() {
@@ -3119,6 +3131,25 @@ function openLinkedPokemonDetailFromCalc(side) {
       localStorage.setItem(OPEN_DETAIL_REQUEST_KEY, JSON.stringify({ pokemonId: pokemon.id }));
       window.location.href = './box-party.html';
     }
+
+function openOrCreateLinkedPokemonDetailFromCalc(side) {
+  const linkedId = state.storage.calcLinks[side];
+  const linkedPokemon = getPokemonById(linkedId);
+  if (linkedPokemon) {
+    openLinkedPokemonDetailFromCalc(side);
+    return;
+  }
+  if (!validateSideNatureForSave(side)) return;
+  const sideLabel = side === 'attacker' ? '攻撃側' : '防御側';
+  const ok = window.confirm(`${sideLabel}に紐付いたポケモンがありません。\n現在の内容で新規作成して編集しますか？`);
+  if (!ok) return;
+  const created = createPokemonRecordFromSide(side);
+  state.storage.box.push(created);
+  state.storage.calcLinks[side] = created.id;
+  saveStorage();
+  renderManagerViews();
+  openLinkedPokemonDetailFromCalc(side);
+}
 function assignPokemonToPartySlot(partyId, slotIndex, pokemonId) {
   const party = getPartyById(partyId);
   const pokemon = getPokemonById(pokemonId);
@@ -3778,6 +3809,7 @@ function setupDefaults() {
   $('defender-rank-spe').value = 0;
   setActiveToggle('weather', 'none');
   setActiveToggle('terrain', 'none');
+  if ($('is-spread')) $('is-spread').checked = readDoubleBattleModeEnabled();
   if (remembered) {
     if (remembered.attackerNature) $('attacker-nature').value = remembered.attackerNature;
     if (remembered.defenderNature) $('defender-nature').value = remembered.defenderNature;
@@ -4289,6 +4321,8 @@ function bindEvents() {
   if ($('save-calc-memo')) $('save-calc-memo').addEventListener('click', openCalcMemoSaveSelector);
   if ($('attacker-open-linked-detail')) $('attacker-open-linked-detail').addEventListener('click', () => openLinkedPokemonDetailFromCalc('attacker'));
   if ($('defender-open-linked-detail')) $('defender-open-linked-detail').addEventListener('click', () => openLinkedPokemonDetailFromCalc('defender'));
+  if ($('result-attacker-icons')) $('result-attacker-icons').addEventListener('click', () => openOrCreateLinkedPokemonDetailFromCalc('attacker'));
+  if ($('result-defender-icons')) $('result-defender-icons').addEventListener('click', () => openOrCreateLinkedPokemonDetailFromCalc('defender'));
   if ($('update-attacker-pokemon')) $('update-attacker-pokemon').addEventListener('click', () => {
     if (!window.confirm('データを保存しますか？')) return;
     updateLinkedPokemonFromSide('attacker');
@@ -4405,6 +4439,12 @@ function bindEvents() {
       state.lang = button.dataset.lang;
       applyLanguageChange();
     });
+  });
+  window.addEventListener('poketools:battlemodechange', event => {
+    if (!hasCalcPage() || !$('is-spread')) return;
+    const enabled = event?.detail?.doubleBattle !== false;
+    $('is-spread').checked = enabled;
+    calculateAndRender();
   });
 }
 

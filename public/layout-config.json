@@ -1,5 +1,8 @@
 {
   "footerOwner": "sakas_poke",
+  "google": {
+    "oauthClientId": "773883975933-q0jqtp74am854kksp4448etlld08mu7q.apps.googleusercontent.com"
+  },
   "ads": {
     "enabled": false,
     "provider": "adsense",

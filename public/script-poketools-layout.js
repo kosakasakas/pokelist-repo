@@ -1,6 +1,7 @@
 const TOOL_LAYOUT_LANG_KEY = 'champions-tool-ui-lang-v1';
 const TOOL_LAYOUT_REGULATION_KEY = 'champions-tool-ui-regulation-v1';
-const TOOL_LAYOUT_CONFIG_URL = '/layout-config.json';
+const TOOL_LAYOUT_DOUBLE_BATTLE_KEY = 'champions-tool-ui-double-battle-v1';
+const TOOL_LAYOUT_CONFIG_URL = './layout-config.json';
 const DEFAULT_LAYOUT_CONFIG = {
   footerOwner: 'sakas_poke',
 };
@@ -31,8 +32,10 @@ function ensureHeaderStyles() {
     .tool-header-brand { text-decoration: none; color: #111827; font-weight: 700; flex: 0 0 auto; white-space: nowrap; }
     .tool-header-right { margin-left: auto; display: flex; align-items: center; justify-content: flex-end; gap: 0.5rem; min-width: 0; flex: 1 1 auto; flex-wrap: nowrap; }
     .tool-header-main { flex: 1 1 auto; min-width: 0; display: flex; justify-content: flex-end; }
+    .tool-header-mobile { display: none; }
     .tool-global-nav { display: flex; flex-wrap: nowrap; gap: 0.35rem; justify-content: flex-end; overflow-x: auto; scrollbar-width: thin; }
     .tool-nav-btn { white-space: nowrap; }
+    .tool-nav-btn-icon { width: 2.1rem; height: 2.1rem; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 0.6rem; }
     .tool-nav-btn.active { background: #6c757d; border-color: #6c757d; color: #fff; }
     .tool-header-reg, .tool-header-lang { flex: 0 0 auto; font-size: 1rem; }
     .tool-regulation-control {
@@ -123,21 +126,11 @@ function ensureHeaderStyles() {
       .tool-header-right { gap: 0.3rem; }
       .tool-header-brand { font-size: 0.95rem; }
       .tool-header-main { display: none; }
-      .tool-nav-toggler { display: inline-flex; align-items: center; justify-content: center; }
-      .tool-nav-panel {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        z-index: 1090;
-        background: #fff;
-        border-bottom: 1px solid #e5e7eb;
-        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.12);
-        padding: 0.5rem 0.75rem;
-      }
-      .tool-global-nav { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: flex-start; overflow-x: visible; }
-      .tool-nav-btn { flex: 1 1 calc(50% - 0.35rem); border-radius: 0.5rem; }
-      .tool-header-reg, .tool-header-lang { font-size: 1rem; }
+      .tool-header-mobile { display: flex; }
+      .tool-header-mobile .tool-global-nav { gap: 0.28rem; overflow-x: visible; }
+      .tool-header-mobile .tool-nav-btn { flex: 0 0 auto; }
+      .tool-nav-toggler,
+      .tool-nav-panel { display: none !important; }
     }
     @media (max-width: 575.98px) {
       .tool-footer-inner { padding-bottom: 1.2rem; }
@@ -165,6 +158,7 @@ function currentPageKey(pathname) {
   if (pathname.endsWith('/box-party.html')) return 'box';
   if (pathname.endsWith('/damage-calc.html')) return 'damage';
   if (pathname.endsWith('/speed-adjust.html')) return 'speed';
+  if (pathname.endsWith('/settings.html')) return 'settings';
   return '';
 }
 
@@ -200,6 +194,29 @@ function writeRegulation(value) {
   }));
 }
 
+function readDoubleBattleMode() {
+  try {
+    const value = localStorage.getItem(TOOL_LAYOUT_DOUBLE_BATTLE_KEY);
+    if (value === '0' || value === 'false') return false;
+    if (value === '1' || value === 'true') return true;
+  } catch (_error) {
+    // ignore
+  }
+  return true;
+}
+
+function writeDoubleBattleMode(enabled) {
+  const next = Boolean(enabled);
+  try {
+    localStorage.setItem(TOOL_LAYOUT_DOUBLE_BATTLE_KEY, next ? '1' : '0');
+  } catch (_error) {
+    // ignore
+  }
+  window.dispatchEvent(new CustomEvent('poketools:battlemodechange', {
+    detail: { doubleBattle: next },
+  }));
+}
+
 function buildLangToggle() {
   const isJa = readLang() === 'ja';
   return `
@@ -211,17 +228,21 @@ function buildLangToggle() {
   `;
 }
 
-function buildNavigationTabs() {
+function buildNavigationTabs(iconOnly = false) {
   const pageKey = currentPageKey(window.location.pathname);
   const navItems = [
     { key: 'pokedex', href: './pokedex.html', icon: 'search', label: '図鑑' },
     { key: 'box', href: './box-party.html', icon: 'box-seam', label: 'ボックス' },
     { key: 'damage', href: './damage-calc.html', icon: 'calculator', label: 'ダメージ計算' },
     { key: 'speed', href: './speed-adjust.html', icon: 'speedometer2', label: '素早さ比較' },
+    { key: 'settings', href: './settings.html', icon: 'gear', label: '設定' },
   ];
 
   const nav = navItems.map(item => {
     const active = item.key === pageKey;
+    if (iconOnly) {
+      return `<a class="btn ${active ? 'btn-secondary active' : 'btn-outline-secondary'} tool-nav-btn tool-nav-btn-icon" ${active ? 'aria-current="page"' : ''} href="${item.href}" aria-label="${item.label}" title="${item.label}"><i class="bi bi-${item.icon}"></i></a>`;
+    }
     return `<a class="btn ${active ? 'btn-secondary active' : 'btn-outline-secondary'} tool-nav-btn d-inline-flex align-items-center gap-1" ${active ? 'aria-current="page"' : ''} href="${item.href}"><i class="bi bi-${item.icon}"></i><span>${item.label}</span></a>`;
   }).join('');
 
@@ -261,88 +282,25 @@ function mountHeader() {
           <span class="calc-title mb-0">リスポケ</span>
         </a>
         <div class="tool-header-right">
-          <div class="tool-header-main" aria-label="tool controls">
+          <div class="tool-header-main" aria-label="tool navigation">
             ${buildNavigationTabs()}
           </div>
-          <div class="tool-header-reg" aria-label="regulation controls">
-            ${buildRegulationControl()}
+          <div class="tool-header-mobile" aria-label="mobile navigation">
+            ${buildNavigationTabs(true)}
           </div>
-          <div class="tool-header-lang" aria-label="language controls">
-            ${buildLangToggle()}
-          </div>
-          <button class="tool-nav-toggler" id="tool-nav-toggler" type="button" aria-label="ナビゲーション" aria-expanded="false">
-            <i class="bi bi-list" aria-hidden="true"></i>
-          </button>
         </div>
-      </div>
-      <div class="tool-nav-panel is-collapsed" id="tool-nav-panel" aria-label="ページナビゲーション">
-        ${buildNavigationTabs()}
       </div>
     </nav>
   `;
-
-  const regulationSelect = document.getElementById('tool-regulation-select');
-  const regulationLabel = document.querySelector('.tool-regulation-label');
-  const syncRegulationLabel = () => {
-    if (!regulationLabel) return;
-    const label = readLang() === 'ja' ? 'レギュ' : 'Reg';
-    regulationLabel.innerHTML = `<i class="bi bi-list-ul" aria-hidden="true"></i>${label}`;
-  };
-  if (regulationSelect) {
-    regulationSelect.value = readRegulation();
-    regulationSelect.addEventListener('change', event => {
-      const nextValue = String(event.target.value || 'M-A');
-      writeRegulation(nextValue);
-      regulationSelect.value = readRegulation();
-    });
-  }
-  syncRegulationLabel();
-  document.querySelectorAll('#lang-tabs [data-lang]').forEach(button => {
-    button.addEventListener('click', () => {
-      const lang = button.dataset.lang;
-      if (!lang || (lang !== 'ja' && lang !== 'en')) return;
-      try {
-        localStorage.setItem(TOOL_LAYOUT_LANG_KEY, lang);
-      } catch (_error) {
-        // ignore
-      }
-      document.querySelectorAll('#lang-tabs [data-lang]').forEach(node => {
-        node.classList.toggle('active', node.dataset.lang === lang);
-      });
-      syncRegulationLabel();
-      window.dispatchEvent(new CustomEvent('poketools:langchange', { detail: { lang } }));
-    });
-  });
-
-  const toggler = document.getElementById('tool-nav-toggler');
-  const navPanel = document.getElementById('tool-nav-panel');
-  if (toggler && navPanel) {
-    const closePanel = () => {
-      navPanel.classList.add('is-collapsed');
-      toggler.setAttribute('aria-expanded', 'false');
-    };
-    toggler.addEventListener('click', () => {
-      const collapsed = navPanel.classList.toggle('is-collapsed');
-      toggler.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-    });
-    navPanel.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        closePanel();
-      });
-    });
-    document.addEventListener('click', event => {
-      if (navPanel.classList.contains('is-collapsed')) return;
-      const target = event.target;
-      if (navPanel.contains(target) || toggler.contains(target)) return;
-      closePanel();
-    });
-    document.addEventListener('keydown', event => {
-      if (event.key !== 'Escape') return;
-      if (navPanel.classList.contains('is-collapsed')) return;
-      closePanel();
-    });
-  }
 }
+
+window.pokeToolsLayout = {
+  readLang,
+  readRegulation,
+  writeRegulation,
+  readDoubleBattleMode,
+  writeDoubleBattleMode,
+};
 async function loadLayoutConfig() {
   try {
     const response = await fetch(TOOL_LAYOUT_CONFIG_URL, { cache: 'no-store' });
