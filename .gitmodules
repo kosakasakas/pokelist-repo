@@ -1,3 +1,6 @@
 [submodule "library/pokemon-showdown"]
 	path = library/pokemon-showdown
 	url = git@github.com.kosakasakas:kosakasakas/pokemon-showdown.git
+[submodule "library/pokeapi"]
+	path = library/pokeapi
+	url = git@github.com.kosakasakas:kosakasakas/pokeapi.git

@@ -142,30 +142,6 @@ async function fetchJson(url) {
   return response.json();
 }
 
-async function fetchCsvRecords(url) {
-  const response = await fetch(url, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Failed to load CSV: ${url}`);
-  const text = (await response.text()).replace(/^\uFEFF/, '');
-  const lines = text.split(/\r?\n/).filter(Boolean);
-  const headers = parseCsvLine(lines[0] || '');
-  return lines.slice(1).map(line => {
-    const values = parseCsvLine(line);
-    const record = {};
-    headers.forEach((header, index) => {
-      record[header] = values[index] || '';
-    });
-    return record;
-  });
-}
-
-async function fetchCsvRecordsSafe(url) {
-  try {
-    return await fetchCsvRecords(url);
-  } catch (_error) {
-    return [];
-  }
-}
-
 function loadLang() {
   try {
     const saved = localStorage.getItem(LANG_STORAGE_KEY);
@@ -198,38 +174,34 @@ function updateUrl() {
   window.history.replaceState({}, '', next);
 }
 
-function buildSpeciesJapaneseMap(records) {
+function buildSpeciesJapaneseMap(translations = {}) {
   state.speciesCsvMap = new Map();
-  records.forEach(record => {
-    const id = toId(record.ShowdownKey || '');
-    const name = String(record['名前(フォルム)'] || record['名前'] || '').trim();
+  Object.entries(translations.species || {}).forEach(([id, entry]) => {
+    const name = String(entry?.nameJa || '').trim();
     if (id && name && !state.speciesCsvMap.has(id)) state.speciesCsvMap.set(id, name);
   });
 }
 
-function buildMoveJapaneseMap(records) {
+function buildMoveJapaneseMap(translations = {}) {
   state.moveCsvMap = new Map();
-  records.forEach(record => {
-    const id = Number(record.ID);
-    const name = String(record['わざ名'] || '').trim();
-    if (Number.isFinite(id) && name && !state.moveCsvMap.has(id)) state.moveCsvMap.set(id, name);
+  Object.entries(translations.moves || {}).forEach(([id, entry]) => {
+    const name = String(entry?.nameJa || '').trim();
+    if (id && name && !state.moveCsvMap.has(id)) state.moveCsvMap.set(id, name);
   });
 }
 
-function buildAbilityJapaneseMap(records) {
+function buildAbilityJapaneseMap(translations = {}) {
   state.abilityCsvMap = new Map();
-  records.forEach(record => {
-    const id = Number(record.ID);
-    const name = String(record['特性'] || '').trim();
-    if (Number.isFinite(id) && name && !state.abilityCsvMap.has(id)) state.abilityCsvMap.set(id, name);
+  Object.entries(translations.abilities || {}).forEach(([id, entry]) => {
+    const name = String(entry?.nameJa || '').trim();
+    if (id && name && !state.abilityCsvMap.has(id)) state.abilityCsvMap.set(id, name);
   });
 }
 
-function buildItemJapaneseMap(records) {
+function buildItemJapaneseMap(translations = {}) {
   state.itemCsvMap = new Map();
-  records.forEach(record => {
-    const id = toId(record.ShowdownKey || record.ID || '');
-    const name = String(record['名前'] || record['どうぐ名'] || record['道具名'] || '').trim();
+  Object.entries(translations.items || {}).forEach(([id, entry]) => {
+    const name = String(entry?.nameJa || '').trim();
     if (id && name && !state.itemCsvMap.has(id)) state.itemCsvMap.set(id, name);
   });
 }
@@ -248,12 +220,12 @@ function getSpeciesName(species) {
 }
 
 function getMoveName(move) {
-  if (state.lang === 'ja') return state.moveCsvMap.get(move.num) || move.nameJa || move.name || move.id;
+  if (state.lang === 'ja') return state.moveCsvMap.get(move.id) || move.nameJa || move.name || move.id;
   return move.name || move.nameJa || move.id;
 }
 
 function getAbilityName(ability) {
-  if (state.lang === 'ja') return state.abilityCsvMap.get(ability.num) || ability.nameJa || ability.name || ability.id;
+  if (state.lang === 'ja') return state.abilityCsvMap.get(ability.id) || ability.nameJa || ability.name || ability.id;
   return ability.name || ability.nameJa || ability.id;
 }
 
@@ -696,12 +668,9 @@ async function initialize() {
   parseParams();
   loadLang();
 
-  const [data, speciesRecords, moveRecords, abilityRecords, itemRecords] = await Promise.all([
+  const [data, jaTranslations] = await Promise.all([
     fetchJson('/db/champions-calc-data.json'),
-    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
-    fetchCsvRecordsSafe('/csv/champions-moves.csv'),
-    fetchCsvRecordsSafe('/csv/champions-abilities.csv'),
-    fetchCsvRecordsSafe('/csv/champions-items.csv'),
+    fetchJson('/db/champions-ja-translations.json'),
   ]);
 
   state.data = {
@@ -709,10 +678,10 @@ async function initialize() {
     learnersByMoveId: buildLearnersByMoveId(data),
     abilityUsersByAbilityId: buildAbilityUsersByAbilityId(data),
   };
-  if (speciesRecords.length) buildSpeciesJapaneseMap(speciesRecords);
-  if (moveRecords.length) buildMoveJapaneseMap(moveRecords);
-  if (abilityRecords.length) buildAbilityJapaneseMap(abilityRecords);
-  if (itemRecords.length) buildItemJapaneseMap(itemRecords);
+  buildSpeciesJapaneseMap(jaTranslations || {});
+  buildMoveJapaneseMap(jaTranslations || {});
+  buildAbilityJapaneseMap(jaTranslations || {});
+  buildItemJapaneseMap(jaTranslations || {});
 
   const searchInput = $('dex-search');
   const tabButtons = document.querySelectorAll('[data-tab]');

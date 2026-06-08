@@ -167,6 +167,8 @@ const ITEM_NAME_JA_FALLBACK = {
   silverpowder: 'ぎんのこな', sitrusberry: 'オボンのみ', softsand: 'やわらかいすな', spelltag: 'のろいのおふだ',
   twistedspoon: 'まがったスプーン', whiteherb: 'しろいハーブ',
   megastone: 'メガストーン', megastonex: 'メガストーンX', megastoney: 'メガストーンY', megastonez: 'メガストーンZ',
+  chandelurite: 'シャンデラナイト',
+  cahndelurite: 'シャンデラナイト',
 };
 
 const BASE_SPECIES_JA_FALLBACK = {
@@ -237,7 +239,9 @@ const FORME_NAME_JA = {
 
 const STATIC_PICKER_FIELDS = {
   'attacker-species': { buttonId: 'attacker-species-button', titleKey: 'pickerSpecies' },
+  'attacker-forme': { buttonId: 'attacker-forme-button', titleKey: 'pickerSpecies' },
   'defender-species': { buttonId: 'defender-species-button', titleKey: 'pickerSpecies' },
+  'defender-forme': { buttonId: 'defender-forme-button', titleKey: 'pickerSpecies' },
   'move-select': { buttonId: 'move-button', titleKey: 'pickerMove' },
   'move-type': { buttonId: 'move-type-button', titleKey: 'type' },
   'move-category': { buttonId: 'move-category-button', titleKey: 'category' },
@@ -248,6 +252,7 @@ const STATIC_PICKER_FIELDS = {
   'attacker-ability': { buttonId: 'attacker-ability-button', titleKey: 'pickerAbility' },
   'defender-ability': { buttonId: 'defender-ability-button', titleKey: 'pickerAbility' },
   'detail-species': { buttonId: 'detail-species-button', titleKey: 'pickerSpecies' },
+  'detail-forme': { buttonId: 'detail-forme-button', titleKey: 'pickerSpecies' },
   'detail-nature': { buttonId: 'detail-nature-button', titleKey: 'pickerNature' },
   'detail-item': { buttonId: 'detail-item-button', titleKey: 'pickerItem' },
   'detail-ability': { buttonId: 'detail-ability-button', titleKey: 'pickerAbility' },
@@ -258,6 +263,7 @@ const LANG_STORAGE_KEY = 'champions-tool-ui-lang-v1';
 const PENDING_APPLY_KEY = 'champions-damage-calc-pending-apply-v1';
 const OPEN_DETAIL_REQUEST_KEY = 'champions-open-detail-request-v1';
 const SPEED_ADJUST_REQUEST_KEY = 'champions-speed-adjust-request-v1';
+const SPEED_ADJUST_ROW_CACHE_KEY = 'champions-speed-adjust-row-cache-v1';
 const LAST_SELECTED_SIDES_KEY = 'champions-calc-last-selected-sides-v1';
 const MAX_CALC_HISTORY = 10;
 const PARTY_SLOT_COUNT = 6;
@@ -465,60 +471,60 @@ function populateDetailEvSelectOptions() {
   });
 }
 
-function setMobileTopTab(tab) {
-  const isResult = tab === 'result';
-  document.body.classList.toggle('mobile-tab-result', isResult);
-  document.body.classList.toggle('mobile-tab-settings', !isResult);
-  const settingsButton = $('mobile-tab-settings');
-  const resultButton = $('mobile-tab-result');
-  if (settingsButton) {
-    settingsButton.classList.toggle('active', !isResult);
-    settingsButton.setAttribute('aria-selected', String(!isResult));
-  }
-  if (resultButton) {
-    resultButton.classList.toggle('active', isResult);
-    resultButton.setAttribute('aria-selected', String(isResult));
-  }
-}
-
-function initMobileTopTabs() {
-  const tabsRoot = $('mobile-top-tabs');
-  if (!tabsRoot) return;
-  const settingsButton = $('mobile-tab-settings');
-  const resultButton = $('mobile-tab-result');
-  if (settingsButton) settingsButton.addEventListener('click', () => setMobileTopTab('settings'));
-  if (resultButton) {
-    resultButton.addEventListener('click', () => {
-      calculateAndRender();
-      setMobileTopTab('result');
-    });
-  }
-  const mediaQuery = window.matchMedia('(max-width: 991.98px)');
-  const handleViewport = event => {
-    if (event.matches) {
-      setMobileTopTab('settings');
-    } else {
-      document.body.classList.remove('mobile-tab-result', 'mobile-tab-settings');
+function populateCalcStatSelectOptions() {
+  const evIds = [
+    'attacker-ev-hp', 'attacker-ev-atk', 'attacker-ev-def', 'attacker-ev-spa', 'attacker-ev-spd', 'attacker-ev-spe',
+    'defender-ev-hp', 'defender-ev-atk', 'defender-ev-def', 'defender-ev-spa', 'defender-ev-spd', 'defender-ev-spe',
+  ];
+  evIds.forEach(id => {
+    const select = $(id);
+    if (!select || select.tagName !== 'SELECT' || select.options.length) return;
+    for (let i = 0; i <= 32; i += 1) {
+      const option = document.createElement('option');
+      option.value = String(i);
+      option.textContent = String(i);
+      select.appendChild(option);
     }
-  };
-  if (typeof mediaQuery.addEventListener === 'function') mediaQuery.addEventListener('change', handleViewport);
-  else if (typeof mediaQuery.addListener === 'function') mediaQuery.addListener(handleViewport);
-  handleViewport(mediaQuery);
+  });
+
+  const rankIds = [
+    'attacker-rank-atk', 'attacker-rank-def', 'attacker-rank-spa', 'attacker-rank-spd', 'attacker-rank-spe',
+    'defender-rank-atk', 'defender-rank-def', 'defender-rank-spa', 'defender-rank-spd', 'defender-rank-spe',
+  ];
+  rankIds.forEach(id => {
+    const select = $(id);
+    if (!select || select.tagName !== 'SELECT' || select.options.length) return;
+    for (let i = -6; i <= 6; i += 1) {
+      const option = document.createElement('option');
+      option.value = String(i);
+      option.textContent = i > 0 ? `+${i}` : String(i);
+      select.appendChild(option);
+    }
+  });
 }
 
 function setMobileBattleTab(tab) {
-  const isDefender = tab === 'defender';
-  document.body.classList.toggle('mobile-battle-attacker', !isDefender);
-  document.body.classList.toggle('mobile-battle-defender', isDefender);
+  const normalized = tab === 'attacker' || tab === 'defender' ? tab : 'settings';
+  document.body.classList.toggle('mobile-panel-attacker', normalized === 'attacker');
+  document.body.classList.toggle('mobile-panel-settings', normalized === 'settings');
+  document.body.classList.toggle('mobile-panel-defender', normalized === 'defender');
   const attackerButton = $('mobile-battle-tab-attacker');
+  const settingsButton = $('mobile-battle-tab-settings');
   const defenderButton = $('mobile-battle-tab-defender');
   if (attackerButton) {
-    attackerButton.classList.toggle('active', !isDefender);
-    attackerButton.setAttribute('aria-selected', String(!isDefender));
+    const active = normalized === 'attacker';
+    attackerButton.classList.toggle('active', active);
+    attackerButton.setAttribute('aria-selected', String(active));
+  }
+  if (settingsButton) {
+    const active = normalized === 'settings';
+    settingsButton.classList.toggle('active', active);
+    settingsButton.setAttribute('aria-selected', String(active));
   }
   if (defenderButton) {
-    defenderButton.classList.toggle('active', isDefender);
-    defenderButton.setAttribute('aria-selected', String(isDefender));
+    const active = normalized === 'defender';
+    defenderButton.classList.toggle('active', active);
+    defenderButton.setAttribute('aria-selected', String(active));
   }
 }
 
@@ -526,15 +532,17 @@ function initMobileBattleTabs() {
   const root = $('mobile-battle-tabs');
   if (!root) return;
   const attackerButton = $('mobile-battle-tab-attacker');
+  const settingsButton = $('mobile-battle-tab-settings');
   const defenderButton = $('mobile-battle-tab-defender');
   if (attackerButton) attackerButton.addEventListener('click', () => setMobileBattleTab('attacker'));
+  if (settingsButton) settingsButton.addEventListener('click', () => setMobileBattleTab('settings'));
   if (defenderButton) defenderButton.addEventListener('click', () => setMobileBattleTab('defender'));
   const mediaQuery = window.matchMedia('(max-width: 991.98px)');
   const handleViewport = event => {
     if (event.matches) {
-      setMobileBattleTab('attacker');
+      setMobileBattleTab('settings');
     } else {
-      document.body.classList.remove('mobile-battle-attacker', 'mobile-battle-defender');
+      document.body.classList.remove('mobile-panel-attacker', 'mobile-panel-settings', 'mobile-panel-defender');
     }
   };
   if (typeof mediaQuery.addEventListener === 'function') mediaQuery.addEventListener('change', handleViewport);
@@ -642,6 +650,22 @@ function normalizePokemonRecord(record) {
   next.ranks = { ...base.ranks, ...(record?.ranks || {}) };
   next.moveIds = Array.isArray(record?.moveIds) ? record.moveIds.filter(Boolean).slice(0, 4) : [];
   next.calcHistory = Array.isArray(record?.calcHistory) ? record.calcHistory.slice(-MAX_CALC_HISTORY) : [];
+
+  const normalizedSpeciesId = normalizeSelectedSpeciesId(next.speciesId);
+  const megaBaseId = resolveMegaBaseId(normalizedSpeciesId);
+  if (megaBaseId && normalizedSpeciesId !== megaBaseId) {
+    next.speciesId = megaBaseId;
+    next.megaEnabled = true;
+    if (!next.itemId || isGenericMegaStone(next.itemId)) {
+      next.itemId = getPreferredMegaItemId(megaBaseId, next.itemId || '');
+    }
+  } else {
+    next.speciesId = normalizedSpeciesId;
+  }
+  if (next.megaEnabled && hasMega(next.speciesId) && !next.itemId) {
+    next.itemId = getPreferredMegaItemId(next.speciesId, '');
+  }
+  if (next.megaEnabled && !hasMega(next.speciesId)) next.megaEnabled = false;
   return next;
 }
 
@@ -741,10 +765,10 @@ function displaySpeciesName(species) {
       || BASE_SPECIES_JA_FALLBACK[species.baseSpecies]
       || species.baseSpecies
       || species.name;
-    if (typeof species.name === 'string' && species.name.endsWith('-Mega-X')) return `${baseJa}(メガX)`;
-    if (typeof species.name === 'string' && species.name.endsWith('-Mega-Y')) return `${baseJa}(メガY)`;
-    if (typeof species.name === 'string' && species.name.endsWith('-Mega-Z')) return `${baseJa}(メガZ)`;
-    if (typeof species.name === 'string' && species.name.includes('-Mega')) return `${baseJa}(メガ)`;
+    if (typeof species.name === 'string' && species.name.endsWith('-Mega-X')) return `メガ${baseJa}X`;
+    if (typeof species.name === 'string' && species.name.endsWith('-Mega-Y')) return `メガ${baseJa}Y`;
+    if (typeof species.name === 'string' && species.name.endsWith('-Mega-Z')) return `メガ${baseJa}Z`;
+    if (typeof species.name === 'string' && species.name.includes('-Mega')) return `メガ${baseJa}`;
     if (species.forme) return `${baseJa}(${translateFormeJa(species.forme)})`;
     return baseJa;
   }
@@ -771,11 +795,24 @@ function isGenericMegaStone(itemId) {
   return itemId === 'megastone' || itemId === 'megastonex' || itemId === 'megastoney' || itemId === 'megastonez';
 }
 
+function isMegaStoneItem(itemId) {
+  if (!itemId) return false;
+  if (isGenericMegaStone(itemId)) return true;
+  return Boolean(state.itemsById.get(itemId)?.megaStone);
+}
+
 function getMegaStoneType(itemId) {
   if (itemId === 'megastonex') return 'x';
   if (itemId === 'megastoney') return 'y';
   if (itemId === 'megastonez') return 'z';
   return 'normal';
+}
+
+function getPreferredMegaItemId(speciesId, currentItemId = '') {
+  const megaForm = getMegaFormForSpecies(speciesId, currentItemId || '');
+  if (megaForm?.requiredItemId) return megaForm.requiredItemId;
+  if (currentItemId && state.itemsById.has(currentItemId)) return currentItemId;
+  return '';
 }
 
 function getMegaForms(baseSpeciesId) {
@@ -965,7 +1002,7 @@ function toCompactNatureLabel(label) {
 }
 
 function renderPickerButtonAsIcon(fieldId, button, value) {
-  const iconOnlyFields = new Set(['attacker-species', 'defender-species', 'attacker-item', 'defender-item', 'move-type', 'move-category']);
+  const iconOnlyFields = new Set(['attacker-species', 'defender-species', 'move-type', 'move-category']);
   if (!hasCalcPage() || !iconOnlyFields.has(fieldId)) {
     button.classList.remove('icon-picker-btn');
     button.classList.remove('calc-species-picker-btn');
@@ -1083,14 +1120,12 @@ function buildMoveCategoryOptions() {
 }
 
 function buildItemOptions() {
-  return CALC_ITEMS.map(itemId => {
-    if (!itemId) return { id: '', name: 'None', nameJa: 'なし' };
-    if (itemId === 'megastone') return { id: 'megastone', name: 'Mega Stone', nameJa: 'メガストーン' };
-    if (itemId === 'megastonex') return { id: 'megastonex', name: 'Mega Stone X', nameJa: 'メガストーンX' };
-    if (itemId === 'megastoney') return { id: 'megastoney', name: 'Mega Stone Y', nameJa: 'メガストーンY' };
-    if (itemId === 'megastonez') return { id: 'megastonez', name: 'Mega Stone Z', nameJa: 'メガストーンZ' };
-    return state.itemsById.get(itemId);
-  }).filter(Boolean).map(item => ({ value: item.id, label: displayItemName(item), itemId: item.id }));
+  const options = [{ value: '', label: state.lang === 'ja' ? 'なし' : 'None', itemId: '' }];
+  const allItems = sortByDisplayName([...state.itemsById.values()], displayItemName);
+  allItems.forEach(item => {
+    options.push({ value: item.id, label: displayItemName(item), itemId: item.id });
+  });
+  return options;
 }
 
 function buildAbilityOptions(speciesId, megaEnabled, itemId = '') {
@@ -1153,6 +1188,21 @@ function buildLearnsetOptions(speciesId) {
 function buildSpeciesPickerOptions() {
   const pickerSpecies = [...state.displaySpecies, ...(state.data?.megaSpecies || [])];
   return sortByDisplayName(pickerSpecies, displaySpeciesName).map(species => ({
+    value: species.id,
+    label: displaySpeciesName(species),
+    iconSpeciesId: species.id,
+    iconMegaEnabled: false,
+    iconItemId: '',
+  }));
+}
+
+function buildDetailSpeciesPickerOptions() {
+  const pickerSpecies = [...(state.data?.species || []), ...(state.data?.megaSpecies || [])];
+  const dedup = new Map();
+  pickerSpecies.forEach(species => {
+    if (!dedup.has(species.id)) dedup.set(species.id, species);
+  });
+  return sortByDisplayName([...dedup.values()], displaySpeciesName).map(species => ({
     value: species.id,
     label: displaySpeciesName(species),
     iconSpeciesId: species.id,
@@ -1249,7 +1299,63 @@ function updateMoveParameterUI() {
 }
 
 function fillSpeciesField(fieldId, selectedId) {
+  if (fieldId === 'attacker-species' || fieldId === 'defender-species') {
+    setPickerField(fieldId, buildDetailSpeciesPickerOptions(), selectedId);
+    return;
+  }
   setPickerField(fieldId, buildSpeciesOptions(), normalizeSelectedSpeciesId(selectedId));
+}
+
+function toShortFormLabel(species) {
+  if (!species) return '-';
+  const forme = String(species.forme || '').trim();
+  if (!forme) return state.lang === 'ja' ? '通常' : 'Base';
+  const lower = forme.toLowerCase();
+  if (lower.startsWith('mega')) {
+    if (lower.includes('-x') || lower.endsWith(' x')) return state.lang === 'ja' ? 'メガX' : 'Mega X';
+    if (lower.includes('-y') || lower.endsWith(' y')) return state.lang === 'ja' ? 'メガY' : 'Mega Y';
+    if (lower.includes('-z') || lower.endsWith(' z')) return state.lang === 'ja' ? 'メガZ' : 'Mega Z';
+    return state.lang === 'ja' ? 'メガ' : 'Mega';
+  }
+  const compactJa = FORME_NAME_JA[forme] || FORME_NAME_JA[forme.replace(/[^A-Za-z]/g, '')] || '';
+  return state.lang === 'ja' ? (compactJa || forme) : forme;
+}
+
+function buildFormOptionsForSide(side) {
+  const speciesInput = $(`${side}-species`);
+  if (!speciesInput) return [];
+  const selected = state.speciesById.get(speciesInput.value) || state.speciesById.get(normalizeSelectedSpeciesId(speciesInput.value));
+  if (!selected) return [];
+  const baseName = selected.baseSpecies || selected.name;
+  const forms = [...(state.data?.species || []), ...(state.data?.megaSpecies || [])]
+    .filter(entry => (entry.baseSpecies || entry.name) === baseName);
+  const dedup = new Map();
+  forms.forEach(entry => {
+    if (!dedup.has(entry.id)) dedup.set(entry.id, entry);
+  });
+  return [...dedup.values()]
+    .sort((left, right) => {
+      const leftRank = String(left.forme || '').length;
+      const rightRank = String(right.forme || '').length;
+      if (leftRank !== rightRank) return leftRank - rightRank;
+      return displaySpeciesName(left).localeCompare(displaySpeciesName(right), state.lang === 'ja' ? 'ja' : 'en');
+    })
+    .map(entry => ({ value: entry.id, label: toShortFormLabel(entry) }));
+}
+
+function syncFormeFieldForSide(side, preferredSpeciesId = '') {
+  const formField = `${side}-forme`;
+  const speciesField = `${side}-species`;
+  if (!$(formField) || !$(speciesField)) return;
+  const options = buildFormOptionsForSide(side);
+  const target = preferredSpeciesId || $(speciesField).value;
+  const selectedValue = options.some(option => option.value === target) ? target : (options[0]?.value || '');
+  setPickerField(formField, options, selectedValue);
+  if (selectedValue) {
+    $(formField).value = selectedValue;
+    $(speciesField).value = selectedValue;
+    updatePickerButtonLabel(speciesField);
+  }
 }
 
 function fillNatureFields(attackerSelected, defenderSelected, detailSelected) {
@@ -1484,17 +1590,17 @@ function refreshConditionToggleLabels() {
 
 function applyCompactFieldTitles() {
   const labels = state.lang === 'ja' ? {
-    'attacker-species-button': '攻撃側ポケモン', 'attacker-nature-button': '攻撃側せいかく', 'attacker-ability-button': '攻撃側とくせい', 'attacker-item-button': '攻撃側もちもの',
-    'defender-species-button': '防御側ポケモン', 'defender-nature-button': '防御側せいかく', 'defender-ability-button': '防御側とくせい', 'defender-item-button': '防御側もちもの',
-    'detail-species-button': '詳細ポケモン', 'detail-nature-button': '詳細せいかく', 'detail-ability-button': '詳細とくせい', 'detail-item-button': '詳細もちもの',
+    'attacker-species-button': '攻撃側ポケモン', 'attacker-forme-button': '攻撃側フォルム', 'attacker-nature-button': '攻撃側せいかく', 'attacker-ability-button': '攻撃側とくせい', 'attacker-item-button': '攻撃側もちもの',
+    'defender-species-button': '防御側ポケモン', 'defender-forme-button': '防御側フォルム', 'defender-nature-button': '防御側せいかく', 'defender-ability-button': '防御側とくせい', 'defender-item-button': '防御側もちもの',
+    'detail-species-button': '詳細ポケモン', 'detail-forme-button': '詳細フォルム', 'detail-nature-button': '詳細せいかく', 'detail-ability-button': '詳細とくせい', 'detail-item-button': '詳細もちもの',
     'move-button': 'わざ', 'move-type-button': 'わざタイプ', 'move-category-button': 'わざ分類', 'move-power': 'わざ威力', 'hit-count': 'ヒット回数',
     'attacker-ev-atk': '攻撃側 AP Atk', 'attacker-ev-spa': '攻撃側 AP SpA', 'attacker-rank-atk': '攻撃側 ランク Atk', 'attacker-rank-spa': '攻撃側 ランク SpA', 'attacker-rank-spe': '攻撃側 ランク Spe',
     'defender-ev-hp': '防御側 AP HP', 'defender-ev-def': '防御側 AP Def', 'defender-ev-spd': '防御側 AP SpD', 'defender-rank-def': '防御側 ランク Def', 'defender-rank-spd': '防御側 ランク SpD', 'defender-rank-spe': '防御側 ランク Spe',
     'detail-ev-hp': '詳細 AP HP', 'detail-ev-atk': '詳細 AP Atk', 'detail-ev-def': '詳細 AP Def', 'detail-ev-spa': '詳細 AP SpA', 'detail-ev-spd': '詳細 AP SpD', 'detail-ev-spe': '詳細 AP Spe',
   } : {
-    'attacker-species-button': 'Attacker species', 'attacker-nature-button': 'Attacker nature', 'attacker-ability-button': 'Attacker ability', 'attacker-item-button': 'Attacker item',
-    'defender-species-button': 'Defender species', 'defender-nature-button': 'Defender nature', 'defender-ability-button': 'Defender ability', 'defender-item-button': 'Defender item',
-    'detail-species-button': 'Detail species', 'detail-nature-button': 'Detail nature', 'detail-ability-button': 'Detail ability', 'detail-item-button': 'Detail item',
+    'attacker-species-button': 'Attacker species', 'attacker-forme-button': 'Attacker form', 'attacker-nature-button': 'Attacker nature', 'attacker-ability-button': 'Attacker ability', 'attacker-item-button': 'Attacker item',
+    'defender-species-button': 'Defender species', 'defender-forme-button': 'Defender form', 'defender-nature-button': 'Defender nature', 'defender-ability-button': 'Defender ability', 'defender-item-button': 'Defender item',
+    'detail-species-button': 'Detail species', 'detail-forme-button': 'Detail form', 'detail-nature-button': 'Detail nature', 'detail-ability-button': 'Detail ability', 'detail-item-button': 'Detail item',
     'move-button': 'Move', 'move-type-button': 'Move type', 'move-category-button': 'Move category', 'move-power': 'Move power', 'hit-count': 'Hit count',
     'attacker-ev-atk': 'Attacker AP Atk', 'attacker-ev-spa': 'Attacker AP SpA', 'attacker-rank-atk': 'Attacker Rank Atk', 'attacker-rank-spa': 'Attacker Rank SpA', 'attacker-rank-spe': 'Attacker Rank Spe',
     'defender-ev-hp': 'Defender AP HP', 'defender-ev-def': 'Defender AP Def', 'defender-ev-spd': 'Defender AP SpD', 'defender-rank-def': 'Defender Rank Def', 'defender-rank-spd': 'Defender Rank SpD', 'defender-rank-spe': 'Defender Rank Spe',
@@ -1770,7 +1876,7 @@ function collectInput() {
   const defenderNatureOverride = getSideNatureOverridesFromButtons('defender');
   return {
     attackerSpeciesId: $('attacker-species').value,
-    attackerMegaEnabled: $('attacker-mega-enabled').checked,
+    attackerMegaEnabled: false,
     attackerNature: $('attacker-nature').value,
     attackerAbilityId: $('attacker-ability').value,
     attackerItemId: $('attacker-item').value,
@@ -1789,7 +1895,7 @@ function collectInput() {
     attackerNaturePlusStats: attackerNatureOverride.plusStats,
     attackerNatureMinusStats: attackerNatureOverride.minusStats,
     defenderSpeciesId: $('defender-species').value,
-    defenderMegaEnabled: $('defender-mega-enabled').checked,
+    defenderMegaEnabled: false,
     defenderNature: $('defender-nature').value,
     defenderAbilityId: $('defender-ability').value,
     defenderItemId: $('defender-item').value,
@@ -1897,6 +2003,7 @@ function calculateDamageRange(input) {
   let burnMultiplier = 1;
   if (input.isBurn && input.moveCategory === 'Physical' && !hasAbility(attackerAbilityId, ['Guts'])) burnMultiplier = 0.5;
   if (input.weather === 'sand' && defenderTypes.includes('Rock') && input.moveCategory === 'Special') defenseStat = Math.floor(defenseStat * 1.5);
+  if (input.weather === 'snow' && defenderTypes.includes('Ice') && input.moveCategory === 'Physical') defenseStat = Math.floor(defenseStat * 1.5);
   const multiscaleMultiplier = input.defenderFullHp && hasAbility(defenderAbilityId, ['Multiscale', 'Shadow Shield']) ? 0.5 : 1;
   const friendGuardMultiplier = input.isFriendGuard ? 0.75 : 1;
 
@@ -1957,8 +2064,24 @@ function calculateDamageRange(input) {
     attackerModifiers.push(itemText);
   }
   const hitCount = clamp(input.hitCount, 1, 10);
+  const resolvePerHitPower = hitIndex => {
+    if (move.id === 'tripleaxel') {
+      const tiers = [20, 40, 60];
+      return tiers[Math.min(hitIndex, tiers.length - 1)];
+    }
+    return power;
+  };
+  const calcPerHitBase = hitPower => Math.floor(Math.floor(Math.floor(((2 * level) / 5 + 2) * hitPower * movePowerMultiplier * attackStat / Math.max(1, defenseStat)) / 50) + 2);
   const rolls = [];
-  for (let roll = 85; roll <= 100; roll += 1) rolls.push(Math.max(1, Math.floor(preModifier * constantModifier * itemMultiplier * (roll / 100))) * hitCount);
+  for (let roll = 85; roll <= 100; roll += 1) {
+    let total = 0;
+    for (let hit = 0; hit < hitCount; hit += 1) {
+      const hitPower = resolvePerHitPower(hit);
+      const perHitBase = move.id === 'tripleaxel' ? calcPerHitBase(hitPower) : preModifier;
+      total += Math.max(1, Math.floor(perHitBase * constantModifier * itemMultiplier * (roll / 100)));
+    }
+    rolls.push(total);
+  }
   const min = rolls[0];
   const max = rolls[rolls.length - 1];
   let recoil = null;
@@ -2026,12 +2149,18 @@ function renderResult(result, input = null) {
 
   const minPct = result.defenderHp ? (result.min / result.defenderHp) * 100 : 0;
   const maxPct = result.defenderHp ? (result.max / result.defenderHp) * 100 : 0;
+  const getDamageClassByRatio = ratio => {
+    if (ratio >= 1) return 'result-dmg-deep-red';
+    if (ratio >= 0.8) return 'result-dmg-red';
+    if (ratio >= 0.5) return 'result-dmg-yellow';
+    return 'result-dmg-green';
+  };
 
   if (!input || !hasCalcPage()) {
     forEachResultNode('result-main', node => { node.textContent = '-'; });
     forEachResultNode('result-extra', node => { node.textContent = '-'; });
     forEachResultNode('result-stab-effect', node => { node.textContent = '-'; node.classList.remove('is-on', 'is-off'); });
-    ['result-attacker-item-impact', 'result-defender-item-impact', 'result-attacker-modifiers', 'result-defender-modifiers'].forEach(id => {
+    ['result-attacker-item-impact', 'result-defender-item-impact', 'result-attacker-modifiers', 'result-defender-modifiers', 'result-move-item-impact', 'result-move-modifiers'].forEach(id => {
       forEachResultNode(id, node => { node.innerHTML = ''; });
     });
     return;
@@ -2067,6 +2196,16 @@ function renderResult(result, input = null) {
   const defLabel = input.moveCategory === 'Special' ? 'D' : 'B';
   const attackerMods = Array.isArray(result.attackerModifiers) ? result.attackerModifiers : [];
   const defenderMods = Array.isArray(result.defenderModifiers) ? result.defenderModifiers : [];
+  const weatherPrefix = `${t('weather')}:`;
+  const terrainPrefix = `${t('terrain')}:`;
+  const isWeatherOrTerrainMod = mod => String(mod || '').startsWith(weatherPrefix) || String(mod || '').startsWith(terrainPrefix);
+  const moveRelatedMods = new Set([t('spreadMove'), t('helpingHand'), t('critical'), t('burn')]);
+  const moveRowMods = attackerMods.filter(mod => moveRelatedMods.has(mod));
+  const attackerPokemonRowMods = attackerMods.filter(mod => isWeatherOrTerrainMod(mod));
+  const defenderPokemonRowMods = defenderMods.slice();
+  if (input.reflect && input.moveCategory === 'Physical' && !defenderPokemonRowMods.includes(t('reflect'))) defenderPokemonRowMods.push(t('reflect'));
+  if (input.lightScreen && input.moveCategory === 'Special' && !defenderPokemonRowMods.includes(t('lightScreen'))) defenderPokemonRowMods.push(t('lightScreen'));
+  if (input.isFriendGuard && !defenderPokemonRowMods.includes(t('friendGuard'))) defenderPokemonRowMods.push(t('friendGuard'));
   forEachResultNode('result-attacker-meta', node => {
     node.textContent = `${atkLabel}${toNumber(result.attackStatUsed)}`;
   });
@@ -2082,16 +2221,22 @@ function renderResult(result, input = null) {
     if (itemLabel) excludedAttackerMods.add(itemLabel);
   }
   forEachResultNode('result-attacker-item-impact', node => {
-    node.innerHTML = attackerItemAffectsDamage ? renderImpactItem(input.attackerItemId) : '';
+    node.innerHTML = '';
   });
   forEachResultNode('result-defender-item-impact', node => {
     node.innerHTML = defenderItemAffectsDamage ? renderImpactItem(input.defenderItemId) : '';
   });
+  forEachResultNode('result-move-item-impact', node => {
+    node.innerHTML = attackerItemAffectsDamage ? renderImpactItem(input.attackerItemId) : '';
+  });
+  forEachResultNode('result-move-modifiers', node => {
+    node.innerHTML = renderResultModifierIcons(moveRowMods, 'positive', excludedAttackerMods);
+  });
   forEachResultNode('result-attacker-modifiers', node => {
-    node.innerHTML = renderResultModifierIcons(attackerMods, 'positive', excludedAttackerMods);
+    node.innerHTML = renderResultModifierIcons(attackerPokemonRowMods, 'positive', excludedAttackerMods);
   });
   forEachResultNode('result-defender-modifiers', node => {
-    node.innerHTML = renderResultModifierIcons(defenderMods, 'negative');
+    node.innerHTML = renderResultModifierIcons(defenderPokemonRowMods, 'negative');
   });
 
   const moveName = move ? displayEntryName(move) : '-';
@@ -2109,9 +2254,9 @@ function renderResult(result, input = null) {
   forEachResultNode('result-stab-effect', node => {
     node.classList.toggle('is-on', attackerStab > 1);
     node.classList.toggle('is-off', !(attackerStab > 1));
-    node.innerHTML = attackerStab > 1
-      ? `<i class="bi bi-stars" aria-hidden="true"></i><span>${state.lang === 'ja' ? `一致 x${attackerStab}` : `STAB x${attackerStab}`}</span>`
-      : `<i class="bi bi-dot" aria-hidden="true"></i><span>${state.lang === 'ja' ? '一致なし' : 'No STAB'}</span>`;
+    node.textContent = attackerStab > 1
+      ? (state.lang === 'ja' ? `一致 x${attackerStab}` : `STAB x${attackerStab}`)
+      : (state.lang === 'ja' ? '一致なし' : 'No STAB');
   });
 
   let typeLabel = state.lang === 'ja' ? '等倍' : 'Neutral';
@@ -2132,16 +2277,14 @@ function renderResult(result, input = null) {
     typeIconClass = 'bi-shield-fill-minus';
   }
   forEachResultNode('result-type-effect', node => {
-    node.innerHTML = `<i class="bi ${typeIconClass}" aria-hidden="true"></i><span>${typeLabel}</span>`;
+    node.textContent = typeLabel;
     node.dataset.level = typeLevel;
   });
 
   forEachResultNode('result-main', node => {
     node.innerHTML = `${result.min} <span class="result-percent">(${minPct.toFixed(1)}%)</span> ~ ${result.max} <span class="result-percent">(${maxPct.toFixed(1)}%)</span>`;
-    node.classList.remove('result-dmg-low', 'result-dmg-mid', 'result-dmg-high');
-    if (maxPct >= 70) node.classList.add('result-dmg-high');
-    else if (maxPct >= 35) node.classList.add('result-dmg-mid');
-    else node.classList.add('result-dmg-low');
+    node.classList.remove('result-dmg-green', 'result-dmg-yellow', 'result-dmg-red', 'result-dmg-deep-red');
+    node.classList.add(getDamageClassByRatio(maxPct / 100));
   });
 
   const rolls = Array.isArray(result.rolls) ? result.rolls : [];
@@ -2164,7 +2307,7 @@ function renderResult(result, input = null) {
     }
     const pills = rolls.map(value => {
       const ratio = result.defenderHp ? (value / result.defenderHp) : 0;
-      const cls = value >= result.defenderHp ? 'red' : (ratio >= 0.5 ? 'yellow' : 'green');
+      const cls = getDamageClassByRatio(ratio);
       return `<span class="result-random-pill ${cls}">${value}</span>`;
     }).join('');
     node.innerHTML = pills;
@@ -2468,7 +2611,8 @@ function applyStoredPokemonToSide(side, pokemon, options = {}) {
   if (!hasCalcPage()) return;
   const { silent = false } = options;
   fillSpeciesField(`${side}-species`, pokemon.speciesId);
-  $(`${side}-species`).value = normalizeSelectedSpeciesId(pokemon.speciesId);
+  syncFormeFieldForSide(side, pokemon.speciesId);
+  $(`${side}-species`).value = pokemon.speciesId;
   updatePickerButtonLabel(`${side}-species`);
   $(`${side}-nature`).value = pokemon.nature;
   updatePickerButtonLabel(`${side}-nature`);
@@ -2532,9 +2676,9 @@ function syncMegaToggle(side, selectedAbilityId = '') {
   if (megaWrap) megaWrap.classList.toggle('d-none', !canMega);
   if (pokemonBlock) pokemonBlock.classList.toggle('calc-side-pokemon-block-mega-hidden', !canMega);
   if (!canMega) megaToggle.checked = false;
-  if (!canMega && isGenericMegaStone(itemInput.value)) itemInput.value = '';
+  if (!canMega && isMegaStoneItem(itemInput.value)) itemInput.value = '';
   if (megaToggle.checked) {
-    if (!isGenericMegaStone(itemInput.value)) itemInput.value = 'megastone';
+    itemInput.value = getPreferredMegaItemId(speciesId, itemInput.value || '');
   }
   updatePickerButtonLabel(`${side}-item`);
   updateMegaToggleIcon(side, itemInput.value);
@@ -2554,8 +2698,8 @@ function syncDetailMegaToggle(selectedAbilityId = '') {
   megaToggle.disabled = !canMega;
   if (megaWrap) megaWrap.classList.toggle('d-none', !canMega);
   if (!canMega) megaToggle.checked = false;
-  if (!canMega && isGenericMegaStone(itemInput?.value || '')) itemInput.value = '';
-  if (megaToggle.checked && itemInput && !isGenericMegaStone(itemInput.value)) itemInput.value = 'megastone';
+  if (!canMega && isMegaStoneItem(itemInput?.value || '')) itemInput.value = '';
+  if (megaToggle.checked && itemInput) itemInput.value = getPreferredMegaItemId(speciesId, itemInput.value || '');
   if (itemInput) updatePickerButtonLabel('detail-item');
   updateDetailMegaIcon(itemInput?.value || '');
   fillAbilityField('detail-ability', speciesId, megaToggle.checked, selectedAbilityId, itemInput?.value || '');
@@ -2747,6 +2891,35 @@ function renderDetailSpeedMemo(pokemon) {
     container.innerHTML = '<div class="text-muted small">素早さメモを生成できません。</div>';
     return;
   }
+  const loadSpeedRows = () => {
+    try {
+      const raw = localStorage.getItem(SPEED_ADJUST_ROW_CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== 'object' || !parsed.rows) return null;
+      return parsed.rows;
+    } catch (_error) {
+      return null;
+    }
+  };
+  const rows = loadSpeedRows();
+  const currentRow = rows?.[String(speed)]?.html || '';
+  const nextRow = rows?.[String(Math.max(0, speed - 1))]?.html || '';
+  if (currentRow || nextRow) {
+    container.innerHTML = `
+      <div class="calc-history-item">
+        <div class="calc-history-title mono">現在の素早さ: ${speed}</div>
+        <div class="calc-history-time">速度比較の該当行</div>
+        <div class="detail-speed-memo-row">${currentRow || '<span class="text-muted small">該当なし</span>'}</div>
+      </div>
+      <div class="calc-history-item">
+        <div class="calc-history-title mono">一つ下の行: ${Math.max(0, speed - 1)}</div>
+        <div class="calc-history-time">速度比較の次行</div>
+        <div class="detail-speed-memo-row">${nextRow || '<span class="text-muted small">該当なし</span>'}</div>
+      </div>
+    `;
+    return;
+  }
   container.innerHTML = `
     <div class="calc-history-item">
       <div class="calc-history-title mono">現在の素早さ: ${speed}</div>
@@ -2906,7 +3079,7 @@ function buildEmbeddedResultCaptureHtml(input, result) {
   const koSummary = formatKoSummaryText(rolls, result.defenderHp, koRate);
   const pills = rolls.map(value => {
     const ratio = result.defenderHp ? (value / result.defenderHp) : 0;
-    const cls = value >= result.defenderHp ? 'red' : (ratio >= 0.5 ? 'yellow' : 'green');
+    const cls = ratio >= 1 ? 'result-dmg-deep-red' : (ratio >= 0.8 ? 'result-dmg-red' : (ratio >= 0.5 ? 'result-dmg-yellow' : 'result-dmg-green'));
     return `<span class="result-random-pill ${cls}">${value}</span>`;
   }).join('');
 
@@ -2928,8 +3101,8 @@ function buildEmbeddedResultCaptureHtml(input, result) {
         <span class="result-row-head-icon" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
         <span class="result-move-name">${escapeHtml(move ? displayEntryName(move) : '-')}</span>
         <span class="result-move-inline mono"><span>${escapeHtml(moveTypeName)}</span><span class="result-move-meta-sep">/</span><span>${escapeHtml(categoryName)}</span><span class="result-move-meta-sep">/</span><span class="result-move-power mono">${escapeHtml(powerLabel)} ${toNumber(result.power)}</span></span>
-        <span class="result-inline-badge result-stab-effect ${attackerStab > 1 ? 'is-on' : 'is-off'}">${attackerStab > 1 ? `<i class="bi bi-stars" aria-hidden="true"></i><span>${state.lang === 'ja' ? `一致 x${attackerStab}` : `STAB x${attackerStab}`}</span>` : `<i class="bi bi-dot" aria-hidden="true"></i><span>${state.lang === 'ja' ? '一致なし' : 'No STAB'}</span>`}</span>
-        <span class="result-type-effect" data-level="${typeLevel}"><i class="bi ${typeIconClass}" aria-hidden="true"></i><span>${escapeHtml(typeLabel)}</span></span>
+        <span class="result-inline-badge result-stab-effect ${attackerStab > 1 ? 'is-on' : 'is-off'}">${attackerStab > 1 ? (state.lang === 'ja' ? `一致 x${attackerStab}` : `STAB x${attackerStab}`) : (state.lang === 'ja' ? '一致なし' : 'No STAB')}</span>
+        <span class="result-type-effect" data-level="${typeLevel}">${escapeHtml(typeLabel)}</span>
       </div>
       <div class="result-damage-row result-row-shell">
         <span class="result-row-head-icon" aria-hidden="true"><i class="bi bi-activity"></i></span>
@@ -3090,13 +3263,16 @@ function populateDetailForm(pokemon) {
   $('detail-ev-spa').value = clamp(toNumber(pokemon.evs.spa), 0, 32);
   $('detail-ev-spd').value = clamp(toNumber(pokemon.evs.spd), 0, 32);
   if ($('detail-ev-spe')) $('detail-ev-spe').value = clamp(toNumber(pokemon.evs.spe), 0, 32);
-  $('detail-mega-enabled').checked = Boolean(pokemon.megaEnabled);
-  const detailSpecies = state.data?.megaSpecies?.some(species => species.id === pokemon.speciesId)
-    ? (state.speciesById.get(pokemon.speciesId)?.baseSpeciesId || pokemon.speciesId)
-    : pokemon.speciesId;
-  fillSpeciesField('detail-species', detailSpecies);
+  const megaBaseId = resolveMegaBaseId(pokemon.speciesId);
+  const isMegaSpeciesSelected = Boolean(megaBaseId && megaBaseId !== pokemon.speciesId);
+  $('detail-mega-enabled').checked = Boolean(pokemon.megaEnabled || isMegaSpeciesSelected);
+  fillSpeciesField('detail-species', pokemon.speciesId);
+  syncFormeFieldForSide('detail', pokemon.speciesId);
   fillNatureFields($('attacker-nature')?.value || 'modest', $('defender-nature')?.value || 'bold', pokemon.nature);
-  fillItemField('detail-item', pokemon.itemId || '');
+  const initialItemId = $('detail-mega-enabled').checked
+    ? getPreferredMegaItemId(pokemon.speciesId, pokemon.itemId || '')
+    : (pokemon.itemId || '');
+  fillItemField('detail-item', initialItemId);
   syncDetailMegaToggle(pokemon.abilityId || '');
   updateDetailStatSummaries();
   refreshDetailDerivedViews(pokemon);
@@ -3311,6 +3487,7 @@ function renderPickerList(query) {
     button.addEventListener('click', () => {
       const fieldId = state.picker.currentField;
       const isSpeciesField = fieldId === 'attacker-species' || fieldId === 'defender-species';
+      const isFormeField = fieldId === 'attacker-forme' || fieldId === 'defender-forme' || fieldId === 'detail-forme';
       if (fieldId === 'party-slot') {
         const target = state.picker.partySlotTarget;
         if (target) assignPokemonToPartySlot(target.partyId, target.slotIndex, option.value);
@@ -3322,7 +3499,15 @@ function renderPickerList(query) {
         const pokemon = getPokemonById(option.value);
         if (pokemon) applyStoredPokemonToSide(side, pokemon);
       } else if (fieldId === 'detail-species') {
+        const megaBaseId = resolveMegaBaseId(option.value);
+        const isMegaSelection = Boolean(megaBaseId && megaBaseId !== option.value);
         $('detail-species').value = option.value;
+        $('detail-mega-enabled').checked = isMegaSelection || Boolean($('detail-mega-enabled').checked);
+        if (isMegaSelection && $('detail-item')) {
+          $('detail-item').value = getPreferredMegaItemId(option.value, $('detail-item').value || '');
+          updatePickerButtonLabel('detail-item');
+        }
+        syncFormeFieldForSide('detail', option.value);
         updatePickerButtonLabel('detail-species');
         syncDetailMegaToggle('');
         const draft = readDetailPokemonFromForm() || getCurrentDetailPokemon();
@@ -3334,6 +3519,21 @@ function renderPickerList(query) {
       } else {
         $(fieldId).value = option.value;
         updatePickerButtonLabel(fieldId);
+        if (isFormeField) {
+          if (fieldId === 'detail-forme') {
+            $('detail-species').value = option.value;
+            updatePickerButtonLabel('detail-species');
+            syncDetailMegaToggle($('detail-ability')?.value || '');
+          } else {
+            const side = fieldId.startsWith('attacker') ? 'attacker' : 'defender';
+            $(`${side}-species`).value = option.value;
+            updatePickerButtonLabel(`${side}-species`);
+            state.storage.calcLinks[side] = null;
+            saveStorage();
+            syncMegaToggle(side, '');
+            renderManagerViews();
+          }
+        }
         if (fieldId.startsWith('detail-move-')) refreshDetailMoveButton(fieldId);
         if (fieldId.endsWith('-nature')) syncNatureModifierSelectors(fieldId.split('-')[0]);
         if (fieldId === 'detail-nature') syncDetailNatureButtonsFromNature();
@@ -3342,13 +3542,13 @@ function renderPickerList(query) {
         if (fieldId === 'attacker-item' || fieldId === 'defender-item') {
           const side = fieldId.startsWith('attacker') ? 'attacker' : 'defender';
           const megaToggle = $(`${side}-mega-enabled`);
-          if (isGenericMegaStone(option.value) && hasMega($(`${side}-species`).value)) megaToggle.checked = true;
-          else if (!isGenericMegaStone(option.value)) megaToggle.checked = false;
+          if (isMegaStoneItem(option.value) && hasMega($(`${side}-species`).value)) megaToggle.checked = true;
+          else if (!isMegaStoneItem(option.value)) megaToggle.checked = false;
           syncMegaToggle(side, $(`${side}-ability`).value);
         }
         if (fieldId === 'detail-item') {
-          if (isGenericMegaStone(option.value) && hasMega($('detail-species').value)) $('detail-mega-enabled').checked = true;
-          else if (!isGenericMegaStone(option.value)) $('detail-mega-enabled').checked = false;
+          if (isMegaStoneItem(option.value) && hasMega($('detail-species').value)) $('detail-mega-enabled').checked = true;
+          else if (!isMegaStoneItem(option.value)) $('detail-mega-enabled').checked = false;
           syncDetailMegaToggle($('detail-ability').value);
           const draft = readDetailPokemonFromForm() || getCurrentDetailPokemon();
           if (draft) refreshDetailDerivedViews(draft);
@@ -3357,7 +3557,16 @@ function renderPickerList(query) {
           const side = fieldId.startsWith('attacker') ? 'attacker' : 'defender';
           state.storage.calcLinks[side] = null;
           saveStorage();
+          const megaBaseId = resolveMegaBaseId($(fieldId).value);
+          const isMegaSelection = Boolean(megaBaseId && megaBaseId !== $(fieldId).value);
+          if (isMegaSelection) {
+            $(`${side}-mega-enabled`).checked = true;
+            const itemInput = $(`${side}-item`);
+            if (itemInput) itemInput.value = getPreferredMegaItemId($(fieldId).value, itemInput.value || '');
+            updatePickerButtonLabel(`${side}-item`);
+          }
           syncMegaToggle(side, '');
+          syncFormeFieldForSide(side, $(fieldId).value);
           renderManagerViews();
         }
       }
@@ -3375,6 +3584,7 @@ function openPicker(fieldId) {
   if (!state.picker.modal) return;
   state.picker.currentField = fieldId;
   state.picker.sideContext = fieldId.startsWith('attacker') ? 'attacker' : (fieldId.startsWith('defender') ? 'defender' : null);
+  if (fieldId === 'detail-species') state.picker.source = 'list';
   const meta = getPickerMeta(fieldId);
   $('picker-title').textContent = t(meta?.titleKey || 'pickerMove');
   if (!shouldShowPickerSources(fieldId)) state.picker.source = 'list';
@@ -3400,6 +3610,8 @@ function buildMainFormOptions() {
   const defenderDefault = $('defender-species').value || remembered?.defenderSpeciesId || 'incineroar';
   fillSpeciesField('attacker-species', attackerDefault);
   fillSpeciesField('defender-species', defenderDefault);
+  syncFormeFieldForSide('attacker', attackerDefault);
+  syncFormeFieldForSide('defender', defenderDefault);
   fillMoveField($('move-select').value || 'moonblast');
   fillMoveTypeField($('move-type')?.value || 'Fairy');
   fillMoveCategoryField($('move-category')?.value || 'Special');
@@ -3483,6 +3695,8 @@ function refreshLocalizedFields() {
   fillTypeSelect();
   $('attacker-species').value = normalizeSelectedSpeciesId(keep.attackerSpeciesId);
   $('defender-species').value = normalizeSelectedSpeciesId(keep.defenderSpeciesId);
+  syncFormeFieldForSide('attacker', keep.attackerSpeciesId);
+  syncFormeFieldForSide('defender', keep.defenderSpeciesId);
   $('attacker-nature').value = keep.attackerNature;
   $('defender-nature').value = keep.defenderNature;
   $('attacker-item').value = keep.attackerItemId;
@@ -3546,6 +3760,7 @@ function snapshotSide(side) {
 function applySideSnapshot(side, data) {
   if (!hasCalcPage() || !data) return;
   $(`${side}-species`).value = normalizeSelectedSpeciesId(data.species);
+  syncFormeFieldForSide(side, data.species);
   updatePickerButtonLabel(`${side}-species`);
   $(`${side}-nature`).value = data.nature;
   updatePickerButtonLabel(`${side}-nature`);
@@ -4035,6 +4250,10 @@ function bindEvents() {
       updateStatSummaries();
       calculateAndRender();
     });
+    $(id).addEventListener('change', () => {
+      updateStatSummaries();
+      calculateAndRender();
+    });
   });
   ['is-crit', 'is-burn', 'is-spread', 'is-helping-hand', 'reflect', 'light-screen', 'defender-full-hp', 'is-friend-guard'].forEach(id => {
     if ($(id)) $(id).addEventListener('change', calculateAndRender);
@@ -4058,6 +4277,7 @@ async function initialize() {
   const jaTranslations = jaTranslationsResponse.ok ? await jaTranslationsResponse.json() : null;
   ensureDetailDialogStyles();
   populateDetailEvSelectOptions();
+  populateCalcStatSelectOptions();
   setupLookups(state.data);
   state.availableFormats = [currentFormatLabel()];
   setupLocalizedNameMapsFromData(jaTranslations);
@@ -4067,7 +4287,6 @@ async function initialize() {
   initDetailModal();
   initConfirmSaveModal();
   initPresetModal();
-  initMobileTopTabs();
   initMobileBattleTabs();
   applyI18n();
   refreshConditionToggleLabels();

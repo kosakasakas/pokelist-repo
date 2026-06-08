@@ -183,26 +183,23 @@ function getLocalizedSortValue(text) {
   return normalizeText(String(text || '').replace(/[\u30a1-\u30f6]/g, char => String.fromCharCode(char.charCodeAt(0) - 0x60)));
 }
 
-function buildCsvMaps(speciesRecords, moveRecords, abilityRecords) {
+function buildCsvMaps(translations = {}) {
   state.speciesCsvMap = new Map();
-  speciesRecords.forEach(record => {
-    const id = toId(record.ShowdownKey || '');
-    const name = String(record['名前(フォルム)'] || record['名前'] || '').trim();
+  Object.entries(translations.species || {}).forEach(([id, entry]) => {
+    const name = String(entry?.nameJa || '').trim();
     if (id && name && !state.speciesCsvMap.has(id)) state.speciesCsvMap.set(id, name);
   });
 
   state.moveCsvMap = new Map();
-  moveRecords.forEach(record => {
-    const moveId = Number(record.ID);
-    const name = String(record['わざ名'] || '').trim();
-    if (Number.isFinite(moveId) && name && !state.moveCsvMap.has(moveId)) state.moveCsvMap.set(moveId, name);
+  Object.entries(translations.moves || {}).forEach(([id, entry]) => {
+    const name = String(entry?.nameJa || '').trim();
+    if (id && name && !state.moveCsvMap.has(id)) state.moveCsvMap.set(id, name);
   });
 
   state.abilityCsvMap = new Map();
-  abilityRecords.forEach(record => {
-    const abilityId = Number(record.ID);
-    const name = String(record['特性'] || '').trim();
-    if (Number.isFinite(abilityId) && name && !state.abilityCsvMap.has(abilityId)) state.abilityCsvMap.set(abilityId, name);
+  Object.entries(translations.abilities || {}).forEach(([id, entry]) => {
+    const name = String(entry?.nameJa || '').trim();
+    if (id && name && !state.abilityCsvMap.has(id)) state.abilityCsvMap.set(id, name);
   });
 }
 
@@ -453,13 +450,13 @@ function renderEvolution(species) {
 
 function getMoveDisplayName(move) {
   if (!move) return '';
-  if (state.lang === 'ja') return state.moveCsvMap.get(move.num) || move.nameJa || move.name;
+  if (state.lang === 'ja') return state.moveCsvMap.get(move.id) || move.nameJa || move.name;
   return move.name || move.nameJa || move.id;
 }
 
 function getAbilityDisplayName(ability) {
   if (!ability) return '';
-  if (state.lang === 'ja') return state.abilityCsvMap.get(ability.num) || ability.nameJa || ability.name;
+  if (state.lang === 'ja') return state.abilityCsvMap.get(ability.id) || ability.nameJa || ability.name;
   return ability.name || ability.nameJa || ability.id;
 }
 
@@ -570,17 +567,13 @@ async function initialize() {
   loadLang();
   loadStorage();
 
-  const [data, speciesRecords, moveRecords, abilityRecords] = await Promise.all([
+  const [data, jaTranslations] = await Promise.all([
     fetchJson('/db/champions-calc-data.json'),
-    fetchCsvRecordsSafe('/csv/champions-pokemon.csv'),
-    fetchCsvRecordsSafe('/csv/champions-moves.csv'),
-    fetchCsvRecordsSafe('/csv/champions-abilities.csv'),
+    fetchJson('/db/champions-ja-translations.json'),
   ]);
 
   state.data = data;
-  if (speciesRecords.length || moveRecords.length || abilityRecords.length) {
-    buildCsvMaps(speciesRecords, moveRecords, abilityRecords);
-  }
+  buildCsvMaps(jaTranslations || {});
   state.currentSpecies = (data.species || []).find(entry => entry.id === state.speciesId)
     || (data.megaSpecies || []).find(entry => entry.id === state.speciesId)
     || null;

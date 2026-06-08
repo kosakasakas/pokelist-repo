@@ -2,6 +2,7 @@ const STORAGE_KEY = 'champions-damage-calc-box-party-v1';
 const OPEN_DETAIL_REQUEST_KEY = 'champions-open-detail-request-v1';
 const SPEED_ADJUST_REQUEST_KEY = 'champions-speed-adjust-request-v1';
 const SPEED_ADJUST_LAST_TARGET_KEY = 'champions-speed-adjust-last-target-v1';
+const SPEED_ADJUST_ROW_CACHE_KEY = 'champions-speed-adjust-row-cache-v1';
 const LANG_STORAGE_KEY = 'champions-tool-ui-lang-v1';
 
 const SPEED_PLUS_NATURES = new Set(['timid', 'hasty', 'jolly', 'naive']);
@@ -19,6 +20,11 @@ const GROUPS = [
   { key: 'junsokuPlus2', label: 'groupJunsokuPlus2', badge: 'text-bg-info text-dark' },
   { key: 'saisokuPlus2', label: 'groupSaisokuPlus2', badge: 'text-bg-info text-dark' },
 ];
+
+const FORME_NAME_JA = {
+  Alola: 'アローラ', Hisui: 'ヒスイ', Galar: 'ガラル', Paldea: 'パルデア', Pirouette: 'ステップ',
+  Noice: 'ナイスフェイス', Hangry: 'はらぺこ', Hero: 'マイティ', Terastal: 'テラス',
+};
 
 const I18N = {
   ja: {
@@ -119,8 +125,24 @@ const $ = id => document.getElementById(id);
 const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 const toNumber = (v, f = 0) => Number.isFinite(Number(v)) ? Number(v) : f;
 const toId = text => String(text || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const normalizeFormeKey = forme => String(forme || '').replace(/[^A-Za-z]/g, '');
 const normalizeText = text => String(text || '').normalize('NFKC').toLowerCase();
 const escapeHtmlText = text => String(text || '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+function toShortFormLabel(species) {
+  if (!species) return '-';
+  const forme = String(species.forme || '').trim();
+  if (!forme) return state.lang === 'ja' ? '通常' : 'Base';
+  const lower = forme.toLowerCase();
+  if (lower.startsWith('mega')) {
+    if (lower.includes('-x') || lower.endsWith(' x')) return state.lang === 'ja' ? 'メガX' : 'Mega X';
+    if (lower.includes('-y') || lower.endsWith(' y')) return state.lang === 'ja' ? 'メガY' : 'Mega Y';
+    if (lower.includes('-z') || lower.endsWith(' z')) return state.lang === 'ja' ? 'メガZ' : 'Mega Z';
+    return state.lang === 'ja' ? 'メガ' : 'Mega';
+  }
+  const compactJa = FORME_NAME_JA[forme] || FORME_NAME_JA[normalizeFormeKey(forme)] || '';
+  return state.lang === 'ja' ? (compactJa || forme) : forme;
+}
 
 const state = {
   lang: 'ja',
@@ -408,17 +430,9 @@ function getSpeciesLearnset(speciesId) {
 }
 
 function getEffectiveSpeciesId(speciesId, megaEnabled, itemId = '') {
-  if (!megaEnabled) return speciesId;
-  const baseId = state.megaMap[speciesId] ? speciesId : toId(state.speciesById.get(speciesId)?.baseSpecies || '');
-  const megaMeta = state.megaMap[baseId];
-  if (!megaMeta) return speciesId;
-  const forms = Array.isArray(megaMeta.forms)
-    ? megaMeta.forms.map(form => ({ ...form, stoneType: inferMegaStoneType(form) }))
-    : (megaMeta.id ? [{ id: megaMeta.id, stoneType: inferMegaStoneType({ id: megaMeta.id }) }] : []);
-  if (!forms.length) return speciesId;
-  const stone = itemId === 'megastonex' ? 'x' : itemId === 'megastoney' ? 'y' : itemId === 'megastonez' ? 'z' : 'normal';
-  const f = forms.find(form => form.stoneType === stone) || forms.find(form => form.stoneType === 'normal') || forms[0];
-  return f?.id || speciesId;
+  void megaEnabled;
+  void itemId;
+  return speciesId;
 }
 
 function inferMegaStoneType(form = {}) {
@@ -435,7 +449,10 @@ function inferMegaStoneType(form = {}) {
   return 'normal';
 }
 
-function canUseScarf(species) { return Boolean(species) && !species.requiredItem; }
+function canUseScarf(species) {
+  if (!species || species.requiredItem) return false;
+  return !String(species.forme || '').toLowerCase().startsWith('mega');
+}
 
 function classifyRuleTier(rule) {
   if (!rule) return 0;
@@ -586,8 +603,7 @@ function createSpeedBuckets() {
 
 function getTargetEffectiveSpecies() {
   if (!state.targetPokemon) return null;
-  const id = getEffectiveSpeciesId(state.targetPokemon.speciesId, Boolean(state.targetPokemon.megaEnabled), state.targetPokemon.itemId || '');
-  return state.speciesById.get(id) || state.speciesById.get(state.targetPokemon.speciesId) || null;
+  return state.speciesById.get(state.targetPokemon.speciesId) || null;
 }
 
 function getTargetCurrentSpeed() {
@@ -642,11 +658,7 @@ function buildTargetSelfChip() {
   if (!state.targetPokemon) return null;
   return {
     isSelf: true,
-    speciesId: getEffectiveSpeciesId(
-      state.targetPokemon.speciesId,
-      Boolean(state.targetPokemon.megaEnabled),
-      state.targetPokemon.itemId || '',
-    ),
+    speciesId: state.targetPokemon.speciesId,
   };
 }
 
@@ -703,6 +715,7 @@ function renderSpeedTable(keepFocus = false) {
   const currentSpeed = getTargetCurrentSpeed();
   const focusGroup = getCurrentFocusGroup();
   const query = normalizeText(state.searchWord || '');
+  const rowCache = {};
   const html = state.speedAxis.map(speed => {
     const bucket = state.speedBuckets.get(speed);
     if (!bucket) return '';
@@ -718,10 +731,23 @@ function renderSpeedTable(keepFocus = false) {
     if (!GROUPS.some(group => grouped[group.key].length)) return '';
 
     const focusRow = Number(speed) === Number(currentSpeed) ? 'speed-focus-row' : '';
-    return `<tr id="speed-row-${speed}" class="${focusRow}"><td class="mono">${speed}</td><td><div class="speed-group-stack">${renderGroupRows(grouped, focusGroup, Boolean(focusRow))}</div></td></tr>`;
+    const groupHtml = renderGroupRows(grouped, focusGroup, Boolean(focusRow));
+    rowCache[String(speed)] = { speed: Number(speed), html: groupHtml };
+    return `<tr id="speed-row-${speed}" class="${focusRow}"><td class="mono">${speed}</td><td><div class="speed-group-stack">${groupHtml}</div></td></tr>`;
   }).join('');
 
   tbody.innerHTML = html;
+  if (!query) {
+    try {
+      localStorage.setItem(SPEED_ADJUST_ROW_CACHE_KEY, JSON.stringify({
+        updatedAt: Date.now(),
+        lang: state.lang,
+        rows: rowCache,
+      }));
+    } catch (_error) {
+      // ignore cache write failures
+    }
+  }
 
   const focusRowId = `speed-row-${currentSpeed}`;
   const focusRow = $(focusRowId) || tbody.querySelector('.speed-focus-row');
@@ -820,11 +846,35 @@ function resolveTargetPokemon() {
   state.targetSource = { kind: 'list' };
 }
 
-function hasMega(speciesId) {
+function getTargetFormOptions(speciesId) {
   const species = state.speciesById.get(speciesId);
-  if (!species) return false;
-  const baseId = toId(species.baseSpecies || species.name);
-  return Boolean(state.megaMap[speciesId] || state.megaMap[baseId]);
+  if (!species) return [];
+  const baseName = species.baseSpecies || species.name;
+  const family = [...(state.data?.species || []), ...(state.data?.megaSpecies || [])]
+    .filter(entry => (entry.baseSpecies || entry.name) === baseName);
+  const dedup = new Map();
+  family.forEach(entry => {
+    if (!dedup.has(entry.id)) dedup.set(entry.id, entry);
+  });
+  return [...dedup.values()].sort((left, right) => {
+    const leftRank = String(left.forme || '').length;
+    const rightRank = String(right.forme || '').length;
+    if (leftRank !== rightRank) return leftRank - rightRank;
+    return toShortFormLabel(left).localeCompare(toShortFormLabel(right), state.lang === 'ja' ? 'ja' : 'en');
+  });
+}
+
+function renderTargetFormSelect() {
+  const select = $('target-forme-select');
+  if (!select || !state.targetPokemon) return;
+  const options = getTargetFormOptions(state.targetPokemon.speciesId);
+  select.innerHTML = options.map(entry => `<option value="${entry.id}">${toShortFormLabel(entry)}</option>`).join('');
+  if (options.some(entry => entry.id === state.targetPokemon.speciesId)) {
+    select.value = state.targetPokemon.speciesId;
+  } else if (options.length) {
+    state.targetPokemon.speciesId = options[0].id;
+    select.value = options[0].id;
+  }
 }
 
 function renderScarfToggle() {
@@ -832,11 +882,11 @@ function renderScarfToggle() {
   if (!button) return;
 
   const species = state.speciesById.get(state.targetPokemon?.speciesId || '');
-  const hasMegaForm = hasMega(state.targetPokemon?.speciesId || '');
   const canShowScarf = canUseScarf(species);
 
   button.classList.toggle('d-none', !canShowScarf);
   if (!canShowScarf) {
+    if (state.targetPokemon?.itemId === 'choicescarf') state.targetPokemon.itemId = state.targetPrevItemId || '';
     button.dataset.active = '0';
     button.innerHTML = '';
     return;
@@ -852,24 +902,6 @@ function renderScarfToggle() {
     : '<i class="bi bi-bag" aria-hidden="true"></i>';
   const label = '';
   button.innerHTML = `<span class="speed-scarf-label">${icon}${label}</span>`;
-}
-
-function renderMegaToggle() {
-  const input = $('target-mega-enabled');
-  const button = $('target-mega-toggle');
-  const wrap = document.querySelector('.speed-mega-toggle-wrap');
-  const group = document.querySelector('.speed-toggle-group');
-  if (!input || !button) return;
-  const enabled = hasMega(state.targetPokemon?.speciesId || '');
-  button.classList.toggle('d-none', !enabled);
-  if (wrap) wrap.classList.toggle('d-none', !enabled);
-  if (group) group.classList.toggle('single-toggle', !enabled);
-  const checked = Boolean(state.targetPokemon?.megaEnabled && enabled);
-  input.checked = checked;
-  input.disabled = !enabled;
-  button.classList.toggle('is-on', checked);
-  button.setAttribute('aria-pressed', checked ? 'true' : 'false');
-  button.textContent = 'メガ';
 }
 
 function renderNatureToggle() {
@@ -915,8 +947,8 @@ function renderTargetPanel() {
   if (speRankNode) speRankNode.value = String(clamp(toNumber(target.ranks?.spe, 0), -6, 6));
   if (currentSpeedNode) currentSpeedNode.textContent = String(getTargetCurrentSpeed());
 
+  renderTargetFormSelect();
   renderScarfToggle();
-  renderMegaToggle();
   renderNatureToggle();
 }
 
@@ -972,14 +1004,14 @@ function updateTargetFromInputs() {
   if (!state.targetPokemon) return;
   const ap = clamp(toNumber($('target-spe-ap')?.value, 0), 0, 32);
   const rank = clamp(toNumber($('target-spe-rank')?.value, 0), -6, 6);
+  const formSpeciesId = $('target-forme-select')?.value || state.targetPokemon.speciesId;
   let scarf = $('target-scarf')?.dataset.active === '1';
-  const mega = Boolean($('target-mega-enabled')?.checked);
-
-  if (mega) scarf = false;
+  state.targetPokemon.speciesId = formSpeciesId;
+  if (!canUseScarf(state.speciesById.get(formSpeciesId))) scarf = false;
 
   state.targetPokemon.evs.spe = ap;
   state.targetPokemon.ranks.spe = rank;
-  state.targetPokemon.megaEnabled = mega;
+  state.targetPokemon.megaEnabled = false;
 
   if (scarf) {
     if (state.targetPokemon.itemId !== 'choicescarf') state.targetPrevItemId = state.targetPokemon.itemId || state.targetPrevItemId || '';
@@ -1040,12 +1072,8 @@ function getSearchEntries() {
 }
 
 function createTargetRecordFromSpeciesId(speciesId) {
-  const species = state.speciesById.get(speciesId);
-  const isMegaForm = Boolean(species?.forme && String(species.forme).startsWith('Mega'));
-  if (!isMegaForm) return normalizePokemonRecord(defaultPokemonRecord(speciesId));
-  const baseId = toId(species?.baseSpecies || species?.baseSpeciesId || '') || speciesId;
-  const record = normalizePokemonRecord(defaultPokemonRecord(baseId));
-  record.megaEnabled = true;
+  const record = normalizePokemonRecord(defaultPokemonRecord(speciesId));
+  record.megaEnabled = false;
   return record;
 }
 
@@ -1205,21 +1233,12 @@ function bindEvents() {
 
   $('target-scarf')?.addEventListener('click', () => {
     const node = $('target-scarf');
-    const megaInput = $('target-mega-enabled');
     if (!node || node.classList.contains('d-none')) return;
     node.dataset.active = node.dataset.active === '1' ? '0' : '1';
-    if (node.dataset.active === '1' && megaInput && !megaInput.disabled) megaInput.checked = false;
     updateTargetFromInputs();
   });
 
-  $('target-mega-toggle')?.addEventListener('click', () => {
-    const input = $('target-mega-enabled');
-    if (!input || input.disabled) return;
-    input.checked = !input.checked;
-    input.dispatchEvent(new Event('change', { bubbles: true }));
-  });
-
-  $('target-mega-enabled')?.addEventListener('change', updateTargetFromInputs);
+  $('target-forme-select')?.addEventListener('change', updateTargetFromInputs);
 
   $('target-nature-cycle')?.addEventListener('click', () => {
     if (!state.targetPokemon) return;
