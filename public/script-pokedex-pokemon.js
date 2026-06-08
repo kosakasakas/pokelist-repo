@@ -568,8 +568,8 @@ async function initialize() {
   loadStorage();
 
   const [data, jaTranslations] = await Promise.all([
-    fetchJson('/db/champions-calc-data.json'),
-    fetchJson('/db/champions-ja-translations.json'),
+    fetchJson('./db/champions-calc-data.json'),
+    fetchJson('./db/champions-ja-translations.json'),
   ]);
 
   state.data = data;

@@ -318,7 +318,7 @@ async function initialize() {
   loadLang();
   loadStorage();
 
-  const data = await fetchJson('/db/champions-calc-data.json');
+  const data = await fetchJson('./db/champions-calc-data.json');
 
   state.data = data;
   buildRows();
