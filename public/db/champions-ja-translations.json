@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-06-08T01:19:00.815Z",
+    "generatedAt": "2026-06-08T05:12:50.370Z",
     "source": "champions-calc-data",
     "locale": "ja"
   },
@@ -411,61 +411,61 @@
       "nameJa": "ビビヨン"
     },
     "vivillonarchipelago": {
-      "nameJa": "Archipelago Vivillon"
+      "nameJa": "ビビヨン(アーキペラゴ)"
     },
     "vivilloncontinental": {
-      "nameJa": "Continental Vivillon"
+      "nameJa": "ビビヨン(コンチネンタル)"
     },
     "vivillonelegant": {
-      "nameJa": "Elegant Vivillon"
+      "nameJa": "ビビヨン(エレガント)"
     },
     "vivillonfancy": {
-      "nameJa": "Fancy Vivillon"
+      "nameJa": "ビビヨン(ファンシー)"
     },
     "vivillongarden": {
-      "nameJa": "Garden Vivillon"
+      "nameJa": "ビビヨン(ガーデン)"
     },
     "vivillonhighplains": {
-      "nameJa": "High Plains Vivillon"
+      "nameJa": "ビビヨン(ハイプレーンズ)"
     },
     "vivillonicysnow": {
-      "nameJa": "Icy Snow Vivillon"
+      "nameJa": "ビビヨン(アイシースノー)"
     },
     "vivillonjungle": {
-      "nameJa": "Jungle Vivillon"
+      "nameJa": "ビビヨン(ジャングル)"
     },
     "vivillonmarine": {
-      "nameJa": "Marine Vivillon"
+      "nameJa": "ビビヨン(マリン)"
     },
     "vivillonmodern": {
-      "nameJa": "Modern Vivillon"
+      "nameJa": "ビビヨン(モダン)"
     },
     "vivillonmonsoon": {
-      "nameJa": "Monsoon Vivillon"
+      "nameJa": "ビビヨン(モンスーン)"
     },
     "vivillonocean": {
-      "nameJa": "Ocean Vivillon"
+      "nameJa": "ビビヨン(オーシャン)"
     },
     "vivillonpokeball": {
-      "nameJa": "Poké Ball Vivillon"
+      "nameJa": "ビビヨン(モンスターボール)"
     },
     "vivillonpolar": {
-      "nameJa": "Polar Vivillon"
+      "nameJa": "ビビヨン(ポーラー)"
     },
     "vivillonriver": {
-      "nameJa": "River Vivillon"
+      "nameJa": "ビビヨン(リバー)"
     },
     "vivillonsandstorm": {
-      "nameJa": "Sandstorm Vivillon"
+      "nameJa": "ビビヨン(サンドストーム)"
     },
     "vivillonsavanna": {
-      "nameJa": "Savanna Vivillon"
+      "nameJa": "ビビヨン(サバンナ)"
     },
     "vivillonsun": {
-      "nameJa": "Sun Vivillon"
+      "nameJa": "ビビヨン(サン)"
     },
     "vivillontundra": {
-      "nameJa": "Tundra Vivillon"
+      "nameJa": "ビビヨン(ツンドラ)"
     },
     "floetteeternal": {
       "nameJa": "フラエッテ(えいえんのはな)"
@@ -603,7 +603,7 @@
       "nameJa": "ミミッキュ"
     },
     "mimikyubusted": {
-      "nameJa": "Busted Mimikyu"
+      "nameJa": "ミミッキュ(ばれたすがた)"
     },
     "drampa": {
       "nameJa": "ジジーロン"
@@ -627,7 +627,7 @@
       "nameJa": "ポットデス"
     },
     "polteageistantique": {
-      "nameJa": "Antique Polteageist"
+      "nameJa": "ポットデス(しんさくフォルム)"
     },
     "hatterene": {
       "nameJa": "ブリムオン"
@@ -642,31 +642,31 @@
       "nameJa": "マホイップ"
     },
     "alcremiecaramelswirl": {
-      "nameJa": "Alcremie-Caramel-Swirl"
+      "nameJa": "マホイップ(キャラメルスワール)"
     },
     "alcremielemoncream": {
-      "nameJa": "Alcremie-Lemon-Cream"
+      "nameJa": "マホイップ(レモンクリーム)"
     },
     "alcremiematchacream": {
-      "nameJa": "Alcremie-Matcha-Cream"
+      "nameJa": "マホイップ(マッチャクリーム)"
     },
     "alcremiemintcream": {
-      "nameJa": "Alcremie-Mint-Cream"
+      "nameJa": "マホイップ(ミントクリーム)"
     },
     "alcremierainbowswirl": {
-      "nameJa": "Alcremie-Rainbow-Swirl"
+      "nameJa": "マホイップ(レインボースワール)"
     },
     "alcremierubycream": {
-      "nameJa": "Alcremie-Ruby-Cream"
+      "nameJa": "マホイップ(ルビークリーム)"
     },
     "alcremierubyswirl": {
-      "nameJa": "Alcremie-Ruby-Swirl"
+      "nameJa": "マホイップ(ルビースワール)"
     },
     "morpeko": {
       "nameJa": "モルペコ"
     },
     "morpekohangry": {
-      "nameJa": "Hangry Morpeko"
+      "nameJa": "モルペコ(はらぺこもよう)"
     },
     "dragapult": {
       "nameJa": "ドラパルト"
@@ -699,7 +699,7 @@
       "nameJa": "イッカネズミ"
     },
     "mausholdfour": {
-      "nameJa": "Maushold (Family of Four)"
+      "nameJa": "イッカネズミ(4ひきかぞく)"
     },
     "garganacl": {
       "nameJa": "キョジオーン"
@@ -766,6 +766,12 @@
     },
     "pidgeotmega": {
       "nameJa": "メガピジョット"
+    },
+    "raichumegax": {
+      "nameJa": "メガライチュウＸ"
+    },
+    "raichumegay": {
+      "nameJa": "メガライチュウＹ"
     },
     "clefablemega": {
       "nameJa": "メガピクシー"
@@ -3726,24 +3732,24 @@
       "descJa": "The Pokémon becomes charged when it takes damage, boosting the power of the next Electric-type move the Pokémon uses."
     },
     "embodyaspectcornerstone": {
-      "nameJa": "Embody Aspect (Cornerstone)",
-      "shortDescJa": "On switch-in, this Pokemon's Defense is raised by 1 stage.",
-      "descJa": "On switch-in, this Pokemon's Defense is raised by 1 stage."
+      "nameJa": "おもかげやどし(いしずえ)",
+      "shortDescJa": "登場時に自分の防御を1段階上げる。",
+      "descJa": "登場時に自分の防御を1段階上げる。"
     },
     "embodyaspecthearthflame": {
-      "nameJa": "Embody Aspect (Hearthflame)",
-      "shortDescJa": "On switch-in, this Pokemon's Attack is raised by 1 stage.",
-      "descJa": "On switch-in, this Pokemon's Attack is raised by 1 stage."
+      "nameJa": "おもかげやどし(かまど)",
+      "shortDescJa": "登場時に自分の攻撃を1段階上げる。",
+      "descJa": "登場時に自分の攻撃を1段階上げる。"
     },
     "embodyaspectteal": {
-      "nameJa": "Embody Aspect (Teal)",
-      "shortDescJa": "On switch-in, this Pokemon's Speed is raised by 1 stage.",
-      "descJa": "On switch-in, this Pokemon's Speed is raised by 1 stage."
+      "nameJa": "おもかげやどし(みどり)",
+      "shortDescJa": "登場時に自分の素早さを1段階上げる。",
+      "descJa": "登場時に自分の素早さを1段階上げる。"
     },
     "embodyaspectwellspring": {
-      "nameJa": "Embody Aspect (Wellspring)",
-      "shortDescJa": "On switch-in, this Pokemon's Special Defense is raised by 1 stage.",
-      "descJa": "On switch-in, this Pokemon's Special Defense is raised by 1 stage."
+      "nameJa": "おもかげやどし(いど)",
+      "shortDescJa": "登場時に自分の特防を1段階上げる。",
+      "descJa": "登場時に自分の特防を1段階上げる。"
     },
     "emergencyexit": {
       "nameJa": "ききかいひ",
@@ -4978,7 +4984,7 @@
   },
   "items": {
     "abomasite": {
-      "nameJa": "ユキノオナイト",
+      "nameJa": "ユキノオーナイト",
       "shortDescJa": "Held: Allows Abomasnow to Mega Evolve into Mega Abomasnow.",
       "descJa": "Held: Allows Abomasnow to Mega Evolve into Mega Abomasnow."
     },
@@ -4998,7 +5004,7 @@
       "descJa": "Held: Allows Aggron to Mega Evolve into Mega Aggron."
     },
     "alakazite": {
-      "nameJa": "フーディナイト",
+      "nameJa": "フーディンナイト",
       "shortDescJa": "Held: Allows Alakazam to Mega Evolve into Mega Alakazam.",
       "descJa": "Held: Allows Alakazam to Mega Evolve into Mega Alakazam."
     },
@@ -5033,7 +5039,7 @@
       "descJa": "Held: Allows Banette to Mega Evolve into Mega Banette."
     },
     "beedrillite": {
-      "nameJa": "スピアナイト",
+      "nameJa": "スピアーナイト",
       "shortDescJa": "Held: Allows Beedrill to Mega Evolve into Mega Beedrill.",
       "descJa": "Held: Allows Beedrill to Mega Evolve into Mega Beedrill."
     },
@@ -5063,7 +5069,7 @@
       "descJa": "Held: Allows Camerupt to Mega Evolve into Mega Camerupt."
     },
     "chandelurite": {
-      "nameJa": "Chandelurite",
+      "nameJa": "シャンデラナイト",
       "shortDescJa": "If held by a Chandelure, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Chandelure, this item allows it to Mega Evolve in battle."
     },
@@ -5073,12 +5079,12 @@
       "descJa": "Held: Increases the power of the holder’s Fire moves by 20%."
     },
     "charizarditex": {
-      "nameJa": "リザードナイトＸ",
+      "nameJa": "リザードンナイトＸ",
       "shortDescJa": "Held: Allows Charizard to Mega Evolve into Mega Charizard X.",
       "descJa": "Held: Allows Charizard to Mega Evolve into Mega Charizard X."
     },
     "charizarditey": {
-      "nameJa": "リザードナイトＹ",
+      "nameJa": "リザードンナイトＹ",
       "shortDescJa": "Held: Allows Charizard to Mega Evolve into Mega Charizard Y.",
       "descJa": "Held: Allows Charizard to Mega Evolve into Mega Charizard Y."
     },
@@ -5093,7 +5099,7 @@
       "descJa": "Held in battle"
     },
     "chesnaughtite": {
-      "nameJa": "Chesnaughtite",
+      "nameJa": "ブリガロンナイト",
       "shortDescJa": "If held by a Chesnaught, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Chesnaught, this item allows it to Mega Evolve in battle."
     },
@@ -5108,7 +5114,7 @@
       "descJa": "Held in battle"
     },
     "chimechite": {
-      "nameJa": "Chimechite",
+      "nameJa": "チリーンナイト",
       "shortDescJa": "If held by a Chimecho, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Chimecho, this item allows it to Mega Evolve in battle."
     },
@@ -5123,7 +5129,7 @@
       "descJa": "Held in battle"
     },
     "clefablite": {
-      "nameJa": "Clefablite",
+      "nameJa": "ピクシーナイト",
       "shortDescJa": "If held by a Clefable, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Clefable, this item allows it to Mega Evolve in battle."
     },
@@ -5138,12 +5144,12 @@
       "descJa": "Held in battle"
     },
     "crabominite": {
-      "nameJa": "Crabominite",
+      "nameJa": "ケケンカニナイト",
       "shortDescJa": "If held by a Crabominable, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Crabominable, this item allows it to Mega Evolve in battle."
     },
     "delphoxite": {
-      "nameJa": "Delphoxite",
+      "nameJa": "マフォクシーナイト",
       "shortDescJa": "If held by a Delphox, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Delphox, this item allows it to Mega Evolve in battle."
     },
@@ -5153,22 +5159,22 @@
       "descJa": "Held: Increases the power of the holder’s Dragon moves by 20%."
     },
     "dragoninite": {
-      "nameJa": "Dragoninite",
+      "nameJa": "カイリューナイト",
       "shortDescJa": "If held by a Dragonite, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Dragonite, this item allows it to Mega Evolve in battle."
     },
     "drampanite": {
-      "nameJa": "Drampanite",
+      "nameJa": "ジジーロンナイト",
       "shortDescJa": "If held by a Drampa, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Drampa, this item allows it to Mega Evolve in battle."
     },
     "emboarite": {
-      "nameJa": "Emboarite",
+      "nameJa": "エンブオーナイト",
       "shortDescJa": "If held by an Emboar, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by an Emboar, this item allows it to Mega Evolve in battle."
     },
     "excadrite": {
-      "nameJa": "Excadrite",
+      "nameJa": "ドリュウズナイト",
       "shortDescJa": "If held by an Excadrill, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by an Excadrill, this item allows it to Mega Evolve in battle."
     },
@@ -5178,12 +5184,12 @@
       "descJa": "Holder's Fairy-type attacks have 1.2x power."
     },
     "feraligite": {
-      "nameJa": "Feraligite",
+      "nameJa": "オーダイルナイト",
       "shortDescJa": "If held by a Feraligatr, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Feraligatr, this item allows it to Mega Evolve in battle."
     },
     "floettite": {
-      "nameJa": "Floettite",
+      "nameJa": "フラエッテナイト",
       "shortDescJa": "If held by an Eternal Flower Floette, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by an Eternal Flower Floette, this item allows it to Mega Evolve in battle."
     },
@@ -5198,7 +5204,7 @@
       "descJa": "Held: If the holder has full HP and is attacked for regular damage that would faint it, this item is consumed and prevents the holder’s HP from lowering below 1.  This effect works against multi-hit attacks, but does not work against the effects of Doom Desire or Future Sight."
     },
     "froslassite": {
-      "nameJa": "Froslassite",
+      "nameJa": "ユキメノコナイト",
       "shortDescJa": "If held by a Froslass, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Froslass, this item allows it to Mega Evolve in battle."
     },
@@ -5218,7 +5224,7 @@
       "descJa": "Held: Allows Gardevoir to Mega Evolve into Mega Gardevoir."
     },
     "gengarite": {
-      "nameJa": "ゲンガナイト",
+      "nameJa": "ゲンガーナイト",
       "shortDescJa": "Held: Allows Gengar to Mega Evolve into Mega Gengar.",
       "descJa": "Held: Allows Gengar to Mega Evolve into Mega Gengar."
     },
@@ -5228,17 +5234,17 @@
       "descJa": "Held: Allows Glalie to Mega Evolve into Mega Glalie."
     },
     "glimmoranite": {
-      "nameJa": "Glimmoranite",
+      "nameJa": "キラフロルナイト",
       "shortDescJa": "If held by a Glimmora, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Glimmora, this item allows it to Mega Evolve in battle."
     },
     "golurkite": {
-      "nameJa": "Golurkite",
+      "nameJa": "ゴルーグナイト",
       "shortDescJa": "If held by a Golurk, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Golurk, this item allows it to Mega Evolve in battle."
     },
     "greninjite": {
-      "nameJa": "Greninjite",
+      "nameJa": "ゲッコウガナイト",
       "shortDescJa": "If held by a Greninja, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Greninja, this item allows it to Mega Evolve in battle."
     },
@@ -5258,7 +5264,7 @@
       "descJa": "Held: Increases the power of the holder’s Rock moves by 20%."
     },
     "hawluchanite": {
-      "nameJa": "Hawluchanite",
+      "nameJa": "ルチャブルナイト",
       "shortDescJa": "If held by a Hawlucha, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Hawlucha, this item allows it to Mega Evolve in battle."
     },
@@ -5268,7 +5274,7 @@
       "descJa": "Held: Allows Heracross to Mega Evolve into Mega Heracross."
     },
     "houndoominite": {
-      "nameJa": "ヘルガナイト",
+      "nameJa": "ヘルガーナイト",
       "shortDescJa": "Held: Allows Houndoom to Mega Evolve into Mega Houndoom.",
       "descJa": "Held: Allows Houndoom to Mega Evolve into Mega Houndoom."
     },
@@ -5338,7 +5344,7 @@
       "descJa": "Held: Allows Medicham to Mega Evolve into Mega Medicham."
     },
     "meganiumite": {
-      "nameJa": "Meganiumite",
+      "nameJa": "メガニウムナイト",
       "shortDescJa": "If held by a Meganium, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Meganium, this item allows it to Mega Evolve in battle."
     },
@@ -5348,7 +5354,7 @@
       "descJa": "Held in battle"
     },
     "meowsticite": {
-      "nameJa": "Meowsticite",
+      "nameJa": "ニャオニクス(オスのすがた)ナイト",
       "shortDescJa": "If held by a Meowstic, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Meowstic, this item allows it to Mega Evolve in battle."
     },
@@ -5422,6 +5428,16 @@
       "shortDescJa": "Held: Holder has a 3/16 (18.75%) chance to move first.",
       "descJa": "Held in battle"
     },
+    "raichunitex": {
+      "nameJa": "ライチュナイトＸ",
+      "shortDescJa": "If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu X in battle.",
+      "descJa": "If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu X in battle."
+    },
+    "raichunitey": {
+      "nameJa": "ライチュナイトＹ",
+      "shortDescJa": "If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu Y in battle.",
+      "descJa": "If held by a Raichu, this item allows it to Mega Evolve into Mega Raichu Y in battle."
+    },
     "rawstberry": {
       "nameJa": "チーゴのみ",
       "shortDescJa": "Held: Consumed when burned to cure a burn.",
@@ -5453,7 +5469,7 @@
       "descJa": "Held: Raises the holder’s critical hit counter by 1."
     },
     "scovillainite": {
-      "nameJa": "Scovillainite",
+      "nameJa": "スコヴィランナイト",
       "shortDescJa": "If held by a Scovillain, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Scovillain, this item allows it to Mega Evolve in battle."
     },
@@ -5463,7 +5479,7 @@
       "descJa": "Held: Increases the power of the holder’s Flying moves by 20%."
     },
     "sharpedonite": {
-      "nameJa": "サメハダナイト",
+      "nameJa": "サメハダーナイト",
       "shortDescJa": "Held: Allows Sharpedo to Mega Evolve into Mega Sharpedo.",
       "descJa": "Held: Allows Sharpedo to Mega Evolve into Mega Sharpedo."
     },
@@ -5493,7 +5509,7 @@
       "descJa": "Held in battle"
     },
     "skarmorite": {
-      "nameJa": "Skarmorite",
+      "nameJa": "エアームドナイト",
       "shortDescJa": "If held by a Skarmory, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Skarmory, this item allows it to Mega Evolve in battle."
     },
@@ -5513,7 +5529,7 @@
       "descJa": "Held: Increases the power of the holder’s Ghost moves by 20%."
     },
     "starminite": {
-      "nameJa": "Starminite",
+      "nameJa": "スターミーナイト",
       "shortDescJa": "If held by a Starmie, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Starmie, this item allows it to Mega Evolve in battle."
     },
@@ -5538,12 +5554,12 @@
       "descJa": "Held: Allows Tyranitar to Mega Evolve into Mega Tyranitar."
     },
     "venusaurite": {
-      "nameJa": "フシギバナイト",
+      "nameJa": "フシギバナナイト",
       "shortDescJa": "Held: Allows Venusaur to Mega Evolve into Mega Venusaur.",
       "descJa": "Held: Allows Venusaur to Mega Evolve into Mega Venusaur."
     },
     "victreebelite": {
-      "nameJa": "Victreebelite",
+      "nameJa": "ウツボットナイト",
       "shortDescJa": "If held by a Victreebel, this item allows it to Mega Evolve in battle.",
       "descJa": "If held by a Victreebel, this item allows it to Mega Evolve in battle."
     },

@@ -64,6 +64,13 @@ const DEFAULT_JA_OVERRIDES = {
   items: {},
 };
 
+const UPCOMING_INCLUDE_IDS = new Set([
+  'raichumegax',
+  'raichumegay',
+  'raichunitex',
+  'raichunitey',
+]);
+
 function readJsonFile(filePath, fallback) {
   if (!fs.existsSync(filePath)) return fallback;
   try {
@@ -105,7 +112,9 @@ function pickLocalizedValue(overrideValue, fallbackValue, defaultValue) {
 }
 
 function isUsableData(entry) {
-  return Boolean(entry && entry.exists && !entry.isNonstandard);
+  if (!entry || !entry.exists) return false;
+  if (!entry.isNonstandard) return true;
+  return UPCOMING_INCLUDE_IDS.has(toId(entry.id || entry.name));
 }
 
 function isMegaForm(entry) {
@@ -504,6 +513,21 @@ function toMegaJaName(baseJa, forme = '', fallback = '') {
   return fallback || '';
 }
 
+function toMegaStoneJaName(itemEntry, speciesJaById) {
+  if (!itemEntry) return '';
+  const megaStoneValue = typeof itemEntry.megaStone === 'string'
+    ? itemEntry.megaStone
+    : Object.values(itemEntry.megaStone || {})[0];
+  const megaId = toId(megaStoneValue || '');
+  if (!megaId) return '';
+  const baseId = megaId.replace(/mega[xyz]?$/, '');
+  if (!baseId) return '';
+  const baseJa = speciesJaById.get(baseId) || '';
+  if (!baseJa) return '';
+  const suffix = megaId.endsWith('megax') ? 'Ｘ' : (megaId.endsWith('megay') ? 'Ｙ' : (megaId.endsWith('megaz') ? 'Ｚ' : ''));
+  return `${baseJa}ナイト${suffix}`;
+}
+
 function getMegaBaseId(entry, allSpeciesIds) {
   if (!entry) return '';
   const id = toId(entry.id);
@@ -882,31 +906,34 @@ function buildData() {
   const items = dex.items
     .all()
     .filter(isUsableData)
-    .map(entry => ({
-      id: entry.id,
-      num: entry.num,
-      spritenum: Number.isFinite(Number(entry.spritenum)) ? Number(entry.spritenum) : null,
-      name: entry.name,
-      nameJa: pickLocalizedValue(
-        getOverrideString(jaOverrides, 'items', entry.id, 'nameJa'),
-        jaFallback.itemJaById.get(entry.id) || entry.nameJa || '',
-        entry.name
-      ),
-      isBerry: Boolean(entry.isBerry),
-      shortDesc: entry.shortDesc || null,
-      desc: entry.desc || null,
-      shortDescJa: pickLocalizedValue(
-        getOverrideString(jaOverrides, 'items', entry.id, 'shortDescJa'),
-        jaFallback.itemDescById.get(entry.id)?.shortDesc || entry.shortDescJa,
-        entry.shortDesc
-      ),
-      descJa: pickLocalizedValue(
-        getOverrideString(jaOverrides, 'items', entry.id, 'descJa'),
-        jaFallback.itemDescById.get(entry.id)?.desc || entry.descJa,
-        entry.desc
-      ),
-      fling: entry.fling || null,
-    }))
+    .map(entry => {
+      const autoMegaNameJa = toMegaStoneJaName(entry, jaFallback.speciesJaById);
+      return {
+        id: entry.id,
+        num: entry.num,
+        spritenum: Number.isFinite(Number(entry.spritenum)) ? Number(entry.spritenum) : null,
+        name: entry.name,
+        nameJa: pickLocalizedValue(
+          getOverrideString(jaOverrides, 'items', entry.id, 'nameJa'),
+          autoMegaNameJa || jaFallback.itemJaById.get(entry.id) || entry.nameJa || '',
+          entry.name
+        ),
+        isBerry: Boolean(entry.isBerry),
+        shortDesc: entry.shortDesc || null,
+        desc: entry.desc || null,
+        shortDescJa: pickLocalizedValue(
+          getOverrideString(jaOverrides, 'items', entry.id, 'shortDescJa'),
+          jaFallback.itemDescById.get(entry.id)?.shortDesc || entry.shortDescJa,
+          entry.shortDesc
+        ),
+        descJa: pickLocalizedValue(
+          getOverrideString(jaOverrides, 'items', entry.id, 'descJa'),
+          jaFallback.itemDescById.get(entry.id)?.desc || entry.descJa,
+          entry.desc
+        ),
+        fling: entry.fling || null,
+      };
+    })
     .sort((left, right) => left.name.localeCompare(right.name));
 
   const types = getTypeEffectivenessTable(dex);

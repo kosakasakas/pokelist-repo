@@ -42,7 +42,7 @@ const normalizeText = text => String(text || '').normalize('NFKC').toLowerCase()
 const state = {
   lang: 'ja',
   mode: 'browse',
-  returnPath: '/speed-adjust.html',
+  returnPath: './speed-adjust.html',
   storage: { box: [], parties: [], calcLinks: { attacker: null, defender: null } },
   data: null,
   speciesNameJaById: new Map(),
@@ -172,7 +172,7 @@ function buildRows() {
 
 function openDetail(speciesId) {
   const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
-  window.location.href = `/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${returnPath}`;
+  window.location.href = `./pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${returnPath}`;
 }
 
 function filteredRows() {
@@ -208,9 +208,9 @@ function addSpeciesToBox(speciesId) {
 function setAsSpeedTarget(speciesId) {
   localStorage.setItem(SPEED_ADJUST_REQUEST_KEY, JSON.stringify({
     selectedSpeciesId: speciesId,
-    returnPath: '/speed-adjust.html',
+    returnPath: './speed-adjust.html',
   }));
-  window.location.href = '/speed-adjust.html';
+  window.location.href = './speed-adjust.html';
 }
 
 function renderGrid() {

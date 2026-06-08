@@ -2,8 +2,133 @@
   "meta": {
     "description": "Fill nameJa / shortDescJa / descJa here. This file overrides generated data."
   },
-  "species": {},
+  "species": {
+    "vivillonarchipelago": {
+      "nameJa": "ビビヨン(アーキペラゴ)"
+    },
+    "vivilloncontinental": {
+      "nameJa": "ビビヨン(コンチネンタル)"
+    },
+    "vivillonelegant": {
+      "nameJa": "ビビヨン(エレガント)"
+    },
+    "vivillonfancy": {
+      "nameJa": "ビビヨン(ファンシー)"
+    },
+    "vivillongarden": {
+      "nameJa": "ビビヨン(ガーデン)"
+    },
+    "vivillonhighplains": {
+      "nameJa": "ビビヨン(ハイプレーンズ)"
+    },
+    "vivillonicysnow": {
+      "nameJa": "ビビヨン(アイシースノー)"
+    },
+    "vivillonjungle": {
+      "nameJa": "ビビヨン(ジャングル)"
+    },
+    "vivillonmarine": {
+      "nameJa": "ビビヨン(マリン)"
+    },
+    "vivillonmodern": {
+      "nameJa": "ビビヨン(モダン)"
+    },
+    "vivillonmonsoon": {
+      "nameJa": "ビビヨン(モンスーン)"
+    },
+    "vivillonocean": {
+      "nameJa": "ビビヨン(オーシャン)"
+    },
+    "vivillonpokeball": {
+      "nameJa": "ビビヨン(モンスターボール)"
+    },
+    "vivillonpolar": {
+      "nameJa": "ビビヨン(ポーラー)"
+    },
+    "vivillonriver": {
+      "nameJa": "ビビヨン(リバー)"
+    },
+    "vivillonsandstorm": {
+      "nameJa": "ビビヨン(サンドストーム)"
+    },
+    "vivillonsavanna": {
+      "nameJa": "ビビヨン(サバンナ)"
+    },
+    "vivillonsun": {
+      "nameJa": "ビビヨン(サン)"
+    },
+    "vivillontundra": {
+      "nameJa": "ビビヨン(ツンドラ)"
+    },
+    "alcremiecaramelswirl": {
+      "nameJa": "マホイップ(キャラメルスワール)"
+    },
+    "alcremielemoncream": {
+      "nameJa": "マホイップ(レモンクリーム)"
+    },
+    "alcremiematchacream": {
+      "nameJa": "マホイップ(マッチャクリーム)"
+    },
+    "alcremiemintcream": {
+      "nameJa": "マホイップ(ミントクリーム)"
+    },
+    "alcremierainbowswirl": {
+      "nameJa": "マホイップ(レインボースワール)"
+    },
+    "alcremierubycream": {
+      "nameJa": "マホイップ(ルビークリーム)"
+    },
+    "alcremierubyswirl": {
+      "nameJa": "マホイップ(ルビースワール)"
+    },
+    "mimikyubusted": {
+      "nameJa": "ミミッキュ(ばれたすがた)"
+    },
+    "polteageistantique": {
+      "nameJa": "ポットデス(しんさくフォルム)"
+    },
+    "morpekohangry": {
+      "nameJa": "モルペコ(はらぺこもよう)"
+    },
+    "mausholdfour": {
+      "nameJa": "イッカネズミ(4ひきかぞく)"
+    },
+    "raichumegax": {
+      "nameJa": "メガライチュウＸ"
+    },
+    "raichumegay": {
+      "nameJa": "メガライチュウＹ"
+    }
+  },
   "moves": {},
-  "abilities": {},
-  "items": {}
+  "abilities": {
+    "embodyaspectcornerstone": {
+      "nameJa": "おもかげやどし(いしずえ)",
+      "shortDescJa": "登場時に自分の防御を1段階上げる。",
+      "descJa": "登場時に自分の防御を1段階上げる。"
+    },
+    "embodyaspecthearthflame": {
+      "nameJa": "おもかげやどし(かまど)",
+      "shortDescJa": "登場時に自分の攻撃を1段階上げる。",
+      "descJa": "登場時に自分の攻撃を1段階上げる。"
+    },
+    "embodyaspectteal": {
+      "nameJa": "おもかげやどし(みどり)",
+      "shortDescJa": "登場時に自分の素早さを1段階上げる。",
+      "descJa": "登場時に自分の素早さを1段階上げる。"
+    },
+    "embodyaspectwellspring": {
+      "nameJa": "おもかげやどし(いど)",
+      "shortDescJa": "登場時に自分の特防を1段階上げる。",
+      "descJa": "登場時に自分の特防を1段階上げる。"
+    }
+  },
+  "items": {
+    "raichunitex": {
+      "nameJa": "ライチュナイトＸ"
+    },
+    "raichunitey": {
+      "nameJa": "ライチュナイトＹ"
+    }
+  }
 }

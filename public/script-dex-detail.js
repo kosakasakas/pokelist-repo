@@ -91,7 +91,7 @@ const state = {
   itemCsvMap: new Map(),
   kind: 'move',
   valueId: '',
-  returnPath: '/pokedex.html',
+  returnPath: './pokedex.html',
   current: null,
 };
 
@@ -197,7 +197,7 @@ function buildJapaneseMaps(translations = {}) {
 
 function getSpeciesDisplayName(species) {
   const csvName = state.speciesCsvMap.get(species.id);
-  if (state.lang === 'ja') return species.nameJa || csvName || species.name || species.id;
+  if (state.lang === 'ja') return csvName || species.nameJa || species.name || species.id;
   return species.name || species.nameJa || species.id;
 }
 
@@ -232,7 +232,7 @@ function getAbilityLongDescription(ability) {
 }
 
 function getPokemonHref(speciesId) {
-  return `/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `./pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getMoveCategoryLabel(category) {
@@ -396,7 +396,24 @@ function renderAbility(ability) {
 }
 
 function getItemDisplayName(item) {
-  if (state.lang === 'ja') return state.itemCsvMap.get(item.id) || item.nameJa || item.name || item.id;
+  if (state.lang === 'ja') {
+    const mapped = state.itemCsvMap.get(item.id);
+    if (mapped) return mapped;
+    if (item.nameJa && !/[A-Za-z]/.test(item.nameJa)) return item.nameJa;
+    const megaStoneValue = typeof item.megaStone === 'string' ? item.megaStone : Object.values(item.megaStone || {})[0];
+    const megaId = toId(megaStoneValue || '');
+    if (megaId) {
+      const baseId = megaId.replace(/mega[xyz]?$/, '');
+      const allSpecies = [...(state.data?.species || []), ...(state.data?.megaSpecies || [])];
+      const baseSpecies = allSpecies.find(entry => entry.id === baseId);
+      const baseName = baseSpecies ? (state.speciesCsvMap.get(baseSpecies.id) || baseSpecies.nameJa || baseSpecies.name) : '';
+      if (baseName) {
+        const suffix = megaId.endsWith('megax') ? 'Ｘ' : (megaId.endsWith('megay') ? 'Ｙ' : (megaId.endsWith('megaz') ? 'Ｚ' : ''));
+        return `${baseName}ナイト${suffix}`;
+      }
+    }
+    return item.nameJa || item.name || item.id;
+  }
   return item.name || item.nameJa || item.id;
 }
 
@@ -544,7 +561,7 @@ async function initialize() {
 
   applyI18n();
   const home = $('detail-home');
-  if (home) home.href = '/pokedex.html';
+  if (home) home.href = './pokedex.html';
   bindEvents();
   renderCurrent();
 }

@@ -363,7 +363,7 @@ function isDetailStandaloneMode() {
 
 function getStandaloneReturnPath() {
   const params = new URLSearchParams(window.location.search);
-  const fallback = '/speed-adjust.html';
+  const fallback = './speed-adjust.html';
   const raw = params.get('returnPath');
   if (!raw) return fallback;
   try {
@@ -504,13 +504,15 @@ function populateCalcStatSelectOptions() {
 }
 
 function setMobileBattleTab(tab) {
-  const normalized = tab === 'attacker' || tab === 'defender' ? tab : 'settings';
+  const normalized = ['attacker', 'defender', 'settings', 'result'].includes(tab) ? tab : 'settings';
   document.body.classList.toggle('mobile-panel-attacker', normalized === 'attacker');
   document.body.classList.toggle('mobile-panel-settings', normalized === 'settings');
   document.body.classList.toggle('mobile-panel-defender', normalized === 'defender');
+  document.body.classList.toggle('mobile-panel-result', normalized === 'result');
   const attackerButton = $('mobile-battle-tab-attacker');
   const settingsButton = $('mobile-battle-tab-settings');
   const defenderButton = $('mobile-battle-tab-defender');
+  const resultButton = $('mobile-battle-tab-result');
   if (attackerButton) {
     const active = normalized === 'attacker';
     attackerButton.classList.toggle('active', active);
@@ -526,23 +528,84 @@ function setMobileBattleTab(tab) {
     defenderButton.classList.toggle('active', active);
     defenderButton.setAttribute('aria-selected', String(active));
   }
+  if (resultButton) {
+    const active = normalized === 'result';
+    resultButton.classList.toggle('active', active);
+    resultButton.setAttribute('aria-selected', String(active));
+  }
 }
 
 function initMobileBattleTabs() {
   const root = $('mobile-battle-tabs');
   if (!root) return;
+  const order = ['attacker', 'defender', 'settings', 'result'];
+  const getCurrentTab = () => {
+    if (document.body.classList.contains('mobile-panel-attacker')) return 'attacker';
+    if (document.body.classList.contains('mobile-panel-defender')) return 'defender';
+    if (document.body.classList.contains('mobile-panel-result')) return 'result';
+    return 'settings';
+  };
   const attackerButton = $('mobile-battle-tab-attacker');
   const settingsButton = $('mobile-battle-tab-settings');
   const defenderButton = $('mobile-battle-tab-defender');
+  const resultButton = $('mobile-battle-tab-result');
   if (attackerButton) attackerButton.addEventListener('click', () => setMobileBattleTab('attacker'));
   if (settingsButton) settingsButton.addEventListener('click', () => setMobileBattleTab('settings'));
   if (defenderButton) defenderButton.addEventListener('click', () => setMobileBattleTab('defender'));
+  if (resultButton) resultButton.addEventListener('click', () => setMobileBattleTab('result'));
+
+  const swipeHost = document.body;
+  if (swipeHost) {
+    let startX = 0;
+    let startY = 0;
+    let canSwipe = false;
+    const isModalVisible = () => Boolean(document.querySelector('.modal.show'));
+    const isSwipeBlockedTarget = target => {
+      if (!(target instanceof Element)) return false;
+      return Boolean(target.closest('input, textarea, select, button, a, [contenteditable="true"], .modal, .offcanvas, .dropdown-menu'));
+    };
+    swipeHost.addEventListener('touchstart', event => {
+      if (!window.matchMedia('(max-width: 991.98px)').matches) {
+        canSwipe = false;
+        return;
+      }
+      if (isModalVisible() || isSwipeBlockedTarget(event.target)) {
+        canSwipe = false;
+        return;
+      }
+      const touch = event.changedTouches?.[0];
+      if (!touch) {
+        canSwipe = false;
+        return;
+      }
+      startX = touch.clientX;
+      startY = touch.clientY;
+      canSwipe = true;
+    }, { passive: true });
+    swipeHost.addEventListener('touchend', event => {
+      if (!canSwipe || !window.matchMedia('(max-width: 991.98px)').matches) return;
+      const touch = event.changedTouches?.[0];
+      if (!touch) return;
+      const dx = touch.clientX - startX;
+      const dy = touch.clientY - startY;
+      if (Math.abs(dx) < 56 || Math.abs(dx) <= Math.abs(dy) * 1.2) return;
+      const current = getCurrentTab();
+      const index = order.indexOf(current);
+      if (index < 0) return;
+      if (dx < 0 && index < order.length - 1) setMobileBattleTab(order[index + 1]);
+      if (dx > 0 && index > 0) setMobileBattleTab(order[index - 1]);
+    }, { passive: true });
+    swipeHost.addEventListener('touchcancel', () => {
+      canSwipe = false;
+    }, { passive: true });
+  }
+
   const mediaQuery = window.matchMedia('(max-width: 991.98px)');
   const handleViewport = event => {
     if (event.matches) {
-      setMobileBattleTab('settings');
+      setMobileBattleTab('attacker');
     } else {
-      document.body.classList.remove('mobile-panel-attacker', 'mobile-panel-settings', 'mobile-panel-defender');
+      document.body.classList.remove('mobile-panel-attacker', 'mobile-panel-settings', 'mobile-panel-defender', 'mobile-panel-result');
     }
   };
   if (typeof mediaQuery.addEventListener === 'function') mediaQuery.addEventListener('change', handleViewport);
@@ -786,8 +849,22 @@ function displayEntryName(entry) {
 }
 
 function displayItemName(item) {
+  const getMegaStoneFallbackJa = currentItem => {
+    if (!currentItem?.megaStone) return '';
+    const megaStoneValue = typeof currentItem.megaStone === 'string'
+      ? currentItem.megaStone
+      : Object.values(currentItem.megaStone || {})[0];
+    const megaId = toId(megaStoneValue || '');
+    if (!megaId) return '';
+    const baseId = megaId.replace(/mega[xyz]?$/, '');
+    const baseSpecies = state.speciesById.get(baseId);
+    const baseName = baseSpecies ? displaySpeciesName(baseSpecies) : '';
+    if (!baseName) return '';
+    const suffix = megaId.endsWith('megax') ? 'Ｘ' : (megaId.endsWith('megay') ? 'Ｙ' : (megaId.endsWith('megaz') ? 'Ｚ' : ''));
+    return `${baseName}ナイト${suffix}`;
+  };
   return state.lang === 'ja'
-    ? (state.itemNameJaById.get(item.id) || item.nameJa || ITEM_NAME_JA_FALLBACK[item.id] || item.name)
+    ? (state.itemNameJaById.get(item.id) || ITEM_NAME_JA_FALLBACK[item.id] || getMegaStoneFallbackJa(item) || item.nameJa || item.name)
     : item.name;
 }
 
@@ -805,10 +882,28 @@ function getMegaStoneType(itemId) {
   if (itemId === 'megastonex') return 'x';
   if (itemId === 'megastoney') return 'y';
   if (itemId === 'megastonez') return 'z';
+  const item = state.itemsById.get(itemId);
+  const megaStoneValue = typeof item?.megaStone === 'string'
+    ? item.megaStone
+    : Object.values(item?.megaStone || {})[0];
+  const megaId = toId(megaStoneValue || '');
+  if (megaId.endsWith('megax')) return 'x';
+  if (megaId.endsWith('megay')) return 'y';
+  if (megaId.endsWith('megaz')) return 'z';
+  const normalizedItemId = toId(itemId || '');
+  if (normalizedItemId.endsWith('x')) return 'x';
+  if (normalizedItemId.endsWith('y')) return 'y';
+  if (normalizedItemId.endsWith('z')) return 'z';
   return 'normal';
 }
 
 function getPreferredMegaItemId(speciesId, currentItemId = '') {
+  const directSpeciesId = toId(speciesId || '');
+  const baseId = resolveMegaBaseId(speciesId);
+  if (baseId) {
+    const directForm = getMegaForms(baseId).find(form => toId(form.id) === directSpeciesId);
+    if (directForm?.requiredItemId) return directForm.requiredItemId;
+  }
   const megaForm = getMegaFormForSpecies(speciesId, currentItemId || '');
   if (megaForm?.requiredItemId) return megaForm.requiredItemId;
   if (currentItemId && state.itemsById.has(currentItemId)) return currentItemId;
@@ -847,9 +942,12 @@ function getMegaFormForSpecies(speciesId, itemId = 'megastone') {
   if (!baseId) return null;
   const forms = getMegaForms(baseId);
   if (!forms.length) return null;
+  const directSpeciesId = toId(speciesId || '');
+  const directForm = forms.find(form => toId(form.id) === directSpeciesId);
   const preferredType = getMegaStoneType(itemId);
   const exact = forms.find(form => form.stoneType === preferredType);
   if (exact) return exact;
+  if (directForm) return directForm;
   const normal = forms.find(form => form.stoneType === 'normal');
   if (normal) return normal;
   return forms[0];
@@ -911,24 +1009,24 @@ function renderItemVisual(itemId) {
 function renderPokemonIconStack(speciesId, megaEnabled, itemId, alt = '') {
   const pokemonIconUrl = getShowdownPokemonIconUrl(speciesId, megaEnabled, itemId);
   const itemVisual = itemId ? renderItemVisual(itemId) : '';
-  return `<span class="pokemon-icon-stack">${pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none'">` : ''}${itemVisual}</span>`;
+  return `<span class="pokemon-icon-stack">${pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&this.nextElementSibling.classList.remove('d-none');">` : ''}<span class="pokemon-icon-fallback${pokemonIconUrl ? ' d-none' : ''}" aria-hidden="true">?</span>${itemVisual}</span>`;
 }
 
 function renderPartyPickerIcons(speciesId, megaEnabled, itemId, alt = '') {
   const pokemonIconUrl = getShowdownPokemonIconUrl(speciesId, megaEnabled, itemId);
   const itemVisual = itemId ? renderItemVisual(itemId) : '';
-  return `<span class="picker-party-icons">${pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none'">` : ''}${itemVisual ? `<span class="picker-party-item-icon">${itemVisual}</span>` : ''}</span>`;
+  return `<span class="picker-party-icons">${pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&this.nextElementSibling.classList.remove('d-none');">` : ''}<span class="pokemon-icon-fallback${pokemonIconUrl ? ' d-none' : ''}" aria-hidden="true">?</span>${itemVisual ? `<span class="picker-party-item-icon">${itemVisual}</span>` : ''}</span>`;
 }
 
 function renderBoxPickerIcons(speciesId, megaEnabled, itemId, alt = '') {
   const pokemonIconUrl = getShowdownPokemonIconUrl(speciesId, megaEnabled, itemId);
   const itemVisual = itemId ? renderItemVisual(itemId) : '';
-  return `<span class="picker-box-icons">${pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none'">` : ''}${itemVisual ? `<span class="picker-box-item-icon">${itemVisual}</span>` : ''}</span>`;
+  return `<span class="picker-box-icons">${pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&this.nextElementSibling.classList.remove('d-none');">` : ''}<span class="pokemon-icon-fallback${pokemonIconUrl ? ' d-none' : ''}" aria-hidden="true">?</span>${itemVisual ? `<span class="picker-box-item-icon">${itemVisual}</span>` : ''}</span>`;
 }
 
 function renderPokemonOnlyIcon(speciesId, megaEnabled = false, itemId = '', alt = '') {
   const pokemonIconUrl = getShowdownPokemonIconUrl(speciesId, megaEnabled, itemId);
-  return pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none'">` : '';
+  return `<span class="pokemon-icon-stack">${pokemonIconUrl ? `<img class="ps-pokemon-icon" src="${pokemonIconUrl}" alt="${alt}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&this.nextElementSibling.classList.remove('d-none');">` : ''}<span class="pokemon-icon-fallback${pokemonIconUrl ? ' d-none' : ''}" aria-hidden="true">?</span></span>`;
 }
 
 function refreshMoveMetaIcons() {
@@ -1017,7 +1115,7 @@ function renderPickerButtonAsIcon(fieldId, button, value) {
     if (iconUrl) {
       button.classList.add('icon-picker-btn');
       button.classList.add('calc-species-picker-btn');
-      button.innerHTML = `<span class="calc-species-icon-wrap"><img class="ps-pokemon-icon" src="${iconUrl}" alt="" loading="lazy" onerror="this.style.display='none'"></span>`;
+      button.innerHTML = `<span class="calc-species-icon-wrap"><img class="ps-pokemon-icon" src="${iconUrl}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&this.nextElementSibling.classList.remove('d-none');"><span class="pokemon-icon-fallback d-none" aria-hidden="true">?</span></span>`;
       button.title = label;
       button.setAttribute('aria-label', label);
       return true;
@@ -1299,7 +1397,7 @@ function updateMoveParameterUI() {
 }
 
 function fillSpeciesField(fieldId, selectedId) {
-  if (fieldId === 'attacker-species' || fieldId === 'defender-species') {
+  if (fieldId === 'attacker-species' || fieldId === 'defender-species' || fieldId === 'detail-species') {
     setPickerField(fieldId, buildDetailSpeciesPickerOptions(), selectedId);
     return;
   }
@@ -1531,35 +1629,34 @@ function setupLocalizedNameMapsFromData(jaTranslations = null) {
 
   state.moveNameJaById = new Map();
   (state.data?.moves || []).forEach(move => {
-    if (move?.id && move?.nameJa) state.moveNameJaById.set(move.id, move.nameJa);
     const mapEntry = moveMap?.[move?.id];
     const mappedName = String(mapEntry?.nameJa || '').trim();
-    if (move?.id && mappedName && !state.moveNameJaById.has(move.id)) state.moveNameJaById.set(move.id, mappedName);
+    if (move?.id && mappedName) state.moveNameJaById.set(move.id, mappedName);
+    else if (move?.id && move?.nameJa) state.moveNameJaById.set(move.id, move.nameJa);
   });
 
   state.speciesNameJaById = new Map();
   [...(state.data?.species || []), ...(state.data?.megaSpecies || [])].forEach(species => {
-    if (!species?.id || !species?.nameJa) return;
-    if (!state.speciesNameJaById.has(species.id)) state.speciesNameJaById.set(species.id, species.nameJa);
     const mapEntry = speciesMap?.[species?.id];
     const mappedName = String(mapEntry?.nameJa || '').trim();
-    if (species?.id && mappedName && !state.speciesNameJaById.has(species.id)) state.speciesNameJaById.set(species.id, mappedName);
+    if (species?.id && mappedName) state.speciesNameJaById.set(species.id, mappedName);
+    else if (species?.id && species?.nameJa) state.speciesNameJaById.set(species.id, species.nameJa);
   });
 
   state.abilityNameJaById = new Map();
   (state.data?.abilities || []).forEach(ability => {
-    if (ability?.id && ability?.nameJa) state.abilityNameJaById.set(ability.id, ability.nameJa);
     const mapEntry = abilityMap?.[ability?.id];
     const mappedName = String(mapEntry?.nameJa || '').trim();
-    if (ability?.id && mappedName && !state.abilityNameJaById.has(ability.id)) state.abilityNameJaById.set(ability.id, mappedName);
+    if (ability?.id && mappedName) state.abilityNameJaById.set(ability.id, mappedName);
+    else if (ability?.id && ability?.nameJa) state.abilityNameJaById.set(ability.id, ability.nameJa);
   });
 
   state.itemNameJaById = new Map();
   (state.data?.items || []).forEach(item => {
-    if (item?.id && item?.nameJa) state.itemNameJaById.set(item.id, item.nameJa);
     const mapEntry = itemMap?.[item?.id];
     const mappedName = String(mapEntry?.nameJa || '').trim();
-    if (item?.id && mappedName && !state.itemNameJaById.has(item.id)) state.itemNameJaById.set(item.id, mappedName);
+    if (item?.id && mappedName) state.itemNameJaById.set(item.id, mappedName);
+    else if (item?.id && item?.nameJa) state.itemNameJaById.set(item.id, item.nameJa);
   });
 
   state.learnsetBySpeciesNum = new Map();
@@ -2974,7 +3071,7 @@ function openLinkedPokemonDetailFromCalc(side) {
     return;
   }
       localStorage.setItem(OPEN_DETAIL_REQUEST_KEY, JSON.stringify({ pokemonId: pokemon.id }));
-      window.location.href = '/box-party.html';
+      window.location.href = './box-party.html';
     }
 function assignPokemonToPartySlot(partyId, slotIndex, pokemonId) {
   const party = getPartyById(partyId);
@@ -4070,7 +4167,7 @@ function initDetailModal() {
       return;
     }
     localStorage.setItem(PENDING_APPLY_KEY, JSON.stringify({ side: 'attacker', pokemonId: pokemon.id }));
-    window.location.href = '/damage-calc.html';
+    window.location.href = './damage-calc.html';
   });
   $('detail-apply-defender').addEventListener('click', () => {
     const pokemon = saveDetailPokemon();
@@ -4081,7 +4178,7 @@ function initDetailModal() {
       return;
     }
     localStorage.setItem(PENDING_APPLY_KEY, JSON.stringify({ side: 'defender', pokemonId: pokemon.id }));
-    window.location.href = '/damage-calc.html';
+    window.location.href = './damage-calc.html';
   });
   if ($('detail-apply-speed')) $('detail-apply-speed').addEventListener('click', () => {
     const pokemon = saveDetailPokemon();
@@ -4090,7 +4187,7 @@ function initDetailModal() {
       pokemonId: pokemon.id,
       returnPath: window.location.pathname,
     }));
-    window.location.href = '/speed-adjust.html';
+    window.location.href = './speed-adjust.html';
   });
   ['detail-nickname', 'detail-notes-other', 'detail-notes', 'detail-ev-hp', 'detail-ev-atk', 'detail-ev-def', 'detail-ev-spa', 'detail-ev-spd', 'detail-ev-spe'].forEach(id => {
     const node = $(id);
@@ -4140,7 +4237,7 @@ function bindEvents() {
     $('history-back').addEventListener('click', () => {
       const canBack = window.history.length > 1 && document.referrer && document.referrer.startsWith(window.location.origin);
       if (canBack) window.history.back();
-      else window.location.href = '/index.html';
+      else window.location.href = './index.html';
     });
   }
   if ($('swap-sides')) $('swap-sides').addEventListener('click', swapSides);

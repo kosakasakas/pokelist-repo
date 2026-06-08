@@ -650,7 +650,7 @@ function renderSpeedChip(chip) {
   }
   const icon = getShowdownPokemonIconUrl(chip.row.representativeId);
   const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
-  const href = `/pokedex-pokemon.html?species=${encodeURIComponent(chip.row.representativeId)}&returnPath=${returnPath}`;
+  const href = `./pokedex-pokemon.html?species=${encodeURIComponent(chip.row.representativeId)}&returnPath=${returnPath}`;
   return `<span class="speed-pokemon-cell"><a class="speed-icon-link" href="${href}">${icon ? `<img class="ps-pokemon-icon" src="${icon}" alt="" loading="lazy">` : ''}</a>${renderRuleBadges(chip)}</span>`;
 }
 
@@ -1128,13 +1128,13 @@ function openTargetEditModal() {
   const frame = $('target-box-editor-frame');
   if (!host || !frame) {
     const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
-    window.location.href = `/box-party.html?detail=standalone&returnPath=${returnPath}`;
+    window.location.href = `./box-party.html?detail=standalone&returnPath=${returnPath}`;
     return;
   }
   host.classList.remove('d-none');
   host.setAttribute('aria-hidden', 'false');
   frame.style.visibility = 'hidden';
-  frame.src = '/box-party.html?embed=detail';
+  frame.src = './box-party.html?embed=detail';
 }
 
 function closeTargetEditHost() {
@@ -1207,7 +1207,7 @@ function applyI18n() {
 }
 
 function navigateBack() {
-  const returnPath = state.request?.returnPath || '/box-party.html';
+  const returnPath = state.request?.returnPath || './box-party.html';
   window.location.href = returnPath;
 }
 

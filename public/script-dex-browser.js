@@ -215,7 +215,7 @@ function getItemIconHtml(item) {
 }
 
 function getSpeciesName(species) {
-  if (state.lang === 'ja') return species.nameJa || state.speciesCsvMap.get(species.id) || species.name || species.id;
+  if (state.lang === 'ja') return state.speciesCsvMap.get(species.id) || species.nameJa || species.name || species.id;
   return species.name || species.nameJa || species.id;
 }
 
@@ -257,23 +257,40 @@ function getMoveTypeIcon(type) {
 }
 
 function getPokemonHref(speciesId) {
-  return `/pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `./pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getMoveHref(moveId) {
-  return `/pokedex-move.html?move=${encodeURIComponent(moveId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `./pokedex-move.html?move=${encodeURIComponent(moveId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getAbilityHref(abilityId) {
-  return `/pokedex-ability.html?ability=${encodeURIComponent(abilityId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `./pokedex-ability.html?ability=${encodeURIComponent(abilityId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getItemHref(itemId) {
-  return `/pokedex-item.html?item=${encodeURIComponent(itemId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+  return `./pokedex-item.html?item=${encodeURIComponent(itemId)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
 }
 
 function getItemName(item) {
-  if (state.lang === 'ja') return state.itemCsvMap.get(item.id) || item.nameJa || item.name || item.id;
+  if (state.lang === 'ja') {
+    const mapped = state.itemCsvMap.get(item.id);
+    if (mapped) return mapped;
+    if (item.nameJa && !/[A-Za-z]/.test(item.nameJa)) return item.nameJa;
+    const megaStoneValue = typeof item.megaStone === 'string' ? item.megaStone : Object.values(item.megaStone || {})[0];
+    const megaId = toId(megaStoneValue || '');
+    if (megaId) {
+      const baseId = megaId.replace(/mega[xyz]?$/, '');
+      const allSpecies = [...(state.data?.species || []), ...(state.data?.megaSpecies || [])];
+      const baseSpecies = allSpecies.find(entry => entry.id === baseId);
+      const baseName = baseSpecies ? (state.speciesCsvMap.get(baseSpecies.id) || baseSpecies.nameJa || baseSpecies.name) : '';
+      if (baseName) {
+        const suffix = megaId.endsWith('megax') ? 'Ｘ' : (megaId.endsWith('megay') ? 'Ｙ' : (megaId.endsWith('megaz') ? 'Ｚ' : ''));
+        return `${baseName}ナイト${suffix}`;
+      }
+    }
+    return item.nameJa || item.name || item.id;
+  }
   return item.name || item.nameJa || item.id;
 }
 
