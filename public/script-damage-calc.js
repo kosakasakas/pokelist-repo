@@ -321,7 +321,10 @@ const state = {
   learnsetBySpeciesNum: new Map(),
   longPressTimer: null,
   suppressClickId: null,
+  mobileSwipeAnimTimer: null,
 };
+
+const MOBILE_BATTLE_TAB_ORDER = ['attacker', 'defender', 'settings', 'result'];
 
 const $ = id => document.getElementById(id);
 const t = key => I18N[state.lang][key] || key;
@@ -503,12 +506,41 @@ function populateCalcStatSelectOptions() {
   });
 }
 
-function setMobileBattleTab(tab) {
+function getCurrentMobileBattleTab() {
+  if (document.body.classList.contains('mobile-panel-attacker')) return 'attacker';
+  if (document.body.classList.contains('mobile-panel-defender')) return 'defender';
+  if (document.body.classList.contains('mobile-panel-result')) return 'result';
+  return 'settings';
+}
+
+function getMobileTabDirection(fromTab, toTab) {
+  const fromIndex = MOBILE_BATTLE_TAB_ORDER.indexOf(fromTab);
+  const toIndex = MOBILE_BATTLE_TAB_ORDER.indexOf(toTab);
+  if (fromIndex < 0 || toIndex < 0 || fromIndex === toIndex) return '';
+  return toIndex > fromIndex ? 'forward' : 'backward';
+}
+
+function setMobileBattleTab(tab, options = {}) {
   const normalized = ['attacker', 'defender', 'settings', 'result'].includes(tab) ? tab : 'settings';
+  const current = getCurrentMobileBattleTab();
+  const direction = options.direction || getMobileTabDirection(current, normalized);
+  const shouldAnimate = options.animate !== false
+    && window.matchMedia('(max-width: 991.98px)').matches
+    && current !== normalized
+    && Boolean(direction);
   document.body.classList.toggle('mobile-panel-attacker', normalized === 'attacker');
   document.body.classList.toggle('mobile-panel-settings', normalized === 'settings');
   document.body.classList.toggle('mobile-panel-defender', normalized === 'defender');
   document.body.classList.toggle('mobile-panel-result', normalized === 'result');
+  document.body.classList.remove('mobile-swipe-forward', 'mobile-swipe-backward');
+  if (shouldAnimate) {
+    document.body.classList.add(direction === 'backward' ? 'mobile-swipe-backward' : 'mobile-swipe-forward');
+    if (state.mobileSwipeAnimTimer) window.clearTimeout(state.mobileSwipeAnimTimer);
+    state.mobileSwipeAnimTimer = window.setTimeout(() => {
+      document.body.classList.remove('mobile-swipe-forward', 'mobile-swipe-backward');
+      state.mobileSwipeAnimTimer = null;
+    }, 280);
+  }
   const attackerButton = $('mobile-battle-tab-attacker');
   const settingsButton = $('mobile-battle-tab-settings');
   const defenderButton = $('mobile-battle-tab-defender');
@@ -538,13 +570,6 @@ function setMobileBattleTab(tab) {
 function initMobileBattleTabs() {
   const root = $('mobile-battle-tabs');
   if (!root) return;
-  const order = ['attacker', 'defender', 'settings', 'result'];
-  const getCurrentTab = () => {
-    if (document.body.classList.contains('mobile-panel-attacker')) return 'attacker';
-    if (document.body.classList.contains('mobile-panel-defender')) return 'defender';
-    if (document.body.classList.contains('mobile-panel-result')) return 'result';
-    return 'settings';
-  };
   const attackerButton = $('mobile-battle-tab-attacker');
   const settingsButton = $('mobile-battle-tab-settings');
   const defenderButton = $('mobile-battle-tab-defender');
@@ -589,11 +614,15 @@ function initMobileBattleTabs() {
       const dx = touch.clientX - startX;
       const dy = touch.clientY - startY;
       if (Math.abs(dx) < 56 || Math.abs(dx) <= Math.abs(dy) * 1.2) return;
-      const current = getCurrentTab();
-      const index = order.indexOf(current);
+      const current = getCurrentMobileBattleTab();
+      const index = MOBILE_BATTLE_TAB_ORDER.indexOf(current);
       if (index < 0) return;
-      if (dx < 0 && index < order.length - 1) setMobileBattleTab(order[index + 1]);
-      if (dx > 0 && index > 0) setMobileBattleTab(order[index - 1]);
+      if (dx < 0 && index < MOBILE_BATTLE_TAB_ORDER.length - 1) {
+        setMobileBattleTab(MOBILE_BATTLE_TAB_ORDER[index + 1], { direction: 'forward' });
+      }
+      if (dx > 0 && index > 0) {
+        setMobileBattleTab(MOBILE_BATTLE_TAB_ORDER[index - 1], { direction: 'backward' });
+      }
     }, { passive: true });
     swipeHost.addEventListener('touchcancel', () => {
       canSwipe = false;
@@ -603,9 +632,10 @@ function initMobileBattleTabs() {
   const mediaQuery = window.matchMedia('(max-width: 991.98px)');
   const handleViewport = event => {
     if (event.matches) {
-      setMobileBattleTab('attacker');
+      setMobileBattleTab('attacker', { animate: false });
     } else {
       document.body.classList.remove('mobile-panel-attacker', 'mobile-panel-settings', 'mobile-panel-defender', 'mobile-panel-result');
+      document.body.classList.remove('mobile-swipe-forward', 'mobile-swipe-backward');
     }
   };
   if (typeof mediaQuery.addEventListener === 'function') mediaQuery.addEventListener('change', handleViewport);
@@ -2707,8 +2737,14 @@ function pokemonToSideOverride(pokemon, side) {
 function applyStoredPokemonToSide(side, pokemon, options = {}) {
   if (!hasCalcPage()) return;
   const { silent = false } = options;
+  const preferredFormeSpeciesId = (() => {
+    if (!pokemon?.megaEnabled) return pokemon.speciesId;
+    const megaForm = getMegaFormForSpecies(pokemon.speciesId, pokemon.itemId || '');
+    if (megaForm?.id) return megaForm.id;
+    return resolveEffectiveSpeciesId(pokemon.speciesId, true, pokemon.itemId || '') || pokemon.speciesId;
+  })();
   fillSpeciesField(`${side}-species`, pokemon.speciesId);
-  syncFormeFieldForSide(side, pokemon.speciesId);
+  syncFormeFieldForSide(side, preferredFormeSpeciesId);
   $(`${side}-species`).value = pokemon.speciesId;
   updatePickerButtonLabel(`${side}-species`);
   $(`${side}-nature`).value = pokemon.nature;
@@ -2970,14 +3006,26 @@ function renderPartyList() {
 }
 
 function calculateDetailSpeedValue(pokemon) {
-  const species = getEffectiveSpecies(pokemon.speciesId, Boolean(pokemon.megaEnabled), pokemon.itemId || '');
+  const inDetailView = Boolean($('detail-species'));
+  const speciesId = inDetailView ? $('detail-species')?.value : pokemon.speciesId;
+  const megaEnabled = inDetailView ? Boolean($('detail-mega-enabled')?.checked) : Boolean(pokemon.megaEnabled);
+  const itemId = inDetailView ? ($('detail-item')?.value || '') : (pokemon.itemId || '');
+  const species = getEffectiveSpecies(speciesId, megaEnabled, itemId);
   if (!species?.baseStats?.spe) return 0;
-  const nature = getNatureById(pokemon.nature);
-  const iv = 31;
-  const level = 50;
-  const ev = clamp(toNumber(pokemon.evs?.spe, 0), 0, 32) * 4;
-  const raw = Math.floor((((species.baseStats.spe * 2 + iv + Math.floor(ev / 4)) * level) / 100) + 5);
-  return Math.floor(raw * natureMod(nature, 'spe'));
+
+  const natureId = inDetailView ? ($('detail-nature')?.value || 'hardy') : (pokemon.nature || 'hardy');
+  const nature = getNatureById(natureId);
+  const speEv = inDetailView
+    ? clamp(toNumber($('detail-ev-spe')?.value), 0, 32)
+    : clamp(toNumber(pokemon.evs?.spe, 0), 0, 32);
+
+  if (inDetailView) {
+    const detailNatureOverride = getSideNatureOverridesFromButtons('detail');
+    const natureMultiplier = getNatureMultiplierWithOverrides(nature, 'spe', detailNatureOverride.plusStats, detailNatureOverride.minusStats);
+    return calcSingleStat(species.baseStats.spe, speEv, natureMultiplier);
+  }
+
+  return calcSingleStat(species.baseStats.spe, speEv, natureMod(nature, 'spe'));
 }
 
 function renderDetailSpeedMemo(pokemon) {
@@ -2985,7 +3033,7 @@ function renderDetailSpeedMemo(pokemon) {
   if (!container) return;
   const speed = calculateDetailSpeedValue(pokemon);
   if (!speed) {
-    container.innerHTML = '<div class="text-muted small">素早さメモを生成できません。</div>';
+    container.innerHTML = '';
     return;
   }
   const loadSpeedRows = () => {
@@ -3002,29 +3050,27 @@ function renderDetailSpeedMemo(pokemon) {
   const rows = loadSpeedRows();
   const currentRow = rows?.[String(speed)]?.html || '';
   const nextRow = rows?.[String(Math.max(0, speed - 1))]?.html || '';
-  if (currentRow || nextRow) {
-    container.innerHTML = `
-      <div class="calc-history-item">
-        <div class="calc-history-title mono">現在の素早さ: ${speed}</div>
-        <div class="calc-history-time">速度比較の該当行</div>
-        <div class="detail-speed-memo-row">${currentRow || '<span class="text-muted small">該当なし</span>'}</div>
-      </div>
-      <div class="calc-history-item">
-        <div class="calc-history-title mono">一つ下の行: ${Math.max(0, speed - 1)}</div>
-        <div class="calc-history-time">速度比較の次行</div>
-        <div class="detail-speed-memo-row">${nextRow || '<span class="text-muted small">該当なし</span>'}</div>
-      </div>
-    `;
-    return;
-  }
+  const renderRowGroups = html => html || '<span class="text-muted small">該当なし</span>';
   container.innerHTML = `
-    <div class="calc-history-item">
-      <div class="calc-history-title mono">現在の素早さ: ${speed}</div>
-      <div class="calc-history-time">同速ライン</div>
-    </div>
-    <div class="calc-history-item">
-      <div class="calc-history-title mono">一つ下の目安: ${Math.max(0, speed - 1)}</div>
-      <div class="calc-history-time">下取りライン</div>
+    <div class="table-responsive detail-speed-memo-table-wrap">
+      <table class="table table-sm align-middle mb-0 detail-speed-memo-table">
+        <thead>
+          <tr>
+            <th class="mono" scope="col">実数値</th>
+            <th scope="col">対象群</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono">${speed}</td>
+            <td><div class="detail-speed-memo-row">${renderRowGroups(currentRow)}</div></td>
+          </tr>
+          <tr>
+            <td class="mono">${Math.max(0, speed - 1)}</td>
+            <td><div class="detail-speed-memo-row">${renderRowGroups(nextRow)}</div></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   `;
 }
@@ -3625,8 +3671,6 @@ function renderPickerList(query) {
             const side = fieldId.startsWith('attacker') ? 'attacker' : 'defender';
             $(`${side}-species`).value = option.value;
             updatePickerButtonLabel(`${side}-species`);
-            state.storage.calcLinks[side] = null;
-            saveStorage();
             syncMegaToggle(side, '');
             renderManagerViews();
           }

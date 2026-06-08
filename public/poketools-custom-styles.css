@@ -479,6 +479,22 @@ body.calc-page .detail-speed-memo-row {
   margin-top: 0.35rem;
 }
 
+body.calc-page .detail-speed-memo-table-wrap {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 0.65rem;
+  overflow: hidden;
+}
+
+body.calc-page .detail-speed-memo-table thead th {
+  background: rgba(226, 232, 240, 0.5);
+  border-bottom-color: rgba(148, 163, 184, 0.24);
+}
+
+body.calc-page .detail-speed-memo-table td,
+body.calc-page .detail-speed-memo-table th {
+  vertical-align: top;
+}
+
 body.calc-page .detail-speed-memo-row .speed-group {
   display: flex;
   flex-wrap: wrap;
@@ -1636,6 +1652,48 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   body.calc-page.mobile-panel-result #settings-panel-col,
   body.calc-page.mobile-panel-result #defender-panel-col {
     display: none;
+  }
+
+  @keyframes mobilePanelSlideInFromRight {
+    0% {
+      opacity: 0.35;
+      transform: translateX(28px) scale(0.985);
+      filter: blur(1px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes mobilePanelSlideInFromLeft {
+    0% {
+      opacity: 0.35;
+      transform: translateX(-28px) scale(0.985);
+      filter: blur(1px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  body.calc-page.mobile-swipe-forward.mobile-panel-attacker #attacker-panel-col,
+  body.calc-page.mobile-swipe-forward.mobile-panel-defender #defender-panel-col,
+  body.calc-page.mobile-swipe-forward.mobile-panel-settings #settings-panel-col,
+  body.calc-page.mobile-swipe-forward.mobile-panel-result #result-panel-col {
+    animation: mobilePanelSlideInFromRight 260ms cubic-bezier(0.22, 0.78, 0.25, 1);
+    will-change: transform, opacity;
+  }
+
+  body.calc-page.mobile-swipe-backward.mobile-panel-attacker #attacker-panel-col,
+  body.calc-page.mobile-swipe-backward.mobile-panel-defender #defender-panel-col,
+  body.calc-page.mobile-swipe-backward.mobile-panel-settings #settings-panel-col,
+  body.calc-page.mobile-swipe-backward.mobile-panel-result #result-panel-col {
+    animation: mobilePanelSlideInFromLeft 260ms cubic-bezier(0.22, 0.78, 0.25, 1);
+    will-change: transform, opacity;
   }
 
   body.calc-page #swap-sides-result {
