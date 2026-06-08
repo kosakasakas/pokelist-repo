@@ -1305,9 +1305,9 @@ async function initialize() {
   });
 
   const [data, rules, jaTranslations] = await Promise.all([
-    fetchJson('/db/champions-calc-data.json'),
-    fetchJson('/db/speed-adjust-rules.json'),
-    fetchJson('/db/champions-ja-translations.json').catch(() => ({})),
+    fetchJson('./db/champions-calc-data.json'),
+    fetchJson('./db/speed-adjust-rules.json'),
+    fetchJson('./db/champions-ja-translations.json').catch(() => ({})),
   ]);
 
   state.data = data;

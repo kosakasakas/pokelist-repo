@@ -4269,8 +4269,8 @@ function bindEvents() {
 
 async function initialize() {
   const [dataResponse, jaTranslationsResponse] = await Promise.all([
-    fetch('/db/champions-calc-data.json', { cache: 'no-store' }),
-    fetch('/db/champions-ja-translations.json', { cache: 'no-store' }),
+    fetch('./db/champions-calc-data.json', { cache: 'no-store' }),
+    fetch('./db/champions-ja-translations.json', { cache: 'no-store' }),
   ]);
   if (!dataResponse.ok) throw new Error(`Failed to load data: ${dataResponse.status}`);
   state.data = await dataResponse.json();
