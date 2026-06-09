@@ -23,6 +23,7 @@ const GROUPS = [
 
 const FORME_NAME_JA = {
   Alola: 'アローラ', Hisui: 'ヒスイ', Galar: 'ガラル', Paldea: 'パルデア', Pirouette: 'ステップ',
+  Heat: 'ヒート', Wash: 'ウォッシュ', Frost: 'フロスト', Fan: 'スピン', Mow: 'カット',
   Noice: 'ナイスフェイス', Hangry: 'はらぺこ', Hero: 'マイティ', Terastal: 'テラス',
 };
 
@@ -34,11 +35,14 @@ const I18N = {
     backToPage: 'ページへ戻る',
     targetFormat: '対象フォーマット',
     targetPokemon: '対象ポケモン',
+    targetForm: 'フォルム',
     targetSearchTitle: '対象ポケモンを検索',
     search: '検索',
     searchPlaceholder: 'ポケモン名で検索',
     speedValue: '実数値',
-    groupList: '対象群',
+    speedValueShort: '実数',
+    groupList: '対象ポケモン',
+    groupListShort: '対象',
     save: '個体を保存',
     apLabel: '能力ポイント',
     rankLabel: 'ランク',
@@ -80,11 +84,14 @@ const I18N = {
     backToPage: 'Back to page',
     targetFormat: 'Target format',
     targetPokemon: 'Target Pokemon',
+    targetForm: 'Form',
     targetSearchTitle: 'Select target Pokemon',
     search: 'Search',
     searchPlaceholder: 'Filter by Pokemon',
     speedValue: 'Speed',
-    groupList: 'Groups',
+    speedValueShort: 'Speed',
+    groupList: 'Target Pokemon',
+    groupListShort: 'Targets',
     save: 'Save Pokemon',
     apLabel: 'Effort points',
     rankLabel: 'Rank',
@@ -167,7 +174,13 @@ const state = {
   targetSearchModal: null,
   targetSearchScope: 'all',
   saveFeedbackTimer: null,
-  detailHostListenerBound: false,
+  lastFocusedSpeed: null,
+  lastFocusedTop: null,
+};
+
+const transitions = window.pokeToolsTransitions || {
+  animateSwap(_target) {},
+  pageReady() {},
 };
 
 function t(key, vars = {}) {
@@ -681,6 +694,7 @@ function renderGroupLabel(group, chips) {
 }
 
 function renderGroupRows(grouped, focusGroup, isFocusRow) {
+  const pulseClass = ' speed-column-pulse';
   const selfChips = [];
   const orderedGroups = [...GROUPS].sort((a, b) => {
     if (a.key === focusGroup) return -1;
@@ -696,13 +710,13 @@ function renderGroupRows(grouped, focusGroup, isFocusRow) {
     const normalChips = chips.filter(chip => !chip?.isSelf);
     if (!normalChips.length) return '';
     const isFocusGroup = focusGroup === group.key;
-    const hl = (isFocusRow && isFocusGroup) ? 'speed-group-highlight speed-column-pulse' : '';
+    const hl = (isFocusRow && isFocusGroup) ? `speed-group-highlight${pulseClass}` : '';
     const anchor = (isFocusRow && isFocusGroup && !selfChips.length) ? ' speed-focus-anchor' : '';
     return `<div class="speed-group ${hl}${anchor}"><span class="badge ${group.badge} speed-group-label">${renderGroupLabel(group, chips)}</span><span class="speed-chip-list">${normalChips.map(renderSpeedChip).join('')}</span></div>`;
   }).join('');
 
   const selfGroup = selfChips.length
-    ? `<div class="speed-group speed-group-self${isFocusRow ? ' speed-group-highlight speed-column-pulse speed-focus-anchor' : ''}"><span class="badge text-bg-danger speed-group-label">自分</span><span class="speed-chip-list">${selfChips.map(renderSpeedChip).join('')}</span></div>`
+    ? `<div class="speed-group speed-group-self${isFocusRow ? ` speed-group-highlight${pulseClass} speed-focus-anchor` : ''}"><span class="badge text-bg-danger speed-group-label">自分</span><span class="speed-chip-list">${selfChips.map(renderSpeedChip).join('')}</span></div>`
     : '';
 
   return `${selfGroup}${normalRows}`;
@@ -737,6 +751,7 @@ function renderSpeedTable(keepFocus = false) {
   }).join('');
 
   tbody.innerHTML = html;
+  transitions.animateSwap(tbody);
   if (!query) {
     try {
       localStorage.setItem(SPEED_ADJUST_ROW_CACHE_KEY, JSON.stringify({
@@ -755,21 +770,33 @@ function renderSpeedTable(keepFocus = false) {
     const container = document.querySelector('.table-container');
     if (container && container.contains(focusRow)) {
       const moveFocus = () => {
-        const rowRect = focusRow.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
         const headerHeight = document.querySelector('#speed-table thead')?.getBoundingClientRect().height || 0;
-        const mobileOffset = window.matchMedia('(max-width: 767.98px)').matches ? 14 : 8;
-        const top = Math.max(0, container.scrollTop + (rowRect.top - containerRect.top) - headerHeight - mobileOffset);
-        const behavior = keepFocus && !window.matchMedia('(max-width: 767.98px)').matches ? 'smooth' : 'auto';
-        container.scrollTo({ top, behavior });
+        const sameSpeed = Number(state.lastFocusedSpeed) === Number(currentSpeed);
+        const targetTop = Math.max(0, focusRow.offsetTop - headerHeight);
+        const delta = targetTop - container.scrollTop;
+        const shouldMove = Math.abs(delta) > 2;
+        if (shouldMove) {
+          const behavior = keepFocus && !sameSpeed ? 'smooth' : 'auto';
+          container.scrollTo({ top: targetTop, behavior });
+        }
+        if (keepFocus && (!sameSpeed || shouldMove)) {
+          focusRow.classList.add('highlight-row');
+          setTimeout(() => focusRow.classList.remove('highlight-row'), 1500);
+        }
+        state.lastFocusedSpeed = Number(currentSpeed);
+        state.lastFocusedTop = container.scrollTop;
       };
       requestAnimationFrame(() => requestAnimationFrame(moveFocus));
     } else {
-      focusRow.scrollIntoView({ block: 'start' });
-    }
-    if (keepFocus) {
-      focusRow.classList.add('highlight-row');
-      setTimeout(() => focusRow.classList.remove('highlight-row'), 1500);
+      const sameSpeed = Number(state.lastFocusedSpeed) === Number(currentSpeed);
+      const behavior = keepFocus && !sameSpeed ? 'smooth' : 'auto';
+      focusRow.scrollIntoView({ block: 'start', behavior });
+      if (keepFocus && !sameSpeed) {
+        focusRow.classList.add('highlight-row');
+        setTimeout(() => focusRow.classList.remove('highlight-row'), 1500);
+      }
+      state.lastFocusedSpeed = Number(currentSpeed);
+      state.lastFocusedTop = null;
     }
     state.didInitialFocus = true;
   }
@@ -866,9 +893,14 @@ function getTargetFormOptions(speciesId) {
 
 function renderTargetFormSelect() {
   const select = $('target-forme-select');
+  const formCell = $('target-forme-cell');
+  const panel = $('speed-target-panel')?.querySelector('.speed-target-main');
   if (!select || !state.targetPokemon) return;
   const options = getTargetFormOptions(state.targetPokemon.speciesId);
   select.innerHTML = options.map(entry => `<option value="${entry.id}">${toShortFormLabel(entry)}</option>`).join('');
+  const showForm = options.length > 1;
+  if (formCell) formCell.classList.toggle('d-none', !showForm);
+  if (panel) panel.dataset.formVisible = showForm ? '1' : '0';
   if (options.some(entry => entry.id === state.targetPokemon.speciesId)) {
     select.value = state.targetPokemon.speciesId;
   } else if (options.length) {
@@ -912,7 +944,7 @@ function renderNatureToggle() {
   button.classList.remove('mode-plus', 'mode-minus', 'mode-neutral');
   button.classList.add(mode === 'plus' ? 'mode-plus' : (mode === 'minus' ? 'mode-minus' : 'mode-neutral'));
   button.setAttribute('aria-pressed', String(mode !== 'neutral'));
-  if (text) text.textContent = mode === 'plus' ? '▲10%' : (mode === 'minus' ? '▼10%' : '+-0%');
+  if (text) text.textContent = mode === 'plus' ? '▲' : (mode === 'minus' ? '▼' : '-');
 }
 
 function renderTargetPanel() {
@@ -936,7 +968,7 @@ function renderTargetPanel() {
   const speciesName = getSpeciesName(species || state.speciesById.get(target.speciesId));
   const nickname = String(target.nickname || '').trim();
   const fullTitle = nickname ? `${nickname} (${speciesName})` : speciesName;
-  headMain.innerHTML = icon ? `<img class="ps-pokemon-icon" src="${icon}" alt="" loading="lazy">` : '<i class="bi bi-question-circle" aria-hidden="true"></i>';
+  headMain.innerHTML = `${icon ? `<span class="speed-target-picker-icon-wrap" aria-hidden="true"><img class="ps-pokemon-icon" src="${icon}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&this.nextElementSibling.classList.remove('d-none');"><span class="pokemon-icon-fallback d-none" aria-hidden="true">?</span></span>` : '<span class="speed-target-picker-icon-wrap" aria-hidden="true"><span class="pokemon-icon-fallback" aria-hidden="true">?</span></span>'}`;
   headMain.title = fullTitle;
   headMain.setAttribute('aria-label', fullTitle);
 
@@ -950,6 +982,7 @@ function renderTargetPanel() {
   renderTargetFormSelect();
   renderScarfToggle();
   renderNatureToggle();
+  transitions.animateSwap(panel || headMain);
 }
 
 function ensureTargetLinkedToBox() {
@@ -1124,42 +1157,9 @@ function openTargetEditModal() {
   saveStorage();
   persistLastTargetState();
   localStorage.setItem(OPEN_DETAIL_REQUEST_KEY, JSON.stringify({ pokemonId: state.targetPokemon.id }));
-  const host = $('target-box-editor-host');
-  const frame = $('target-box-editor-frame');
-  if (!host || !frame) {
-    const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
-    window.location.href = `./box-party.html?detail=standalone&returnPath=${returnPath}`;
-    return;
-  }
-  host.classList.remove('d-none');
-  host.setAttribute('aria-hidden', 'false');
-  frame.style.visibility = 'hidden';
-  frame.src = './box-party.html?embed=detail';
-}
-
-function closeTargetEditHost() {
-  const host = $('target-box-editor-host');
-  if (host) {
-    host.classList.add('d-none');
-    host.setAttribute('aria-hidden', 'true');
-  }
-  const frame = $('target-box-editor-frame');
-  if (frame) {
-    frame.style.visibility = 'hidden';
-    frame.src = 'about:blank';
-  }
-  syncTargetAfterBoxEditorClose();
-}
-
-function syncTargetAfterBoxEditorClose() {
-  loadStorage();
-  if (state.targetSource?.kind === 'box' && state.targetPokemon?.id) {
-    const refreshed = getBoxPokemonById(state.targetPokemon.id);
-    if (refreshed) state.targetPokemon = refreshed;
-  }
-  renderTargetPanel();
-  renderSpeedTable(true);
-  persistLastTargetState();
+  const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
+  const pokemonId = encodeURIComponent(state.targetPokemon.id);
+  window.location.href = `./box-party.html?detail=standalone&openDetail=${pokemonId}&returnPath=${returnPath}`;
 }
 
 function populateSelect(selectId, start, end, withPlus = true) {
@@ -1234,35 +1234,54 @@ function bindEvents() {
   $('target-scarf')?.addEventListener('click', () => {
     const node = $('target-scarf');
     if (!node || node.classList.contains('d-none')) return;
-    node.dataset.active = node.dataset.active === '1' ? '0' : '1';
-    updateTargetFromInputs();
+    transitions.runWithButtonLoading(node, () => {
+      node.dataset.active = node.dataset.active === '1' ? '0' : '1';
+      updateTargetFromInputs();
+    });
   });
 
-  $('target-forme-select')?.addEventListener('change', updateTargetFromInputs);
+  $('target-forme-select')?.addEventListener('change', () => {
+    const select = $('target-forme-select');
+    transitions.runWithButtonLoading(select, () => updateTargetFromInputs());
+  });
 
   $('target-nature-cycle')?.addEventListener('click', () => {
     if (!state.targetPokemon) return;
-    const current = state.targetPokemon.natureBoostMode || 'neutral';
-    state.targetPokemon.natureBoostMode = current === 'neutral' ? 'plus' : (current === 'plus' ? 'minus' : 'neutral');
-    updateTargetFromInputs();
+    const button = $('target-nature-cycle');
+    transitions.runWithButtonLoading(button, () => {
+      const current = state.targetPokemon.natureBoostMode || 'neutral';
+      state.targetPokemon.natureBoostMode = current === 'neutral' ? 'plus' : (current === 'plus' ? 'minus' : 'neutral');
+      updateTargetFromInputs();
+    });
   });
 
-  $('target-picker-trigger')?.addEventListener('click', openTargetSearchModal);
+  $('target-picker-trigger')?.addEventListener('click', () => {
+    const button = $('target-picker-trigger');
+    transitions.runWithButtonLoading(button, () => openTargetSearchModal());
+  });
   $('target-search-input')?.addEventListener('input', renderTargetSearchList);
 
   document.querySelectorAll('#target-search-scope [data-scope]').forEach(button => {
     button.addEventListener('click', () => {
-      state.targetSearchScope = button.dataset.scope;
-      document.querySelectorAll('#target-search-scope [data-scope]').forEach(node => {
-        node.classList.toggle('active', node.dataset.scope === state.targetSearchScope);
+      transitions.runWithButtonLoading(button, () => {
+        state.targetSearchScope = button.dataset.scope;
+        document.querySelectorAll('#target-search-scope [data-scope]').forEach(node => {
+          node.classList.toggle('active', node.dataset.scope === state.targetSearchScope);
+        });
+        renderTargetSearchList();
       });
-      renderTargetSearchList();
     });
   });
 
-  $('target-edit-detail')?.addEventListener('click', openTargetEditModal);
+  $('target-edit-detail')?.addEventListener('click', () => {
+    const button = $('target-edit-detail');
+    transitions.runWithButtonLoading(button, () => openTargetEditModal());
+  });
 
-  $('speed-history-back')?.addEventListener('click', handleHistoryBack);
+  $('speed-history-back')?.addEventListener('click', () => {
+    const button = $('speed-history-back');
+    transitions.runWithButtonLoading(button, () => handleHistoryBack());
+  });
 
   document.querySelectorAll('#lang-tabs [data-lang]').forEach(button => {
     button.addEventListener('click', () => {
@@ -1272,21 +1291,6 @@ function bindEvents() {
       renderSpeedTable(true);
     });
   });
-
-  if (!state.detailHostListenerBound) {
-    window.addEventListener('message', event => {
-      if (event.origin !== window.location.origin) return;
-      const type = event.data?.type;
-      if (type === 'champions-detail-ready') {
-        const frame = $('target-box-editor-frame');
-        if (frame) frame.style.visibility = 'visible';
-      }
-      if (type === 'champions-detail-closed') {
-        closeTargetEditHost();
-      }
-    });
-    state.detailHostListenerBound = true;
-  }
 
 }
 
@@ -1327,6 +1331,7 @@ async function initialize() {
   renderTargetPanel();
   renderSpeedTable();
   bindEvents();
+  transitions.pageReady();
 }
 
 initialize().catch(error => {

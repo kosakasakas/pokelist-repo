@@ -19,12 +19,21 @@ const I18N = {
     type: 'タイプ',
     speedTier: '{value}族',
     weight: '重さ {value}kg',
+    lowKickPower: 'けたぐり威力 {value}',
     actualBoosted: '全振り+',
     actualNeutralMax: '全振り',
     actualNoInvest: '無振り',
     actualLowered: '無振り-',
     total: '合計',
     related: '関連',
+    statusLabel: 'ステータス',
+    hp: 'HP',
+    atk: 'こうげき',
+    def: 'ぼうぎょ',
+    spa: 'とくこう',
+    spd: 'とくぼう',
+    spe: 'すばやさ',
+    statRank: '{rank}/{total}位',
   },
   en: {
     back: 'Back',
@@ -41,12 +50,21 @@ const I18N = {
     type: 'Type',
     speedTier: 'Base {value}',
     weight: 'Weight {value}kg',
+    lowKickPower: 'Low Kick power {value}',
     actualBoosted: 'Max +Nature',
     actualNeutralMax: 'Max Neutral',
     actualNoInvest: 'No investment',
     actualLowered: 'No-invest -Nature',
     total: 'Total',
     related: 'Related',
+    statusLabel: 'Status',
+    hp: 'HP',
+    atk: 'Attack',
+    def: 'Defense',
+    spa: 'Sp. Atk',
+    spd: 'Sp. Def',
+    spe: 'Speed',
+    statRank: 'Rank {rank}/{total}',
   },
 };
 
@@ -70,6 +88,13 @@ const state = {
   returnPath: './pokedex.html',
   currentSpecies: null,
   moveSearch: '',
+};
+
+const transitions = window.pokeToolsTransitions || {
+  swap(_target, render) {
+    render();
+  },
+  pageReady() {},
 };
 
 function t(key, vars = {}) {
@@ -245,7 +270,45 @@ function renderTypes(species) {
   const node = $('dex-type-list');
   if (!node) return;
   const types = species.types || [];
-  node.innerHTML = types.map(type => `<img class="move-type-icon-chip" src="https://play.pokemonshowdown.com/sprites/types/${type}.png" alt="${type}" loading="lazy">`).join('');
+  node.innerHTML = types.map(type => {
+    const href = `./pokedex.html?tab=pokemon&type=${encodeURIComponent(type)}`;
+    return `<a class="dex-type-link" href="${href}" title="${type}"><img class="move-type-icon-chip" src="https://play.pokemonshowdown.com/sprites/types/${type}.png" alt="${type}" loading="lazy"></a>`;
+  }).join('');
+}
+
+function getAllDexSpecies() {
+  return [...(state.data?.species || []), ...(state.data?.megaSpecies || [])];
+}
+
+function getStatRankInfo(statKey, value) {
+  const values = getAllDexSpecies()
+    .map(entry => toNumber(entry?.baseStats?.[statKey], 0))
+    .filter(entry => Number.isFinite(entry));
+  if (!values.length) return { rank: 0, total: 0 };
+  const sorted = [...values].sort((left, right) => right - left);
+  const firstIndex = sorted.findIndex(entry => entry === value);
+  return { rank: (firstIndex >= 0 ? firstIndex + 1 : sorted.length), total: sorted.length };
+}
+
+function getHeatmapColor(value) {
+  const ratio = clamp(toNumber(value, 0), 1, 255) / 255;
+  const hue = Math.round(220 - (ratio * 190));
+  const lightness = Math.round(58 - (ratio * 14));
+  return `hsl(${hue} 78% ${lightness}%)`;
+}
+
+function getTotalStatRankInfo(totalValue) {
+  const values = getAllDexSpecies()
+    .map(entry => {
+      const stats = entry?.baseStats || {};
+      return toNumber(stats.hp, 0) + toNumber(stats.atk, 0) + toNumber(stats.def, 0)
+        + toNumber(stats.spa, 0) + toNumber(stats.spd, 0) + toNumber(stats.spe, 0);
+    })
+    .filter(value => Number.isFinite(value));
+  if (!values.length) return { rank: 0, total: 0 };
+  const sorted = [...values].sort((left, right) => right - left);
+  const firstIndex = sorted.findIndex(value => value === totalValue);
+  return { rank: (firstIndex >= 0 ? firstIndex + 1 : sorted.length), total: sorted.length };
 }
 
 function renderStats(species) {
@@ -253,15 +316,39 @@ function renderStats(species) {
   if (!node) return;
   const stats = species.baseStats || {};
   const entries = [
-    ['HP', stats.hp || 0],
-    ['Atk', stats.atk || 0],
-    ['Def', stats.def || 0],
-    ['SpA', stats.spa || 0],
-    ['SpD', stats.spd || 0],
-    ['Spe', stats.spe || 0],
+    [t('hp'), 'hp', stats.hp || 0],
+    [t('atk'), 'atk', stats.atk || 0],
+    [t('def'), 'def', stats.def || 0],
+    [t('spa'), 'spa', stats.spa || 0],
+    [t('spd'), 'spd', stats.spd || 0],
+    [t('spe'), 'spe', stats.spe || 0],
   ];
-  const total = entries.reduce((sum, [, value]) => sum + Number(value || 0), 0);
-  node.innerHTML = `${entries.map(([name, value]) => `<div class="dex-stat-row"><span>${name}</span><span class="mono">${value}</span></div>`).join('')}<div class="dex-stat-row fw-semibold"><span>${t('total')}</span><span class="mono">${total}</span></div>`;
+  const total = entries.reduce((sum, [, , value]) => sum + Number(value || 0), 0);
+  const totalRankInfo = getTotalStatRankInfo(total);
+  const maxStat = 255;
+  transitions.swap(node, () => {
+    node.innerHTML = `
+    <div class="dex-base-stats" role="list" aria-label="base-stats">
+      ${entries.map(([label, key, value]) => {
+        const numeric = clamp(toNumber(value, 0), 0, maxStat);
+        const width = Math.round((numeric / maxStat) * 1000) / 10;
+        const rankInfo = getStatRankInfo(key, numeric);
+        const color = getHeatmapColor(numeric);
+        return `<div class="dex-base-stat-row" role="listitem">
+          <span class="mono dex-base-stat-label">${label}</span>
+          <span class="mono dex-base-stat-value">${numeric}</span>
+          <span class="dex-base-stat-track" aria-hidden="true"><span class="dex-base-stat-fill" style="width:${width}%;background:${color}"></span></span>
+          <span class="dex-base-stat-rank">${t('statRank', { rank: rankInfo.rank, total: rankInfo.total })}</span>
+        </div>`;
+      }).join('')}
+      <div class="dex-base-stat-total">
+        <span>${t('total')}</span>
+        <span class="mono">${total}</span>
+        <span class="dex-base-stat-total-rank">${t('statRank', { rank: totalRankInfo.rank, total: totalRankInfo.total })}</span>
+      </div>
+    </div>
+  `;
+  });
 }
 
 function calcActualStat(base, statKey, ap, natureMultiplier) {
@@ -355,23 +442,13 @@ function renderActualStats(species) {
 
   const stats = species.baseStats || {};
   const rows = [
-    ['HP', 'hp'],
-    ['Atk', 'atk'],
-    ['Def', 'def'],
-    ['SpA', 'spa'],
-    ['SpD', 'spd'],
-    ['Spe', 'spe'],
+    [t('hp'), 'hp'],
+    [t('atk'), 'atk'],
+    [t('def'), 'def'],
+    [t('spa'), 'spa'],
+    [t('spd'), 'spd'],
+    [t('spe'), 'spe'],
   ];
-
-  const header = `
-    <div class="dex-actual-row dex-actual-head">
-      <span>Stat</span>
-      <span>${t('actualBoosted')}</span>
-      <span>${t('actualNeutralMax')}</span>
-      <span>${t('actualNoInvest')}</span>
-      <span>${t('actualLowered')}</span>
-    </div>
-  `;
 
   const body = rows.map(([label, key]) => {
     const base = Number(stats[key] || 0);
@@ -380,21 +457,38 @@ function renderActualStats(species) {
     const noInvest = calcActualStat(base, key, 0, 1);
     const lowered = key === 'hp' ? '-' : calcActualStat(base, key, 0, 0.9);
     const makeValueLink = (value, jumpKind, jumpNature, jumpAp) => `
-      <a href="#" class="mono text-decoration-none" data-jump-kind="${jumpKind}" data-jump-stat="${key}" data-jump-ap="${jumpAp}" data-jump-nature="${jumpNature}">${value}</a>
+      <button type="button" class="btn btn-link p-0 border-0 mono dex-actual-link" data-jump-kind="${jumpKind}" data-jump-stat="${key}" data-jump-ap="${jumpAp}" data-jump-nature="${jumpNature}">${value}</button>
     `;
 
     return `
-      <div class="dex-actual-row">
-        <span class="fw-semibold">${label}</span>
-        <span>${boosted === '-' ? '<span class="mono">-</span>' : makeValueLink(boosted, key === 'spe' ? 'speed' : 'damage', key === 'hp' ? 1 : 1.1, 32)}</span>
-        <span>${makeValueLink(neutral, key === 'spe' ? 'speed' : 'damage', 1, 32)}</span>
-        <span>${makeValueLink(noInvest, key === 'spe' ? 'speed' : 'damage', 1, 0)}</span>
-        <span>${lowered === '-' ? '<span class="mono">-</span>' : makeValueLink(lowered, key === 'spe' ? 'speed' : 'damage', 0.9, 0)}</span>
-      </div>
+      <tr>
+        <th scope="row" class="mono text-center">${label}</th>
+        <td class="text-center">${boosted === '-' ? '<span class="mono">-</span>' : makeValueLink(boosted, key === 'spe' ? 'speed' : 'damage', 1.1, 32)}</td>
+        <td class="text-center">${makeValueLink(neutral, key === 'spe' ? 'speed' : 'damage', 1, 32)}</td>
+        <td class="text-center">${makeValueLink(noInvest, key === 'spe' ? 'speed' : 'damage', 1, 0)}</td>
+        <td class="text-center">${lowered === '-' ? '<span class="mono">-</span>' : makeValueLink(lowered, key === 'spe' ? 'speed' : 'damage', 0.9, 0)}</td>
+      </tr>
     `;
   }).join('');
 
-  node.innerHTML = `${header}${body}`;
+  transitions.swap(node, () => {
+    node.innerHTML = `
+    <div class="table-responsive dex-actual-table-wrap">
+      <table class="table table-sm align-middle mb-0 dex-actual-table">
+        <thead>
+          <tr>
+            <th scope="col" class="mono text-center">${t('statusLabel')}</th>
+            <th scope="col" class="text-center">${t('actualBoosted')}</th>
+            <th scope="col" class="text-center">${t('actualNeutralMax')}</th>
+            <th scope="col" class="text-center">${t('actualNoInvest')}</th>
+            <th scope="col" class="text-center">${t('actualLowered')}</th>
+          </tr>
+        </thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>
+  `;
+  });
 }
 
 function renderAbilities(species) {
@@ -491,14 +585,16 @@ function renderMoves(species) {
     return;
   }
 
-  node.innerHTML = sortedMoves.map(move => {
+  transitions.swap(node, () => {
+    node.innerHTML = sortedMoves.map(move => {
     const typeIcon = `<img class="move-type-icon-chip" src="https://play.pokemonshowdown.com/sprites/types/${move.type}.png" alt="${move.type}" loading="lazy">`;
     const category = move.category || 'Status';
     const categoryIcon = `<img class="move-category-icon" src="https://play.pokemonshowdown.com/sprites/categories/${category}.png" alt="${category}" loading="lazy">`;
     const powerValue = category === 'Status' || Number(move.basePower) === 0 ? '-' : move.basePower;
     const href = `./pokedex-move.html?move=${encodeURIComponent(move.id)}&returnPath=${encodeURIComponent(window.location.pathname + window.location.search)}`;
-    return `<a class="dex-move-row text-decoration-none" href="${href}">${typeIcon}${categoryIcon}<span>${getMoveDisplayName(move)}</span><span class="badge text-bg-light mono">${powerValue}</span></a>`;
+    return `<a class="dex-move-row text-decoration-none" data-type="${move.type}" href="${href}">${typeIcon}${categoryIcon}<span>${getMoveDisplayName(move)}</span><span class="badge text-bg-light mono">${powerValue}</span></a>`;
   }).join('');
+  });
 }
 
 function renderHeader(species) {
@@ -509,10 +605,19 @@ function renderHeader(species) {
 
   const display = getSpeciesDisplayName(species);
   const stats = species.baseStats || {};
+  const weightkg = Number(species.weightkg ?? 0);
+  const lowKickPower = weightkg < 10 ? 20
+    : weightkg < 25 ? 40
+      : weightkg < 50 ? 60
+        : weightkg < 100 ? 80
+          : weightkg < 200 ? 100
+            : 120;
   const statMeta = `H${stats.hp || 0} / A${stats.atk || 0} / B${stats.def || 0} / C${stats.spa || 0} / D${stats.spd || 0} / S${stats.spe || 0}`;
   if (title) title.textContent = display;
   if (name) name.textContent = display;
-  if (meta) meta.textContent = `${statMeta}  ${t('weight', { value: species.weightkg ?? '-' })}`;
+  if (meta) {
+    meta.innerHTML = `<span class="dex-meta-stats mono">${statMeta}</span><span class="dex-meta-break" aria-hidden="true"></span><span class="dex-meta-weight">${t('weight', { value: species.weightkg ?? '-' })}</span><span class="dex-meta-lowkick">${t('lowKickPower', { value: lowKickPower })}</span>`;
+  }
   if (icon) icon.src = getSpeciesIconUrl(species);
 }
 
@@ -598,6 +703,7 @@ async function initialize() {
 
   bindEvents();
   renderAll();
+  transitions.pageReady();
 }
 
 initialize().catch(error => {

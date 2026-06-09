@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>document.documentElement.classList.add('tool-page-loading');</script>
     <title>ポケモンチャンピオンズ ボックス/パーティ</title>
     <meta name="description" content="ポケモンチャンピオンズ用のボックス/パーティ管理ページです。">
     <link rel="shortcut icon" href="./favicon.png">
@@ -130,6 +131,7 @@
               <div class="detail-head-main flex-grow-1">
                 <div class="detail-head-title-row d-flex align-items-center gap-2 flex-nowrap">
                   <input id="detail-nickname" class="form-control" type="text" maxlength="30" placeholder="ニックネーム" title="ニックネームを編集">
+                  <button id="detail-open-pokedex" class="btn btn-outline-secondary detail-head-icon-btn" type="button" title="図鑑を開く" aria-label="図鑑を開く"><i class="bi bi-search"></i></button>
                   <div class="detail-mega-switch" title="メガ進化" aria-label="メガ進化">
                     <input id="detail-mega-enabled" type="checkbox" hidden>
                     <button id="detail-mega-toggle" class="btn detail-mega-toggle" type="button" aria-pressed="false">メガ</button>
@@ -153,6 +155,11 @@
                     <span class="detail-field-icon"><i class="bi bi-person"></i></span>
                     <input id="detail-species" type="hidden">
                     <button id="detail-species-button" class="btn btn-outline-secondary w-100 text-start" type="button"></button>
+                  </div>
+                  <div class="col-12 col-sm-6 detail-field-group" title="フォルムを選択">
+                    <span class="detail-field-icon"><i class="bi bi-stars"></i></span>
+                    <input id="detail-forme" type="hidden">
+                    <button id="detail-forme-button" class="btn btn-outline-secondary w-100 text-start" type="button"></button>
                   </div>
                   <div class="col-12 col-sm-6 detail-field-group" title="とくせいを選択">
                     <span class="detail-field-icon"><i class="bi bi-lightning-charge"></i></span>

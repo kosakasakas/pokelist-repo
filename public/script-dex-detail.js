@@ -95,6 +95,13 @@ const state = {
   current: null,
 };
 
+const transitions = window.pokeToolsTransitions || {
+  swap(_target, render) {
+    render();
+  },
+  pageReady() {},
+};
+
 function t(key, vars = {}) {
   let text = I18N[state.lang]?.[key] || I18N.ja[key] || key;
   Object.entries(vars).forEach(([name, value]) => {
@@ -528,14 +535,19 @@ function renderCurrent() {
     else title.textContent = t('move');
   }
 
+  const root = $('detail-root');
   if (!state.current) {
-    $('detail-root').innerHTML = `<div class="alert alert-warning mb-0">${t('notFound')}</div>`;
+    transitions.swap(root, () => {
+      if (root) root.innerHTML = `<div class="alert alert-warning mb-0">${t('notFound')}</div>`;
+    });
     return;
   }
 
-  if (state.kind === 'ability') renderAbility(state.current);
-  else if (state.kind === 'item') renderItem(state.current);
-  else renderMove(state.current);
+  transitions.swap(root, () => {
+    if (state.kind === 'ability') renderAbility(state.current);
+    else if (state.kind === 'item') renderItem(state.current);
+    else renderMove(state.current);
+  });
 }
 
 async function initialize() {
@@ -564,6 +576,7 @@ async function initialize() {
   if (home) home.href = './pokedex.html';
   bindEvents();
   renderCurrent();
+  transitions.pageReady();
 }
 
 initialize().catch(error => {

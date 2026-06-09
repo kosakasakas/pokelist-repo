@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>document.documentElement.classList.add('tool-page-loading');</script>
     <title>ポケモンチャンピオンズ ダメージ計算</title>
     <meta name="description" content="[Gen 9 Champions] VGC 2026 Reg M-A 向けの静的ダメージ計算ツールです。">
     <link rel="shortcut icon" href="./favicon.png">
@@ -427,6 +428,7 @@
               <div class="detail-head-main flex-grow-1">
                 <div class="detail-head-title-row d-flex align-items-center gap-2 flex-nowrap">
                   <input id="detail-nickname" class="form-control" type="text" maxlength="30" placeholder="ニックネーム" title="ニックネームを編集">
+                  <button id="detail-open-pokedex" class="btn btn-outline-secondary detail-head-icon-btn" type="button" title="図鑑を開く" aria-label="図鑑を開く"><i class="bi bi-search"></i></button>
                   <div class="detail-mega-switch" title="メガ進化" aria-label="メガ進化">
                     <input id="detail-mega-enabled" type="checkbox" hidden>
                     <button id="detail-mega-toggle" class="btn detail-mega-toggle" type="button" aria-pressed="false">メガ</button>
@@ -534,9 +536,28 @@
           <div class="modal-footer justify-content-between">
             <div></div>
             <div class="d-flex gap-2 detail-footer-actions">
+              <button id="detail-export-pokepaste" class="btn btn-outline-secondary px-4" type="button">Pokepaste出力</button>
               <button id="detail-delete" class="btn btn-outline-secondary px-4" type="button">削除</button>
               <button id="detail-save" class="btn btn-primary px-4" type="button">保存</button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="detail-export-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="detail-export-title">Pokepaste 出力</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <textarea id="detail-export-text" class="form-control" rows="9" readonly></textarea>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">閉じる</button>
+            <button id="detail-export-copy" class="btn btn-primary" type="button">コピー</button>
           </div>
         </div>
       </div>

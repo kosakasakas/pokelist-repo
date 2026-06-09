@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>document.documentElement.classList.add('tool-page-loading');</script>
     <title>図鑑</title>
     <meta name="description" content="ポケモン、わざ、とくせいをひとつの検索窓で探す図鑑ページです。">
     <link rel="shortcut icon" href="./favicon.png">
@@ -23,32 +24,44 @@
         <section class="col-12 col-xxl-8">
           <section class="card panel-card dex-browser-shell">
             <div class="card-body">
-              <div class="row g-2 align-items-center mb-3">
-                <div class="col-12 col-xl-7">
-                  <div class="input-group input-group-lg dex-search-group">
-                    <input id="dex-search" class="form-control" type="search" data-i18n-placeholder="searchPlaceholderPokemon" placeholder="ポケモン名で検索" autocomplete="off">
-                    <button class="btn btn-outline-secondary" type="button" id="dex-search-clear">×</button>
+              <section class="dex-search-section mb-3">
+                <h2 class="h5 mb-2 d-flex align-items-center gap-2" data-i18n="searchSectionTitle"><i class="bi bi-search"></i><span>図鑑検索</span></h2>
+                <ul class="nav nav-tabs dex-tabs mb-2" role="tablist">
+                  <li class="nav-item" role="presentation"><button class="nav-link active" type="button" data-tab="all" data-i18n="tabAll">全データ</button></li>
+                  <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="pokemon" data-i18n="tabPokemon">ポケモン</button></li>
+                  <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="move" data-i18n="tabMove">わざ</button></li>
+                  <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="ability" data-i18n="tabAbility">とくせい</button></li>
+                  <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="item" data-i18n="tabItem">どうぐ</button></li>
+                </ul>
+                <div class="row g-2 align-items-center">
+                  <div class="col-12 col-xl-7">
+                    <div class="input-group dex-search-group">
+                      <input id="dex-search" class="form-control" type="search" data-i18n-placeholder="searchPlaceholderPokemon" placeholder="ポケモン名で検索" autocomplete="off">
+                      <button class="btn btn-outline-secondary" type="button" id="dex-search-clear">×</button>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5 text-xl-end">
+                    <span id="dex-result-count" class="badge text-bg-light dex-result-count">-</span>
                   </div>
                 </div>
-                <div class="col-12 col-xl-5 text-xl-end">
-                  <span id="dex-result-count" class="badge text-bg-light dex-result-count">-</span>
+                <div id="dex-search-results" class="dex-search-results mt-3"></div>
+              </section>
+
+              <section class="dex-ranking-section">
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-3 dex-ranking-head">
+                  <h2 class="h5 mb-0 d-flex align-items-center gap-2" id="dex-results-title" data-i18n="rankingSectionTitle"><i class="bi bi-trophy-fill"></i><span>種族値ランキング</span></h2>
+                  <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <select id="dex-ranking-sort" class="form-select form-select-sm dex-ranking-sort" aria-label="ranking-sort">
+                      <option value="desc" data-i18n="sortDesc">高い順</option>
+                      <option value="asc" data-i18n="sortAsc">低い順</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-
-              <ul class="nav nav-tabs dex-tabs mb-3" role="tablist">
-                <li class="nav-item" role="presentation"><button class="nav-link active" type="button" data-tab="all" data-i18n="tabAll">全データ</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="pokemon" data-i18n="tabPokemon">ポケモン</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="move" data-i18n="tabMove">わざ</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="ability" data-i18n="tabAbility">とくせい</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" type="button" data-tab="item" data-i18n="tabItem">どうぐ</button></li>
-              </ul>
-
-              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-                <h2 class="h5 mb-0" id="dex-results-title" data-i18n="resultsTitle">検索結果</h2>
-                <span class="text-muted small">Enter で検索更新</span>
-              </div>
-
-              <div id="dex-results" class="dex-results"></div>
+                <div id="dex-results" class="dex-results"></div>
+                <div class="d-flex justify-content-center mt-3">
+                  <button id="dex-ranking-more" type="button" class="btn btn-outline-secondary btn-sm" data-i18n="loadMore">もっと見る</button>
+                </div>
+              </section>
             </div>
           </section>
         </section>

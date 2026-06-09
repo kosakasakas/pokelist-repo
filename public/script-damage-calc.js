@@ -56,7 +56,7 @@ const I18N = {
     pickerItem: 'もちものを選択',
     pickerSpecies: 'ポケモンを選択',
     pickerImportShowdown: 'Pokepaste（Showdown形式）から読み込み',
-    pickerImportOpenButton: 'アイコン + Pokepaste',
+    pickerImportOpenButton: 'Pokepaste',
     pickerImportTitle: 'Pokepaste 読み込み',
     pickerImportPlaceholder: 'ここに Showdown 形式の構築テキストを貼り付け',
     pickerImportButton: '読み込んで追加',
@@ -67,6 +67,7 @@ const I18N = {
     detailExportTitle: 'Pokepaste 出力',
     detailExportCopy: 'コピー',
     detailExportCopied: 'Pokepaste をコピーしました。',
+    detailOpenPokedex: '図鑑を開く',
     pickerAbility: 'とくせいを選択',
     statusMoveError: 'このわざは変化技のためダメージは 0 です。',
     noDamageError: '威力0のためダメージは 0 です。',
@@ -146,7 +147,7 @@ const I18N = {
     pickerItem: 'Select Item',
     pickerSpecies: 'Select Pokemon',
     pickerImportShowdown: 'Import from Pokepaste (Showdown format)',
-    pickerImportOpenButton: 'Icon + Pokepaste',
+    pickerImportOpenButton: 'Pokepaste',
     pickerImportTitle: 'Pokepaste Import',
     pickerImportPlaceholder: 'Paste Showdown team text here',
     pickerImportButton: 'Import and add',
@@ -157,6 +158,7 @@ const I18N = {
     detailExportTitle: 'Pokepaste Export',
     detailExportCopy: 'Copy',
     detailExportCopied: 'Copied Pokepaste text.',
+    detailOpenPokedex: 'Open Pokedex',
     pickerAbility: 'Select Ability',
     statusMoveError: 'Status move. Damage is 0.',
     noDamageError: 'Power is 0. Damage is 0.',
@@ -249,6 +251,8 @@ const STAT_LABELS = { ja: { atk: '攻撃', def: '防御', spa: '特攻', spd: '�
 
 const FORME_NAME_JA = {
   Alola: 'アローラ', Hisui: 'ヒスイ', Galar: 'ガラル', Paldea: 'パルデア', Pirouette: 'ステップ',
+  Heat: 'ヒート', Wash: 'ウォッシュ', Frost: 'フロスト', Fan: 'スピン', Mow: 'カット',
+  Blade: 'ブレード', Shield: 'シールド', Incarnate: 'けしん', Therian: 'れいじゅう',
   Archipelago: 'ぐんとう', Continental: 'たいりく', Elegant: 'みやび', Fancy: 'ファンシー', Garden: 'ガーデン',
   HighPlains: 'こうや', IcySnow: 'ゆきぐに', Jungle: 'ジャングル', Marine: 'マリン', Modern: 'モダン',
   Monsoon: 'スコール', Ocean: 'オーシャン', Pokeball: 'モンスターボール', Polar: 'ひょうせつ', River: 'リバー',
@@ -351,7 +355,17 @@ const state = {
   mobileSwipeAnimTimer: null,
 };
 
+const transitions = window.pokeToolsTransitions || {
+  animateSwap(_target) {},
+  pageReady() {},
+  runWithButtonLoading(_button, action) { action(); },
+};
+
 const MOBILE_BATTLE_TAB_ORDER = ['result', 'attacker', 'defender', 'settings'];
+
+const NAMED_DEFAULT_FORM_LABELS = {
+  aegislash: { ja: 'シールド', en: 'Shield' },
+};
 
 const $ = id => document.getElementById(id);
 const t = (key, vars = {}) => {
@@ -408,6 +422,14 @@ function getStandaloneReturnPath() {
   } catch (_error) {
     return fallback;
   }
+}
+
+function getDetailRequestPokemonIdFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const fromOpenDetail = String(params.get('openDetail') || '').trim();
+  if (fromOpenDetail) return fromOpenDetail;
+  const fromLegacy = String(params.get('pokemonId') || '').trim();
+  return fromLegacy || null;
 }
 
 function setupDetailEmbedLayout() {
@@ -555,24 +577,22 @@ function getMobileTabDirection(fromTab, toTab) {
 
 function setMobileBattleTab(tab, options = {}) {
   const normalized = ['result', 'attacker', 'defender', 'settings'].includes(tab) ? tab : 'settings';
-  const current = getCurrentMobileBattleTab();
-  const direction = options.direction || getMobileTabDirection(current, normalized);
-  const shouldAnimate = options.animate !== false
-    && window.matchMedia('(max-width: 991.98px)').matches
-    && current !== normalized
-    && Boolean(direction);
+  const root = $('mobile-battle-tabs');
+  if (root) {
+    root.classList.remove('d-none');
+    root.style.display = 'grid';
+    root.style.visibility = 'visible';
+    root.style.opacity = '1';
+    root.style.zIndex = '1300';
+  }
   document.body.classList.toggle('mobile-panel-attacker', normalized === 'attacker');
   document.body.classList.toggle('mobile-panel-settings', normalized === 'settings');
   document.body.classList.toggle('mobile-panel-defender', normalized === 'defender');
   document.body.classList.toggle('mobile-panel-result', normalized === 'result');
   document.body.classList.remove('mobile-swipe-forward', 'mobile-swipe-backward');
-  if (shouldAnimate) {
-    document.body.classList.add(direction === 'backward' ? 'mobile-swipe-backward' : 'mobile-swipe-forward');
-    if (state.mobileSwipeAnimTimer) window.clearTimeout(state.mobileSwipeAnimTimer);
-    state.mobileSwipeAnimTimer = window.setTimeout(() => {
-      document.body.classList.remove('mobile-swipe-forward', 'mobile-swipe-backward');
-      state.mobileSwipeAnimTimer = null;
-    }, 280);
+  if (state.mobileSwipeAnimTimer) {
+    window.clearTimeout(state.mobileSwipeAnimTimer);
+    state.mobileSwipeAnimTimer = null;
   }
   const attackerButton = $('mobile-battle-tab-attacker');
   const settingsButton = $('mobile-battle-tab-settings');
@@ -1334,32 +1354,30 @@ function buildLearnsetOptions(speciesId) {
   const learnedMoveIds = new Set();
   const exactById = state.learnsetBySpeciesId.get(species.id);
   if (exactById && exactById.size) exactById.forEach(moveId => learnedMoveIds.add(moveId));
-  if (!learnedMoveIds.size) {
-    const exactLearned = state.learnsetBySpeciesNum.get(species.num);
-    if (exactLearned && exactLearned.size) {
-      exactLearned.forEach(moveId => learnedMoveIds.add(moveId));
+  const exactLearned = state.learnsetBySpeciesNum.get(species.num);
+  if (exactLearned && exactLearned.size) {
+    exactLearned.forEach(moveId => learnedMoveIds.add(moveId));
+  }
+  // Merge same-family learnsets so appliance forms (e.g. Rotom-Wash)
+  // keep shared base moves in addition to form-specific moves.
+  const speciesNums = new Set([species.num]);
+  const speciesIds = new Set([species.id]);
+  state.speciesById.forEach(entry => {
+    if (entry.baseSpecies === species.baseSpecies) {
+      speciesNums.add(entry.num);
+      speciesIds.add(entry.id);
     }
-  }
-  if (!learnedMoveIds.size) {
-    const speciesNums = new Set([species.num]);
-    const speciesIds = new Set([species.id]);
-    state.speciesById.forEach(entry => {
-      if (entry.baseSpecies === species.baseSpecies) {
-        speciesNums.add(entry.num);
-        speciesIds.add(entry.id);
-      }
-    });
-    speciesIds.forEach(id => {
-      const learned = state.learnsetBySpeciesId.get(id);
-      if (!learned || !learned.size) return;
-      learned.forEach(moveId => learnedMoveIds.add(moveId));
-    });
-    speciesNums.forEach(num => {
-      const learned = state.learnsetBySpeciesNum.get(num);
-      if (!learned || !learned.size) return;
-      learned.forEach(moveId => learnedMoveIds.add(moveId));
-    });
-  }
+  });
+  speciesIds.forEach(id => {
+    const learned = state.learnsetBySpeciesId.get(id);
+    if (!learned || !learned.size) return;
+    learned.forEach(moveId => learnedMoveIds.add(moveId));
+  });
+  speciesNums.forEach(num => {
+    const learned = state.learnsetBySpeciesNum.get(num);
+    if (!learned || !learned.size) return;
+    learned.forEach(moveId => learnedMoveIds.add(moveId));
+  });
   const sourceMoves = learnedMoveIds.size
     ? [...learnedMoveIds].map(moveId => state.movesById.get(moveId)).filter(Boolean)
     : [...state.data.moves];
@@ -1496,7 +1514,11 @@ function fillSpeciesField(fieldId, selectedId) {
 function toShortFormLabel(species) {
   if (!species) return '-';
   const forme = String(species.forme || '').trim();
-  if (!forme) return state.lang === 'ja' ? '通常' : 'Base';
+  if (!forme) {
+    const special = NAMED_DEFAULT_FORM_LABELS[toId(species.id || '')];
+    if (special) return state.lang === 'ja' ? special.ja : special.en;
+    return state.lang === 'ja' ? '通常' : 'Base';
+  }
   const lower = forme.toLowerCase();
   if (lower.startsWith('mega')) {
     if (lower.includes('-x') || lower.endsWith(' x')) return state.lang === 'ja' ? 'メガX' : 'Mega X';
@@ -1866,6 +1888,10 @@ function applyI18n() {
     if (I18N[state.lang][key]) node.textContent = I18N[state.lang][key];
   });
   if ($('detail-export-pokepaste')) $('detail-export-pokepaste').textContent = t('detailExportPokepaste');
+  if ($('detail-open-pokedex')) {
+    $('detail-open-pokedex').title = t('detailOpenPokedex');
+    $('detail-open-pokedex').setAttribute('aria-label', t('detailOpenPokedex'));
+  }
   if ($('picker-search')) $('picker-search').placeholder = t('pickerSearch');
 }
 
@@ -1902,8 +1928,9 @@ function syncSpreadOptionAvailability(move) {
   if (!spreadInput) return;
   const spreadLabel = document.querySelector('label[for="is-spread"]');
   const enabled = isSpreadDamageMove(move);
+  const defaultEnabled = readDoubleBattleModeEnabled();
   spreadInput.disabled = !enabled;
-  if (!enabled) spreadInput.checked = false;
+  spreadInput.checked = defaultEnabled;
   if (spreadLabel) spreadLabel.classList.toggle('text-muted', !enabled);
 }
 
@@ -1934,7 +1961,7 @@ function restoreSidesFromCalcLinks() {
     if (!linkedId) return;
     const pokemon = getPokemonById(linkedId);
     if (!pokemon) return;
-    applyStoredPokemonToSide(side, pokemon, { silent: true });
+    applyStoredPokemonToSide(side, pokemon, { silent: true, applyMove: false });
     restored = true;
   });
   return restored;
@@ -2180,7 +2207,7 @@ function calculateDamageRange(input) {
   if (hasAbility(attackerAbilityId, ['Technician']) && power <= 60) movePowerMultiplier *= 1.5;
   if (input.terrain === 'grassy' && ['earthquake', 'bulldoze', 'magnitude'].includes(move.id)) movePowerMultiplier *= 0.5;
   const critMultiplier = input.isCrit ? 1.5 : 1;
-  const spreadMultiplier = input.isSpread ? 0.75 : 1;
+  const spreadMultiplier = (input.isSpread && isSpreadDamageMove(move)) ? 0.75 : 1;
   const helpingHandMultiplier = input.isHelpingHand ? 1.5 : 1;
   let screenMultiplier = 1;
   if (!input.isCrit) {
@@ -2819,7 +2846,7 @@ function pokemonToSideOverride(pokemon, side) {
 
 function applyStoredPokemonToSide(side, pokemon, options = {}) {
   if (!hasCalcPage()) return;
-  const { silent = false } = options;
+  const { silent = false, applyMove = true } = options;
   const preferredFormeSpeciesId = (() => {
     if (!pokemon?.megaEnabled) return pokemon.speciesId;
     const megaForm = getMegaFormForSpecies(pokemon.speciesId, pokemon.itemId || '');
@@ -2853,7 +2880,7 @@ function applyStoredPokemonToSide(side, pokemon, options = {}) {
     $('attacker-rank-spa').value = clamp(toNumber(pokemon.ranks.spa), -6, 6);
     $('attacker-rank-spd').value = clamp(toNumber(pokemon.ranks.spd), -6, 6);
     $('attacker-rank-spe').value = clamp(toNumber(pokemon.ranks.spe), -6, 6);
-    if (pokemon.moveIds[0]) {
+    if (applyMove && pokemon.moveIds[0]) {
       $('move-select').value = pokemon.moveIds[0];
       updatePickerButtonLabel('move-select');
       recalcMoveFields();
@@ -3414,6 +3441,7 @@ function renderDetailCalcHistory(pokemon) {
 function renderDetailMoveList(pokemon) {
   if (!$('detail-move-list')) return;
   const container = $('detail-move-list');
+  transitions.animateSwap(container);
   container.innerHTML = '';
   state.dynamicPickerMeta = Object.fromEntries(Object.entries(state.dynamicPickerMeta).filter(([fieldId]) => !fieldId.startsWith('detail-move-')));
   for (let index = 0; index < 4; index += 1) {
@@ -3669,6 +3697,13 @@ function openDetailPokepasteExportModal() {
   state.detailExport.modal.show();
 }
 
+function openDetailPokedex() {
+  const speciesId = $('detail-species')?.value || getCurrentDetailPokemon()?.speciesId;
+  if (!speciesId) return;
+  const returnPath = encodeURIComponent(window.location.pathname + window.location.search);
+  window.location.href = `./pokedex-pokemon.html?species=${encodeURIComponent(speciesId)}&returnPath=${returnPath}`;
+}
+
 async function copyDetailPokepasteText() {
   const text = $('detail-export-text')?.value || '';
   if (!text) return;
@@ -3761,6 +3796,7 @@ function renderDetailHeadSummary(pokemon) {
     }).join('');
     $('detail-head-meta').innerHTML = `<span class="entity-icons">${typeIcons}</span>`;
   }
+  transitions.animateSwap($('pokemon-detail-modal'));
 }
 
 function populateDetailForm(pokemon) {
@@ -3799,6 +3835,7 @@ function openPokemonDetail(pokemonId) {
   state.detail.editingPokemonId = pokemonId;
   populateDetailForm(pokemon);
   state.detail.modal.show();
+  transitions.pageReady();
 }
 
 function readDetailPokemonFromForm() {
@@ -4000,6 +4037,7 @@ function renderPickerList(query) {
       button.textContent = option.label;
     }
     button.addEventListener('click', () => {
+      transitions.runWithButtonLoading(button, () => {
       const fieldId = state.picker.currentField;
       const isSpeciesField = fieldId === 'attacker-species' || fieldId === 'defender-species';
       const isFormeField = fieldId === 'attacker-forme' || fieldId === 'defender-forme' || fieldId === 'detail-forme';
@@ -4039,6 +4077,12 @@ function renderPickerList(query) {
             $('detail-species').value = option.value;
             updatePickerButtonLabel('detail-species');
             syncDetailMegaToggle($('detail-ability')?.value || '');
+            const draft = readDetailPokemonFromForm() || getCurrentDetailPokemon();
+            if (draft) {
+              updateDetailStatSummaries();
+              refreshDetailDerivedViews(draft);
+              renderDetailMoveList(draft);
+            }
           } else {
             const side = fieldId.startsWith('attacker') ? 'attacker' : 'defender';
             $(`${side}-species`).value = option.value;
@@ -4088,6 +4132,7 @@ function renderPickerList(query) {
         calculateAndRender();
       }
       state.picker.modal.hide();
+      });
     });
     list.appendChild(button);
   });
@@ -4168,7 +4213,10 @@ function setupDefaults() {
     setActiveToggle('terrain', remembered.terrain || 'none');
     if ($('is-crit')) $('is-crit').checked = Boolean(remembered.isCrit);
     if ($('is-burn')) $('is-burn').checked = Boolean(remembered.isBurn);
-    if ($('is-spread')) $('is-spread').checked = Boolean(remembered.isSpread);
+    if ($('is-spread')) {
+      const defaultSpread = readDoubleBattleModeEnabled();
+      $('is-spread').checked = defaultSpread || Boolean(remembered.isSpread);
+    }
     if ($('is-helping-hand')) $('is-helping-hand').checked = Boolean(remembered.isHelpingHand);
     if ($('reflect')) $('reflect').checked = Boolean(remembered.reflect);
     if ($('light-screen')) $('light-screen').checked = Boolean(remembered.lightScreen);
@@ -4602,6 +4650,7 @@ function initDetailModal() {
     const saved = saveDetailPokemon();
     if (saved) state.detail.modal.hide();
   });
+  if ($('detail-open-pokedex')) $('detail-open-pokedex').addEventListener('click', openDetailPokedex);
   if ($('detail-export-pokepaste')) $('detail-export-pokepaste').addEventListener('click', openDetailPokepasteExportModal);
   $('detail-delete').addEventListener('click', removeDetailPokemon);
   $('detail-apply-attacker').addEventListener('click', () => {
@@ -4882,7 +4931,8 @@ async function initialize() {
   if (hasManagerPage() && state.detail.modal) {
     try {
       const openRequest = JSON.parse(localStorage.getItem(OPEN_DETAIL_REQUEST_KEY) || 'null');
-      if (openRequest?.pokemonId && getPokemonById(openRequest.pokemonId)) openPokemonDetail(openRequest.pokemonId);
+      const requestedId = openRequest?.pokemonId || getDetailRequestPokemonIdFromQuery();
+      if (requestedId && getPokemonById(requestedId)) openPokemonDetail(requestedId);
       else if (isDetailStandaloneMode()) window.location.href = getStandaloneReturnPath();
     } catch (_error) {
       // ignore invalid persisted state

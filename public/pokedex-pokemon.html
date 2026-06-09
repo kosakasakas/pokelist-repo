@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>document.documentElement.classList.add('tool-page-loading');</script>
     <title>図鑑詳細</title>
     <meta name="description" content="ポケモン詳細図鑑ページです。">
     <link rel="shortcut icon" href="./favicon.png">
@@ -70,8 +71,8 @@
           </section>
 
           <section class="card panel-card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-              <span data-i18n="moves">覚える技</span>
+            <div class="card-header d-flex justify-content-between align-items-center dex-moves-header">
+              <span class="dex-moves-title" data-i18n="moves">覚える技</span>
               <input id="dex-move-search" class="form-control form-control-sm dex-move-search" type="search" placeholder="技を検索" data-i18n-placeholder="moveSearch">
             </div>
             <div class="card-body">

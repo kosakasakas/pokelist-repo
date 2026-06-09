@@ -22,6 +22,79 @@ function ensureGlobalFont() {
   }
 }
 
+function createTransitionApi() {
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let readyCalled = false;
+  let fallbackTimer = null;
+
+  function pageReady() {
+    if (readyCalled) return;
+    readyCalled = true;
+    if (fallbackTimer) window.clearTimeout(fallbackTimer);
+    document.documentElement.classList.remove('tool-page-loading');
+    document.documentElement.classList.add('tool-page-ready');
+  }
+
+  function animateSwap(target) {
+    if (!target || prefersReducedMotion || typeof target.animate !== 'function') return;
+    target.animate([
+      { opacity: 0.55, transform: 'translateY(4px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], {
+      duration: 180,
+      easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)',
+    });
+  }
+
+  function setButtonLoading(button, isLoading) {
+    if (!button) return;
+    button.classList.toggle('tool-button-loading', Boolean(isLoading));
+    button.setAttribute('aria-busy', String(Boolean(isLoading)));
+  }
+
+  function runWithButtonLoading(button, action) {
+    if (!button || typeof action !== 'function') {
+      action();
+      return;
+    }
+    setButtonLoading(button, true);
+    window.requestAnimationFrame(() => {
+      try {
+        action();
+      } finally {
+        window.setTimeout(() => setButtonLoading(button, false), 120);
+      }
+    });
+  }
+
+  function swap(target, render) {
+    if (!target || typeof render !== 'function') {
+      render();
+      return;
+    }
+    if (prefersReducedMotion || typeof target.animate !== 'function') {
+      render();
+      return;
+    }
+    target.animate([
+      { opacity: 1, transform: 'translateY(0)' },
+      { opacity: 0.35, transform: 'translateY(-2px)' },
+    ], {
+      duration: 90,
+      easing: 'ease-in',
+    });
+    window.setTimeout(() => {
+      render();
+      animateSwap(target);
+    }, 80);
+  }
+
+  fallbackTimer = window.setTimeout(pageReady, 1200);
+  window.addEventListener('load', pageReady, { once: true });
+
+  return { pageReady, animateSwap, swap, setButtonLoading, runWithButtonLoading };
+}
+
 function ensureHeaderStyles() {
   if (document.getElementById('tool-layout-inline-style')) return;
   const style = document.createElement('style');
@@ -301,6 +374,7 @@ window.pokeToolsLayout = {
   readDoubleBattleMode,
   writeDoubleBattleMode,
 };
+window.pokeToolsTransitions = createTransitionApi();
 async function loadLayoutConfig() {
   try {
     const response = await fetch(TOOL_LAYOUT_CONFIG_URL, { cache: 'no-store' });

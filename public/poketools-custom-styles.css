@@ -4,6 +4,59 @@
   line-height: 1.2;
 }
 
+html.tool-page-loading body {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+html.tool-page-ready body {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+
+body {
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+
+.tool-swap-ready {
+  will-change: opacity, transform;
+}
+
+.tool-swap-ready .dex-result-card,
+.tool-swap-ready .dex-result-list,
+.tool-swap-ready .dex-move-row,
+.tool-swap-ready .dex-base-stats,
+.tool-swap-ready .dex-moves-grid,
+.tool-swap-ready .speed-group-stack,
+.tool-swap-ready .detail-speed-memo-row,
+.tool-swap-ready .calc-history-item {
+  will-change: opacity, transform;
+}
+
+.tool-button-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.86;
+}
+
+.tool-button-loading::after {
+  content: '';
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-left: 0.45rem;
+  vertical-align: -0.1rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: tool-spin 0.65s linear infinite;
+}
+
+@keyframes tool-spin {
+  to { transform: rotate(360deg); }
+}
+
 .calc-subtitle {
   color: #6b7280;
   font-size: 0.8rem;
@@ -36,18 +89,86 @@
   border-radius: 0.75rem;
 }
 
+.dex-search-section {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  padding-bottom: 0.9rem;
+}
+
+.dex-ranking-section {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.dex-search-section .h5 i,
+.dex-ranking-section .h5 i {
+  font-size: 1rem;
+  color: #334155;
+}
+
+.dex-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.dex-tabs .nav-item {
+  flex: 0 0 auto;
+  margin-bottom: -1px;
+}
+
 .dex-tabs .nav-link {
-  border-radius: 999px;
+  border-radius: 0.65rem 0.65rem 0 0;
+  border: 1px solid transparent;
+  color: #475569;
+  background: transparent;
+  font-weight: 600;
+}
+
+.dex-tabs .nav-link:hover,
+.dex-tabs .nav-link:focus-visible {
+  border-color: rgba(148, 163, 184, 0.28);
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+.dex-tabs .nav-link.active {
+  color: #0f172a;
+  background: #ffffff;
+  border-color: rgba(148, 163, 184, 0.35) rgba(148, 163, 184, 0.35) #ffffff;
+}
+
+.dex-ranking-sort {
+  min-width: 8.5rem;
+}
+
+.dex-search-results {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.dex-ranking-head {
+  flex-wrap: nowrap;
 }
 
 .dex-results,
 .dex-result-list,
 .dex-move-grid,
-.dex-type-list,
 .dex-stats-grid,
 .dex-actual-grid {
   display: grid;
   gap: 0.75rem;
+}
+
+.dex-type-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 
 .dex-results {
@@ -121,6 +242,22 @@
   font-size: 0.82rem;
 }
 
+.dex-detail-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 0.9rem;
+  row-gap: 0.18rem;
+}
+
+.dex-meta-stats {
+  font-weight: 600;
+}
+
+.dex-meta-break {
+  display: none;
+}
+
 .dex-result-snippet {
   color: #334155;
   font-size: 0.9rem;
@@ -136,6 +273,18 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+}
+
+.dex-type-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: #f8fafc;
+  padding: 0.16rem 0.35rem;
+  text-decoration: none;
 }
 
 .dex-chip,
@@ -186,6 +335,187 @@
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
+.dex-base-stats {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.dex-base-stat-row {
+  display: grid;
+  grid-template-columns: 4.8rem 3rem minmax(0, 1fr) 6.3rem;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.dex-base-stat-label {
+  font-weight: 700;
+  color: #1e293b;
+  text-align: left;
+  font-size: 0.84rem;
+}
+
+.dex-base-stat-value {
+  color: #475569;
+  text-align: right;
+}
+
+.dex-base-stat-track {
+  display: block;
+  width: 100%;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.dex-base-stat-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+}
+
+.dex-base-stat-fill-hp { background: linear-gradient(90deg, #4ade80, #16a34a); }
+.dex-base-stat-fill-atk { background: linear-gradient(90deg, #fb7185, #e11d48); }
+.dex-base-stat-fill-def { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+.dex-base-stat-fill-spa { background: linear-gradient(90deg, #60a5fa, #2563eb); }
+.dex-base-stat-fill-spd { background: linear-gradient(90deg, #a78bfa, #7c3aed); }
+.dex-base-stat-fill-spe { background: linear-gradient(90deg, #22d3ee, #0ea5e9); }
+
+.dex-base-stat-total {
+  margin-top: 0.2rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  column-gap: 0.5rem;
+  font-weight: 700;
+}
+
+.dex-base-stat-total-rank {
+  justify-self: end;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.dex-base-stat-rank {
+  text-align: right;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.dex-actual-table-wrap {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.dex-actual-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+.dex-actual-table thead th {
+  background: #f8fafc;
+  white-space: normal;
+  font-size: 0.69rem;
+  line-height: 1.15;
+  padding: 0.24rem 0.16rem;
+}
+
+.dex-actual-table tbody th {
+  background: #f8fafc;
+  font-size: 0.69rem;
+  white-space: nowrap;
+  line-height: 1.15;
+  padding: 0.24rem 0.16rem;
+}
+
+.dex-actual-table td {
+  font-size: 0.69rem;
+  white-space: nowrap;
+  line-height: 1.15;
+  padding: 0.24rem 0.16rem;
+}
+
+.dex-moves-header {
+  gap: 0.6rem;
+  flex-wrap: nowrap;
+}
+
+.dex-moves-title {
+  white-space: nowrap;
+}
+
+.dex-move-search {
+  width: 11.5rem;
+  max-width: 48%;
+  min-width: 8.5rem;
+}
+
+.dex-move-row {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.52rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 0.6rem;
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+.dex-move-row:hover,
+.dex-move-row:focus-visible {
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.07);
+  color: #0f172a;
+}
+
+.move-category-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.dex-move-row[data-type="Normal"] { background: rgba(148, 163, 184, 0.12); }
+.dex-move-row[data-type="Fire"] { background: rgba(248, 113, 113, 0.14); }
+.dex-move-row[data-type="Water"] { background: rgba(96, 165, 250, 0.14); }
+.dex-move-row[data-type="Electric"] { background: rgba(250, 204, 21, 0.16); }
+.dex-move-row[data-type="Grass"] { background: rgba(74, 222, 128, 0.14); }
+.dex-move-row[data-type="Ice"] { background: rgba(125, 211, 252, 0.15); }
+.dex-move-row[data-type="Fighting"] { background: rgba(251, 146, 60, 0.14); }
+.dex-move-row[data-type="Poison"] { background: rgba(216, 180, 254, 0.16); }
+.dex-move-row[data-type="Ground"] { background: rgba(180, 83, 9, 0.12); }
+.dex-move-row[data-type="Flying"] { background: rgba(147, 197, 253, 0.14); }
+.dex-move-row[data-type="Psychic"] { background: rgba(244, 114, 182, 0.14); }
+.dex-move-row[data-type="Bug"] { background: rgba(163, 230, 53, 0.14); }
+.dex-move-row[data-type="Rock"] { background: rgba(202, 138, 4, 0.14); }
+.dex-move-row[data-type="Ghost"] { background: rgba(167, 139, 250, 0.14); }
+.dex-move-row[data-type="Dragon"] { background: rgba(99, 102, 241, 0.14); }
+.dex-move-row[data-type="Dark"] { background: rgba(113, 113, 122, 0.16); }
+.dex-move-row[data-type="Steel"] { background: rgba(148, 163, 184, 0.16); }
+.dex-move-row[data-type="Fairy"] { background: rgba(251, 207, 232, 0.2); }
+
+.dex-actual-link {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.dex-actual-link:hover,
+.dex-actual-link:focus-visible {
+  color: #0a58ca;
+  text-decoration: underline;
+}
+
+.dex-ranking-tabs {
+  margin-bottom: 0;
+}
+
 .dex-stat-row {
   display: flex;
   justify-content: space-between;
@@ -216,8 +546,70 @@
     min-height: 48px;
   }
 
+  .dex-tabs .nav-link {
+    font-size: 0.78rem;
+    padding: 0.42rem 0.58rem;
+  }
+
+  .dex-ranking-sort {
+    min-width: 6.8rem;
+    width: 6.8rem;
+    font-size: 0.76rem;
+    padding-top: 0.18rem;
+    padding-bottom: 0.18rem;
+  }
+
   .dex-detail-name {
     font-size: 1.2rem;
+  }
+
+  .dex-base-stat-row {
+    grid-template-columns: 3.6rem 2.3rem minmax(0, 1fr) 4.8rem;
+    gap: 0.34rem;
+  }
+
+  .dex-base-stat-label,
+  .dex-base-stat-value,
+  .dex-base-stat-rank {
+    font-size: 0.7rem;
+  }
+
+  .dex-actual-table {
+    min-width: 0;
+  }
+
+  .dex-meta-break {
+    display: block;
+    flex-basis: 100%;
+    width: 100%;
+    height: 0;
+  }
+
+  .dex-detail-meta {
+    column-gap: 0.6rem;
+  }
+
+  .dex-actual-table thead th,
+  .dex-actual-table tbody th,
+  .dex-actual-table td {
+    font-size: 0.62rem;
+    padding: 0.2rem 0.12rem;
+    letter-spacing: -0.01em;
+  }
+
+  .dex-base-stat-total-rank {
+    font-size: 0.68rem;
+  }
+
+  .dex-moves-title {
+    font-size: 0.92rem;
+  }
+
+  .dex-move-search {
+    width: 8.5rem;
+    min-width: 7.2rem;
+    max-width: 52%;
+    font-size: 0.78rem;
   }
 }
 
@@ -1124,39 +1516,45 @@ body.calc-page .mobile-battle-tabs {
 body.calc-page .mobile-battle-tabs {
   margin-top: 0.95rem;
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(0.35rem + env(safe-area-inset-bottom, 0px));
-  z-index: 120;
-  width: min(calc(100vw - 0.8rem), 760px);
-  padding: 0.32rem;
-  border-radius: 0.95rem;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.97), rgba(241, 245, 249, 0.97));
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
-  backdrop-filter: blur(10px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1300;
+  width: 100%;
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 0.5rem max(0.5rem, env(safe-area-inset-left, 0px)) calc(0.5rem + env(safe-area-inset-bottom, 0px)) max(0.5rem, env(safe-area-inset-right, 0px));
+  border-top: 1px solid rgba(148, 163, 184, 0.35);
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 -6px 20px rgba(15, 23, 42, 0.1);
+  backdrop-filter: none;
 }
 
 body.calc-page .mobile-battle-tabs .btn {
-  border-radius: 0.66rem;
-  border: 1px solid transparent;
-  background: transparent;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #f8fafc;
   color: #475569;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
 body.calc-page .mobile-battle-tabs .btn.active {
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
-  border-color: rgba(59, 130, 246, 0.32);
-  color: #1d4ed8;
+  background: #ffffff;
+  border-color: rgba(14, 165, 233, 0.45);
+  color: #0369a1;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.16);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.14);
 }
 
 body.calc-page .mobile-battle-tabs .btn:not(.active) {
   border-color: rgba(148, 163, 184, 0.35);
-  background: rgba(248, 250, 252, 0.7);
+  background: #f8fafc;
 }
 
 @media (min-width: 992px) {
@@ -1331,6 +1729,17 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   flex-wrap: nowrap;
 }
 
+.detail-head-icon-btn {
+  min-width: 2.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-color: #dbe3ed;
+}
+
 .detail-head-title-row #detail-nickname {
   min-width: 0;
 }
@@ -1492,6 +1901,11 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   min-width: 8.6rem;
 }
 
+.detail-footer-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 @media (max-width: 991.98px) {
   body.box-party-page {
     padding-bottom: 44vh;
@@ -1636,11 +2050,18 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   }
 
   .detail-footer-actions .btn {
-    min-width: 7.6rem;
+    min-width: 0;
+    flex: 1 1 calc(50% - 0.5rem);
   }
 }
 
 @media (max-width: 991.98px) {
+  /* Keep fixed bottom tabs stable on mobile browsers.
+     A transformed body can make fixed children scroll away on some engines. */
+  body.calc-page {
+    transform: none !important;
+  }
+
   body.calc-page {
     padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px));
   }

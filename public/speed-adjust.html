@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>document.documentElement.classList.add('tool-page-loading');</script>
     <title>素早さ調整</title>
     <meta name="description" content="レギュレーション対応の素早さ調整ページです。">
     <link rel="shortcut icon" href="./favicon.png">
@@ -62,49 +63,40 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 0.5rem;
       }
-      @media (min-width: 768px) {
-        .speed-target-main {
-          grid-template-columns: repeat(8, minmax(0, 1fr));
-        }
-      }
-
-      .speed-cell-pokemon { grid-column: span 2; }
-      .speed-cell-edit { grid-column: span 1; }
-      .speed-cell-toggle { grid-column: span 1; }
-      .speed-cell-forme { grid-column: span 2; }
-      .speed-cell-speed { grid-column: span 1; }
-      .speed-cell-nature { grid-column: span 1; }
-      .speed-cell-ap { grid-column: span 2; }
-      .speed-cell-rank { grid-column: span 2; }
-
-      .speed-cell-pokemon { grid-row: 1; grid-column: 1 / span 2; }
-      .speed-cell-forme { grid-row: 1; grid-column: 3 / span 2; }
-      .speed-cell-edit { grid-row: 2; grid-column: 1 / span 1; }
-      .speed-cell-toggle { grid-row: 2; grid-column: 2 / span 1; }
-      .speed-cell-speed { grid-row: 2; grid-column: 3 / span 1; }
-      .speed-cell-nature { grid-row: 2; grid-column: 4 / span 1; }
-      .speed-cell-ap { grid-row: 3; grid-column: 1 / span 2; }
-      .speed-cell-rank { grid-row: 3; grid-column: 3 / span 2; }
-      .speed-cell-save { grid-column: span 4; }
-      @media (min-width: 768px) {
-        .speed-cell-pokemon { grid-row: 1; grid-column: 1 / span 2; }
-        .speed-cell-forme { grid-row: 1; grid-column: 3 / span 2; }
-        .speed-cell-edit { grid-row: 1; grid-column: 5 / span 2; }
-        .speed-cell-toggle { grid-row: 1; grid-column: 7 / span 2; }
-        .speed-cell-speed { grid-row: 2; grid-column: 1 / span 2; }
-        .speed-cell-nature { grid-row: 2; grid-column: 3 / span 2; }
-        .speed-cell-ap { grid-row: 2; grid-column: 5 / span 2; }
-        .speed-cell-rank { grid-row: 2; grid-column: 7 / span 2; }
-        .speed-cell-ap { grid-column: span 2; }
-        .speed-cell-rank { grid-column: span 2; }
-        .speed-cell-save { grid-column: span 2; }
-      }
+      .speed-cell-pokemon { grid-row: 1; grid-column: 1 / span 1; }
+      .speed-cell-forme { grid-row: 1; grid-column: 2 / span 1; }
+      .speed-cell-edit { grid-row: 1; grid-column: 3 / span 1; }
+      .speed-cell-toggle { grid-row: 1; grid-column: 4 / span 1; }
+      .speed-cell-speed { grid-row: 2; grid-column: 1 / span 1; }
+      .speed-cell-nature { grid-row: 2; grid-column: 2 / span 1; }
+      .speed-cell-ap { grid-row: 2; grid-column: 3 / span 1; }
+      .speed-cell-rank { grid-row: 2; grid-column: 4 / span 1; }
 
       .speed-target-main[data-edit-visible="0"] .speed-cell-pokemon {
         grid-column: span 4;
       }
       .speed-target-main[data-edit-visible="0"] .speed-cell-edit {
         display: none;
+      }
+
+      .speed-target-main[data-form-visible="0"] .speed-cell-forme {
+        display: none;
+      }
+
+      .speed-target-main[data-form-visible="0"] .speed-cell-pokemon {
+        grid-column: 1 / span 2;
+      }
+
+      :root {
+        --speed-ui-border: #dbe3ed;
+      }
+
+      .speed-target-main .btn,
+      .speed-target-main .form-select,
+      .speed-target-main .input-group-text,
+      #target-search-scope .btn,
+      #target-search-input {
+        border-color: var(--speed-ui-border) !important;
       }
 
       .speed-target-control-btn,
@@ -119,7 +111,7 @@
       }
 
       .speed-target-picker {
-        justify-content: flex-start;
+        justify-content: center;
         gap: 0.4rem;
         height: 42px;
         min-height: 42px;
@@ -127,7 +119,26 @@
         padding-bottom: 0.25rem;
         overflow: hidden;
       }
-      .speed-target-picker > span {
+      .speed-target-picker-icon-wrap {
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 32px;
+      }
+      .speed-target-picker-icon-wrap .ps-pokemon-icon {
+        width: 32px;
+        height: 32px;
+        max-height: none;
+        object-fit: contain;
+      }
+      .speed-target-picker-icon-wrap .pokemon-icon-fallback {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+      }
+      .speed-target-picker-label {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -139,11 +150,16 @@
         flex: 0 0 32px;
       }
 
+      .speed-target-picker-head-icon {
+        color: #6b7280;
+        flex: 0 0 auto;
+      }
+
       .speed-target-speed-box {
         height: 42px;
-        border: 1px solid var(--bs-border-color);
-        border-radius: var(--bs-border-radius);
-        background: var(--bs-body-bg);
+        border: 0;
+        border-radius: 0;
+        background: transparent;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -151,7 +167,12 @@
         width: 100%;
       }
       .speed-target-speed-box .bi {
-        color: #c68a00;
+        color: #6b7280;
+      }
+
+      .speed-target-main .input-group-text .bi,
+      .speed-target-control-btn .bi {
+        color: #6b7280;
       }
 
       #target-nature-cycle.mode-plus {
@@ -257,46 +278,36 @@
       .ad-banner-mobile { min-height: 100px; width: min(100%, 320px); }
 
       @media (max-width: 767.98px) {
+        .speed-target-main {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .speed-cell-pokemon { grid-row: 1; grid-column: 1 / span 2; }
+        .speed-cell-forme { grid-row: 1; grid-column: 3 / span 2; }
+        .speed-cell-edit { grid-row: 1; grid-column: 5 / span 1; }
+        .speed-cell-toggle { grid-row: 1; grid-column: 6 / span 1; }
+        .speed-cell-speed { grid-row: 2; grid-column: 1 / span 1; }
+        .speed-cell-nature { grid-row: 2; grid-column: 2 / span 1; }
+        .speed-cell-ap { grid-row: 2; grid-column: 3 / span 2; }
+        .speed-cell-rank { grid-row: 2; grid-column: 5 / span 2; }
+
+        .speed-target-main[data-form-visible="0"] .speed-cell-pokemon {
+          grid-column: 1 / span 4;
+        }
+
+        .speed-target-main[data-form-visible="0"] .speed-cell-edit {
+          grid-column: 5 / span 1;
+        }
+
+        .speed-target-main[data-form-visible="0"] .speed-cell-toggle {
+          grid-column: 6 / span 1;
+        }
+
         .ad-mobile-grid {
           grid-template-columns: 1fr;
         }
       }
 
-      .target-box-editor-host {
-        position: fixed;
-        inset: 0;
-        z-index: 1200;
-        background: rgba(15, 23, 42, 0.55);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem;
-      }
-      .target-box-editor-surface {
-        width: min(1280px, 98vw);
-        height: min(900px, 92vh);
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid rgba(148, 163, 184, 0.35);
-        box-shadow: 0 20px 50px rgba(2, 6, 23, 0.35);
-        background: #fff;
-      }
-      .target-box-editor-frame {
-        width: 100%;
-        height: 100%;
-        border: 0;
-        display: block;
-      }
-      @media (max-width: 767.98px) {
-        .target-box-editor-host {
-          padding: 0.25rem;
-        }
-        .target-box-editor-surface {
-          width: 100vw;
-          height: 100vh;
-          border-radius: 0;
-        }
-      }
     </style>
   </head>
   <body class="speed-adjust-page d-flex flex-column">
@@ -323,8 +334,8 @@
             <table class="table table-hover table-striped align-middle" id="speed-table">
               <thead>
                 <tr>
-                  <th scope="col" data-i18n="speedValue" class="bg-light"><i class="bi bi-speedometer2"></i> 実数値</th>
-                  <th scope="col" data-i18n="groupList" class="bg-light">対象群</th>
+                  <th scope="col" class="bg-light text-center" data-i18n="speedValueShort">実数</th>
+                  <th scope="col" class="bg-light text-center" data-i18n="groupListShort">対象</th>
                 </tr>
               </thead>
               <tbody id="speed-table-body"></tbody>
@@ -351,7 +362,7 @@
     <aside class="speed-target-panel fixed-bottom bg-body-tertiary p-3 shadow-lg" id="speed-target-panel">
       <div class="speed-target-main container" data-edit-visible="1">
         <div class="speed-cell-pokemon">
-          <button class="btn btn-outline-primary w-100 speed-target-control-btn speed-target-picker" id="target-picker-trigger" type="button" data-bs-toggle="tooltip" title="調整するポケモンを選択">
+          <button class="btn btn-outline-secondary w-100 speed-target-control-btn speed-target-picker" id="target-picker-trigger" type="button" data-bs-toggle="tooltip" data-i18n-title="targetPokemon" title="調整するポケモンを選択">
             <span data-i18n="loadingTarget">調整対象を読み込み中...</span>
           </button>
         </div>
@@ -366,8 +377,11 @@
           <button id="target-scarf" class="btn btn-outline-secondary w-100 speed-target-control-btn speed-scarf-toggle" type="button" data-bs-toggle="tooltip" data-i18n-title="scarf" title="こだわりスカーフ" aria-pressed="false"></button>
         </div>
 
-        <div class="speed-cell-forme">
-          <select id="target-forme-select" class="form-select speed-forme-select" title="フォルム"></select>
+        <div class="speed-cell-forme" id="target-forme-cell">
+          <div class="input-group speed-forme-group" data-bs-toggle="tooltip" data-i18n-title="targetForm" title="フォルム">
+            <span class="input-group-text"><i class="bi bi-stars"></i></span>
+            <select id="target-forme-select" class="form-select speed-forme-select" title="フォルム"></select>
+          </div>
         </div>
 
         <div class="speed-cell-speed">
@@ -379,7 +393,7 @@
 
         <div class="speed-cell-nature">
           <button id="target-nature-cycle" class="btn btn-outline-secondary w-100 speed-target-control-btn" type="button" data-bs-toggle="tooltip" data-i18n-title="naturePlus" title="性格補正を切替">
-            <span id="target-nature-cycle-text">±0%</span>
+            <span id="target-nature-cycle-text">-</span>
           </button>
         </div>
 
@@ -419,13 +433,6 @@
         </div>
       </div>
     </div>
-
-    <div id="target-box-editor-host" class="target-box-editor-host d-none" aria-hidden="true">
-      <div class="target-box-editor-surface">
-        <iframe id="target-box-editor-frame" class="target-box-editor-frame" src="about:blank" title="ボックス編集"></iframe>
-      </div>
-    </div>
-
     <script src="./script-poketools-layout.js"></script>
     <script src="./script-ads.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

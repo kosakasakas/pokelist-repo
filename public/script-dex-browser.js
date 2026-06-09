@@ -5,6 +5,8 @@ const I18N = {
   ja: {
     title: '図鑑',
     subtitle: 'ポケモン・わざ・特性・どうぐをひとつの検索窓で探す',
+    searchSectionTitle: '図鑑検索',
+    rankingSectionTitle: '種族値ランキング',
     searchPlaceholderAll: '全データから検索',
     searchPlaceholderPokemon: 'ポケモン名で検索',
     searchPlaceholderMove: 'わざ名で検索',
@@ -39,10 +41,26 @@ const I18N = {
     emptyBody: '上のタブを切り替えて、全データをまとめて検索できます。',
     resultsTitle: '検索結果',
     openHome: 'ホーム',
+    rankingTitle: '種族値ランキング',
+    rankingTotal: '合計',
+    rankingHp: 'HP',
+    rankingAtk: 'こうげき',
+    rankingDef: 'ぼうぎょ',
+    rankingSpa: 'とくこう',
+    rankingSpd: 'とくぼう',
+    rankingSpe: 'すばやさ',
+    typeFilter: 'タイプ: {type}',
+    loadMore: 'もっと見る',
+    sortDesc: '高い順',
+    sortAsc: '低い順',
+    baseStatsMini: 'H{hp} A{atk} B{def} C{spa} D{spd} S{spe}',
+    noRankingItems: '対象データがありません。',
   },
   en: {
     title: 'Pokedex',
     subtitle: 'Search Pokemon, moves, abilities, and items from one box',
+    searchSectionTitle: 'Dex Search',
+    rankingSectionTitle: 'Base Stat Ranking',
     searchPlaceholderAll: 'Search everything',
     searchPlaceholderPokemon: 'Search Pokemon',
     searchPlaceholderMove: 'Search moves',
@@ -77,6 +95,20 @@ const I18N = {
     emptyBody: 'Use tabs to search all data in one place.',
     resultsTitle: 'Search results',
     openHome: 'Home',
+    rankingTitle: 'Base Stat Ranking',
+    rankingTotal: 'Total',
+    rankingHp: 'HP',
+    rankingAtk: 'Attack',
+    rankingDef: 'Defense',
+    rankingSpa: 'Sp. Atk',
+    rankingSpd: 'Sp. Def',
+    rankingSpe: 'Speed',
+    typeFilter: 'Type: {type}',
+    loadMore: 'Load more',
+    sortDesc: 'Highest first',
+    sortAsc: 'Lowest first',
+    baseStatsMini: 'H{hp} A{atk} B{def} C{spa} D{spd} S{spe}',
+    noRankingItems: 'No ranking entries.',
   },
 };
 
@@ -100,6 +132,17 @@ const state = {
   itemCsvMap: new Map(),
   query: '',
   activeTab: DEFAULT_TAB,
+  typeFilter: '',
+  rankingStat: 'total',
+  rankingSort: 'desc',
+  rankingLimit: 30,
+};
+
+const transitions = window.pokeToolsTransitions || {
+  swap(_target, render) {
+    render();
+  },
+  pageReady() {},
 };
 
 function t(key, vars = {}) {
@@ -164,12 +207,20 @@ function parseParams() {
   const tab = params.get('tab');
   if (tab === 'all' || tab === 'pokemon' || tab === 'move' || tab === 'ability' || tab === 'item') state.activeTab = tab;
   state.query = params.get('q') || '';
+  state.typeFilter = params.get('type') || '';
+  const rankingStat = params.get('ranking');
+  if (['total', 'hp', 'atk', 'def', 'spa', 'spd', 'spe'].includes(rankingStat || '')) state.rankingStat = rankingStat;
+  const rankingSort = params.get('sort');
+  if (['desc', 'asc'].includes(rankingSort || '')) state.rankingSort = rankingSort;
 }
 
 function updateUrl() {
   const params = new URLSearchParams();
   if (state.activeTab && state.activeTab !== DEFAULT_TAB) params.set('tab', state.activeTab);
   if (state.query) params.set('q', state.query);
+  if (state.activeTab === 'pokemon' && state.typeFilter) params.set('type', state.typeFilter);
+  if (state.rankingStat !== 'total') params.set('ranking', state.rankingStat);
+  if (state.rankingSort !== 'desc') params.set('sort', state.rankingSort);
   const next = `${window.location.pathname}${params.toString() ? `?${params.toString()}` : ''}`;
   window.history.replaceState({}, '', next);
 }
@@ -344,6 +395,14 @@ function buildPokemonRows() {
       iconUrl: getSpeciesIconUrl(species),
       types: species.types || [],
       spe: Number(species.baseStats?.spe || 0),
+      baseStats: {
+        hp: Number(species.baseStats?.hp || 0),
+        atk: Number(species.baseStats?.atk || 0),
+        def: Number(species.baseStats?.def || 0),
+        spa: Number(species.baseStats?.spa || 0),
+        spd: Number(species.baseStats?.spd || 0),
+        spe: Number(species.baseStats?.spe || 0),
+      },
       search: normalizePokemonSearch(species),
     }))
     .sort((left, right) => compareLocalizedText(left.name, right.name));
@@ -418,9 +477,25 @@ function formatAccuracy(value) {
   return `${value}%`;
 }
 
+function getBaseStatsMiniText(stats = {}) {
+  return t('baseStatsMini', {
+    hp: Number(stats.hp || 0),
+    atk: Number(stats.atk || 0),
+    def: Number(stats.def || 0),
+    spa: Number(stats.spa || 0),
+    spd: Number(stats.spd || 0),
+    spe: Number(stats.spe || 0),
+  });
+}
+
 function getPokemonResults() {
   const query = normalizeText(state.query);
-  return buildPokemonRows().filter(row => !query || row.search.includes(query));
+  const normalizedType = normalizeText(state.typeFilter);
+  return buildPokemonRows().filter(row => {
+    const typeMatch = !normalizedType || (row.types || []).some(type => normalizeText(type) === normalizedType);
+    const queryMatch = !query || row.search.includes(query);
+    return typeMatch && queryMatch;
+  });
 }
 
 function getMoveResults() {
@@ -476,6 +551,10 @@ function renderEmptyState(container) {
   `;
 }
 
+function renderSearchEmpty(container) {
+  container.innerHTML = '';
+}
+
 function renderResultCard(iconHtml, titleHtml, metaHtml, snippetHtml, noteHtml, href) {
   return `
     <a class="dex-result-card text-decoration-none shadow-sm" href="${href}">
@@ -495,8 +574,8 @@ function renderPokemonResults(container, rows) {
     `<img class="ps-pokemon-icon dex-result-icon" src="${row.iconUrl}" alt="" loading="lazy">`,
     row.name,
     (row.types || []).map(type => `<span class="badge text-bg-light dex-chip"><img class="dex-type-icon" src="${getMoveTypeIcon(type)}" alt="${type}" loading="lazy"></span>`).join(''),
+    `<span class="mono">${getBaseStatsMiniText(row.baseStats)}</span>`,
     '',
-    t('detail'),
     getPokemonHref(row.id),
   )).join('');
 
@@ -527,7 +606,7 @@ function renderAbilityResults(container, rows) {
     row.name,
     `<span class="badge text-bg-light">${t('abilityUsers', { count: (state.data?.abilityUsersByAbilityId?.[row.id] || []).length })}</span>`,
     row.shortDesc || '',
-    t('detail'),
+    '',
     getAbilityHref(row.id),
   )).join('');
 
@@ -540,7 +619,7 @@ function renderItemResults(container, rows) {
     row.name,
     [`<span class="badge text-bg-light">${t('itemMeta')}</span>`, row.isBerry ? '<span class="badge text-bg-light">Berry</span>' : ''].join(''),
     row.shortDesc || '',
-    t('detail'),
+    '',
     getItemHref(row.id),
   )).join('');
 
@@ -574,63 +653,175 @@ function renderAllResults(container, rows) {
           : getItemIconHtml(row);
 
     const note = row.kind === 'pokemon'
-      ? t('speedTier', { value: row.spe })
+      ? getBaseStatsMiniText(row.baseStats)
       : row.shortDesc || '';
 
-    return renderResultCard(icon, row.name, `<span class="badge text-bg-light">${kindLabel}</span>`, note, t('detail'), href);
+    return renderResultCard(icon, row.name, `<span class="badge text-bg-light">${kindLabel}</span>`, note, '', href);
   }).join('');
 
   if (!rows.length) renderEmptyState(container);
 }
 
+function getRankingRows(statKey) {
+  const rows = buildPokemonRows();
+  const scoreOf = row => {
+    if (statKey === 'total') {
+      const stats = row.baseStats || {};
+      return Number(stats.hp || 0) + Number(stats.atk || 0) + Number(stats.def || 0)
+        + Number(stats.spa || 0) + Number(stats.spd || 0) + Number(stats.spe || 0);
+    }
+    return Number(row.baseStats?.[statKey] || 0);
+  };
+  const enriched = rows
+    .filter(row => {
+      if (state.activeTab !== 'pokemon' || !state.typeFilter) return true;
+      const normalizedType = normalizeText(state.typeFilter);
+      return (row.types || []).some(type => normalizeText(type) === normalizedType);
+    })
+    .map(row => ({ ...row, score: scoreOf(row) }));
+  const desc = state.rankingSort !== 'asc';
+  return enriched.sort((left, right) => {
+    const diff = desc ? right.score - left.score : left.score - right.score;
+    if (diff !== 0) return diff;
+    return compareLocalizedText(left.name, right.name);
+  });
+}
+
+function addTieRanks(rows) {
+  let lastScore = null;
+  let currentRank = 0;
+  return rows.map((row, index) => {
+    if (lastScore === null || row.score !== lastScore) {
+      currentRank = index + 1;
+      lastScore = row.score;
+    }
+    return { ...row, rank: currentRank };
+  });
+}
+
+function renderRankingPanel(container) {
+  const rankingTabs = [
+    { key: 'total', label: t('rankingTotal') },
+    { key: 'hp', label: t('rankingHp') },
+    { key: 'atk', label: t('rankingAtk') },
+    { key: 'def', label: t('rankingDef') },
+    { key: 'spa', label: t('rankingSpa') },
+    { key: 'spd', label: t('rankingSpd') },
+    { key: 'spe', label: t('rankingSpe') },
+  ];
+  const rankedRows = getRankingRows(state.rankingStat);
+  const rows = addTieRanks(rankedRows).slice(0, state.rankingLimit);
+  const selectedLabel = rankingTabs.find(tab => tab.key === state.rankingStat)?.label || t('rankingTotal');
+  const hasMore = rankedRows.length > state.rankingLimit;
+  container.innerHTML = `
+    <section class="dex-ranking-panel">
+      <div class="d-flex justify-content-between align-items-center gap-2 mb-2">
+        <ul class="nav nav-tabs dex-tabs dex-ranking-tabs" role="tablist" aria-label="ranking-stats">
+          ${rankingTabs.map(tab => `<li class="nav-item" role="presentation"><button type="button" class="nav-link ${tab.key === state.rankingStat ? 'active' : ''}" data-ranking-tab="${tab.key}">${tab.label}</button></li>`).join('')}
+        </ul>
+        <div class="small text-muted">${rankedRows.length}件</div>
+      </div>
+      <div class="dex-results">
+          ${rows.length ? rows.map(row => renderResultCard(
+            `<img class="ps-pokemon-icon dex-result-icon" src="${row.iconUrl}" alt="" loading="lazy">`,
+            `${row.rank}位 ${row.name}`,
+            `<span class="badge text-bg-light mono">${selectedLabel}: ${row.score}</span>`,
+            (row.types || []).map(type => `<span class="badge text-bg-light dex-chip"><img class="dex-type-icon" src="${getMoveTypeIcon(type)}" alt="${type}" loading="lazy"></span>`).join(''),
+            `<span class="mono">${getBaseStatsMiniText(row.baseStats)}</span>`,
+            getPokemonHref(row.id),
+          )).join('') : `<p class="text-muted mb-0">${t('noRankingItems')}</p>`}
+      </div>
+    </section>
+  `;
+  container.querySelectorAll('[data-ranking-tab]').forEach(button => {
+    button.addEventListener('click', () => {
+      state.rankingStat = button.dataset.rankingTab || 'total';
+      state.rankingLimit = 30;
+      updateUrl();
+      renderResults();
+    });
+  });
+
+  const moreButton = $('dex-ranking-more');
+  if (moreButton) {
+    moreButton.hidden = !hasMore;
+    moreButton.disabled = !hasMore;
+  }
+}
+
 function renderResults() {
-  const container = $('dex-results');
+  const rankingContainer = $('dex-results');
+  const searchContainer = $('dex-search-results');
   const countNode = $('dex-result-count');
   const titleNode = $('dex-results-title');
   const tabButtons = document.querySelectorAll('[data-tab]');
   const searchInput = $('dex-search');
 
-  if (!container || !countNode) return;
+  if (!rankingContainer || !searchContainer || !countNode) return;
 
-  const rows = state.activeTab === 'all'
-    ? getAllResults()
-    : state.activeTab === 'move'
-      ? getMoveResults()
-      : state.activeTab === 'ability'
-        ? getAbilityResults()
-        : state.activeTab === 'item'
-          ? getItemResults()
-          : getPokemonResults();
   const query = state.query.trim();
-  countNode.textContent = query ? t('countWithQuery', { query, count: rows.length }) : t('count', { count: rows.length });
-  if (titleNode) titleNode.textContent = getSelectedTabLabel();
+  if (titleNode) {
+    const label = titleNode.querySelector('span');
+    if (label) {
+      label.textContent = t('rankingSectionTitle');
+    } else {
+      titleNode.textContent = t('rankingSectionTitle');
+    }
+  }
   if (searchInput) searchInput.setAttribute('placeholder', getSearchPlaceholder());
   tabButtons.forEach(button => button.classList.toggle('active', button.dataset.tab === state.activeTab));
 
-  if (state.activeTab === 'move') {
-    renderMoveResults(container, rows);
-    return;
+  const rankingMoreButton = $('dex-ranking-more');
+  const rankingSortSelect = $('dex-ranking-sort');
+  if (rankingSortSelect) rankingSortSelect.disabled = false;
+
+  if (!query) {
+    countNode.textContent = '-';
+    transitions.swap(searchContainer, () => renderSearchEmpty(searchContainer));
+  } else {
+    const suggestionRows = state.activeTab === 'all'
+      ? getAllResults()
+      : state.activeTab === 'move'
+        ? getMoveResults()
+        : state.activeTab === 'ability'
+          ? getAbilityResults()
+          : state.activeTab === 'item'
+            ? getItemResults()
+            : getPokemonResults();
+    countNode.textContent = t('countWithQuery', { query, count: suggestionRows.length });
+    transitions.swap(searchContainer, () => {
+      if (state.activeTab === 'all') {
+        renderAllResults(searchContainer, suggestionRows);
+      } else if (state.activeTab === 'move') {
+        renderMoveResults(searchContainer, suggestionRows);
+      } else if (state.activeTab === 'ability') {
+        renderAbilityResults(searchContainer, suggestionRows);
+      } else if (state.activeTab === 'item') {
+        renderItemResults(searchContainer, suggestionRows);
+      } else {
+        renderPokemonResults(searchContainer, suggestionRows);
+      }
+    });
   }
-  if (state.activeTab === 'ability') {
-    renderAbilityResults(container, rows);
-    return;
-  }
-  if (state.activeTab === 'item') {
-    renderItemResults(container, rows);
-    return;
-  }
-  if (state.activeTab === 'all') {
-    renderAllResults(container, rows);
-    return;
-  }
-  renderPokemonResults(container, rows);
+
+  transitions.swap(rankingContainer, () => renderRankingPanel(rankingContainer));
 }
 
 function applyI18n() {
   document.documentElement.lang = state.lang;
   document.querySelectorAll('[data-i18n]').forEach(node => {
     const key = node.getAttribute('data-i18n');
-    if (key && I18N[state.lang][key]) node.textContent = I18N[state.lang][key];
+    if (!key || !I18N[state.lang][key]) return;
+    if (node.matches('option')) {
+      node.textContent = I18N[state.lang][key];
+      return;
+    }
+    const label = node.querySelector('span');
+    if (label) {
+      label.textContent = I18N[state.lang][key];
+      return;
+    }
+    node.textContent = I18N[state.lang][key];
   });
   document.querySelectorAll('[data-i18n-placeholder]').forEach(node => {
     const key = node.getAttribute('data-i18n-placeholder');
@@ -647,6 +838,7 @@ function bindEvents() {
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       state.query = searchInput.value.trim();
+      state.rankingLimit = 30;
       updateUrl();
       renderResults();
     });
@@ -654,22 +846,51 @@ function bindEvents() {
 
   if (clearButton && searchInput) {
     clearButton.addEventListener('click', () => {
-      searchInput.value = '';
-      state.query = '';
-      updateUrl();
-      renderResults();
-      searchInput.focus();
+      transitions.runWithButtonLoading(clearButton, () => {
+        searchInput.value = '';
+        state.query = '';
+        state.rankingLimit = 30;
+        updateUrl();
+        renderResults();
+        searchInput.focus();
+      });
     });
   }
 
   document.querySelectorAll('[data-tab]').forEach(button => {
     button.addEventListener('click', () => {
-      state.activeTab = button.dataset.tab;
-      updateUrl();
-      renderResults();
-      if (searchInput) searchInput.focus();
+      transitions.runWithButtonLoading(button, () => {
+        state.activeTab = button.dataset.tab;
+        if (state.activeTab !== 'pokemon') state.typeFilter = '';
+        state.rankingLimit = 30;
+        updateUrl();
+        renderResults();
+        if (searchInput) searchInput.focus();
+      });
     });
   });
+
+  const rankingSort = $('dex-ranking-sort');
+  if (rankingSort) {
+    rankingSort.addEventListener('change', () => {
+      transitions.runWithButtonLoading(rankingSort, () => {
+        state.rankingSort = rankingSort.value || 'desc';
+        state.rankingLimit = 30;
+        updateUrl();
+        renderResults();
+      });
+    });
+  }
+
+  const rankingMore = $('dex-ranking-more');
+  if (rankingMore) {
+    rankingMore.addEventListener('click', () => {
+      transitions.runWithButtonLoading(rankingMore, () => {
+        state.rankingLimit += 30;
+        renderResults();
+      });
+    });
+  }
 
   document.querySelectorAll('[data-lang]').forEach(button => {
     button.addEventListener('click', () => {
@@ -701,13 +922,16 @@ async function initialize() {
   buildItemJapaneseMap(jaTranslations || {});
 
   const searchInput = $('dex-search');
+  const rankingSort = $('dex-ranking-sort');
   const tabButtons = document.querySelectorAll('[data-tab]');
   if (searchInput) searchInput.value = state.query;
+  if (rankingSort) rankingSort.value = state.rankingSort;
   tabButtons.forEach(button => button.classList.toggle('active', button.dataset.tab === state.activeTab));
 
   applyI18n();
   bindEvents();
   renderResults();
+  transitions.pageReady();
 }
 
 function buildLearnersByMoveId(data) {
