@@ -89,6 +89,14 @@ const I18N = {
     boxPartySubtitle: 'Pokemon storage and party builder',
     toCalc: 'ダメージ計算へ',
     boxPartyLabel: 'ボックス / パーティ',
+    partyEdit: '編集',
+    partyActionTitle: 'パーティ編集',
+    partyActionSubtitle: '実行する操作を選択してください。',
+    partyActionExport: 'Pokepasteで出力',
+    partyActionDelete: '削除',
+    partyDeleteConfirm: 'このパーティを削除しますか？',
+    partyExportTitle: 'パーティ Pokepaste 出力',
+    partyExportEmpty: 'このパーティにはポケモンがいません。',
   },
   en: {
     title: 'Pokemon Champions Damage Calculator',
@@ -180,6 +188,14 @@ const I18N = {
     boxPartySubtitle: 'Pokemon storage and party builder',
     toCalc: 'To Damage Calc',
     boxPartyLabel: 'Box / Party',
+    partyEdit: 'Edit',
+    partyActionTitle: 'Edit Party',
+    partyActionSubtitle: 'Choose an action for this party.',
+    partyActionExport: 'Export as Pokepaste',
+    partyActionDelete: 'Delete',
+    partyDeleteConfirm: 'Delete this party?',
+    partyExportTitle: 'Party Pokepaste Export',
+    partyExportEmpty: 'This party has no Pokemon.',
   },
 };
 
@@ -345,6 +361,7 @@ const state = {
   preset: { modal: null, side: 'attacker' },
   detail: { modal: null, editingPokemonId: null },
   detailExport: { modal: null },
+  partyAction: { modal: null, partyId: null },
   confirmSave: { modal: null, role: null },
   storage: { box: [], parties: [], calcLinks: { attacker: null, defender: null } },
   availableFormats: ['[Gen 9 Champions] VGC 2026 Reg M-A'],
@@ -353,6 +370,15 @@ const state = {
   longPressTimer: null,
   suppressClickId: null,
   mobileSwipeAnimTimer: null,
+  mobileDrag: {
+    active: false,
+    pokemonId: '',
+    pointerId: null,
+    ghostEl: null,
+    moved: false,
+    startX: 0,
+    startY: 0,
+  },
 };
 
 const transitions = window.pokeToolsTransitions || {
@@ -3009,7 +3035,11 @@ function renderBoxList() {
       event.preventDefault();
       duplicatePokemon(pokemon.id);
     });
-    card.addEventListener('pointerdown', () => {
+    card.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'touch') {
+        beginMobileDrag(event, pokemon.id, card);
+        return;
+      }
       state.longPressTimer = window.setTimeout(() => {
         duplicatePokemon(pokemon.id);
         state.suppressClickId = pokemon.id;
@@ -3026,6 +3056,9 @@ function renderBoxList() {
     card.addEventListener('dragstart', event => {
       event.dataTransfer.setData('text/pokemon-id', pokemon.id);
     });
+    card.addEventListener('pointermove', handleMobileDragMove);
+    card.addEventListener('pointerup', handleMobileDragEnd);
+    card.addEventListener('pointercancel', handleMobileDragEnd);
     container.appendChild(card);
   });
 }
@@ -3042,7 +3075,7 @@ function renderPartyList() {
       <div class="card-body p-2 party-card-head">
         <div class="party-name-wrap">
           <input class="form-control form-control-sm party-name-input" data-party-id="${party.id}" value="${party.name}">
-          <button class="btn btn-sm remove-party-button" data-party-id="${party.id}" type="button" aria-label="パーティ削除"><i class="bi bi-x-lg"></i></button>
+          <button class="btn btn-sm edit-party-button" data-party-id="${party.id}" type="button" title="${t('partyEdit')}" aria-label="${t('partyEdit')}"><i class="bi bi-pencil-square"></i></button>
         </div>
       </div>
       <div class="card-body pt-0 party-slots"></div>
@@ -3089,13 +3122,9 @@ function renderPartyList() {
       renderManagerViews();
     });
   });
-  container.querySelectorAll('.remove-party-button').forEach(button => {
+  container.querySelectorAll('.edit-party-button').forEach(button => {
     button.addEventListener('click', () => {
-      if (!window.confirm('このパーティを削除しますか？')) return;
-      state.storage.parties = state.storage.parties.filter(party => party.id !== button.dataset.partyId);
-      if (!state.storage.parties.length) state.storage.parties.push(createEmptyParty());
-      saveStorage();
-      renderManagerViews();
+      openPartyActionModal(button.dataset.partyId);
     });
   });
   container.querySelectorAll('.remove-slot-button').forEach(button => {
@@ -3256,6 +3285,123 @@ function assignPokemonToPartySlot(partyId, slotIndex, pokemonId) {
   party.slots[slotIndex] = pokemonId;
   saveStorage();
   renderManagerViews();
+}
+
+function beginMobileDrag(event, pokemonId, card) {
+  if (!hasManagerPage() || event.pointerType !== 'touch') return;
+  state.mobileDrag.active = true;
+  state.mobileDrag.pokemonId = pokemonId;
+  state.mobileDrag.pointerId = event.pointerId;
+  state.mobileDrag.moved = false;
+  state.mobileDrag.startX = event.clientX;
+  state.mobileDrag.startY = event.clientY;
+  state.mobileDrag.ghostEl = null;
+  if (card.setPointerCapture) {
+    try {
+      card.setPointerCapture(event.pointerId);
+    } catch (_error) {
+      // ignore
+    }
+  }
+}
+
+function ensureMobileDragGhost(event) {
+  if (state.mobileDrag.ghostEl) return;
+  const pokemon = getPokemonById(state.mobileDrag.pokemonId);
+  if (!pokemon) return;
+  const ghost = document.createElement('div');
+  ghost.className = 'mobile-drag-ghost';
+  ghost.innerHTML = renderPokemonIconStack(pokemon.speciesId, Boolean(pokemon.megaEnabled), pokemon.itemId, displayPokemonName(pokemon));
+  document.body.appendChild(ghost);
+  state.mobileDrag.ghostEl = ghost;
+  positionMobileDragGhost(event.clientX, event.clientY);
+  document.body.classList.add('mobile-dragging-pokemon');
+}
+
+function positionMobileDragGhost(clientX, clientY) {
+  if (!state.mobileDrag.ghostEl) return;
+  state.mobileDrag.ghostEl.style.left = `${clientX}px`;
+  state.mobileDrag.ghostEl.style.top = `${clientY}px`;
+}
+
+function clearMobileDrag() {
+  if (state.mobileDrag.ghostEl?.parentNode) {
+    state.mobileDrag.ghostEl.parentNode.removeChild(state.mobileDrag.ghostEl);
+  }
+  state.mobileDrag.active = false;
+  state.mobileDrag.pokemonId = '';
+  state.mobileDrag.pointerId = null;
+  state.mobileDrag.ghostEl = null;
+  state.mobileDrag.moved = false;
+  state.mobileDrag.startX = 0;
+  state.mobileDrag.startY = 0;
+  document.body.classList.remove('mobile-dragging-pokemon');
+}
+
+function handleMobileDragMove(event) {
+  if (!state.mobileDrag.active) return;
+  if (event.pointerId !== state.mobileDrag.pointerId) return;
+  if (event.pointerType !== 'touch') return;
+  const dx = event.clientX - state.mobileDrag.startX;
+  const dy = event.clientY - state.mobileDrag.startY;
+  const distance = Math.hypot(dx, dy);
+  const threshold = 10;
+  if (!state.mobileDrag.moved) {
+    if (distance < threshold) return;
+    state.mobileDrag.moved = true;
+    ensureMobileDragGhost(event);
+  }
+  if (state.mobileDrag.moved) {
+    event.preventDefault();
+    ensureMobileDragGhost(event);
+    positionMobileDragGhost(event.clientX, event.clientY);
+    const dropTarget = document.elementFromPoint(event.clientX, event.clientY)?.closest('.party-slot');
+    document.querySelectorAll('.party-slot').forEach(slot => slot.classList.toggle('mobile-drop-target', slot === dropTarget));
+  }
+}
+
+function handleMobileDragEnd(event) {
+  if (!state.mobileDrag.active) return;
+  if (event.pointerId !== state.mobileDrag.pointerId) return;
+  if (event.pointerType !== 'touch') return;
+  if (state.mobileDrag.moved) {
+    event.preventDefault();
+    const dropTarget = document.elementFromPoint(event.clientX, event.clientY)?.closest('.party-slot');
+    if (dropTarget) {
+      assignPokemonToPartySlot(dropTarget.dataset.partyId, Number(dropTarget.dataset.slotIndex), state.mobileDrag.pokemonId);
+      state.suppressClickId = state.mobileDrag.pokemonId;
+    }
+  }
+  document.querySelectorAll('.party-slot.mobile-drop-target').forEach(slot => slot.classList.remove('mobile-drop-target'));
+  clearMobileDrag();
+}
+
+function removePartyById(partyId) {
+  state.storage.parties = state.storage.parties.filter(party => party.id !== partyId);
+  if (!state.storage.parties.length) state.storage.parties.push(createEmptyParty());
+  saveStorage();
+  renderManagerViews();
+}
+
+function buildPokepasteTextFromParty(party) {
+  if (!party) return '';
+  const lines = [];
+  party.slots.forEach(pokemonId => {
+    const pokemon = getPokemonById(pokemonId);
+    if (!pokemon) return;
+    lines.push(buildPokepasteTextFromPokemon(pokemon));
+  });
+  return lines.filter(Boolean).join('\n\n');
+}
+
+function openPartyActionModal(partyId) {
+  if (!state.partyAction.modal) return;
+  const party = getPartyById(partyId);
+  if (!party) return;
+  state.partyAction.partyId = partyId;
+  if ($('party-action-title')) $('party-action-title').textContent = `${t('partyActionTitle')} (${party.name || 'Party'})`;
+  if ($('party-action-subtitle')) $('party-action-subtitle').textContent = t('partyActionSubtitle');
+  state.partyAction.modal.show();
 }
 
 function openPartySlotPicker(partyId, slotIndex) {
@@ -4721,6 +4867,35 @@ function initDetailExportModal() {
   if ($('detail-export-copy')) $('detail-export-copy').addEventListener('click', copyDetailPokepasteText);
 }
 
+function initPartyActionModal() {
+  if (!$('party-action-modal')) return;
+  state.partyAction.modal = new bootstrap.Modal($('party-action-modal'));
+  if ($('party-action-export')) $('party-action-export').addEventListener('click', () => {
+    const party = getPartyById(state.partyAction.partyId);
+    if (!party) return;
+    const text = buildPokepasteTextFromParty(party);
+    if (!text) {
+      window.alert(t('partyExportEmpty'));
+      return;
+    }
+    if ($('detail-export-title')) $('detail-export-title').textContent = t('partyExportTitle');
+    if ($('detail-export-copy')) $('detail-export-copy').textContent = t('detailExportCopy');
+    if ($('detail-export-text')) $('detail-export-text').value = text;
+    state.partyAction.modal.hide();
+    state.detailExport.modal?.show();
+  });
+  if ($('party-action-delete')) $('party-action-delete').addEventListener('click', () => {
+    const partyId = state.partyAction.partyId;
+    if (!partyId) return;
+    if (!window.confirm(t('partyDeleteConfirm'))) return;
+    removePartyById(partyId);
+    state.partyAction.modal.hide();
+  });
+  $('party-action-modal').addEventListener('hidden.bs.modal', () => {
+    state.partyAction.partyId = null;
+  });
+}
+
 function initConfirmSaveModal() {
   if (!$('confirm-save-calc-modal')) return;
   state.confirmSave.modal = new bootstrap.Modal($('confirm-save-calc-modal'));
@@ -4896,6 +5071,7 @@ async function initialize() {
   initPickerImportModal();
   initDetailModal();
   initDetailExportModal();
+  initPartyActionModal();
   initConfirmSaveModal();
   initPresetModal();
   initMobileBattleTabs();

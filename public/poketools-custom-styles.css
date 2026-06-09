@@ -659,13 +659,24 @@ body {
   gap: 0.35rem;
 }
 
+.party-card .edit-party-button {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .party-slots {
   display: grid;
   grid-template-columns: repeat(6, var(--pokemon-card-size));
   gap: 0.55rem;
   justify-content: start;
-  overflow-x: auto;
-  padding-bottom: 0.25rem;
+  overflow: visible;
+  padding-top: 0.2rem;
+  padding-right: 0.2rem;
+  padding-bottom: 0.35rem;
 }
 
 .party-slot {
@@ -1906,6 +1917,35 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   justify-content: flex-end;
 }
 
+.party-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.6rem;
+}
+
+.mobile-drag-ghost {
+  position: fixed;
+  z-index: 2100;
+  width: 68px;
+  height: 68px;
+  transform: translate(-50%, -50%);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-dragging-pokemon .party-slot.mobile-drop-target {
+  border-color: rgba(37, 99, 235, 0.65);
+  box-shadow: inset 0 0 0 2px rgba(37, 99, 235, 0.18);
+}
+
 @media (max-width: 991.98px) {
   body.box-party-page {
     padding-bottom: 44vh;
@@ -1924,6 +1964,14 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
     padding: 0;
   }
 
+  body.box-party-page #party-panel-col .panel-card {
+    border-radius: 0;
+  }
+
+  body.box-party-page #party-panel-col .panel-card > .card-header {
+    border-radius: 0;
+  }
+
   body.box-party-page #party-panel-col .party-panel {
     border-top: 1px solid rgba(148, 163, 184, 0.35);
     border-radius: 0;
@@ -1931,7 +1979,7 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
     box-shadow: 0 -6px 20px rgba(15, 23, 42, 0.1);
     max-height: 42vh;
     overflow: hidden;
-    padding: 0.5rem 0.5rem 0;
+    padding: 0.65rem 0.5rem 0;
   }
 
   body.box-party-page #party-list {
@@ -1941,7 +1989,8 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
     display: flex;
     flex-wrap: nowrap;
     gap: 0;
-    padding-bottom: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.8rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
@@ -1959,8 +2008,10 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   body.box-party-page #party-list .party-card .party-slots {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 0.3rem;
-    overflow: hidden;
-    padding-bottom: 0;
+    overflow: visible;
+    padding-top: 0.6rem;
+    padding-right: 0;
+    padding-bottom: 0.45rem;
   }
 
   body.box-party-page #party-list {
@@ -1985,8 +2036,14 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   }
 
   body.box-party-page #party-list .party-card .card-corner-badge {
-    top: 1px;
-    left: 1px;
+    top: -7px;
+    left: -7px;
+  }
+
+  body.box-party-page #party-list .party-card .remove-slot-button {
+    top: -7px;
+    right: -7px;
+    opacity: 0.85;
   }
 
   body.box-party-page #party-list .party-card .pokemon-icon-stack .ps-item-icon,
@@ -2052,6 +2109,11 @@ body.calc-page .mobile-battle-tabs .btn:not(.active) {
   .detail-footer-actions .btn {
     min-width: 0;
     flex: 1 1 calc(50% - 0.5rem);
+  }
+
+  .detail-footer-actions #detail-export-pokepaste {
+    font-size: 0.8rem;
+    white-space: nowrap;
   }
 }
 

@@ -32,12 +32,16 @@
         position: sticky;
         top: 0;
         z-index: 10;
+        white-space: nowrap;
       }
       @media (max-width: 576px) {
-        th[data-i18n="speedValue"],
-        th[data-i18n="groupList"] {
-          font-size: 0.8rem;
+        th[data-i18n="speedValueShort"],
+        th[data-i18n="groupListShort"] {
+          font-size: 0.72rem;
           white-space: nowrap;
+          letter-spacing: 0;
+          padding-left: 0.35rem;
+          padding-right: 0.35rem;
         }
       }
       .highlight-row {
@@ -282,6 +286,21 @@
           grid-template-columns: repeat(6, minmax(0, 1fr));
         }
 
+        #target-spe-ap,
+        #target-spe-rank {
+          font-size: 0.76rem;
+          padding-left: 0.35rem;
+          padding-right: 1.35rem;
+        }
+
+        .speed-cell-ap .input-group-text,
+        .speed-cell-rank .input-group-text {
+          min-width: 30px;
+          padding-left: 0.35rem;
+          padding-right: 0.35rem;
+          font-size: 0.76rem;
+        }
+
         .speed-cell-pokemon { grid-row: 1; grid-column: 1 / span 2; }
         .speed-cell-forme { grid-row: 1; grid-column: 3 / span 2; }
         .speed-cell-edit { grid-row: 1; grid-column: 5 / span 1; }
@@ -305,6 +324,23 @@
 
         .ad-mobile-grid {
           grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 576px) {
+        #target-spe-ap,
+        #target-spe-rank {
+          font-size: 0.7rem;
+          padding-left: 0.28rem;
+          padding-right: 1.2rem;
+        }
+
+        .speed-cell-ap .input-group-text,
+        .speed-cell-rank .input-group-text {
+          min-width: 28px;
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+          font-size: 0.7rem;
         }
       }
 
