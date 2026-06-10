@@ -213,6 +213,8 @@ const ITEM_NAME_JA_FALLBACK = {
   cahndelurite: 'シャンデラナイト',
 };
 
+const escapeHtmlText = text => String(text || '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
 const BASE_SPECIES_JA_FALLBACK = {
   Meloetta: 'メロエッタ', Vivillon: 'ビビヨン', Floette: 'フラエッテ', Gourgeist: 'パンプジン', Minior: 'メテノ',
   Mimikyu: 'ミミッキュ', Cramorant: 'ウッウ', Polteageist: 'ポットデス', Alcremie: 'マホイップ', Eiscue: 'コオリッポ',
@@ -311,6 +313,7 @@ const SPEED_ADJUST_ROW_CACHE_KEY = 'champions-speed-adjust-row-cache-v1';
 const LAST_SELECTED_SIDES_KEY = 'champions-calc-last-selected-sides-v1';
 const DOUBLE_BATTLE_MODE_KEY = 'champions-tool-ui-double-battle-v1';
 const MAX_CALC_HISTORY = 10;
+const MAX_SPEED_MEMOS = 20;
 const PARTY_SLOT_COUNT = 6;
 const DETAIL_EV_TOTAL_MAX = 66;
 const CHAMPIONS_IV_TOTAL_MAX = 186;
@@ -458,38 +461,120 @@ function getDetailRequestPokemonIdFromQuery() {
   return fromLegacy || null;
 }
 
+function emitDetailEmbedDebug(stage, extra = {}) {
+  void stage;
+  void extra;
+}
+
+function showStandaloneDetailModal() {
+  const modal = $('pokemon-detail-modal');
+  if (!modal) return;
+  document.querySelector('header.calc-header')?.classList.add('d-none');
+  document.querySelector('main')?.classList.add('d-none');
+  document.getElementById('tool-footer')?.classList.add('d-none');
+  modal.classList.remove('fade');
+  modal.classList.add('show');
+  modal.style.display = 'block';
+  modal.removeAttribute('aria-hidden');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('role', 'dialog');
+  document.body.classList.add('modal-open');
+  document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+}
+
+function showEmbedDetailModal() {
+  const modal = $('pokemon-detail-modal');
+  if (!modal) return;
+  emitDetailEmbedDebug('show-embed-modal-start', {
+    hasModal: Boolean(modal),
+    className: modal.className,
+  });
+
+  // Keep same visual style as the original detail modal while forcing visibility in embed mode.
+  document.documentElement.classList.remove('tool-page-loading');
+  document.documentElement.classList.add('tool-page-ready');
+
+  modal.classList.remove('detail-embed-root');
+  modal.classList.add('modal', 'fade', 'show');
+  modal.style.display = 'block';
+  modal.style.position = '';
+  modal.style.inset = '';
+  modal.style.background = '';
+  modal.style.zIndex = '';
+  modal.removeAttribute('aria-hidden');
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+
+  const dialog = modal.querySelector('.modal-dialog');
+  if (dialog) {
+    dialog.classList.add('modal-lg', 'modal-dialog-scrollable');
+    dialog.classList.remove('modal-dialog-centered');
+    dialog.style.margin = '';
+    dialog.style.maxWidth = '';
+    dialog.style.width = '';
+    dialog.style.height = '';
+    dialog.style.maxHeight = '';
+  }
+
+  const content = modal.querySelector('.modal-content');
+  if (content) {
+    content.style.height = '';
+    content.style.maxHeight = '';
+    content.style.border = '';
+    content.style.borderRadius = '';
+    content.style.overflow = '';
+    content.style.display = '';
+    content.style.flexDirection = '';
+  }
+
+  const body = modal.querySelector('.modal-body');
+  if (body) {
+    body.style.padding = '';
+    body.style.flex = '';
+    body.style.minHeight = '';
+    body.style.overflowY = '';
+  }
+
+  document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+  document.body.classList.add('modal-open');
+  emitDetailEmbedDebug('show-embed-modal-done', {
+    modalDisplay: modal.style.display || '',
+    modalClasses: modal.className,
+  });
+}
+
 function setupDetailEmbedLayout() {
   if (!isDetailEmbedMode()) return;
   document.body.classList.add('embed-detail-mode');
   document.querySelector('header.calc-header')?.classList.add('d-none');
   document.querySelector('main')?.classList.add('d-none');
   document.getElementById('tool-footer')?.classList.add('d-none');
+  document.documentElement.classList.remove('tool-page-loading');
+  document.documentElement.classList.add('tool-page-ready');
 
   if (!document.getElementById('embed-detail-inline-style')) {
     const style = document.createElement('style');
     style.id = 'embed-detail-inline-style';
     style.textContent = `
-      body.embed-detail-mode { background: transparent !important; margin: 0; }
+      body.embed-detail-mode { margin: 0; background: transparent !important; }
+      html.tool-page-loading body.embed-detail-mode,
+      html.tool-page-ready body.embed-detail-mode {
+        opacity: 1 !important;
+        transform: none !important;
+      }
       body.embed-detail-mode .modal-backdrop { display: none !important; }
       body.embed-detail-mode #pokemon-detail-modal {
         display: block !important;
-        position: fixed;
-        inset: 0;
-        background: transparent;
       }
       body.embed-detail-mode #pokemon-detail-modal .modal-dialog {
-        margin: 0.8rem auto;
+        margin: 1rem auto;
         max-width: min(1080px, 96vw);
-      }
-      body.embed-detail-mode #pokemon-detail-modal .modal-content {
-        border: 1px solid #dbe3ed;
-        border-radius: 12px;
-        overflow: hidden;
       }
       @media (max-width: 767.98px) {
         body.embed-detail-mode #pokemon-detail-modal .modal-dialog {
           margin: 0;
           max-width: 100vw;
+          width: 100vw;
           height: 100vh;
         }
         body.embed-detail-mode #pokemon-detail-modal .modal-content {
@@ -505,23 +590,25 @@ function setupDetailEmbedLayout() {
 function setupDetailStandaloneLayout() {
   if (!isDetailStandaloneMode()) return;
   document.body.classList.add('detail-standalone-mode');
-  document.querySelector('header.calc-header')?.classList.add('d-none');
-  document.querySelector('main')?.classList.add('d-none');
-  document.getElementById('tool-footer')?.classList.add('d-none');
   if (document.getElementById('detail-standalone-inline-style')) return;
   const style = document.createElement('style');
   style.id = 'detail-standalone-inline-style';
   style.textContent = `
     body.detail-standalone-mode { background: #ffffff; }
+    body.detail-standalone-mode .modal-backdrop {
+      display: none !important;
+    }
     body.detail-standalone-mode #pokemon-detail-modal {
       display: block !important;
       position: fixed;
       inset: 0;
       background: #f8fafc;
+      z-index: 2000;
     }
     body.detail-standalone-mode #pokemon-detail-modal .modal-dialog {
       margin: 0.9rem auto;
       max-width: min(1120px, 98vw);
+      transform: none !important;
     }
     @media (max-width: 767.98px) {
       body.detail-standalone-mode #pokemon-detail-modal .modal-dialog {
@@ -815,6 +902,7 @@ function emptyPokemonRecord() {
     notes: '',
     moveIds: [],
     calcHistory: [],
+    speedMemos: [],
   };
 }
 
@@ -833,6 +921,10 @@ function normalizePokemonRecord(record) {
   next.ranks = { ...base.ranks, ...(record?.ranks || {}) };
   next.moveIds = Array.isArray(record?.moveIds) ? record.moveIds.filter(Boolean).slice(0, 4) : [];
   next.calcHistory = Array.isArray(record?.calcHistory) ? record.calcHistory.slice(-MAX_CALC_HISTORY) : [];
+  const speedMemoSource = Array.isArray(record?.speedMemos)
+    ? record.speedMemos
+    : (record?.speedMemo ? [record.speedMemo] : []);
+  next.speedMemos = speedMemoSource.map(memo => normalizeSpeedMemo(memo, next.speciesId)).slice(-MAX_SPEED_MEMOS);
 
   const normalizedSpeciesId = normalizeSelectedSpeciesId(next.speciesId);
   const megaBaseId = resolveMegaBaseId(normalizedSpeciesId);
@@ -849,6 +941,34 @@ function normalizePokemonRecord(record) {
     next.itemId = getPreferredMegaItemId(next.speciesId, '');
   }
   if (next.megaEnabled && !hasMega(next.speciesId)) next.megaEnabled = false;
+  return next;
+}
+
+function normalizeSpeedMemo(memo, fallbackSpeciesId = 'fluttermane') {
+  const base = {
+    id: `speed-memo-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+    note: '',
+    speciesId: fallbackSpeciesId || 'fluttermane',
+    nature: 'hardy',
+    natureBoostMode: 'neutral',
+    megaEnabled: false,
+    itemId: '',
+    evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 },
+    ranks: { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 },
+    currentSpeed: 0,
+  };
+  const next = { ...base, ...(memo || {}) };
+  next.note = String(next.note || memo?.text || memo?.memo || '').trim();
+  next.speciesId = normalizeSelectedSpeciesId(next.speciesId || fallbackSpeciesId || 'fluttermane');
+  next.nature = String(next.nature || 'hardy');
+  next.natureBoostMode = ['plus', 'minus', 'neutral'].includes(next.natureBoostMode)
+    ? next.natureBoostMode
+    : (memo?.natureBoost === true ? 'plus' : 'neutral');
+  next.megaEnabled = Boolean(next.megaEnabled || memo?.megaEnabled);
+  next.itemId = String(next.itemId || '');
+  next.evs = { ...base.evs, ...(memo?.evs || {}) };
+  next.ranks = { ...base.ranks, ...(memo?.ranks || {}) };
+  next.currentSpeed = clamp(toNumber(next.currentSpeed, 0), 0, 9999);
   return next;
 }
 
@@ -3167,6 +3287,38 @@ function calculateDetailSpeedValue(pokemon) {
   return calcSingleStat(species.baseStats.spe, speEv, natureMod(nature, 'spe'));
 }
 
+function calculateSpeedMemoValue(memo) {
+  const species = getEffectiveSpecies(memo?.speciesId, Boolean(memo?.megaEnabled), memo?.itemId || '');
+  if (!species?.baseStats?.spe) return 0;
+  const nature = getNatureById(memo?.nature || 'hardy');
+  const speEv = clamp(toNumber(memo?.evs?.spe, 0), 0, 32);
+  const rank = clamp(toNumber(memo?.ranks?.spe, 0), -6, 6);
+  const natureMode = memo?.natureBoostMode || 'neutral';
+  const natureMultiplier = natureMode === 'plus' ? 1.1 : (natureMode === 'minus' ? 0.9 : natureMod(nature, 'spe'));
+  return applyStageToStat(calcSingleStat(species.baseStats.spe, speEv, natureMultiplier), rank);
+}
+
+function getSpeedMemoSnapshotForRequest(memo) {
+  return {
+    apSpe: clamp(toNumber(memo?.evs?.spe, 0), 0, 32),
+    rankSpe: clamp(toNumber(memo?.ranks?.spe, 0), -6, 6),
+    natureBoostMode: ['plus', 'minus', 'neutral'].includes(memo?.natureBoostMode) ? memo.natureBoostMode : 'neutral',
+    natureBoost: memo?.natureBoostMode === 'plus',
+    scarf: memo?.itemId === 'choicescarf',
+    megaEnabled: Boolean(memo?.megaEnabled),
+  };
+}
+
+function openSpeedAdjustFromMemo(pokemon, memo) {
+  if (!memo) return;
+  localStorage.setItem(SPEED_ADJUST_REQUEST_KEY, JSON.stringify({
+    selectedSpeciesId: memo.speciesId || pokemon.speciesId,
+    returnPath: `${window.location.pathname}${window.location.search}`,
+    prefill: getSpeedMemoSnapshotForRequest(memo),
+  }));
+  window.location.href = './speed-adjust.html';
+}
+
 function renderDetailSpeedMemo(pokemon) {
   const container = $('detail-speed-memo');
   if (!container) return;
@@ -3212,6 +3364,62 @@ function renderDetailSpeedMemo(pokemon) {
       </table>
     </div>
   `;
+
+  const memos = Array.isArray(pokemon.speedMemos) ? pokemon.speedMemos : [];
+  if (!memos.length) {
+    container.innerHTML += `
+      <hr class="my-2">
+      <div class="small text-muted">保存したメモはありません。</div>
+    `;
+    return;
+  }
+
+  const memoCards = memos.map(memo => {
+    const memoSpeed = calculateSpeedMemoValue(memo);
+    const labels = [
+      memo.natureBoostMode === 'plus' ? '性格+10%' : '',
+      memo.natureBoostMode === 'minus' ? '性格-10%' : '',
+      memo.evs?.spe ? `S${memo.evs.spe}` : '無振り',
+      memo.ranks?.spe ? `R${memo.ranks.spe > 0 ? `+${memo.ranks.spe}` : memo.ranks.spe}` : '',
+      memo.megaEnabled ? 'メガ' : '',
+      memo.itemId === 'choicescarf' ? 'スカーフ' : '',
+    ].filter(Boolean);
+    const note = escapeHtmlText(memo.note || 'メモなし');
+    const labelHtml = labels.length ? `<div class="small text-muted">${labels.map(escapeHtmlText).join(' / ')}</div>` : '';
+    return `
+      <div class="calc-history-item">
+        <button class="btn btn-link text-start w-100 p-0 border-0 speed-memo-open" type="button" data-memo-id="${escapeHtmlText(memo.id)}">
+          <div class="fw-semibold">${note}</div>
+          <div class="small mono">実数値 ${memoSpeed}</div>
+          ${labelHtml}
+        </button>
+        <button class="btn btn-sm btn-link text-muted calc-history-delete calc-history-delete-overlay speed-memo-delete" type="button" data-memo-id="${escapeHtmlText(memo.id)}" title="削除"><i class="bi bi-trash"></i></button>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML += `
+    <hr class="my-2">
+    <div class="small text-muted mb-1">保存したメモ</div>
+    ${memoCards}
+  `;
+
+  container.querySelectorAll('.speed-memo-open').forEach(button => {
+    button.addEventListener('click', () => {
+      const memo = memos.find(entry => entry.id === button.dataset.memoId);
+      if (!memo) return;
+      openSpeedAdjustFromMemo(pokemon, memo);
+    });
+  });
+
+  container.querySelectorAll('.speed-memo-delete').forEach(button => {
+    button.addEventListener('click', event => {
+      event.stopPropagation();
+      pokemon.speedMemos = memos.filter(entry => entry.id !== button.dataset.memoId);
+      saveStorage();
+      renderDetailSpeedMemo(pokemon);
+    });
+  });
 }
 
 function renderManagerViews() {
@@ -3975,11 +4183,28 @@ function populateDetailForm(pokemon) {
 }
 
 function openPokemonDetail(pokemonId) {
-  if (!state.detail.modal) return;
   const pokemon = getPokemonById(pokemonId);
+  emitDetailEmbedDebug('openPokemonDetail-called', {
+    pokemonId,
+    found: Boolean(pokemon),
+    boxCount: Array.isArray(state.storage?.box) ? state.storage.box.length : 0,
+  });
   if (!pokemon) return;
   state.detail.editingPokemonId = pokemonId;
   populateDetailForm(pokemon);
+  if (isDetailEmbedMode()) {
+    emitDetailEmbedDebug('openPokemonDetail-embed-branch', { pokemonId });
+    showEmbedDetailModal();
+    window.parent?.postMessage({ type: 'champions-detail-ready' }, window.location.origin);
+    transitions.pageReady();
+    return;
+  }
+  if (isDetailStandaloneMode()) {
+    showStandaloneDetailModal();
+    transitions.pageReady();
+    return;
+  }
+  if (!state.detail.modal) return;
   state.detail.modal.show();
   transitions.pageReady();
 }
@@ -4794,7 +5019,12 @@ function initDetailModal() {
   $('detail-save').addEventListener('click', () => {
     if (!window.confirm('データを保存しますか？')) return;
     const saved = saveDetailPokemon();
-    if (saved) state.detail.modal.hide();
+    if (!saved) return;
+    if (isDetailStandaloneMode()) {
+      window.location.href = getStandaloneReturnPath();
+      return;
+    }
+    state.detail.modal.hide();
   });
   if ($('detail-open-pokedex')) $('detail-open-pokedex').addEventListener('click', openDetailPokedex);
   if ($('detail-export-pokepaste')) $('detail-export-pokepaste').addEventListener('click', openDetailPokepasteExportModal);
@@ -4858,7 +5088,28 @@ function initDetailModal() {
       window.parent?.postMessage({ type: 'champions-detail-ready' }, window.location.origin);
       return;
     }
+    if (isDetailStandaloneMode()) {
+      showStandaloneDetailModal();
+    }
   });
+
+  if (isDetailStandaloneMode()) {
+    $('pokemon-detail-modal').querySelectorAll('[data-bs-dismiss="modal"]').forEach(button => {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        window.location.href = getStandaloneReturnPath();
+      });
+    });
+  }
+
+  if (isDetailEmbedMode()) {
+    $('pokemon-detail-modal').querySelectorAll('[data-bs-dismiss="modal"]').forEach(button => {
+      button.addEventListener('click', event => {
+        event.preventDefault();
+        window.parent?.postMessage({ type: 'champions-detail-closed' }, window.location.origin);
+      });
+    });
+  }
 }
 
 function initDetailExportModal() {
@@ -5108,8 +5359,24 @@ async function initialize() {
     try {
       const openRequest = JSON.parse(localStorage.getItem(OPEN_DETAIL_REQUEST_KEY) || 'null');
       const requestedId = openRequest?.pokemonId || getDetailRequestPokemonIdFromQuery();
-      if (requestedId && getPokemonById(requestedId)) openPokemonDetail(requestedId);
-      else if (isDetailStandaloneMode()) window.location.href = getStandaloneReturnPath();
+      emitDetailEmbedDebug('manager-open-request', {
+        requestedId,
+        fromStorage: openRequest?.pokemonId || '',
+        fromQuery: getDetailRequestPokemonIdFromQuery() || '',
+      });
+      if (requestedId && getPokemonById(requestedId)) {
+        emitDetailEmbedDebug('manager-open-request-hit', { requestedId });
+        openPokemonDetail(requestedId);
+      } else if (isDetailEmbedMode()) {
+        const firstPokemonId = state.storage?.box?.[0]?.id || null;
+        emitDetailEmbedDebug('manager-open-request-fallback', {
+          requestedId,
+          firstPokemonId,
+        });
+        if (firstPokemonId && getPokemonById(firstPokemonId)) openPokemonDetail(firstPokemonId);
+      } else if (isDetailStandaloneMode()) {
+        window.location.href = getStandaloneReturnPath();
+      }
     } catch (_error) {
       // ignore invalid persisted state
     }
