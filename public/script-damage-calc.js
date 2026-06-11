@@ -1,203 +1,203 @@
 const I18N = {
-  ja: {
-    title: 'ポケモンチャンピオンズ ダメージ計算',
-    subtitle: '[Gen 9 Champions] VGC 2026 Reg M-A',
-    backToList: 'ポケリスへ',
-    attacker: '攻撃側',
-    defender: '防御側',
-    species: 'ポケモン',
-    nature: 'せいかく',
-    megaEnabled: 'メガ進化',
-    ability: 'とくせい',
-    item: 'もちもの',
-    championsFixedStats: 'チャンピオンズ仕様に合わせて レベル50固定',
-    apAtk: '能力ポイント Atk',
-    apSpa: '能力ポイント SpA',
-    apHp: '能力ポイント HP',
-    apDef: '能力ポイント Def',
-    apSpd: '能力ポイント SpD',
-    actualStats: '実数値',
-    battleSettings: '状況',
-    move: 'わざ',
-    type: 'タイプ',
-    category: '分類',
-    physical: '物理',
-    special: '特殊',
-    status: '変化',
-    power: '威力',
-    weather: '天候',
-    terrain: 'フィールド',
-    none: 'なし',
-    sun: '晴れ',
-    rain: '雨',
-    sand: '砂嵐',
-    snow: '雪',
-    electricTerrain: 'エレキフィールド',
-    grassyTerrain: 'グラスフィールド',
-    psychicTerrain: 'サイコフィールド',
-    mistyTerrain: 'ミストフィールド',
-    critical: '急所',
-    burn: 'やけど(攻撃側)',
-    spreadMove: 'ダブル補正',
-    helpingHand: 'てだすけ',
-    reflect: 'リフレクター',
-    lightScreen: 'ひかりのかべ',
-    defenderFullHp: '防御側HP満タン',
-    friendGuard: 'フレンドガード',
-    hitCount: 'ヒット回数',
-    calculate: '再計算',
-    swapSides: '攻守入替',
-    result: '計算結果',
-    licenseLabel: 'データ出典',
-    pickerSearch: '検索して絞り込み',
-    pickerNoMatch: '候補がありません',
-    pickerMove: 'わざを選択',
-    pickerNature: 'せいかくを選択',
-    pickerItem: 'もちものを選択',
-    pickerSpecies: 'ポケモンを選択',
-    pickerImportShowdown: 'Pokepaste（Showdown形式）から読み込み',
-    pickerImportOpenButton: 'Pokepaste',
-    pickerImportTitle: 'Pokepaste 読み込み',
-    pickerImportPlaceholder: 'ここに Showdown 形式の構築テキストを貼り付け',
-    pickerImportButton: '読み込んで追加',
-    close: '閉じる',
-    pickerImportSuccess: '{count}体をボックスへ追加しました。',
-    pickerImportNoValid: '読み込めるポケモンが見つかりませんでした。',
-    detailExportPokepaste: 'Pokepaste出力',
-    detailExportTitle: 'Pokepaste 出力',
-    detailExportCopy: 'コピー',
-    detailExportCopied: 'Pokepaste をコピーしました。',
-    detailOpenPokedex: '図鑑を開く',
-    pickerAbility: 'とくせいを選択',
-    statusMoveError: 'このわざは変化技のためダメージは 0 です。',
-    noDamageError: '威力0のためダメージは 0 です。',
-    invalidError: '入力値を確認してください。',
-    notesPrefix: '補正:',
-    megaEvolution: 'メガ進化',
-    levitateImmunity: 'ふゆうで無効',
-    flashFireImmunity: 'もらいびで無効',
-    waterImmunity: 'みず吸収系で無効',
-    electricImmunity: 'でんき吸収系で無効',
-    grassImmunity: 'そうしょくで無効',
-    typeImmunity: 'タイプ相性で無効',
-    recoilLabel: '反動',
-    recoveryLabel: '回復',
-    hitsLabel: 'ヒット',
-    randomLabel: '乱数(16)',
-    neutralNature: '補正なし',
-    boxPartyTitle: 'ポケモンチャンピオンズ ボックス/パーティ',
-    boxPartySubtitle: 'Pokemon storage and party builder',
-    toCalc: 'ダメージ計算へ',
-    boxPartyLabel: 'ボックス / パーティ',
-    partyEdit: '編集',
-    partyActionTitle: 'パーティ編集',
-    partyActionSubtitle: '実行する操作を選択してください。',
-    partyActionExport: 'Pokepasteで出力',
-    partyActionDelete: '削除',
-    partyDeleteConfirm: 'このパーティを削除しますか？',
-    partyExportTitle: 'パーティ Pokepaste 出力',
-    partyExportEmpty: 'このパーティにはポケモンがいません。',
-  },
-  en: {
-    title: 'Pokemon Champions Damage Calculator',
-    subtitle: '[Gen 9 Champions] VGC 2026 Reg M-A',
-    backToList: 'Back to Poke List',
-    attacker: 'Attacker',
-    defender: 'Defender',
-    species: 'Pokemon',
-    nature: 'Nature',
-    megaEnabled: 'Mega Evolution',
-    ability: 'Ability',
-    item: 'Item',
-    championsFixedStats: 'Champions setting: fixed Level 50',
-    apAtk: 'Stat Points Atk',
-    apSpa: 'Stat Points SpA',
-    apHp: 'Stat Points HP',
-    apDef: 'Stat Points Def',
-    apSpd: 'Stat Points SpD',
-    actualStats: 'Actual Stats',
-    battleSettings: 'Situation',
-    move: 'Move',
-    type: 'Type',
-    category: 'Category',
-    physical: 'Physical',
-    special: 'Special',
-    status: 'Status',
-    power: 'Power',
-    weather: 'Weather',
-    terrain: 'Terrain',
-    none: 'None',
-    sun: 'Sun',
-    rain: 'Rain',
-    sand: 'Sandstorm',
-    snow: 'Snow',
-    electricTerrain: 'Electric Terrain',
-    grassyTerrain: 'Grassy Terrain',
-    psychicTerrain: 'Psychic Terrain',
-    mistyTerrain: 'Misty Terrain',
-    critical: 'Critical hit',
-    burn: 'Burned (attacker)',
-    spreadMove: 'Doubles modifier',
-    helpingHand: 'Helping Hand',
-    reflect: 'Reflect',
-    lightScreen: 'Light Screen',
-    defenderFullHp: 'Defender at full HP',
-    friendGuard: 'Friend Guard',
-    hitCount: 'Hits',
-    calculate: 'Recalculate',
-    swapSides: 'Swap A/D',
-    result: 'Result',
-    licenseLabel: 'Data source',
-    pickerSearch: 'Type to filter',
-    pickerNoMatch: 'No options found',
-    pickerMove: 'Select Move',
-    pickerNature: 'Select Nature',
-    pickerItem: 'Select Item',
-    pickerSpecies: 'Select Pokemon',
-    pickerImportShowdown: 'Import from Pokepaste (Showdown format)',
-    pickerImportOpenButton: 'Pokepaste',
-    pickerImportTitle: 'Pokepaste Import',
-    pickerImportPlaceholder: 'Paste Showdown team text here',
-    pickerImportButton: 'Import and add',
-    close: 'Close',
-    pickerImportSuccess: 'Added {count} Pokemon to box.',
-    pickerImportNoValid: 'No valid Pokemon were found in pasted text.',
-    detailExportPokepaste: 'Export Pokepaste',
-    detailExportTitle: 'Pokepaste Export',
-    detailExportCopy: 'Copy',
-    detailExportCopied: 'Copied Pokepaste text.',
-    detailOpenPokedex: 'Open Pokedex',
-    pickerAbility: 'Select Ability',
-    statusMoveError: 'Status move. Damage is 0.',
-    noDamageError: 'Power is 0. Damage is 0.',
-    invalidError: 'Please check your inputs.',
-    notesPrefix: 'Modifiers:',
-    megaEvolution: 'Mega Evolution',
-    levitateImmunity: 'Levitate immunity',
-    flashFireImmunity: 'Flash Fire immunity',
-    waterImmunity: 'Water immunity',
-    electricImmunity: 'Electric immunity',
-    grassImmunity: 'Grass immunity',
-    typeImmunity: 'Type immunity',
-    recoilLabel: 'Recoil',
-    recoveryLabel: 'Recovery',
-    hitsLabel: 'Hits',
-    randomLabel: 'Random (16)',
-    neutralNature: 'Neutral',
-    boxPartyTitle: 'Pokemon Champions Box / Party',
-    boxPartySubtitle: 'Pokemon storage and party builder',
-    toCalc: 'To Damage Calc',
-    boxPartyLabel: 'Box / Party',
-    partyEdit: 'Edit',
-    partyActionTitle: 'Edit Party',
-    partyActionSubtitle: 'Choose an action for this party.',
-    partyActionExport: 'Export as Pokepaste',
-    partyActionDelete: 'Delete',
-    partyDeleteConfirm: 'Delete this party?',
-    partyExportTitle: 'Party Pokepaste Export',
-    partyExportEmpty: 'This party has no Pokemon.',
-  },
-};
+      ja: {
+        title: 'ポケモンチャンピオンズ ダメージ計算',
+        subtitle: '[Gen 9 Champions] VGC 2026 Reg M-A',
+        backToList: 'ポケリスへ',
+        attacker: '攻撃側',
+        defender: '防御側',
+        species: 'ポケモン',
+        nature: 'せいかく',
+        megaEnabled: 'メガ進化',
+        ability: 'とくせい',
+        item: 'もちもの',
+        championsFixedStats: 'チャンピオンズ仕様に合わせて レベル50固定',
+        apAtk: '能力ポイント Atk',
+        apSpa: '能力ポイント SpA',
+        apHp: '能力ポイント HP',
+        apDef: '能力ポイント Def',
+        apSpd: '能力ポイント SpD',
+        actualStats: '実数値',
+        battleSettings: '状況',
+        move: 'わざ',
+        type: 'タイプ',
+        category: '分類',
+        physical: '物理',
+        special: '特殊',
+        status: '変化',
+        power: '威力',
+        weather: '天候',
+        terrain: 'フィールド',
+        none: 'なし',
+        sun: '晴れ',
+        rain: '雨',
+        sand: '砂嵐',
+        snow: '雪',
+        electricTerrain: 'エレキフィールド',
+        grassyTerrain: 'グラスフィールド',
+        psychicTerrain: 'サイコフィールド',
+        mistyTerrain: 'ミストフィールド',
+        critical: '急所',
+        burn: 'やけど(攻撃側)',
+        spreadMove: 'ダブル補正',
+        helpingHand: 'てだすけ',
+        reflect: 'リフレクター',
+        lightScreen: 'ひかりのかべ',
+        defenderFullHp: '防御側HP満タン',
+        friendGuard: 'フレンドガード',
+        hitCount: 'ヒット回数',
+        calculate: '再計算',
+        swapSides: '攻守入替',
+        result: '計算結果',
+        licenseLabel: 'データ出典',
+        pickerSearch: '検索して絞り込み',
+        pickerNoMatch: '候補がありません',
+        pickerMove: 'わざを選択',
+        pickerNature: 'せいかくを選択',
+        pickerItem: 'もちものを選択',
+        pickerSpecies: 'ポケモンを選択',
+        pickerImportShowdown: 'Pokepaste（Showdown形式）から読み込み',
+        pickerImportOpenButton: 'Pokepaste',
+        pickerImportTitle: 'Pokepaste 読み込み',
+        pickerImportPlaceholder: 'ここに Showdown 形式の構築テキストを貼り付け',
+        pickerImportButton: '読み込んで追加',
+        close: '閉じる',
+        pickerImportSuccess: '{count}体をボックスへ追加しました。',
+        pickerImportNoValid: '読み込めるポケモンが見つかりませんでした。',
+        detailExportPokepaste: 'Pokepaste出力',
+        detailExportTitle: 'Pokepaste 出力',
+        detailExportCopy: 'コピー',
+        detailExportCopied: 'Pokepaste をコピーしました。',
+        detailOpenPokedex: '図鑑を開く',
+        pickerAbility: 'とくせいを選択',
+        statusMoveError: 'このわざは変化技のためダメージは 0 です。',
+        noDamageError: '威力0のためダメージは 0 です。',
+        invalidError: '入力値を確認してください。',
+        notesPrefix: '補正:',
+        megaEvolution: 'メガ進化',
+        levitateImmunity: 'ふゆうで無効',
+        flashFireImmunity: 'もらいびで無効',
+        waterImmunity: 'みず吸収系で無効',
+        electricImmunity: 'でんき吸収系で無効',
+        grassImmunity: 'そうしょくで無効',
+        typeImmunity: 'タイプ相性で無効',
+        recoilLabel: '反動',
+        recoveryLabel: '回復',
+        hitsLabel: 'ヒット',
+        randomLabel: '乱数(16)',
+        neutralNature: '補正なし',
+        boxPartyTitle: 'ポケモンチャンピオンズ ボックス/パーティ',
+        boxPartySubtitle: 'Pokemon storage and party builder',
+        toCalc: 'ダメージ計算へ',
+        boxPartyLabel: 'ボックス / パーティ',
+        partyEdit: '編集',
+        partyActionTitle: 'パーティ編集',
+        partyActionSubtitle: '実行する操作を選択してください。',
+        partyActionExport: 'Pokepasteで出力',
+        partyActionDelete: '削除',
+        partyDeleteConfirm: 'このパーティを削除しますか？',
+        partyExportTitle: 'パーティ Pokepaste 出力',
+        partyExportEmpty: 'このパーティにはポケモンがいません。',
+      },
+      en: {
+        title: 'Pokemon Champions Damage Calculator',
+        subtitle: '[Gen 9 Champions] VGC 2026 Reg M-A',
+        backToList: 'Back to Poke List',
+        attacker: 'Attacker',
+        defender: 'Defender',
+        species: 'Pokemon',
+        nature: 'Nature',
+        megaEnabled: 'Mega Evolution',
+        ability: 'Ability',
+        item: 'Item',
+        championsFixedStats: 'Champions setting: fixed Level 50',
+        apAtk: 'Stat Points Atk',
+        apSpa: 'Stat Points SpA',
+        apHp: 'Stat Points HP',
+        apDef: 'Stat Points Def',
+        apSpd: 'Stat Points SpD',
+        actualStats: 'Actual Stats',
+        battleSettings: 'Situation',
+        move: 'Move',
+        type: 'Type',
+        category: 'Category',
+        physical: 'Physical',
+        special: 'Special',
+        status: 'Status',
+        power: 'Power',
+        weather: 'Weather',
+        terrain: 'Terrain',
+        none: 'None',
+        sun: 'Sun',
+        rain: 'Rain',
+        sand: 'Sandstorm',
+        snow: 'Snow',
+        electricTerrain: 'Electric Terrain',
+        grassyTerrain: 'Grassy Terrain',
+        psychicTerrain: 'Psychic Terrain',
+        mistyTerrain: 'Misty Terrain',
+        critical: 'Critical hit',
+        burn: 'Burned (attacker)',
+        spreadMove: 'Doubles modifier',
+        helpingHand: 'Helping Hand',
+        reflect: 'Reflect',
+        lightScreen: 'Light Screen',
+        defenderFullHp: 'Defender at full HP',
+        friendGuard: 'Friend Guard',
+        hitCount: 'Hits',
+        calculate: 'Recalculate',
+        swapSides: 'Swap A/D',
+        result: 'Result',
+        licenseLabel: 'Data source',
+        pickerSearch: 'Type to filter',
+        pickerNoMatch: 'No options found',
+        pickerMove: 'Select Move',
+        pickerNature: 'Select Nature',
+        pickerItem: 'Select Item',
+        pickerSpecies: 'Select Pokemon',
+        pickerImportShowdown: 'Import from Pokepaste (Showdown format)',
+        pickerImportOpenButton: 'Pokepaste',
+        pickerImportTitle: 'Pokepaste Import',
+        pickerImportPlaceholder: 'Paste Showdown team text here',
+        pickerImportButton: 'Import and add',
+        close: 'Close',
+        pickerImportSuccess: 'Added {count} Pokemon to box.',
+        pickerImportNoValid: 'No valid Pokemon were found in pasted text.',
+        detailExportPokepaste: 'Export Pokepaste',
+        detailExportTitle: 'Pokepaste Export',
+        detailExportCopy: 'Copy',
+        detailExportCopied: 'Copied Pokepaste text.',
+        detailOpenPokedex: 'Open Pokedex',
+        pickerAbility: 'Select Ability',
+        statusMoveError: 'Status move. Damage is 0.',
+        noDamageError: 'Power is 0. Damage is 0.',
+        invalidError: 'Please check your inputs.',
+        notesPrefix: 'Modifiers:',
+        megaEvolution: 'Mega Evolution',
+        levitateImmunity: 'Levitate immunity',
+        flashFireImmunity: 'Flash Fire immunity',
+        waterImmunity: 'Water immunity',
+        electricImmunity: 'Electric immunity',
+        grassImmunity: 'Grass immunity',
+        typeImmunity: 'Type immunity',
+        recoilLabel: 'Recoil',
+        recoveryLabel: 'Recovery',
+        hitsLabel: 'Hits',
+        randomLabel: 'Random (16)',
+        neutralNature: 'Neutral',
+        boxPartyTitle: 'Pokemon Champions Box / Party',
+        boxPartySubtitle: 'Pokemon storage and party builder',
+        toCalc: 'To Damage Calc',
+        boxPartyLabel: 'Box / Party',
+        partyEdit: 'Edit',
+        partyActionTitle: 'Edit Party',
+        partyActionSubtitle: 'Choose an action for this party.',
+        partyActionExport: 'Export as Pokepaste',
+        partyActionDelete: 'Delete',
+        partyDeleteConfirm: 'Delete this party?',
+        partyExportTitle: 'Party Pokepaste Export',
+        partyExportEmpty: 'This party has no Pokemon.',
+      },
+  };
 
 const ITEM_NAME_JA_FALLBACK = {
   blackbelt: 'くろおび', blackglasses: 'くろいメガネ', charcoal: 'もくたん', choicescarf: 'こだわりスカーフ',
@@ -248,6 +248,36 @@ const TYPE_BOOST_ITEMS = {
   twistedspoon: 'Psychic',
   fairyfeather: 'Fairy',
 };
+
+const RESIST_BERRY_TYPES = {
+  occaberry: 'Fire',
+  passhoberry: 'Water',
+  wacanberry: 'Electric',
+  rindoberry: 'Grass',
+  yacheberry: 'Ice',
+  chopleberry: 'Fighting',
+  kebiaberry: 'Poison',
+  shucaberry: 'Ground',
+  cobaberry: 'Flying',
+  payapaberry: 'Psychic',
+  tangaberry: 'Bug',
+  chartiberry: 'Rock',
+  kasibberry: 'Ghost',
+  habanberry: 'Dragon',
+  colburberry: 'Dark',
+  babiriberry: 'Steel',
+  roseliberry: 'Fairy',
+};
+
+function getDefensiveItemModifierMeta(itemId, moveCategory, moveType, typeMultiplier, defenderSpecies) {
+  if (!itemId) return { applicable: false, multiplier: 1, mode: 'none' };
+  if (itemId === 'assaultvest') return { applicable: moveCategory === 'Special', multiplier: 2 / 3, mode: 'stat' };
+  if (itemId === 'eviolite') return { applicable: Boolean(defenderSpecies?.nfe), multiplier: 2 / 3, mode: 'stat' };
+  if (itemId === 'chilanberry') return { applicable: moveType === 'Normal', multiplier: 0.5, mode: 'damage' };
+  const berryType = RESIST_BERRY_TYPES[itemId];
+  if (!berryType) return { applicable: false, multiplier: 1, mode: 'none' };
+  return { applicable: moveType === berryType && typeMultiplier > 1, multiplier: 0.5, mode: 'damage' };
+}
 
 const NATURES = [
   { id: 'hardy', en: 'Hardy', ja: 'がんばりや', plus: null, minus: null }, { id: 'lonely', en: 'Lonely', ja: 'さみしがり', plus: 'atk', minus: 'def' },
@@ -363,9 +393,17 @@ const state = {
   pickerImport: { modal: null },
   preset: { modal: null, side: 'attacker' },
   detail: { modal: null, editingPokemonId: null },
+  autoAllocate: { modal: null, candidates: [] },
   detailExport: { modal: null },
   partyAction: { modal: null, partyId: null },
   confirmSave: { modal: null, role: null },
+  editor: { modal: null, activePanelId: '', activeKind: '', docked: [] },
+  calcAuto: { modal: null, candidates: [], side: 'attacker' },
+  resultFlowDirection: 'to',
+  factorOverrides: {
+    attacker: { ability: true, item: true, mega: true },
+    defender: { ability: true, item: true, mega: true },
+  },
   storage: { box: [], parties: [], calcLinks: { attacker: null, defender: null } },
   availableFormats: ['[Gen 9 Champions] VGC 2026 Reg M-A'],
   learnsetBySpeciesId: new Map(),
@@ -736,6 +774,10 @@ function setMobileBattleTab(tab, options = {}) {
 function initMobileBattleTabs() {
   const root = $('mobile-battle-tabs');
   if (!root) return;
+  if (document.body.classList.contains('calc-modal-editor-mode')) {
+    root.classList.add('d-none');
+    return;
+  }
   const attackerButton = $('mobile-battle-tab-attacker');
   const settingsButton = $('mobile-battle-tab-settings');
   const defenderButton = $('mobile-battle-tab-defender');
@@ -807,6 +849,1001 @@ function initMobileBattleTabs() {
   if (typeof mediaQuery.addEventListener === 'function') mediaQuery.addEventListener('change', handleViewport);
   else if (typeof mediaQuery.addListener === 'function') mediaQuery.addListener(handleViewport);
   handleViewport(mediaQuery);
+}
+
+function enableCalcModalEditorMode() {
+  if (!hasCalcPage()) return;
+  document.body.classList.add('calc-modal-editor-mode');
+  document.body.classList.remove('mobile-panel-attacker', 'mobile-panel-settings', 'mobile-panel-defender', 'mobile-panel-result');
+}
+
+function restoreCalcEditorDockedPanels() {
+  const entries = Array.isArray(state.editor.docked) ? state.editor.docked.slice() : [];
+  entries.forEach(dock => {
+    if (!dock?.panelEl || !dock?.parent) return;
+    if (dock.nextSibling && dock.nextSibling.parentNode === dock.parent) dock.parent.insertBefore(dock.panelEl, dock.nextSibling);
+    else dock.parent.appendChild(dock.panelEl);
+  });
+  state.editor.docked = [];
+  state.editor.activePanelId = '';
+  state.editor.activeKind = '';
+}
+
+function mountCalcPanelToEditorModal(panelEl) {
+  const content = $('calc-editor-modal-content');
+  if (!content || !panelEl || !(panelEl instanceof HTMLElement)) return false;
+  if ((state.editor.docked || []).some(dock => dock.panelEl === panelEl)) return true;
+  state.editor.docked.push({
+    panelEl,
+    parent: panelEl.parentNode,
+    nextSibling: panelEl.nextSibling,
+  });
+  content.appendChild(panelEl);
+  return true;
+}
+
+function clearCalcEditorModalContent() {
+  const content = $('calc-editor-modal-content');
+  if (!content) return;
+  content.innerHTML = '';
+}
+
+function ensureCalcEditorModalFooter() {
+  const modal = $('calc-editor-modal');
+  if (!modal) return;
+  const content = modal.querySelector('.modal-content');
+  if (!content) return;
+  let footer = modal.querySelector('#calc-editor-modal-footer');
+  if (!footer) {
+    footer = document.createElement('div');
+    footer.id = 'calc-editor-modal-footer';
+    footer.className = 'modal-footer d-flex justify-content-between';
+    footer.innerHTML = '<div class="d-flex gap-2"><button id="calc-editor-prev" class="btn btn-outline-secondary" type="button">前へ</button><button id="calc-editor-next" class="btn btn-outline-secondary" type="button">次へ</button></div><div class="d-flex gap-2"><button id="calc-editor-close" class="btn btn-outline-secondary" type="button">閉じる</button><button id="calc-editor-apply" class="btn btn-primary" type="button">反映</button></div>';
+    content.appendChild(footer);
+  }
+  if (state.editor.activeKind === 'attacker' || state.editor.activeKind === 'defender') {
+    footer.innerHTML = '<div class="container-fluid px-0"><div class="row g-2"><div class="col-6"><button id="calc-editor-save-box" class="btn btn-outline-secondary w-100" type="button">ボックスに保存</button></div><div class="col-6"><button id="calc-editor-ok" class="btn btn-primary w-100" type="button">OK</button></div></div></div>';
+    const saveBox = $('calc-editor-save-box');
+    if (saveBox) {
+      saveBox.onclick = () => {
+        const side = state.editor.activeKind === 'defender' ? 'defender' : 'attacker';
+        applyCalcEditorModalToSide(side);
+        updateLinkedPokemonFromSide(side);
+        calculateAndRender();
+      };
+    }
+    const ok = $('calc-editor-ok');
+    if (ok) {
+      ok.onclick = () => {
+        const side = state.editor.activeKind === 'defender' ? 'defender' : 'attacker';
+        applyCalcEditorModalToSide(side);
+        calculateAndRender();
+        state.editor.modal?.hide();
+      };
+    }
+    return;
+  }
+  const prev = $('calc-editor-prev');
+  if (prev) {
+    prev.classList.toggle('d-none', state.editor.activeKind === 'attacker');
+    prev.onclick = () => {
+      if (state.editor.activeKind === 'defender') openCalcEditorModal('attacker');
+      else if (state.editor.activeKind === 'move') openCalcEditorModal('defender');
+      else if (state.editor.activeKind === 'settings') openCalcEditorModal('move');
+    };
+  }
+  const next = $('calc-editor-next');
+  if (next) {
+    next.classList.toggle('d-none', state.editor.activeKind === 'settings');
+    next.onclick = () => {
+      if (state.editor.activeKind === 'attacker') openCalcEditorModal('defender');
+      else if (state.editor.activeKind === 'defender') openCalcEditorModal('move');
+      else if (state.editor.activeKind === 'move') openCalcEditorModal('settings');
+    };
+  }
+  const close = $('calc-editor-close');
+  if (close) close.onclick = () => state.editor.modal?.hide();
+  const apply = $('calc-editor-apply');
+  if (apply) apply.onclick = () => {
+    calculateAndRender();
+    state.editor.modal?.hide();
+  };
+}
+
+function appendCalcAutoAllocateSection(kind) {
+  const content = $('calc-editor-modal-content');
+  if (!content) return;
+  const modeLabel = kind === 'defender' ? '被ダメージ' : '与ダメージ';
+  const comparator = kind === 'defender' ? '未満' : '以上';
+  const section = document.createElement('section');
+  section.className = 'card mt-3 mb-3';
+  section.id = `calc-auto-allocate-${kind}`;
+  section.innerHTML = `
+    <div class="card-body">
+      <h6 class="card-title d-flex align-items-center gap-2 mb-2"><i class="bi bi-magic"></i><span>自動配分</span></h6>
+      <div class="row g-2 align-items-center mb-2 calc-auto-row-threshold">
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <span class="calc-auto-icon-head" title="${modeLabel}" aria-label="${modeLabel}"><i class="bi bi-graph-up-arrow"></i></span>
+        </div>
+        <div class="col-6"><input id="calc-auto-threshold-range" class="form-range calc-auto-threshold-range-enhanced" type="range" min="0" max="100" step="1" value="100"></div>
+        <div class="col-4 d-flex align-items-center justify-content-end gap-1 calc-auto-threshold-tail"><input id="calc-auto-threshold-number" class="form-control form-control-sm" type="number" min="0" max="100" step="1" value="100"><span class="small text-nowrap">%${comparator}</span></div>
+      </div>
+      <div class="row g-2 align-items-center calc-auto-row-rate">
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <span class="calc-auto-icon-head" title="乱数" aria-label="乱数"><i class="bi bi-dice-5"></i></span>
+        </div>
+        <div class="col-7">
+        <select id="calc-auto-rate" class="form-select form-select-sm">
+          <option value="16/16" selected>16/16</option>
+          <option value="15/16">15/16</option>
+          <option value="14/16">14/16</option>
+          <option value="13/16">13/16</option>
+          <option value="12/16">12/16</option>
+          <option value="11/16">11/16</option>
+          <option value="10/16">10/16</option>
+          <option value="9/16">9/16</option>
+          <option value="8/16">8/16</option>
+          <option value="7/16">7/16</option>
+          <option value="6/16">6/16</option>
+          <option value="5/16">5/16</option>
+          <option value="4/16">4/16</option>
+          <option value="3/16">3/16</option>
+          <option value="2/16">2/16</option>
+          <option value="1/16">1/16</option>
+        </select>
+        </div>
+        <div class="col-3">
+        <button id="calc-auto-run" class="btn btn-primary btn-sm w-100" type="button">計算</button>
+        </div>
+      </div>
+    </div>
+  `;
+  content.appendChild(section);
+  const range = $('calc-auto-threshold-range');
+  const number = $('calc-auto-threshold-number');
+  if (range && number) {
+    const sync = value => {
+      const normalized = clamp(toNumber(value, 100), 0, 100);
+      range.value = String(normalized);
+      number.value = String(normalized);
+    };
+    range.addEventListener('input', () => sync(range.value));
+    number.addEventListener('input', () => sync(number.value));
+  }
+  const runButton = $('calc-auto-run');
+  if (runButton) {
+    runButton.addEventListener('click', () => {
+      applyCalcEditorModalToSide(kind === 'defender' ? 'defender' : 'attacker');
+      openCalcAutoAllocateResult(kind);
+    });
+  }
+}
+
+function parseAutoRateHits(value) {
+  const text = String(value || '16/16');
+  const [num] = text.split('/');
+  return clamp(toNumber(num, 16), 1, 16);
+}
+
+function getStatLabelJa(stat) {
+  const map = { hp: 'HP', atk: 'こうげき', def: 'ぼうぎょ', spa: 'とくこう', spd: 'とくぼう', spe: 'すばやさ' };
+  return map[stat] || stat;
+}
+
+function buildCalcAutoAllocateCandidates(kind) {
+  const input = collectInput();
+  const flowInput = getFlowCalcInput(input);
+  const calcRole = getCalcRoleForViewSide(kind);
+  if (kind === 'attacker' && calcRole !== 'attacker') return { candidates: [], reason: '現在のTO/FROMではこのサイドは攻撃側ではありません。', maxCandidate: null };
+  if (kind === 'defender' && calcRole !== 'defender') return { candidates: [], reason: '現在のTO/FROMではこのサイドは防御側ではありません。', maxCandidate: null };
+  const thresholdPercent = clamp(toNumber($('calc-auto-threshold-range')?.value, 100), 0, 100);
+  const requiredHits = parseAutoRateHits($('calc-auto-rate')?.value || '16/16');
+  const thresholdRatio = thresholdPercent / 100;
+  const moveCategory = flowInput.moveCategory;
+  const selectedMove = state.movesById.get(flowInput.moveId);
+  const targetStat = kind === 'attacker'
+    ? getOffenseReferenceStat(selectedMove, moveCategory)
+    : (moveCategory === 'Special' ? 'spd' : 'def');
+  const evKey = `${kind}Ev${targetStat.charAt(0).toUpperCase()}${targetStat.slice(1)}`;
+  const hpEvKey = `${kind}EvHp`;
+  const natureKey = `${kind}Nature`;
+  const naturePlusKey = `${kind}NaturePlusStats`;
+  const natureMinusKey = `${kind}NatureMinusStats`;
+  const boostedNature = targetStat === 'atk' ? 'adamant' : (targetStat === 'spa' ? 'modest' : (targetStat === 'def' ? 'impish' : (targetStat === 'spd' ? 'calm' : 'timid')));
+  const loweredNature = targetStat === 'atk' ? 'modest' : (targetStat === 'spa' ? 'adamant' : (targetStat === 'def' ? 'lonely' : (targetStat === 'spd' ? 'naughty' : 'brave')));
+  const patterns = [
+    { label: '性格下降補正', nature: loweredNature },
+    { label: '性格補正なし', nature: 'hardy' },
+    { label: '性格補正あり', nature: boostedNature },
+  ];
+  const candidates = [];
+  const evaluated = [];
+  let maxCandidate = null;
+  let bestScore = -Infinity;
+
+  const evaluate = candidateInput => {
+    const result = calculateDamageRange(getFlowCalcInput(candidateInput));
+    const thresholdDamage = result.defenderHp * thresholdRatio;
+    const successRate = getOutcomeRate(result, damage => {
+      if (kind === 'attacker') return damage >= thresholdDamage;
+      return damage < thresholdDamage;
+    });
+    return { result, success: successRate * 16 };
+  };
+
+  patterns.forEach(pattern => {
+    let bestSatisfied = null;
+    if (kind === 'defender') {
+      for (let hpEv = 0; hpEv <= 32; hpEv += 1) {
+        for (let ev = 0; ev <= 32; ev += 1) {
+          const candidateInput = {
+            ...input,
+            [natureKey]: pattern.nature,
+            [naturePlusKey]: [],
+            [natureMinusKey]: [],
+            [hpEvKey]: hpEv,
+            [evKey]: ev,
+          };
+          const { result, success } = evaluate(candidateInput);
+          const entry = {
+            pattern: pattern.label,
+            nature: pattern.nature,
+            stat: targetStat,
+            ev,
+            hpEv,
+            totalEv: hpEv + ev,
+            success,
+            min: result.min,
+            max: result.max,
+            hp: result.defenderHp,
+            statValue: result.defenseStatUsed,
+          };
+          evaluated.push(entry);
+
+          const midpoint = (entry.min + entry.max) / 2;
+          const score = (entry.success * 1000) - midpoint - (entry.totalEv * 0.1);
+          if (score > bestScore) {
+            bestScore = score;
+            maxCandidate = entry;
+          }
+
+          if (entry.success >= requiredHits) {
+            if (!bestSatisfied
+              || entry.totalEv < bestSatisfied.totalEv
+              || (entry.totalEv === bestSatisfied.totalEv && entry.ev < bestSatisfied.ev)
+              || (entry.totalEv === bestSatisfied.totalEv && entry.ev === bestSatisfied.ev && entry.hpEv < bestSatisfied.hpEv)) {
+              bestSatisfied = entry;
+            }
+          }
+        }
+      }
+    } else {
+      for (let ev = 0; ev <= 32; ev += 1) {
+        const candidateInput = {
+          ...input,
+          [natureKey]: pattern.nature,
+          [naturePlusKey]: [],
+          [natureMinusKey]: [],
+          [evKey]: ev,
+        };
+        const { result, success } = evaluate(candidateInput);
+        const entry = {
+          pattern: pattern.label,
+          nature: pattern.nature,
+          stat: targetStat,
+          ev,
+          hpEv: clamp(toNumber(candidateInput[hpEvKey], 0), 0, 32),
+          totalEv: clamp(toNumber(candidateInput[hpEvKey], 0), 0, 32) + ev,
+          success,
+          min: result.min,
+          max: result.max,
+          hp: result.defenderHp,
+          statValue: result.attackStatUsed,
+        };
+        evaluated.push(entry);
+
+        const midpoint = (entry.min + entry.max) / 2;
+        const score = (entry.success * 1000) + midpoint + (entry.statValue * 0.01) - (entry.totalEv * 0.1);
+        if (score > bestScore) {
+          bestScore = score;
+          maxCandidate = entry;
+        }
+
+        if (!bestSatisfied && entry.success >= requiredHits) {
+          bestSatisfied = entry;
+          break;
+        }
+      }
+    }
+    if (bestSatisfied) candidates.push(bestSatisfied);
+  });
+
+  let reason = '';
+  if (!candidates.length) {
+    const strongest = evaluated
+      .filter(entry => entry.pattern === '性格補正あり' && entry.ev === 32)
+      .sort((left, right) => right.success - left.success)[0] || null;
+    const weakest = evaluated
+      .filter(entry => entry.pattern === '性格下降補正' && entry.ev === 0 && toNumber(entry.hpEv, 0) === 0)
+      .sort((left, right) => right.success - left.success)[0] || null;
+    if (kind === 'attacker' && strongest && strongest.success < requiredHits) {
+      maxCandidate = strongest;
+      reason = `条件を満たす候補がありませんでした。上昇補正+32Pでも ${strongest.success.toFixed(0)}/16 までです。`;
+    } else if (kind === 'defender' && weakest && weakest.success < requiredHits) {
+      maxCandidate = weakest;
+      reason = `条件を満たす候補がありませんでした。下降補正 HP0P / ${getStatLabelJa(targetStat)}0P でも ${weakest.success.toFixed(0)}/16 までです。`;
+    } else if (strongest && strongest.success >= (maxCandidate?.success ?? -1)) {
+      maxCandidate = strongest;
+      reason = '条件を満たす候補がありませんでした。到達可能な最大候補を表示します。';
+    } else {
+      reason = '条件を満たす候補がありませんでした。';
+    }
+  }
+
+  return { 
+    candidates, 
+    reason, 
+    maxCandidate: candidates.length === 0 ? maxCandidate : null 
+  };
+}
+
+function applyCalcAutoAllocateCandidate(indexOrCandidate) {
+  let candidate;
+  if (typeof indexOrCandidate === 'object' && indexOrCandidate !== null) {
+    candidate = indexOrCandidate;
+  } else {
+    candidate = state.calcAuto.candidates[indexOrCandidate];
+  }
+  if (!candidate) return;
+  const side = state.calcAuto.side === 'defender' ? 'defender' : 'attacker';
+  const natureInput = $(`${side}-nature`);
+  if (natureInput) {
+    natureInput.value = candidate.nature;
+    updatePickerButtonLabel(`${side}-nature`);
+    syncNatureModifierSelectors(side);
+  }
+  const evInput = $(`${side}-ev-${candidate.stat}`);
+  if (evInput) {
+    evInput.value = String(candidate.ev);
+    evInput.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  if (typeof candidate.hpEv === 'number') {
+    const hpInput = $(`${side}-ev-hp`);
+    if (hpInput) {
+      hpInput.value = String(candidate.hpEv);
+      hpInput.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
+  const calcModalEvInput = $(`calc-modal-ev-${candidate.stat}`);
+  if (calcModalEvInput) {
+    calcModalEvInput.value = String(candidate.ev);
+    calcModalEvInput.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  if (typeof candidate.hpEv === 'number') {
+    const calcModalHpEvInput = $('calc-modal-ev-hp');
+    if (calcModalHpEvInput) {
+      calcModalHpEvInput.value = String(candidate.hpEv);
+      calcModalHpEvInput.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+  const calcButtons = document.querySelectorAll('.stat-mod-cycle-btn[data-side="calc"]');
+  if (calcButtons.length) {
+    const nature = getNatureById(candidate.nature);
+    const labelMap = { atk: 'A', def: 'B', spa: 'C', spd: 'D', spe: 'S' };
+    calcButtons.forEach(button => {
+      const stat = button.dataset.stat;
+      if (!stat || stat === 'hp') return;
+      const stateValue = stat === nature.plus ? 'plus' : (stat === nature.minus ? 'minus' : 'neutral');
+      button.dataset.state = stateValue;
+      const base = labelMap[stat] || stat.toUpperCase();
+      button.textContent = stateValue === 'plus' ? `${base}+` : (stateValue === 'minus' ? `${base}-` : base);
+    });
+  }
+
+  applyCalcEditorModalToSide(side);
+  updateStatSummaries();
+  calculateAndRender();
+  state.calcAuto.modal?.hide();
+}
+
+function renderCalcAutoAllocateResults(candidates, reason = '', maxCandidate = null) {
+  if (!$('calc-auto-result-list') || !$('calc-auto-result-summary')) return;
+  const list = $('calc-auto-result-list');
+  const summary = $('calc-auto-result-summary');
+  if (!candidates.length) {
+    summary.textContent = reason || '候補なし';
+    if (maxCandidate) {
+      const minRatio = maxCandidate.hp ? ((maxCandidate.min / maxCandidate.hp) * 100).toFixed(1) : '0.0';
+      const maxRatio = maxCandidate.hp ? ((maxCandidate.max / maxCandidate.hp) * 100).toFixed(1) : '0.0';
+      const nature = getNatureById(maxCandidate.nature);
+      const natureLabel = state.lang === 'ja' ? (nature?.ja || nature?.en || maxCandidate.nature) : (nature?.en || nature?.ja || maxCandidate.nature);
+      list.innerHTML = `
+        <div class="list-group-item d-flex justify-content-between align-items-center gap-2 bg-warning bg-opacity-10 border-warning">
+          <div>
+            <div class="fw-semibold text-warning">最大候補</div>
+            <div class="small text-muted">${escapeHtml(maxCandidate.pattern)}</div>
+            <div class="small text-muted">HP ${toNumber(maxCandidate.hpEv, 0)}P / ${escapeHtml(getStatLabelJa(maxCandidate.stat))} ${maxCandidate.ev}P / 性格 ${escapeHtml(natureLabel)} / 実数値 ${maxCandidate.statValue}</div>
+            <div class="small text-muted">ダメージ ${maxCandidate.min}-${maxCandidate.max} (${minRatio}% - ${maxRatio}%) / 成功 ${maxCandidate.success}/16</div>
+          </div>
+          <button class="btn btn-sm btn-warning" type="button" data-calc-auto-apply="max">適用</button>
+        </div>
+      `;
+      list.querySelectorAll('[data-calc-auto-apply="max"]').forEach(button => {
+        button.addEventListener('click', () => {
+          applyCalcAutoAllocateCandidate(maxCandidate);
+        });
+      });
+    } else {
+      list.innerHTML = '';
+    }
+    return;
+  }
+  const threshold = clamp(toNumber($('calc-auto-threshold-range')?.value, 100), 0, 100);
+  const rate = $('calc-auto-rate')?.value || '16/16';
+  summary.textContent = `条件: ${state.calcAuto.side === 'defender' ? '被ダメージ' : '与ダメージ'} ${threshold}% / ${rate}`;
+  list.innerHTML = candidates.map((candidate, index) => {
+    const minRatio = candidate.hp ? ((candidate.min / candidate.hp) * 100).toFixed(1) : '0.0';
+    const maxRatio = candidate.hp ? ((candidate.max / candidate.hp) * 100).toFixed(1) : '0.0';
+    const nature = getNatureById(candidate.nature);
+    const natureLabel = state.lang === 'ja' ? (nature?.ja || nature?.en || candidate.nature) : (nature?.en || nature?.ja || candidate.nature);
+    return `
+      <div class="list-group-item d-flex justify-content-between align-items-center gap-2">
+        <div>
+          <div class="fw-semibold">${escapeHtml(candidate.pattern)}</div>
+          <div class="small text-muted">HP ${toNumber(candidate.hpEv, 0)}P / ${escapeHtml(getStatLabelJa(candidate.stat))} ${candidate.ev}P / 性格 ${escapeHtml(natureLabel)} / 実数値 ${candidate.statValue}</div>
+          <div class="small text-muted">ダメージ ${candidate.min}-${candidate.max} (${minRatio}% - ${maxRatio}%) / 成功 ${candidate.success}/16</div>
+        </div>
+        <button class="btn btn-sm btn-primary" type="button" data-calc-auto-apply="${index}">適用</button>
+      </div>
+    `;
+  }).join('');
+  list.querySelectorAll('[data-calc-auto-apply]').forEach(button => {
+    button.addEventListener('click', () => {
+      const val = button.getAttribute('data-calc-auto-apply');
+      if (val === 'max') {
+        const { maxCandidate } = buildCalcAutoAllocateCandidates(state.calcAuto.side);
+        if (maxCandidate) applyCalcAutoAllocateCandidate(maxCandidate);
+      } else {
+        applyCalcAutoAllocateCandidate(toNumber(val, -1));
+      }
+    });
+  });
+}
+
+function openCalcAutoAllocateResult(kind) {
+  state.calcAuto.side = kind;
+  const { candidates, reason, maxCandidate } = buildCalcAutoAllocateCandidates(kind);
+  state.calcAuto.candidates = candidates;
+  renderCalcAutoAllocateResults(candidates, reason, maxCandidate);
+  state.calcAuto.modal?.show();
+}
+
+function initCalcAutoResultModal() {
+  if (!$('calc-auto-result-modal')) return;
+  state.calcAuto.modal = new bootstrap.Modal($('calc-auto-result-modal'));
+}
+
+function buildSelectOptionsHtml(values, formatter) {
+  return values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(formatter(value))}</option>`).join('');
+}
+
+function getCalcModalInitialState(side) {
+  const linked = getPokemonById(state.storage.calcLinks?.[side]);
+  const move = state.movesById.get($('move-select')?.value || '');
+  const moveCategory = move?.category || $('move-category')?.value || 'Physical';
+  const offenseNature = moveCategory === 'Special' ? 'modest' : 'adamant';
+  const defenseNature = moveCategory === 'Special' ? 'calm' : 'bold';
+  const base = {
+    speciesId: $(`${side}-species`)?.value || 'fluttermane',
+    nature: $(`${side}-nature`)?.value || (side === 'attacker' ? offenseNature : defenseNature),
+    abilityId: $(`${side}-ability`)?.value || '',
+    itemId: $(`${side}-item`)?.value || '',
+    evs: {
+      hp: clamp(toNumber($(`${side}-ev-hp`)?.value, 0), 0, 32),
+      atk: clamp(toNumber($(`${side}-ev-atk`)?.value, 0), 0, 32),
+      def: clamp(toNumber($(`${side}-ev-def`)?.value, 0), 0, 32),
+      spa: clamp(toNumber($(`${side}-ev-spa`)?.value, 0), 0, 32),
+      spd: clamp(toNumber($(`${side}-ev-spd`)?.value, 0), 0, 32),
+      spe: clamp(toNumber($(`${side}-ev-spe`)?.value, 0), 0, 32),
+    },
+    ranks: {
+      atk: clamp(toNumber($(`${side}-rank-atk`)?.value, 0), -6, 6),
+      def: clamp(toNumber($(`${side}-rank-def`)?.value, 0), -6, 6),
+      spa: clamp(toNumber($(`${side}-rank-spa`)?.value, 0), -6, 6),
+      spd: clamp(toNumber($(`${side}-rank-spd`)?.value, 0), -6, 6),
+      spe: clamp(toNumber($(`${side}-rank-spe`)?.value, 0), -6, 6),
+    },
+  };
+  if (!linked) {
+    base.nature = side === 'attacker' ? offenseNature : defenseNature;
+    Object.keys(base.evs).forEach(stat => { base.evs[stat] = 32; });
+    Object.keys(base.ranks).forEach(stat => { base.ranks[stat] = 0; });
+  }
+  return base;
+}
+
+function resolveCalcModalSpeciesSelection(speciesId) {
+  const megaBaseId = resolveMegaBaseId(speciesId);
+  const isMegaSpecies = Boolean(megaBaseId && megaBaseId !== speciesId);
+  return {
+    selectedSpeciesId: speciesId,
+    appliedSpeciesId: isMegaSpecies ? megaBaseId : speciesId,
+    isMegaSpecies,
+  };
+}
+
+function computeCalcModalStats(speciesId, natureId, evs, itemId) {
+  const selection = resolveCalcModalSpeciesSelection(speciesId);
+  const effectiveSpecies = getEffectiveSpecies(selection.appliedSpeciesId, selection.isMegaSpecies, itemId)
+    || state.speciesById.get(selection.appliedSpeciesId)
+    || state.speciesById.get(speciesId);
+  const baseStats = effectiveSpecies?.baseStats || {};
+  const nature = getNatureById(natureId || 'hardy');
+  return {
+    hp: calcHpStat(toNumber(baseStats.hp, 0), clamp(toNumber(evs.hp, 0), 0, 32)),
+    atk: calcSingleStat(toNumber(baseStats.atk, 0), clamp(toNumber(evs.atk, 0), 0, 32), natureMod(nature, 'atk')),
+    def: calcSingleStat(toNumber(baseStats.def, 0), clamp(toNumber(evs.def, 0), 0, 32), natureMod(nature, 'def')),
+    spa: calcSingleStat(toNumber(baseStats.spa, 0), clamp(toNumber(evs.spa, 0), 0, 32), natureMod(nature, 'spa')),
+    spd: calcSingleStat(toNumber(baseStats.spd, 0), clamp(toNumber(evs.spd, 0), 0, 32), natureMod(nature, 'spd')),
+    spe: calcSingleStat(toNumber(baseStats.spe, 0), clamp(toNumber(evs.spe, 0), 0, 32), natureMod(nature, 'spe')),
+  };
+}
+
+function renderCalcEditorSideModal(kind) {
+  const side = kind === 'defender' ? 'defender' : 'attacker';
+  const content = $('calc-editor-modal-content');
+  if (!content) return;
+  const initial = getCalcModalInitialState(side);
+  const rankValues = Array.from({ length: 13 }, (_, index) => String(index - 6));
+  const evValues = Array.from({ length: 33 }, (_, index) => String(index));
+  const activeMoveId = $('move-select')?.value || '';
+  const move = state.movesById.get(activeMoveId);
+  const moveParamConfig = move ? getMovePowerParameterConfig(move.id) : null;
+  const fieldIds = {
+    species: `${side}-species`,
+    ability: `${side}-ability`,
+    item: `${side}-item`,
+  };
+
+  content.innerHTML = `
+    <section class="card mb-3">
+      <div class="card-body">
+      <h6 class="card-title d-flex align-items-center gap-2 mb-3"><i class="bi bi-person"></i><span>ポケモン</span></h6>
+      <div class="row g-2">
+        <div class="col-9">
+          <button id="calc-modal-species-display" class="btn btn-outline-secondary w-100 text-start" type="button"></button>
+        </div>
+        <div class="col-3">
+          <button id="calc-modal-open-detail" class="btn btn-outline-secondary w-100" type="button" title="個体編集" aria-label="個体編集"><i class="bi bi-pencil-square"></i></button>
+        </div>
+        <div class="col-12 col-md-6">
+          <button id="calc-modal-ability-button" class="btn btn-outline-secondary w-100 text-start" type="button" title="特性を選択"></button>
+        </div>
+        <div class="col-12 col-md-6">
+          <button id="calc-modal-item-button" class="btn btn-outline-secondary w-100 text-start" type="button" title="もちものを選択"></button>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    ${side === 'attacker' ? `
+      <section class="card mb-3">
+        <div class="card-body">
+        <h6 class="card-title d-flex align-items-center gap-2 mb-3"><i class="bi bi-lightning-fill"></i><span>わざ</span></h6>
+        <div class="row g-2 calc-modal-move-row">
+          <div class="col-12">
+            <button id="calc-modal-move-display" class="btn btn-outline-secondary text-start w-100" type="button"></button>
+          </div>
+          <div class="col-4 col-md-4">
+            <div class="input-group input-group-sm calc-modal-move-control" title="タイプ">
+              <span class="input-group-text" aria-hidden="true"><i class="bi bi-palette2"></i></span>
+              <select id="calc-modal-move-type" class="form-select form-select-sm" aria-label="タイプ"></select>
+            </div>
+          </div>
+          <div class="col-4 col-md-4">
+            <div class="input-group input-group-sm calc-modal-move-control" title="性質">
+              <span class="input-group-text" aria-hidden="true"><i class="bi bi-diagram-3"></i></span>
+              <select id="calc-modal-move-category" class="form-select form-select-sm" aria-label="性質"></select>
+            </div>
+          </div>
+          <div class="col-4 col-md-4">
+            <div class="input-group input-group-sm calc-modal-move-control" title="威力">
+              <span class="input-group-text" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
+              <input id="calc-modal-move-power" class="form-control form-control-sm" type="number" min="0" max="400" aria-label="威力">
+            </div>
+          </div>
+          <div class="col-12 d-none" id="calc-modal-move-param-wrap">
+            <div class="input-group input-group-sm calc-modal-move-control" title="特殊パラメータ">
+              <span class="input-group-text" aria-hidden="true"><i class="bi bi-sliders"></i></span>
+              <select id="calc-modal-move-param" class="form-select form-select-sm" aria-label="特殊パラメータ"></select>
+            </div>
+            <div class="small text-muted mt-1" id="calc-modal-move-param-help">-</div>
+          </div>
+          <div class="col-12 d-none" id="calc-modal-hit-count-wrap">
+            <div class="input-group input-group-sm calc-modal-move-control" title="ヒット回数">
+              <span class="input-group-text" aria-hidden="true"><i class="bi bi-123"></i></span>
+              <select id="calc-modal-hit-count" class="form-select form-select-sm" aria-label="ヒット回数"></select>
+            </div>
+            <div class="small text-muted mt-1" id="calc-modal-hit-count-help">連続技のヒット回数</div>
+          </div>
+        </div>
+        </div>
+      </section>
+    ` : ''}
+
+    <section class="card mb-3">
+      <div class="card-body">
+      <h6 class="card-title d-flex align-items-center gap-2 mb-3"><i class="bi bi-bar-chart"></i><span>ステータス</span></h6>
+      <div class="detail-compact-stat-editor" id="calc-modal-stats-grid">
+        ${['hp', 'atk', 'def', 'spa', 'spd'].map(stat => {
+          const statLabel = stat === 'spa' ? 'C' : stat === 'spd' ? 'D' : stat.toUpperCase();
+          const natureCell = stat !== 'hp'
+            ? `<button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn" type="button" data-side="calc" data-stat="${stat}" data-state="neutral">${statLabel}</button>`
+            : `<button class="btn btn-outline-secondary btn-sm stat-mod-cycle-btn calc-modal-stat-placeholder" type="button" data-side="calc" data-stat="hp" data-state="neutral" disabled>${statLabel}</button>`;
+          const rankCell = stat !== 'hp'
+            ? `<div class="input-group input-group-sm calc-modal-stat-control" title="ランク補正" aria-label="ランク補正"><span class="input-group-text" aria-hidden="true"><i class="bi bi-bar-chart-steps"></i></span><select id="calc-modal-rank-${stat}" class="form-select mono compact-rank-input">${buildSelectOptionsHtml(rankValues, value => toNumber(value) > 0 ? '+' + value : value)}</select></div>`
+            : '<span class="text-muted small">-</span>';
+          return `
+          <div class="detail-compact-stat-row" data-calc-modal-stat-row="${stat}">
+            <div class="calc-modal-stat-primary">${natureCell}<span class="mono compact-stat-value" id="calc-modal-actual-${stat}">-</span></div>
+            <div class="input-group input-group-sm calc-modal-stat-control" title="努力ポイント" aria-label="努力ポイント"><span class="input-group-text" aria-hidden="true"><i class="bi bi-lightning-charge"></i></span><select id="calc-modal-ev-${stat}" class="form-select mono compact-stat-input">${buildSelectOptionsHtml(evValues, value => value)}</select></div>
+            ${rankCell}
+          </div>
+        `;
+        }).join('')}
+      </div>
+      </div>
+    </section>
+  `;
+
+  const setSelectValue = (id, value) => { if ($(id)) $(id).value = String(value ?? ''); };
+  ['hp', 'atk', 'def', 'spa', 'spd'].forEach(stat => {
+    setSelectValue(`calc-modal-ev-${stat}`, initial.evs[stat]);
+    if (stat !== 'hp') setSelectValue(`calc-modal-rank-${stat}`, initial.ranks[stat]);
+  });
+
+  const getCalcNatureButtonLabel = (stat, stateValue) => {
+    const labelMap = { atk: 'A', def: 'B', spa: 'C', spd: 'D', spe: 'S' };
+    const base = labelMap[stat] || stat.toUpperCase();
+    if (stateValue === 'plus') return `${base}+`;
+    if (stateValue === 'minus') return `${base}-`;
+    return base;
+  };
+
+  const syncCalcModalNatureButtons = () => {
+    const sideNatureValue = $(`${side}-nature`)?.value || initial.nature || 'hardy';
+    const nature = getNatureById(sideNatureValue);
+    document.querySelectorAll('.stat-mod-cycle-btn[data-side="calc"]').forEach(button => {
+      const stat = button.dataset.stat;
+      if (!stat || stat === 'hp') return;
+      const stateValue = stat === nature.plus ? 'plus' : (stat === nature.minus ? 'minus' : 'neutral');
+      button.dataset.state = stateValue;
+      button.textContent = getCalcNatureButtonLabel(stat, stateValue);
+    });
+  };
+
+  const setCalcNatureFromButtonState = (stat, stateValue) => {
+    const natureInput = $(`${side}-nature`);
+    if (!natureInput || !stat || stat === 'hp') return;
+    const plusNatureMap = { atk: 'adamant', def: 'impish', spa: 'modest', spd: 'calm', spe: 'timid' };
+    const minusNatureMap = { atk: 'modest', def: 'lonely', spa: 'adamant', spd: 'naughty', spe: 'brave' };
+    if (stateValue === 'plus') {
+      natureInput.value = plusNatureMap[stat] || 'hardy';
+    } else if (stateValue === 'minus') {
+      natureInput.value = minusNatureMap[stat] || 'hardy';
+    } else {
+      natureInput.value = 'hardy';
+    }
+    updatePickerButtonLabel(`${side}-nature`);
+    syncNatureModifierSelectors(side);
+  };
+
+  // Initialize move-related selects (for attacker side)
+  if (side === 'attacker') {
+    const selectedMove = state.movesById.get($('move-select')?.value || '');
+    if (selectedMove) {
+      // Populate type select
+      const typeSelect = $('calc-modal-move-type');
+      if (typeSelect) {
+        typeSelect.innerHTML = (state.data.types || []).map(type => 
+          `<option value="${type.name}">${state.lang === 'ja' ? type.nameJa : type.name}</option>`
+        ).join('');
+        typeSelect.value = $('move-type')?.value || selectedMove.type;
+      }
+      // Populate category select
+      const categorySelect = $('calc-modal-move-category');
+      if (categorySelect) {
+        categorySelect.innerHTML = `
+          <option value="Physical">${t('physical')}</option>
+          <option value="Special">${t('special')}</option>
+          <option value="Status">${t('status')}</option>
+        `;
+        categorySelect.value = $('move-category')?.value || selectedMove.category;
+      }
+      // Set power input
+      const powerInput = $('calc-modal-move-power');
+      if (powerInput) {
+        powerInput.value = String(clamp(toNumber($('move-power')?.value, selectedMove.basePower || 0), 0, 400));
+      }
+    }
+  }
+
+  const updateEntityButtons = () => {
+    const speciesId = $(fieldIds.species)?.value || initial.speciesId;
+    const speciesLabel = getPickerLabel(fieldIds.species, speciesId);
+    const megaEnabled = Boolean($(`${side}-mega-enabled`)?.checked);
+    const itemId = $(fieldIds.item)?.value || '';
+    const speciesButton = $('calc-modal-species-display');
+    if (speciesButton) {
+      // Display species with icon
+      const iconUrl = getShowdownPokemonIconUrl(speciesId, megaEnabled, itemId);
+      speciesButton.title = speciesLabel;
+      if (iconUrl) {
+        speciesButton.innerHTML = `<span class="calc-species-icon-wrap"><img class="ps-pokemon-icon" src="${iconUrl}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&this.nextElementSibling.classList.remove('d-none');"><span class="pokemon-icon-fallback d-none" aria-hidden="true">?</span></span><span class="ms-2">${escapeHtml(speciesLabel)}</span>`;
+      } else {
+        speciesButton.textContent = speciesLabel;
+      }
+    }
+    const abilityButton = $('calc-modal-ability-button');
+    if (abilityButton) {
+      const label = getPickerLabel(fieldIds.ability, $(fieldIds.ability)?.value || '');
+      abilityButton.innerHTML = `<i class="bi bi-lightning-charge"></i><span class="ms-2">${escapeHtml(label)}</span>`;
+      abilityButton.title = label;
+    }
+    const itemButton = $('calc-modal-item-button');
+    if (itemButton) {
+      const itemValue = $(fieldIds.item)?.value || '';
+      const label = getPickerLabel(fieldIds.item, itemValue);
+      let itemHtml = '';
+      if (isGenericMegaStone(itemValue)) {
+        itemHtml = `${renderGenericMegaStoneIcon(getMegaStoneType(itemValue))}<span class="ms-2">${escapeHtml(label)}</span>`;
+      } else {
+        const visual = renderItemVisual(itemValue);
+        if (visual) {
+          itemHtml = `${visual}<span class="ms-2">${escapeHtml(label)}</span>`;
+        } else {
+          itemHtml = escapeHtml(label);
+        }
+      }
+      itemButton.innerHTML = itemHtml;
+      itemButton.title = label;
+    }
+  };
+
+  const updateMovePanel = () => {
+    if (side !== 'attacker') return;
+    const selectedMove = state.movesById.get($('move-select')?.value || '');
+    const modalTypeValue = $('calc-modal-move-type')?.value || $('move-type')?.value || selectedMove?.type || '';
+    const modalCategoryValue = $('calc-modal-move-category')?.value || $('move-category')?.value || selectedMove?.category || 'Physical';
+    const modalPowerValue = clamp(toNumber($('calc-modal-move-power')?.value, $('move-power')?.value || selectedMove?.basePower || 0), 0, 400);
+    const moveDisplay = $('calc-modal-move-display');
+    if (moveDisplay) {
+      const label = selectedMove ? displayEntryName(selectedMove) : '-';
+      moveDisplay.textContent = label;
+      moveDisplay.title = label;
+    }
+    const metaWrap = $('calc-modal-move-meta-wrap');
+    if (metaWrap) {
+      const typeName = modalTypeValue
+        ? (state.lang === 'ja'
+          ? ((state.data.types || []).find(type => type.name === modalTypeValue)?.nameJa || modalTypeValue)
+          : modalTypeValue)
+        : '-';
+      const categoryName = modalCategoryValue === 'Physical'
+        ? t('physical')
+        : (modalCategoryValue === 'Special' ? t('special') : t('status'));
+      const power = modalPowerValue;
+      const typeIcon = modalTypeValue ? getMoveTypeIconUrl(modalTypeValue) : '';
+      const categoryIcon = modalCategoryValue ? getMoveCategoryIconUrl(modalCategoryValue) : '';
+      metaWrap.innerHTML = `
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+          <span class="badge text-bg-light border d-inline-flex align-items-center gap-1">${typeIcon ? `<img class="move-type-icon-chip" src="${typeIcon}" alt="" loading="lazy">` : ''}<span>${escapeHtml(typeName)}</span></span>
+          <span class="badge text-bg-light border d-inline-flex align-items-center gap-1">${categoryIcon ? `<img class="move-category-icon-chip" src="${categoryIcon}" alt="" loading="lazy">` : ''}<span>${escapeHtml(categoryName)}</span></span>
+          <span class="badge text-bg-light border">威力 ${power}</span>
+        </div>
+      `;
+    }
+    const wrap = $('calc-modal-move-param-wrap');
+    const paramInput = $('calc-modal-move-param');
+    const paramHelp = $('calc-modal-move-param-help');
+    const config = selectedMove ? getMovePowerParameterConfig(selectedMove.id) : null;
+    if (wrap) {
+      wrap.classList.toggle('d-none', !config);
+      if (paramHelp) paramHelp.textContent = config ? (state.lang === 'ja' ? config.helpJa : config.helpEn) : '-';
+      if (paramInput && config) {
+        const current = clamp(toNumber($('move-parameter-value')?.value, config.defaultValue), config.min, config.max);
+        setIntegerSelectOptions(paramInput, config.min, config.max, current);
+      }
+    }
+
+    const hitWrap = $('calc-modal-hit-count-wrap');
+    const hitInput = $('calc-modal-hit-count');
+    const hasMultiHit = Boolean(selectedMove && (Array.isArray(selectedMove.multihit) || typeof selectedMove.multihit === 'number'));
+    if (hitWrap) hitWrap.classList.toggle('d-none', !hasMultiHit);
+    if (hitInput && hasMultiHit) {
+      const { min, max, fallback } = getMoveHitCountRange(selectedMove);
+      setIntegerSelectOptions(hitInput, min, max, toNumber($('hit-count')?.value, fallback));
+    }
+  };
+
+  const refreshActualStats = () => {
+    const speciesId = $(fieldIds.species)?.value || initial.speciesId;
+    const natureId = $(`${side}-nature`)?.value || initial.nature;
+    const itemId = $(fieldIds.item)?.value || initial.itemId;
+    const evs = {
+      hp: toNumber($('calc-modal-ev-hp')?.value, 0),
+      atk: toNumber($('calc-modal-ev-atk')?.value, 0),
+      def: toNumber($('calc-modal-ev-def')?.value, 0),
+      spa: toNumber($('calc-modal-ev-spa')?.value, 0),
+      spd: toNumber($('calc-modal-ev-spd')?.value, 0),
+      spe: 0,
+    };
+    const stats = computeCalcModalStats(speciesId, natureId, evs, itemId);
+    ['hp', 'atk', 'def', 'spa', 'spd'].forEach(stat => {
+      const value = stats[stat];
+      const node = $(`calc-modal-actual-${stat}`);
+      if (node) node.textContent = String(value);
+    });
+  };
+
+  const refreshVisibleStatRows = () => {
+    const selectedMove = state.movesById.get($('move-select')?.value || '');
+    const moveCategory = side === 'attacker'
+      ? ($('calc-modal-move-category')?.value || $('move-category')?.value || selectedMove?.category || 'Physical')
+      : ($('move-category')?.value || 'Physical');
+    const offenseStat = getOffenseReferenceStat(selectedMove, moveCategory);
+    const visible = new Set(side === 'attacker'
+      ? [offenseStat]
+      : ['hp', moveCategory === 'Special' ? 'spd' : 'def']);
+    document.querySelectorAll('#calc-modal-stats-grid [data-calc-modal-stat-row]').forEach(row => {
+      const stat = row.getAttribute('data-calc-modal-stat-row');
+      row.classList.toggle('d-none', !visible.has(stat || ''));
+    });
+  };
+
+  const applyModalMoveOverrides = () => {
+    if (side !== 'attacker') return;
+    if ($('calc-modal-move-type') && $('move-type')) $('move-type').value = $('calc-modal-move-type').value;
+    if ($('calc-modal-move-category') && $('move-category')) $('move-category').value = $('calc-modal-move-category').value;
+    if ($('calc-modal-move-power') && $('move-power')) $('move-power').value = String(clamp(toNumber($('calc-modal-move-power').value, $('move-power').value), 0, 400));
+    refreshMoveMetaIcons();
+    updatePickerButtonLabel('move-select');
+    updatePickerButtonLabel('move-type');
+    updatePickerButtonLabel('move-category');
+    updateMoveParameterUI();
+  };
+
+  const applyModalSpecialMoveInputs = () => {
+    if (side !== 'attacker') return;
+    const move = state.movesById.get($('move-select')?.value || '');
+    const config = move ? getMovePowerParameterConfig(move.id) : null;
+    if (config && $('calc-modal-move-param') && $('move-parameter-value')) {
+      const value = clamp(toNumber($('calc-modal-move-param').value, config.defaultValue), config.min, config.max);
+      $('move-parameter-value').value = String(value);
+      updateMoveParameterUI();
+      if ($('calc-modal-move-power') && $('move-power')) $('calc-modal-move-power').value = $('move-power').value;
+    }
+    if ($('calc-modal-hit-count') && $('hit-count')) {
+      $('hit-count').value = String(clamp(toNumber($('calc-modal-hit-count').value, $('hit-count').value), 1, 10));
+    }
+  };
+
+  if ($('calc-modal-open-detail')) $('calc-modal-open-detail').addEventListener('click', () => {
+    state.editor.modal?.hide();
+    // Reuse the same detail modal flow as box list editing.
+    openOrCreateLinkedPokemonDetailFromCalc(side);
+  });
+  if ($('calc-modal-species-display')) $('calc-modal-species-display').addEventListener('click', () => openPicker(fieldIds.species));
+  if ($('calc-modal-ability-button')) $('calc-modal-ability-button').addEventListener('click', () => openPicker(fieldIds.ability));
+  if ($('calc-modal-item-button')) $('calc-modal-item-button').addEventListener('click', () => openPicker(fieldIds.item));
+  if ($('calc-modal-move-display')) $('calc-modal-move-display').addEventListener('click', () => openPicker('move-select'));
+  if ($(`${side}-species-button`)) $(`${side}-species-button`).addEventListener('click', () => openPicker(`${side}-species`));
+  if ($(`${side}-ability-button`)) $(`${side}-ability-button`).addEventListener('click', () => openPicker(`${side}-ability`));
+  if ($(`${side}-item-button`)) $(`${side}-item-button`).addEventListener('click', () => openPicker(`${side}-item`));
+  if ($('move-type-button')) $('move-type-button').addEventListener('click', () => openPicker('move-type'));
+  if ($('move-category-button')) $('move-category-button').addEventListener('click', () => openPicker('move-category'));
+  if ($('calc-modal-move-type')) $('calc-modal-move-type').addEventListener('change', () => {
+    applyModalMoveOverrides();
+    updateMovePanel();
+    calculateAndRender();
+  });
+  if ($('calc-modal-move-category')) $('calc-modal-move-category').addEventListener('change', () => {
+    applyModalMoveOverrides();
+    updateMovePanel();
+    refreshVisibleStatRows();
+    calculateAndRender();
+  });
+  if ($('calc-modal-move-power')) $('calc-modal-move-power').addEventListener('input', () => {
+    applyModalMoveOverrides();
+    updateMovePanel();
+    calculateAndRender();
+  });
+  if ($('calc-modal-move-param')) $('calc-modal-move-param').addEventListener('change', () => {
+    applyModalSpecialMoveInputs();
+    applyModalMoveOverrides();
+    updateMovePanel();
+    calculateAndRender();
+  });
+  if ($('calc-modal-hit-count')) $('calc-modal-hit-count').addEventListener('change', () => {
+    applyModalSpecialMoveInputs();
+    calculateAndRender();
+  });
+  
+  // Update button labels for icon display after modal is created
+  if ($(`${side}-species-button`)) updatePickerButtonLabel(`${side}-species`);
+  if ($(`${side}-ability-button`)) updatePickerButtonLabel(`${side}-ability`);
+  if ($(`${side}-item-button`)) updatePickerButtonLabel(`${side}-item`);
+  if ($('move-type-button')) updatePickerButtonLabel('move-type');
+  if ($('move-category-button')) updatePickerButtonLabel('move-category');
+  ['calc-modal-ev-hp', 'calc-modal-ev-atk', 'calc-modal-ev-def', 'calc-modal-ev-spa', 'calc-modal-ev-spd'].forEach(id => {
+    if ($(id)) $(id).addEventListener('change', refreshActualStats);
+  });
+  ['atk', 'def', 'spa', 'spd'].forEach(stat => {
+    const button = document.querySelector(`.stat-mod-cycle-btn[data-side="calc"][data-stat="${stat}"]`);
+    if (!button) return;
+    button.addEventListener('click', () => {
+      const current = button.dataset.state || 'neutral';
+      const next = current === 'neutral' ? 'plus' : (current === 'plus' ? 'minus' : 'neutral');
+      setCalcNatureFromButtonState(stat, next);
+      syncCalcModalNatureButtons();
+      refreshActualStats();
+      updateStatSummaries();
+      calculateAndRender();
+    });
+  });
+
+  updateEntityButtons();
+  updateMovePanel();
+  syncCalcModalNatureButtons();
+  refreshActualStats();
+  refreshVisibleStatRows();
+  appendCalcAutoAllocateSection(side);
+}
+
+function applyCalcEditorModalToSide(side) {
+  ['hp', 'atk', 'def', 'spa', 'spd'].forEach(stat => {
+    const evInput = $(`calc-modal-ev-${stat}`);
+    if ($(`${side}-ev-${stat}`) && evInput) $(`${side}-ev-${stat}`).value = evInput.value;
+    if (stat !== 'hp') {
+      const rankInput = $(`calc-modal-rank-${stat}`);
+      if ($(`${side}-rank-${stat}`) && rankInput) $(`${side}-rank-${stat}`).value = rankInput.value;
+    }
+  });
+
+  if (side === 'attacker') {
+    if ($('calc-modal-move-type') && $('move-type')) $('move-type').value = $('calc-modal-move-type').value;
+    if ($('calc-modal-move-category') && $('move-category')) $('move-category').value = $('calc-modal-move-category').value;
+    if ($('calc-modal-move-power') && $('move-power')) $('move-power').value = String(clamp(toNumber($('calc-modal-move-power').value, $('move-power').value), 0, 400));
+    if ($('move-parameter-value') && $('calc-modal-move-param')) $('move-parameter-value').value = $('calc-modal-move-param').value;
+    if ($('hit-count') && $('calc-modal-hit-count')) $('hit-count').value = String(clamp(toNumber($('calc-modal-hit-count').value, $('hit-count').value), 1, 10));
+    refreshMoveMetaIcons();
+    updateMoveParameterUI();
+    updatePickerButtonLabel('move-select');
+    updatePickerButtonLabel('move-type');
+    updatePickerButtonLabel('move-category');
+  }
+}
+
+function openCalcEditorModal(kind) {
+  if (!hasCalcPage() || !state.editor.modal) return;
+  const normalizedKind = kind === 'defender' ? 'defender' : 'attacker';
+  clearCalcEditorModalContent();
+  renderCalcEditorSideModal(normalizedKind);
+  state.editor.activeKind = normalizedKind;
+  state.editor.activePanelId = '';
+  if ($('calc-editor-modal-title')) $('calc-editor-modal-title').textContent = normalizedKind === 'defender' ? t('defender') : t('attacker');
+  ensureCalcEditorModalFooter();
+  state.editor.modal.show();
+}
+
+function initCalcEditorModal() {
+  if (!$('calc-editor-modal')) return;
+  state.editor.modal = new bootstrap.Modal($('calc-editor-modal'));
+  $('calc-editor-modal').addEventListener('hidden.bs.modal', () => {
+    restoreCalcEditorDockedPanels();
+    clearCalcEditorModalContent();
+  });
 }
 
 function getSideNatureOverridesFromButtons(side) {
@@ -1003,6 +2040,22 @@ function saveStorage() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state.storage));
 }
 
+function setupCrossTabSync() {
+  window.addEventListener('storage', event => {
+    if (event.key === STORAGE_KEY && event.newValue !== event.oldValue) {
+      // Another tab modified the storage - reload our copy
+      loadStorage();
+      // Refresh UI based on current page
+      if (hasManagerPage()) {
+        renderManagerViews();
+      }
+      if (hasCalcPage()) {
+        calculateAndRender();
+      }
+    }
+  });
+}
+
 function loadLastSelectedSides() {
   try {
     const parsed = JSON.parse(localStorage.getItem(LAST_SELECTED_SIDES_KEY) || 'null');
@@ -1029,7 +2082,7 @@ function saveLastSelectedSides() {
     moveType: $('move-type')?.value || '',
     moveCategory: $('move-category')?.value || '',
     movePower: clamp(toNumber($('move-power')?.value, 80), 0, 400),
-    moveParamValue: clamp(toNumber($('move-parameter-value')?.value, 0), 0, 99),
+    moveParamValue: clamp(toNumber($('move-parameter-value')?.value, 0), 0, 400),
     weather: getActiveToggleValue('weather'),
     terrain: getActiveToggleValue('terrain'),
     isCrit: Boolean($('is-crit')?.checked),
@@ -1291,6 +2344,39 @@ function refreshHitCountVisibility(move) {
   if (!hasCalcPage() || !$('hit-count-wrap')) return;
   const visible = Boolean(move && (Array.isArray(move.multihit) || typeof move.multihit === 'number'));
   $('hit-count-wrap').classList.toggle('d-none', !visible);
+  if (!visible || !$('hit-count')) return;
+  const { min, max, fallback } = getMoveHitCountRange(move);
+  setIntegerSelectOptions($('hit-count'), min, max, toNumber($('hit-count').value, fallback));
+}
+
+function getMoveHitCountRange(move) {
+  if (move?.id === 'tripleaxel') {
+    return { min: 1, max: 3, fallback: 3 };
+  }
+  if (Array.isArray(move?.multihit) && move.multihit.length >= 2) {
+    const min = clamp(toNumber(move.multihit[0], 1), 1, 10);
+    const max = clamp(toNumber(move.multihit[move.multihit.length - 1], 1), min, 10);
+    return { min, max, fallback: min };
+  }
+  if (typeof move?.multihit === 'number') {
+    const value = clamp(toNumber(move.multihit, 1), 1, 10);
+    return { min: value, max: value, fallback: value };
+  }
+  return { min: 1, max: 10, fallback: 1 };
+}
+
+function setIntegerSelectOptions(selectEl, min, max, currentValue, labelFn) {
+  if (!selectEl) return;
+  const safeMin = clamp(toNumber(min, 0), 0, 999);
+  const safeMax = clamp(toNumber(max, safeMin), safeMin, 999);
+  const normalized = clamp(toNumber(currentValue, safeMin), safeMin, safeMax);
+  const options = [];
+  for (let value = safeMin; value <= safeMax; value += 1) {
+    const label = labelFn ? labelFn(value) : String(value);
+    options.push(`<option value="${value}">${label}</option>`);
+  }
+  selectEl.innerHTML = options.join('');
+  selectEl.value = String(normalized);
 }
 
 function sortByDisplayName(entries, labelFn) {
@@ -1356,11 +2442,14 @@ function toCompactNatureLabel(label) {
 
 function renderPickerButtonAsIcon(fieldId, button, value) {
   const iconOnlyFields = new Set(['attacker-species', 'defender-species', 'move-type', 'move-category']);
-  if (!hasCalcPage() || !iconOnlyFields.has(fieldId)) {
+  const iconWithTextFields = new Set(['attacker-item', 'defender-item', 'attacker-ability', 'defender-ability']);
+  
+  if (!hasCalcPage() || (!iconOnlyFields.has(fieldId) && !iconWithTextFields.has(fieldId))) {
     button.classList.remove('icon-picker-btn');
     button.classList.remove('calc-species-picker-btn');
     return false;
   }
+  
   if (fieldId.endsWith('species')) {
     const side = fieldId.startsWith('attacker') ? 'attacker' : (fieldId.startsWith('defender') ? 'defender' : '');
     const megaEnabled = side ? Boolean($(`${side}-mega-enabled`)?.checked) : false;
@@ -1374,9 +2463,48 @@ function renderPickerButtonAsIcon(fieldId, button, value) {
       button.title = label;
       button.setAttribute('aria-label', label);
       return true;
+    } else {
+      // Icon URL is empty, fallback to text display
+      button.classList.remove('icon-picker-btn');
+      button.classList.remove('calc-species-picker-btn');
+      button.textContent = label;
+      button.title = label;
+      return false;
     }
   }
+  
   button.classList.remove('calc-species-picker-btn');
+  
+  if (iconWithTextFields.has(fieldId)) {
+    if (fieldId.endsWith('item')) {
+      if (isGenericMegaStone(value)) {
+        button.classList.add('icon-picker-btn');
+        const label = getPickerLabel(fieldId, value);
+        button.innerHTML = `${renderGenericMegaStoneIcon(getMegaStoneType(value))}<span class="ms-2">${escapeHtml(label)}</span>`;
+        button.title = label;
+        button.setAttribute('aria-label', label);
+        return true;
+      }
+      const visual = renderItemVisual(value);
+      if (visual) {
+        button.classList.add('icon-picker-btn');
+        const label = getPickerLabel(fieldId, value);
+        button.innerHTML = `${visual}<span class="ms-2">${escapeHtml(label)}</span>`;
+        button.title = label;
+        button.setAttribute('aria-label', label);
+        return true;
+      }
+    }
+    if (fieldId.endsWith('ability')) {
+      button.classList.add('icon-picker-btn');
+      const label = getPickerLabel(fieldId, value);
+      button.innerHTML = `<i class="bi bi-lightning-charge"></i><span class="ms-2">${escapeHtml(label)}</span>`;
+      button.title = label;
+      button.setAttribute('aria-label', label);
+      return true;
+    }
+  }
+  
   if (fieldId.endsWith('item')) {
     if (isGenericMegaStone(value)) {
       button.classList.add('icon-picker-btn');
@@ -1392,6 +2520,7 @@ function renderPickerButtonAsIcon(fieldId, button, value) {
       return true;
     }
   }
+  
   if (fieldId === 'move-type') {
     const iconUrl = getMoveTypeIconUrl(value);
     if (iconUrl) {
@@ -1399,8 +2528,16 @@ function renderPickerButtonAsIcon(fieldId, button, value) {
       button.innerHTML = `<img class="move-type-icon-chip" src="${iconUrl}" alt="" loading="lazy">`;
       button.title = getPickerLabel(fieldId, value);
       return true;
+    } else {
+      // Fallback to text display
+      const label = getPickerLabel(fieldId, value);
+      button.classList.remove('icon-picker-btn');
+      button.textContent = label;
+      button.title = label;
+      return false;
     }
   }
+  
   if (fieldId === 'move-category') {
     const iconUrl = getMoveCategoryIconUrl(value);
     if (iconUrl) {
@@ -1408,8 +2545,16 @@ function renderPickerButtonAsIcon(fieldId, button, value) {
       button.innerHTML = `<img class="move-category-icon-chip" src="${iconUrl}" alt="" loading="lazy">`;
       button.title = getPickerLabel(fieldId, value);
       return true;
+    } else {
+      // Fallback to text display
+      const label = getPickerLabel(fieldId, value);
+      button.classList.remove('icon-picker-btn');
+      button.textContent = label;
+      button.title = label;
+      return false;
     }
   }
+  
   return false;
 }
 
@@ -1434,6 +2579,9 @@ function updatePickerButtonLabel(fieldId) {
     let label = getPickerLabel(fieldId, input.value);
     if ((fieldId === 'attacker-nature' || fieldId === 'defender-nature') && hasCalcPage()) label = toCompactNatureLabel(label);
     button.textContent = label;
+    button.title = label;
+  } else if ((fieldId === 'attacker-item' || fieldId === 'defender-item' || fieldId === 'attacker-ability' || fieldId === 'defender-ability') && hasCalcPage()) {
+    // For icon+text fields, already handled in renderPickerButtonAsIcon
   }
 }
 
@@ -1574,6 +2722,31 @@ function canSpeciesLearnMove(speciesId, moveId) {
 }
 
 function getMovePowerParameterConfig(moveId) {
+  const boolConfig = (labelJa, labelEn, helpJa, helpEn, onPower, offPower) => ({
+    min: 0,
+    max: 1,
+    defaultValue: 0,
+    labelJa,
+    labelEn,
+    helpJa,
+    helpEn,
+    resolver: value => (toNumber(value, 0) >= 1 ? onPower : offPower),
+  });
+  const hpStep10Config = (labelJa, labelEn, helpJa, helpEn, basePower, maxPower = 200) => ({
+    min: 1,
+    max: 10,
+    defaultValue: 10,
+    labelJa,
+    labelEn,
+    helpJa,
+    helpEn,
+    optionLabelFn: value => `${value * 10}%`,
+    resolver: value => {
+      const tier = clamp(toNumber(value, 10), 1, 10);
+      return clamp(Math.floor(basePower * tier / 10), 1, maxPower);
+    },
+  });
+
   const configMap = {
     lastrespects: {
       min: 0,
@@ -1615,6 +2788,80 @@ function getMovePowerParameterConfig(moveId) {
       helpEn: 'Power Trip: 20 + 20 x total boosts',
       resolver: value => 20 + 20 * clamp(toNumber(value), 0, 12),
     },
+    electroball: {
+      min: 1,
+      max: 5,
+      defaultValue: 3,
+      labelJa: '素早さ倍率段階',
+      labelEn: 'Speed ratio tier',
+      helpJa: 'エレキボール: 1=40, 2=60, 3=80, 4=120, 5=150',
+      helpEn: 'Electro Ball: 1=40, 2=60, 3=80, 4=120, 5=150',
+      resolver: value => {
+        const tier = clamp(toNumber(value, 3), 1, 5);
+        if (tier === 1) return 40;
+        if (tier === 2) return 60;
+        if (tier === 3) return 80;
+        if (tier === 4) return 120;
+        return 150;
+      },
+    },
+    gyroball: {
+      min: 1,
+      max: 150,
+      defaultValue: 80,
+      labelJa: 'ジャイロボール威力',
+      labelEn: 'Gyro Ball power',
+      helpJa: 'ジャイロボールの計算後威力を直接指定',
+      helpEn: 'Set final Gyro Ball base power directly',
+      resolver: value => clamp(toNumber(value, 80), 1, 150),
+    },
+    flail: {
+      min: 1,
+      max: 6,
+      defaultValue: 6,
+      labelJa: 'じたばた段階',
+      labelEn: 'Flail tier',
+      helpJa: 'じたばた: 1=200, 2=150, 3=100, 4=80, 5=40, 6=20',
+      helpEn: 'Flail: 1=200, 2=150, 3=100, 4=80, 5=40, 6=20',
+      resolver: value => {
+        const tier = clamp(toNumber(value, 6), 1, 6);
+        return [200, 150, 100, 80, 40, 20][tier - 1];
+      },
+    },
+    reversal: {
+      min: 1,
+      max: 6,
+      defaultValue: 6,
+      labelJa: 'きしかいせい段階',
+      labelEn: 'Reversal tier',
+      helpJa: 'きしかいせい: 1=200, 2=150, 3=100, 4=80, 5=40, 6=20',
+      helpEn: 'Reversal: 1=200, 2=150, 3=100, 4=80, 5=40, 6=20',
+      resolver: value => {
+        const tier = clamp(toNumber(value, 6), 1, 6);
+        return [200, 150, 100, 80, 40, 20][tier - 1];
+      },
+    },
+    eruption: hpStep10Config('残HP段階', 'Current HP tier', 'ふんか: 10段階(1=10% ... 10=100%)', 'Eruption: 10 tiers (1=10% ... 10=100%)', 150, 150),
+    waterspout: hpStep10Config('残HP段階', 'Current HP tier', 'しおふき: 10段階(1=10% ... 10=100%)', 'Water Spout: 10 tiers (1=10% ... 10=100%)', 150, 150),
+    dragonenergy: hpStep10Config('残HP段階', 'Current HP tier', 'ドラゴンエナジー: 10段階(1=10% ... 10=100%)', 'Dragon Energy: 10 tiers (1=10% ... 10=100%)', 150, 150),
+    crushgrip: hpStep10Config('相手残HP段階', 'Target HP tier', 'にぎりつぶす: 10段階(1=10% ... 10=100%)', 'Crush Grip: 10 tiers (1=10% ... 10=100%)', 120, 120),
+    wringout: hpStep10Config('相手残HP段階', 'Target HP tier', 'しぼりとる: 10段階(1=10% ... 10=100%)', 'Wring Out: 10 tiers (1=10% ... 10=100%)', 120, 120),
+    hardpress: hpStep10Config('相手残HP段階', 'Target HP tier', 'ハードプレス: 10段階(1=10% ... 10=100%)', 'Hard Press: 10 tiers (1=10% ... 10=100%)', 100, 100),
+    hex: boolConfig('相手が状態異常', 'Target statused', 'たたりめ: 状態異常なら威力2倍', 'Hex: double power if target has status', 130, 65),
+    infernalparade: boolConfig('相手が状態異常', 'Target statused', 'ひゃっきやこう: 状態異常なら威力2倍', 'Infernal Parade: double power if target has status', 120, 60),
+    venoshock: boolConfig('相手がどく', 'Target poisoned', 'ベノムショック: どく状態なら威力2倍', 'Venoshock: double power if target is poisoned', 130, 65),
+    barbbarrage: boolConfig('相手がどく', 'Target poisoned', 'どくばりセンボン: どく状態なら威力2倍', 'Barb Barrage: double power if target is poisoned', 120, 60),
+    brine: boolConfig('相手残HPが半分以下', 'Target HP at or below half', 'しおみず: 半分以下なら威力2倍', 'Brine: double power if target HP <= 50%', 130, 65),
+    lashout: boolConfig('自分能力が下がった', 'User stats lowered', 'うっぷんばらし: 能力が下がると威力2倍', 'Lash Out: double power after stat drops', 150, 75),
+    avalanche: boolConfig('先にダメージを受けた', 'Moved after taking damage', 'ゆきなだれ: 条件成立で威力2倍', 'Avalanche: double power after taking damage first', 120, 60),
+    revenge: boolConfig('先にダメージを受けた', 'Moved after taking damage', 'リベンジ: 条件成立で威力2倍', 'Revenge: double power after taking damage first', 120, 60),
+    payback: boolConfig('後手で行動', 'Move last', 'しっぺがえし: 後手で威力2倍', 'Payback: double power when moving last', 100, 50),
+    boltbeak: boolConfig('先手で行動', 'Move first', 'でんげきくちばし: 先手で威力2倍', 'Bolt Beak: double power when moving first', 170, 85),
+    fishiousrend: boolConfig('先手で行動', 'Move first', 'エラがみ: 先手で威力2倍', 'Fishious Rend: double power when moving first', 170, 85),
+    stompingtantrum: boolConfig('前ターン技が失敗', 'Previous move failed', 'じだんだ: 失敗後は威力2倍', 'Stomping Tantrum: double power after failed move', 150, 75),
+    knockoff: boolConfig('はたき条件', 'Knock Off boost', 'はたきおとす: 持ち物を落とせるなら威力1.5倍 (65→97)', 'Knock Off: 1.5x power if item can be removed (65→97)', 97, 65),
+    acrobatics: boolConfig('道具なし/消費済み', 'No held item', 'アクロバット: 道具なしで威力2倍 (55→110)', 'Acrobatics: double power when no item (55→110)', 110, 55),
+    facade: boolConfig('状態異常あり', 'User has status', 'からげんき: 状態異常で威力2倍 (70→140)', 'Facade: double power with status (70→140)', 140, 70),
   };
   return configMap[moveId] || null;
 }
@@ -1623,6 +2870,34 @@ function resolveMovePower(input, move) {
   const config = getMovePowerParameterConfig(move.id);
   if (!config) return clamp(input.movePower, 0, 400);
   return clamp(config.resolver(input.moveParamValue), 0, 400);
+}
+
+function resolveEffectiveMoveProfile(input, move) {
+  const baseType = input.moveType || move?.type || '';
+  const baseCategory = input.moveCategory || move?.category || '';
+  let power = resolveMovePower(input, move);
+  let moveType = baseType;
+
+  if (move?.id === 'weatherball' && input.weather !== 'none') {
+    const weatherTypeMap = { sun: 'Fire', rain: 'Water', sand: 'Rock', snow: 'Ice' };
+    moveType = weatherTypeMap[input.weather] || baseType;
+    power = clamp(power * 2, 0, 400);
+  }
+
+  if (move?.id === 'terrainpulse' && input.terrain !== 'none') {
+    const terrainTypeMap = { electric: 'Electric', grassy: 'Grass', psychic: 'Psychic', misty: 'Fairy' };
+    moveType = terrainTypeMap[input.terrain] || baseType;
+    power = clamp(power * 2, 0, 400);
+  }
+
+  return { moveType, moveCategory: baseCategory, power };
+}
+
+function getOffenseReferenceStat(move, moveCategory) {
+  const override = String(move?.overrideOffensiveStat || '').toLowerCase();
+  if (['atk', 'def', 'spa', 'spd', 'spe'].includes(override)) return override;
+  if (move?.id === 'bodypress') return 'def';
+  return moveCategory === 'Special' ? 'spa' : 'atk';
 }
 
 function updateMoveParameterUI() {
@@ -1642,10 +2917,8 @@ function updateMoveParameterUI() {
   wrap.classList.remove('d-none');
   label.textContent = state.lang === 'ja' ? config.labelJa : config.labelEn;
   help.textContent = state.lang === 'ja' ? config.helpJa : config.helpEn;
-  valueInput.min = String(config.min);
-  valueInput.max = String(config.max);
   const current = clamp(toNumber(valueInput.value, config.defaultValue), config.min, config.max);
-  valueInput.value = String(current);
+  setIntegerSelectOptions(valueInput, config.min, config.max, current, config.optionLabelFn || null);
   $('move-power').value = String(resolveMovePower({ moveParamValue: current, movePower: $('move-power').value }, move));
 }
 
@@ -2099,6 +3372,363 @@ function recalcMoveFields() {
   updatePickerButtonLabel('move-category');
 }
 
+function formatModifierMultiplier(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return 'x1.00';
+  return `x${numeric.toFixed(2)}`;
+}
+
+function calcWeatherMultiplierForOption(weather, moveType) {
+  if (weather === 'sun') {
+    if (moveType === 'Fire') return 1.5;
+    if (moveType === 'Water') return 0.5;
+  }
+  if (weather === 'rain') {
+    if (moveType === 'Water') return 1.5;
+    if (moveType === 'Fire') return 0.5;
+  }
+  return 1;
+}
+
+function calcTerrainMultiplierForOption(terrain, moveType, moveId) {
+  if (terrain === 'electric' && moveType === 'Electric') return 1.3;
+  if (terrain === 'grassy' && moveType === 'Grass') return 1.3;
+  if (terrain === 'psychic' && moveType === 'Psychic') return 1.3;
+  if (terrain === 'misty' && moveType === 'Dragon') return 0.5;
+  if (terrain === 'grassy' && ['earthquake', 'bulldoze', 'magnitude'].includes(moveId)) return 0.5;
+  return 1;
+}
+
+function swapCalcInputRoles(input) {
+  const swapped = { ...input };
+  Object.keys(input).forEach(key => {
+    if (key.startsWith('attacker')) {
+      swapped[`defender${key.slice(8)}`] = input[key];
+    } else if (key.startsWith('defender')) {
+      swapped[`attacker${key.slice(8)}`] = input[key];
+    }
+  });
+  return swapped;
+}
+
+function getFlowCalcInput(input) {
+  return state.resultFlowDirection === 'from' ? swapCalcInputRoles(input) : input;
+}
+
+function getDamageClassByRatio(ratio) {
+  if (ratio >= 1) return 'result-dmg-deep-red';
+  if (ratio >= 0.8) return 'result-dmg-red';
+  if (ratio >= 0.5) return 'result-dmg-yellow';
+  return 'result-dmg-green';
+}
+
+function getOptionControlItems(calcInput) {
+  const move = state.movesById.get(calcInput.moveId);
+  const spreadAvailable = isSpreadDamageMove(move);
+  const powerParamConfig = move ? getMovePowerParameterConfig(move.id) : null;
+  const weatherCycle = ['none', 'sun', 'rain', 'sand', 'snow'];
+  const terrainCycle = ['none', 'electric', 'grassy', 'psychic', 'misty'];
+  const weatherIcon = { none: 'bi-slash-circle', sun: 'bi-brightness-high', rain: 'bi-cloud-rain', sand: 'bi-wind', snow: 'bi-snow' };
+  const terrainIcon = { none: 'bi-slash-circle', electric: 'bi-lightning-charge', grassy: 'bi-flower1', psychic: 'bi-stars', misty: 'bi-cloud-fog2' };
+  const getTerrainKey = value => (value === 'electric' ? 'electricTerrain' : value === 'grassy' ? 'grassyTerrain' : value === 'psychic' ? 'psychicTerrain' : 'mistyTerrain');
+  const items = [
+    {
+      key: 'weather', kind: 'cycle', icon: weatherIcon[calcInput.weather] || 'bi-cloud-sun',
+      label: state.lang === 'ja' ? `${t('weather')}:${t(calcInput.weather)}` : `${t('weather')}:${t(calcInput.weather)}`,
+      multiplier: formatModifierMultiplier(calcWeatherMultiplierForOption(calcInput.weather, calcInput.moveType)),
+      active: calcInput.weather !== 'none', disabled: false, values: weatherCycle,
+    },
+    {
+      key: 'terrain', kind: 'cycle', icon: terrainIcon[calcInput.terrain] || 'bi-globe2',
+      label: state.lang === 'ja' ? `${t('terrain')}:${calcInput.terrain === 'none' ? t('none') : t(getTerrainKey(calcInput.terrain))}` : `${t('terrain')}:${calcInput.terrain === 'none' ? t('none') : t(getTerrainKey(calcInput.terrain))}`,
+      multiplier: formatModifierMultiplier(calcTerrainMultiplierForOption(calcInput.terrain, calcInput.moveType, calcInput.moveId)),
+      active: calcInput.terrain !== 'none', disabled: false, values: terrainCycle,
+    },
+    { key: 'is-crit', kind: 'toggle', icon: 'bi-bullseye', label: t('critical'), active: Boolean(calcInput.isCrit), disabled: false, multiplier: formatModifierMultiplier(calcInput.isCrit ? 1.5 : 1) },
+    { key: 'is-burn', kind: 'toggle', icon: 'bi-fire', label: t('burn'), active: Boolean(calcInput.isBurn), disabled: false, multiplier: formatModifierMultiplier(calcInput.isBurn ? 0.5 : 1) },
+    { key: 'is-spread', kind: 'toggle', icon: 'bi-people-fill', label: t('spreadMove'), active: Boolean(calcInput.isSpread), disabled: !spreadAvailable, multiplier: formatModifierMultiplier(calcInput.isSpread ? 0.75 : 1) },
+    { key: 'is-helping-hand', kind: 'toggle', icon: 'bi-hand-index-thumb-fill', label: t('helpingHand'), active: Boolean(calcInput.isHelpingHand), disabled: false, multiplier: formatModifierMultiplier(calcInput.isHelpingHand ? 1.5 : 1) },
+    { key: 'reflect', kind: 'toggle', icon: 'bi-shield-fill', label: t('reflect'), active: Boolean(calcInput.reflect), disabled: false, multiplier: formatModifierMultiplier(calcInput.reflect ? 0.5 : 1) },
+    { key: 'light-screen', kind: 'toggle', icon: 'bi-shield-fill-check', label: t('lightScreen'), active: Boolean(calcInput.lightScreen), disabled: false, multiplier: formatModifierMultiplier(calcInput.lightScreen ? 0.5 : 1) },
+    { key: 'defender-full-hp', kind: 'toggle', icon: 'bi-heart-fill', label: t('defenderFullHp'), active: Boolean(calcInput.defenderFullHp), disabled: false, multiplier: formatModifierMultiplier(calcInput.defenderFullHp ? 0.5 : 1) },
+    { key: 'is-friend-guard', kind: 'toggle', icon: 'bi-person-hearts', label: t('friendGuard'), active: Boolean(calcInput.isFriendGuard), disabled: false, multiplier: formatModifierMultiplier(calcInput.isFriendGuard ? 0.75 : 1) },
+  ];
+
+  return items;
+}
+
+function getMoveConditionChips(calcInput) {
+  const move = state.movesById.get(calcInput.moveId);
+  const powerParamConfig = move ? getMovePowerParameterConfig(move.id) : null;
+  const chips = [];
+
+  if (powerParamConfig) {
+    const min = clamp(toNumber(powerParamConfig.min, 0), 0, 999);
+    const max = clamp(toNumber(powerParamConfig.max, min), min, 999);
+    const value = clamp(toNumber(calcInput.moveParamValue, powerParamConfig.defaultValue), min, max);
+    const rawValueLabel = powerParamConfig.optionLabelFn ? powerParamConfig.optionLabelFn(value) : String(value);
+    chips.push({
+      key: 'move-parameter-value',
+      kind: 'number-cycle',
+      icon: 'bi-sliders2',
+      label: state.lang === 'ja' ? powerParamConfig.labelJa : powerParamConfig.labelEn,
+      active: value !== clamp(toNumber(powerParamConfig.defaultValue, min), min, max),
+      disabled: min === max,
+      valueLabel: rawValueLabel,
+      min,
+      max,
+      titleHint: state.lang === 'ja' ? powerParamConfig.helpJa : powerParamConfig.helpEn,
+    });
+  }
+
+  if (move && (Array.isArray(move.multihit) || typeof move.multihit === 'number' || move.id === 'tripleaxel')) {
+    const range = getMoveHitCountRange(move);
+    const min = clamp(toNumber(range.min, 1), 1, 10);
+    const max = clamp(toNumber(range.max, min), min, 10);
+    const value = clamp(toNumber(calcInput.hitCount, range.fallback), min, max);
+    chips.push({
+      key: 'hit-count',
+      kind: 'number-cycle',
+      icon: 'bi-list-ol',
+      label: t('hitCount'),
+      active: value !== range.fallback,
+      disabled: min === max,
+      valueLabel: state.lang === 'ja' ? `${value}回` : `${value} hits`,
+      min,
+      max,
+      titleHint: state.lang === 'ja' ? 'タップでヒット回数を変更' : 'Tap to change hit count',
+    });
+  }
+
+  return chips;
+}
+
+function renderMoveConditionControls(calcInput) {
+  const container = $('result-move-condition-controls');
+  if (!container) return;
+  if (!calcInput) {
+    container.innerHTML = '';
+    return;
+  }
+  const chips = getMoveConditionChips(calcInput);
+  if (!chips.length) {
+    container.innerHTML = '';
+    return;
+  }
+  container.innerHTML = chips.map(chip => {
+    const classes = ['result-mod-chip', 'is-count-chip', 'is-active'];
+    if (chip.disabled) classes.push('is-disabled');
+    const attrs = `data-kind="number-cycle" data-target="${chip.key}" data-min="${toNumber(chip.min, 0)}" data-max="${toNumber(chip.max, 0)}"`;
+    const title = `${chip.label}${chip.titleHint ? ` / ${chip.titleHint}` : ''}`;
+    return `<button type="button" class="${classes.join(' ')}" ${attrs} ${chip.disabled ? 'disabled' : ''} title="${escapeHtml(title)}"><span class="result-mod-chip-top"><i class="bi ${chip.icon}" aria-hidden="true"></i><span>${escapeHtml(chip.label)}</span></span><span class="result-mod-chip-mult mono">${escapeHtml(chip.valueLabel || '-')}</span></button>`;
+  }).join('');
+}
+
+function renderResultModifierControls(calcInput) {
+  const container = $('result-modifier-controls');
+  if (!container) return;
+  if (!calcInput) {
+    container.innerHTML = '';
+    return;
+  }
+  const chips = getOptionControlItems(calcInput);
+  container.innerHTML = chips.map(chip => {
+    const classes = ['result-mod-chip'];
+    if (chip.active) classes.push('is-active');
+    else classes.push('is-inactive');
+    if (chip.disabled) classes.push('is-disabled');
+    let attrs = '';
+    if (chip.kind === 'cycle') attrs = `data-kind="cycle" data-target="${chip.key}"`;
+    else if (chip.kind === 'number-cycle') {
+      classes.push('is-count-chip');
+      attrs = `data-kind="number-cycle" data-target="${chip.key}" data-min="${toNumber(chip.min, 0)}" data-max="${toNumber(chip.max, 0)}"`;
+    } else attrs = `data-kind="toggle" data-target="${chip.key}"`;
+    const detailText = chip.kind === 'number-cycle' ? (chip.valueLabel || '-') : chip.multiplier;
+    const title = chip.kind === 'number-cycle'
+      ? `${chip.label}${chip.titleHint ? ` ${chip.titleHint}` : ''}`
+      : `${chip.label} ${chip.multiplier}`;
+    return `<button type="button" class="${classes.join(' ')}" ${attrs} ${chip.disabled ? 'disabled' : ''} title="${escapeHtml(title)}"><span class="result-mod-chip-top"><i class="bi ${chip.icon}" aria-hidden="true"></i><span>${escapeHtml(chip.label)}</span></span><span class="result-mod-chip-mult mono">${escapeHtml(detailText)}</span></button>`;
+  }).join('');
+}
+
+function getCalcRoleForViewSide(viewSide) {
+  const calcAttackerSide = state.resultFlowDirection === 'to' ? 'attacker' : 'defender';
+  return viewSide === calcAttackerSide ? 'attacker' : 'defender';
+}
+
+function getFlowAttackerSide() {
+  return state.resultFlowDirection === 'to' ? 'attacker' : 'defender';
+}
+
+function getFlowAttackerLinkedPokemon() {
+  const side = getFlowAttackerSide();
+  return getPokemonById(state.storage.calcLinks?.[side]);
+}
+
+function evaluateAbilityFactorBadge(viewSide, calcInput, result) {
+  const abilityId = $(`${viewSide}-ability`)?.value || '';
+  if (!abilityId) return null;
+  const ability = state.abilitiesById.get(abilityId);
+  if (!ability) return null;
+  const move = state.movesById.get(calcInput.moveId);
+  const role = getCalcRoleForViewSide(viewSide);
+  const abilityName = ability.name;
+  let applicable = false;
+  let multiplier = 1;
+
+  if (role === 'attacker') {
+    if (['Huge Power', 'Pure Power'].includes(abilityName)) {
+      applicable = calcInput.moveCategory === 'Physical';
+      multiplier = 2;
+    } else if (abilityName === 'Hustle') {
+      applicable = calcInput.moveCategory === 'Physical';
+      multiplier = 1.5;
+    } else if (abilityName === 'Solar Power') {
+      applicable = calcInput.moveCategory === 'Special' && calcInput.weather === 'sun';
+      multiplier = 1.5;
+    } else if (abilityName === 'Guts') {
+      applicable = calcInput.moveCategory === 'Physical' && calcInput.isBurn;
+      multiplier = 1.5;
+    } else if (abilityName === 'Technician') {
+      applicable = Boolean(move) && Number(result?.power || 0) <= 60;
+      multiplier = 1.5;
+    } else if (abilityName === 'Tough Claws') {
+      applicable = Boolean(move?.flags?.contact);
+      multiplier = 1.3;
+    }
+  } else {
+    if (abilityName === 'Fur Coat') {
+      applicable = calcInput.moveCategory === 'Physical';
+      multiplier = 0.5;
+    } else if (['Multiscale', 'Shadow Shield'].includes(abilityName)) {
+      applicable = calcInput.defenderFullHp;
+      multiplier = 0.5;
+    } else if (abilityName === 'Levitate') {
+      applicable = calcInput.moveType === 'Ground';
+      multiplier = 0;
+    } else if (abilityName === 'Flash Fire') {
+      applicable = calcInput.moveType === 'Fire';
+      multiplier = 0;
+    } else if (['Water Absorb', 'Storm Drain', 'Dry Skin'].includes(abilityName)) {
+      applicable = calcInput.moveType === 'Water';
+      multiplier = 0;
+    } else if (['Volt Absorb', 'Lightning Rod', 'Motor Drive'].includes(abilityName)) {
+      applicable = calcInput.moveType === 'Electric';
+      multiplier = 0;
+    } else if (abilityName === 'Sap Sipper') {
+      applicable = calcInput.moveType === 'Grass';
+      multiplier = 0;
+    }
+  }
+
+  if (!applicable && multiplier === 1) return null;
+  const active = Boolean(state.factorOverrides[viewSide]?.ability) && applicable;
+  return {
+    target: `${viewSide}-ability`,
+    iconHtml: '<i class="bi bi-lightning-charge-fill" aria-hidden="true"></i>',
+    label: displayEntryName(ability),
+    multiplier: formatModifierMultiplier(active ? multiplier : 1),
+    active,
+    disabled: !applicable,
+  };
+}
+
+function evaluateItemFactorBadge(viewSide, calcInput, result) {
+  const itemId = $(`${viewSide}-item`)?.value || '';
+  if (!itemId) return null;
+  const item = state.itemsById.get(itemId);
+  if (!item) return null;
+  const role = getCalcRoleForViewSide(viewSide);
+  const effectiveMoveType = result?.effectiveMoveType || calcInput.moveType;
+  const effectiveMoveCategory = result?.effectiveMoveCategory || calcInput.moveCategory;
+  let applicable = false;
+  let multiplier = 1;
+
+  if (role === 'attacker') {
+    if (itemId === 'choiceband') {
+      applicable = effectiveMoveCategory === 'Physical';
+      multiplier = 1.5;
+    } else if (itemId === 'choicespecs') {
+      applicable = effectiveMoveCategory === 'Special';
+      multiplier = 1.5;
+    } else if (itemId === 'lifeorb') {
+      applicable = true;
+      multiplier = 1.3;
+    } else if (itemId === 'expertbelt') {
+      applicable = Number(result?.typeMultiplier || 1) > 1;
+      multiplier = 1.2;
+    } else if (itemId === 'muscleband') {
+      applicable = effectiveMoveCategory === 'Physical';
+      multiplier = 1.1;
+    } else if (itemId === 'wiseglasses') {
+      applicable = effectiveMoveCategory === 'Special';
+      multiplier = 1.1;
+    } else if (TYPE_BOOST_ITEMS[itemId] && TYPE_BOOST_ITEMS[itemId] === effectiveMoveType) {
+      applicable = true;
+      multiplier = 1.2;
+    }
+  } else {
+    const calcDefenderSpecies = getEffectiveSpecies(calcInput.defenderSpeciesId, calcInput.defenderMegaEnabled, calcInput.defenderItemId);
+    const defenderItemMeta = getDefensiveItemModifierMeta(itemId, effectiveMoveCategory, effectiveMoveType, Number(result?.typeMultiplier || 1), calcDefenderSpecies);
+    applicable = defenderItemMeta.applicable;
+    multiplier = defenderItemMeta.multiplier;
+  }
+
+  if (!applicable && multiplier === 1) return null;
+  const active = Boolean(state.factorOverrides[viewSide]?.item) && applicable;
+  return {
+    target: `${viewSide}-item`,
+    iconHtml: '<i class="bi bi-bag-fill" aria-hidden="true"></i>',
+    label: displayItemName(item),
+    multiplier: formatModifierMultiplier(active ? multiplier : 1),
+    active,
+    disabled: !applicable,
+  };
+}
+
+function evaluateMegaFactorBadge(viewSide) {
+  const speciesId = $(`${viewSide}-species`)?.value || '';
+  if (!hasMega(speciesId)) return null;
+  const active = Boolean(state.factorOverrides[viewSide]?.mega);
+  const itemId = $(`${viewSide}-item`)?.value || '';
+  const stoneType = getMegaStoneType(itemId);
+  return {
+    target: `${viewSide}-mega`,
+    iconHtml: renderGenericMegaStoneIcon(stoneType || 'normal'),
+    label: 'メガ',
+    multiplier: '',
+    hideMultiplier: true,
+    kind: 'mega',
+    active,
+    disabled: false,
+  };
+}
+
+function renderSideFactorBadges(viewSide, calcInput, result) {
+  const container = $(`result-${viewSide}-factors`);
+  if (!container) return;
+  const badges = [
+    evaluateAbilityFactorBadge(viewSide, calcInput, result),
+    evaluateItemFactorBadge(viewSide, calcInput, result),
+    evaluateMegaFactorBadge(viewSide),
+  ].filter(Boolean);
+  if (!badges.length) {
+    container.innerHTML = '';
+    return;
+  }
+  container.innerHTML = badges.map(badge => {
+    const classes = ['result-factor-badge'];
+    if (badge.kind) classes.push(`is-${badge.kind}`);
+    if (badge.active) classes.push('is-active');
+    else classes.push('is-inactive');
+    if (badge.disabled) classes.push('is-disabled');
+    const title = badge.multiplier ? `${badge.label} ${badge.multiplier}` : badge.label;
+    const iconHtml = badge.iconHtml ? `<span class="result-factor-icon">${badge.iconHtml}</span>` : '';
+    const multiplierHtml = badge.hideMultiplier ? '' : `<span class="result-factor-mult mono">${escapeHtml(badge.multiplier)}</span>`;
+    return `<button type="button" class="${classes.join(' ')}" data-kind="factor" data-target="${badge.target}" ${badge.disabled ? 'disabled' : ''} title="${escapeHtml(title)}">${iconHtml}<span class="result-factor-label">${escapeHtml(badge.label)}</span>${multiplierHtml}</button>`;
+  }).join('');
+}
+
 function restoreSidesFromCalcLinks() {
   if (!hasCalcPage()) return false;
   let restored = false;
@@ -2231,15 +3861,71 @@ function getOffensiveItemDamageModifier(itemId, moveCategory, moveType, typeMult
   return { multiplier: 1, label: '' };
 }
 
+function isKnockOffBoostActive(defenderSpecies, defenderItemId = '') {
+  const itemId = toId(defenderItemId || '');
+  if (!itemId) return false;
+
+  const speciesId = toId(defenderSpecies?.id || defenderSpecies?.name || '');
+  const fixedUnremovableItems = new Set([
+    'adamantcrystal',
+    'lustrousglobe',
+    'griseouscore',
+    'griseousorb',
+    'redorb',
+    'blueorb',
+    'rustedsword',
+    'rustedshield',
+    'cornerstonemask',
+    'hearthflamemask',
+    'wellspringmask',
+    'vilevial',
+  ]);
+  if (fixedUnremovableItems.has(itemId)) {
+    if (itemId === 'rustedsword' && !speciesId.startsWith('zacian')) return true;
+    if (itemId === 'rustedshield' && !speciesId.startsWith('zamazenta')) return true;
+    if (itemId === 'cornerstonemask' && !speciesId.includes('ogerponcornerstone')) return true;
+    if (itemId === 'hearthflamemask' && !speciesId.includes('ogerponhearthflame')) return true;
+    if (itemId === 'wellspringmask' && !speciesId.includes('ogerponwellspring')) return true;
+    return false;
+  }
+
+  if (itemId.endsWith('z')) return false;
+  if (itemId.endsWith('plate') && speciesId.startsWith('arceus')) return false;
+  if (itemId.endsWith('memory') && speciesId.startsWith('silvally')) return false;
+  if (itemId.endsWith('drive') && speciesId.startsWith('genesect')) return false;
+
+  const item = state.itemsById.get(itemId);
+  const megaStone = typeof item?.megaStone === 'string' ? item.megaStone : Object.values(item?.megaStone || {})[0];
+  if (megaStone) {
+    const megaId = toId(megaStone);
+    const baseId = megaId.replace(/mega[xyz]?$/, '');
+    if (baseId && speciesId.startsWith(baseId)) return false;
+  }
+
+  return true;
+}
+
+function isSideMegaItemEnabled(side) {
+  const speciesId = $(`${side}-species`)?.value || '';
+  const itemId = $(`${side}-item`)?.value || '';
+  return hasMega(speciesId) && isMegaStoneItem(itemId);
+}
+
+function getSideMegaEnabledForCalc(side) {
+  const speciesId = $(`${side}-species`)?.value || '';
+  const factorEnabled = Boolean(state.factorOverrides[side]?.mega);
+  return hasMega(speciesId) && factorEnabled && isSideMegaItemEnabled(side);
+}
+
 function collectInput() {
   const attackerNatureOverride = getSideNatureOverridesFromButtons('attacker');
   const defenderNatureOverride = getSideNatureOverridesFromButtons('defender');
   return {
     attackerSpeciesId: $('attacker-species').value,
-    attackerMegaEnabled: false,
+    attackerMegaEnabled: getSideMegaEnabledForCalc('attacker'),
     attackerNature: $('attacker-nature').value,
-    attackerAbilityId: $('attacker-ability').value,
-    attackerItemId: $('attacker-item').value,
+    attackerAbilityId: state.factorOverrides.attacker.ability ? $('attacker-ability').value : '',
+    attackerItemId: state.factorOverrides.attacker.item ? $('attacker-item').value : '',
     attackerEvHp: clamp(toNumber($('attacker-ev-hp')?.value), 0, 32),
     attackerEvAtk: clamp(toNumber($('attacker-ev-atk').value), 0, 32),
     attackerEvDef: clamp(toNumber($('attacker-ev-def')?.value), 0, 32),
@@ -2255,10 +3941,10 @@ function collectInput() {
     attackerNaturePlusStats: attackerNatureOverride.plusStats,
     attackerNatureMinusStats: attackerNatureOverride.minusStats,
     defenderSpeciesId: $('defender-species').value,
-    defenderMegaEnabled: false,
+    defenderMegaEnabled: getSideMegaEnabledForCalc('defender'),
     defenderNature: $('defender-nature').value,
-    defenderAbilityId: $('defender-ability').value,
-    defenderItemId: $('defender-item').value,
+    defenderAbilityId: state.factorOverrides.defender.ability ? $('defender-ability').value : '',
+    defenderItemId: state.factorOverrides.defender.item ? $('defender-item').value : '',
     defenderEvHp: clamp(toNumber($('defender-ev-hp').value), 0, 32),
     defenderEvAtk: clamp(toNumber($('defender-ev-atk')?.value), 0, 32),
     defenderEvDef: clamp(toNumber($('defender-ev-def').value), 0, 32),
@@ -2277,7 +3963,7 @@ function collectInput() {
     moveType: $('move-type').value,
     moveCategory: $('move-category').value,
     movePower: clamp(toNumber($('move-power').value), 0, 400),
-    moveParamValue: clamp(toNumber($('move-parameter-value')?.value, 0), 0, 99),
+    moveParamValue: clamp(toNumber($('move-parameter-value')?.value, 0), 0, 400),
     weather: getActiveToggleValue('weather'),
     terrain: getActiveToggleValue('terrain'),
     isCrit: $('is-crit').checked,
@@ -2302,13 +3988,15 @@ function calculateDamageRange(input) {
   const attackerSpecies = getEffectiveSpecies(input.attackerSpeciesId, input.attackerMegaEnabled, input.attackerItemId);
   const defenderSpecies = getEffectiveSpecies(input.defenderSpeciesId, input.defenderMegaEnabled, input.defenderItemId);
   if (!move || !attackerSpecies || !defenderSpecies) throw new Error(dict.invalidError);
-  const power = resolveMovePower(input, move);
+  const effectiveMoveProfile = resolveEffectiveMoveProfile(input, move);
+  let power = effectiveMoveProfile.power;
   if (input.moveCategory === 'Status') return { min: 0, max: 0, notes: [dict.statusMoveError], hitCount: input.hitCount, move, defenderHp: 1, rolls: [], power, typeMultiplier: 1, appliedModifiers, attackerModifiers, defenderModifiers };
   if (power <= 0) return { min: 0, max: 0, notes: [dict.noDamageError], hitCount: input.hitCount, move, defenderHp: 1, rolls: [], power, typeMultiplier: 1, appliedModifiers, attackerModifiers, defenderModifiers };
 
   const attackerNature = getNatureById(input.attackerNature);
   const defenderNature = getNatureById(input.defenderNature);
   const attackerAtk = applyStageToStat(calcSingleStat(attackerSpecies.baseStats.atk, input.attackerEvAtk, getNatureMultiplierWithOverrides(attackerNature, 'atk', input.attackerNaturePlusStats, input.attackerNatureMinusStats)), input.attackerRankAtk);
+  const attackerDef = applyStageToStat(calcSingleStat(attackerSpecies.baseStats.def, input.attackerEvDef, getNatureMultiplierWithOverrides(attackerNature, 'def', input.attackerNaturePlusStats, input.attackerNatureMinusStats)), input.attackerRankDef);
   const attackerSpa = applyStageToStat(calcSingleStat(attackerSpecies.baseStats.spa, input.attackerEvSpa, getNatureMultiplierWithOverrides(attackerNature, 'spa', input.attackerNaturePlusStats, input.attackerNatureMinusStats)), input.attackerRankSpa);
   const defenderAtk = applyStageToStat(calcSingleStat(defenderSpecies.baseStats.atk, input.defenderEvAtk, getNatureMultiplierWithOverrides(defenderNature, 'atk', input.defenderNaturePlusStats, input.defenderNatureMinusStats)), input.defenderRankAtk);
   const defenderDef = applyStageToStat(calcSingleStat(defenderSpecies.baseStats.def, input.defenderEvDef, getNatureMultiplierWithOverrides(defenderNature, 'def', input.defenderNaturePlusStats, input.defenderNatureMinusStats)), input.defenderRankDef);
@@ -2317,7 +4005,7 @@ function calculateDamageRange(input) {
 
   let attackStat = input.moveCategory === 'Physical' ? attackerAtk : attackerSpa;
   let defenseStat = input.moveCategory === 'Physical' ? defenderDef : defenderSpd;
-  if (move.id === 'bodypress') attackStat = defenderDef;
+  if (move.id === 'bodypress') attackStat = attackerDef;
   if (move.id === 'foulplay') attackStat = defenderAtk;
   if (['psyshock', 'psystrike', 'secretsword'].includes(move.id)) defenseStat = defenderDef;
 
@@ -2338,17 +4026,18 @@ function calculateDamageRange(input) {
 
   const defenderTypes = defenderSpecies.types;
   const attackerTypes = attackerSpecies.types;
-  if (move.type === 'Ground' && hasAbility(defenderAbilityId, ['Levitate'])) return { min: 0, max: 0, notes: [dict.levitateImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers };
-  if (move.type === 'Fire' && hasAbility(defenderAbilityId, ['Flash Fire'])) return { min: 0, max: 0, notes: [dict.flashFireImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers };
-  if (move.type === 'Water' && hasAbility(defenderAbilityId, ['Water Absorb', 'Storm Drain', 'Dry Skin'])) return { min: 0, max: 0, notes: [dict.waterImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers };
-  if (move.type === 'Electric' && hasAbility(defenderAbilityId, ['Volt Absorb', 'Lightning Rod', 'Motor Drive'])) return { min: 0, max: 0, notes: [dict.electricImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers };
-  if (move.type === 'Grass' && hasAbility(defenderAbilityId, ['Sap Sipper'])) return { min: 0, max: 0, notes: [dict.grassImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers };
+  if (effectiveMoveProfile.moveType === 'Ground' && hasAbility(defenderAbilityId, ['Levitate'])) return { min: 0, max: 0, notes: [dict.levitateImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers, effectiveMoveType: effectiveMoveProfile.moveType, effectiveMoveCategory: effectiveMoveProfile.moveCategory };
+  if (effectiveMoveProfile.moveType === 'Fire' && hasAbility(defenderAbilityId, ['Flash Fire'])) return { min: 0, max: 0, notes: [dict.flashFireImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers, effectiveMoveType: effectiveMoveProfile.moveType, effectiveMoveCategory: effectiveMoveProfile.moveCategory };
+  if (effectiveMoveProfile.moveType === 'Water' && hasAbility(defenderAbilityId, ['Water Absorb', 'Storm Drain', 'Dry Skin'])) return { min: 0, max: 0, notes: [dict.waterImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers, effectiveMoveType: effectiveMoveProfile.moveType, effectiveMoveCategory: effectiveMoveProfile.moveCategory };
+  if (effectiveMoveProfile.moveType === 'Electric' && hasAbility(defenderAbilityId, ['Volt Absorb', 'Lightning Rod', 'Motor Drive'])) return { min: 0, max: 0, notes: [dict.electricImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers, effectiveMoveType: effectiveMoveProfile.moveType, effectiveMoveCategory: effectiveMoveProfile.moveCategory };
+  if (effectiveMoveProfile.moveType === 'Grass' && hasAbility(defenderAbilityId, ['Sap Sipper'])) return { min: 0, max: 0, notes: [dict.grassImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers, effectiveMoveType: effectiveMoveProfile.moveType, effectiveMoveCategory: effectiveMoveProfile.moveCategory };
 
-  const typeMultiplier = getTypeMultiplier(move.type, defenderTypes);
-  if (typeMultiplier === 0) return { min: 0, max: 0, notes: [dict.typeImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers };
-  const stab = getStabMultiplier(move.type, attackerTypes, hasAbility(attackerAbilityId, ['Adaptability']));
-  const weatherMultiplier = input.weather === 'sun' ? (move.type === 'Fire' ? 1.5 : (move.type === 'Water' ? 0.5 : 1)) : (input.weather === 'rain' ? (move.type === 'Water' ? 1.5 : (move.type === 'Fire' ? 0.5 : 1)) : 1);
-  const terrainMultiplier = input.terrain === 'electric' && move.type === 'Electric' ? 1.3 : input.terrain === 'grassy' && move.type === 'Grass' ? 1.3 : input.terrain === 'psychic' && move.type === 'Psychic' ? 1.3 : input.terrain === 'misty' && move.type === 'Dragon' ? 0.5 : 1;
+  const typeMultiplier = getTypeMultiplier(effectiveMoveProfile.moveType, defenderTypes);
+  if (typeMultiplier === 0) return { min: 0, max: 0, notes: [dict.typeImmunity], hitCount: input.hitCount, move, defenderHp, rolls: [], power, typeMultiplier: 0, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers, effectiveMoveType: effectiveMoveProfile.moveType, effectiveMoveCategory: effectiveMoveProfile.moveCategory };
+  const stab = getStabMultiplier(effectiveMoveProfile.moveType, attackerTypes, hasAbility(attackerAbilityId, ['Adaptability']));
+  const defenderItemMeta = getDefensiveItemModifierMeta(input.defenderItemId, effectiveMoveProfile.moveCategory, effectiveMoveProfile.moveType, typeMultiplier, defenderSpecies);
+  const weatherMultiplier = input.weather === 'sun' ? (effectiveMoveProfile.moveType === 'Fire' ? 1.5 : (effectiveMoveProfile.moveType === 'Water' ? 0.5 : 1)) : (input.weather === 'rain' ? (effectiveMoveProfile.moveType === 'Water' ? 1.5 : (effectiveMoveProfile.moveType === 'Fire' ? 0.5 : 1)) : 1);
+  const terrainMultiplier = input.terrain === 'electric' && effectiveMoveProfile.moveType === 'Electric' ? 1.3 : input.terrain === 'grassy' && effectiveMoveProfile.moveType === 'Grass' ? 1.3 : input.terrain === 'psychic' && effectiveMoveProfile.moveType === 'Psychic' ? 1.3 : input.terrain === 'misty' && effectiveMoveProfile.moveType === 'Dragon' ? 0.5 : 1;
   let movePowerMultiplier = 1;
   if (hasAbility(attackerAbilityId, ['Technician']) && power <= 60) movePowerMultiplier *= 1.5;
   if (input.terrain === 'grassy' && ['earthquake', 'bulldoze', 'magnitude'].includes(move.id)) movePowerMultiplier *= 0.5;
@@ -2366,6 +4055,7 @@ function calculateDamageRange(input) {
   if (input.weather === 'snow' && defenderTypes.includes('Ice') && input.moveCategory === 'Physical') defenseStat = Math.floor(defenseStat * 1.5);
   const multiscaleMultiplier = input.defenderFullHp && hasAbility(defenderAbilityId, ['Multiscale', 'Shadow Shield']) ? 0.5 : 1;
   const friendGuardMultiplier = input.isFriendGuard ? 0.75 : 1;
+  const defenderItemDamageMultiplier = defenderItemMeta.mode === 'damage' && defenderItemMeta.applicable ? defenderItemMeta.multiplier : 1;
 
   if (spreadMultiplier !== 1) {
     appliedModifiers.push(t('spreadMove'));
@@ -2396,6 +4086,14 @@ function calculateDamageRange(input) {
     appliedModifiers.push(t('defenderFullHp'));
     defenderModifiers.push(t('defenderFullHp'));
   }
+  if (defenderItemDamageMultiplier !== 1) {
+    const defItem = state.itemsById.get(input.defenderItemId);
+    const itemText = state.lang === 'ja' ? (defItem?.nameJa || ITEM_NAME_JA_FALLBACK[input.defenderItemId] || defItem?.name || '') : (defItem?.name || defItem?.nameJa || '');
+    if (itemText) {
+      appliedModifiers.push(itemText);
+      defenderModifiers.push(itemText);
+    }
+  }
   if (weatherMultiplier !== 1) {
     const weatherText = `${t('weather')}:${t(input.weather)}`;
     appliedModifiers.push(weatherText);
@@ -2415,7 +4113,7 @@ function calculateDamageRange(input) {
   const level = 50;
   const preModifier = Math.floor(Math.floor(Math.floor(((2 * level) / 5 + 2) * power * movePowerMultiplier * attackStat / Math.max(1, defenseStat)) / 50) + 2);
   const constantModifier = stab * typeMultiplier * weatherMultiplier * terrainMultiplier * critMultiplier * spreadMultiplier * helpingHandMultiplier * burnMultiplier * screenMultiplier * multiscaleMultiplier * friendGuardMultiplier;
-  const itemBoost = getOffensiveItemDamageModifier(input.attackerItemId, input.moveCategory, move.type, typeMultiplier);
+  const itemBoost = getOffensiveItemDamageModifier(input.attackerItemId, effectiveMoveProfile.moveCategory, effectiveMoveProfile.moveType, typeMultiplier);
   const itemMultiplier = itemBoost.multiplier;
   if (itemBoost.multiplier !== 1) {
     const atkItem = state.itemsById.get(input.attackerItemId);
@@ -2432,18 +4130,20 @@ function calculateDamageRange(input) {
     return power;
   };
   const calcPerHitBase = hitPower => Math.floor(Math.floor(Math.floor(((2 * level) / 5 + 2) * hitPower * movePowerMultiplier * attackStat / Math.max(1, defenseStat)) / 50) + 2);
-  const rolls = [];
-  for (let roll = 85; roll <= 100; roll += 1) {
-    let total = 0;
-    for (let hit = 0; hit < hitCount; hit += 1) {
-      const hitPower = resolvePerHitPower(hit);
-      const perHitBase = move.id === 'tripleaxel' ? calcPerHitBase(hitPower) : preModifier;
-      total += Math.max(1, Math.floor(perHitBase * constantModifier * itemMultiplier * (roll / 100)));
+  const perHitRolls = [];
+  for (let hit = 0; hit < hitCount; hit += 1) {
+    const hitPower = resolvePerHitPower(hit);
+    const perHitBase = move.id === 'tripleaxel' ? calcPerHitBase(hitPower) : preModifier;
+    const hitRollSet = [];
+    for (let roll = 85; roll <= 100; roll += 1) {
+      hitRollSet.push(Math.max(1, Math.floor(perHitBase * constantModifier * itemMultiplier * defenderItemDamageMultiplier * (roll / 100))));
     }
-    rolls.push(total);
+    perHitRolls.push(hitRollSet);
   }
-  const min = rolls[0];
-  const max = rolls[rolls.length - 1];
+  const rollDistribution = buildMultiHitRollDistribution(perHitRolls);
+  const rolls = sampleRollsFromDistribution(rollDistribution, 16);
+  const min = rollDistribution.damages.length ? rollDistribution.damages[0] : 0;
+  const max = rollDistribution.damages.length ? rollDistribution.damages[rollDistribution.damages.length - 1] : 0;
   let recoil = null;
   let recovery = null;
   if (Array.isArray(move.recoil) && move.recoil.length >= 2) recoil = { min: Math.floor(min * move.recoil[0] / move.recoil[1]), max: Math.floor(max * move.recoil[0] / move.recoil[1]) };
@@ -2452,10 +4152,86 @@ function calculateDamageRange(input) {
     recoil = recoil ? { min: recoil.min + lifeOrbRecoil.min, max: recoil.max + lifeOrbRecoil.max } : lifeOrbRecoil;
   }
   if (Array.isArray(move.drain) && move.drain.length >= 2) recovery = { min: Math.floor(min * move.drain[0] / move.drain[1]), max: Math.floor(max * move.drain[0] / move.drain[1]) };
-  return { min, max, defenderHp, recoil, recovery, hitCount, notes, rolls, move, power, typeMultiplier, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers };
+  return { min, max, defenderHp, recoil, recovery, hitCount, notes, rolls, rollDistribution, move, power, typeMultiplier, attackStatUsed: attackStat, defenseStatUsed: defenseStat, attackerAbilityId, defenderAbilityId, appliedModifiers, attackerModifiers, defenderModifiers, effectiveMoveType: effectiveMoveProfile.moveType, effectiveMoveCategory: effectiveMoveProfile.moveCategory };
 }
 
-function renderResult(result, input = null) {
+function buildMultiHitRollDistribution(perHitRolls) {
+  if (!Array.isArray(perHitRolls) || !perHitRolls.length) return { damages: [], weights: [], totalWeight: 0 };
+  let dist = new Map([[0, 1]]);
+  perHitRolls.forEach(hitRollSet => {
+    const hitFreq = new Map();
+    (Array.isArray(hitRollSet) ? hitRollSet : []).forEach(value => {
+      const damage = toNumber(value, 0);
+      hitFreq.set(damage, (hitFreq.get(damage) || 0) + 1);
+    });
+    const next = new Map();
+    dist.forEach((baseWeight, baseDamage) => {
+      hitFreq.forEach((hitWeight, hitDamage) => {
+        const sumDamage = baseDamage + hitDamage;
+        next.set(sumDamage, (next.get(sumDamage) || 0) + (baseWeight * hitWeight));
+      });
+    });
+    dist = next;
+  });
+  const sorted = [...dist.entries()].sort((left, right) => left[0] - right[0]);
+  const damages = sorted.map(entry => entry[0]);
+  const weights = sorted.map(entry => entry[1]);
+  const totalWeight = weights.reduce((sum, value) => sum + value, 0);
+  return { damages, weights, totalWeight };
+}
+
+function sampleRollsFromDistribution(distribution, sampleCount = 16) {
+  const damages = Array.isArray(distribution?.damages) ? distribution.damages : [];
+  const weights = Array.isArray(distribution?.weights) ? distribution.weights : [];
+  const totalWeight = toNumber(distribution?.totalWeight, 0);
+  if (!damages.length || !weights.length || totalWeight <= 0) return [];
+  if (sampleCount <= 1) return [damages[0]];
+  const sampled = [];
+  for (let index = 0; index < sampleCount; index += 1) {
+    const target = 1 + Math.floor((index * Math.max(0, totalWeight - 1)) / Math.max(1, sampleCount - 1));
+    let acc = 0;
+    let chosen = damages[damages.length - 1];
+    for (let i = 0; i < damages.length; i += 1) {
+      acc += weights[i];
+      if (acc >= target) {
+        chosen = damages[i];
+        break;
+      }
+    }
+    sampled.push(chosen);
+  }
+  return sampled;
+}
+
+function getRollDistribution(result) {
+  if (result?.rollDistribution?.damages?.length && result?.rollDistribution?.weights?.length) {
+    return result.rollDistribution;
+  }
+  const rolls = Array.isArray(result?.rolls) ? result.rolls : [];
+  if (!rolls.length) return { damages: [], weights: [], totalWeight: 0 };
+  const freq = new Map();
+  rolls.forEach(value => {
+    const damage = toNumber(value, 0);
+    freq.set(damage, (freq.get(damage) || 0) + 1);
+  });
+  const sorted = [...freq.entries()].sort((left, right) => left[0] - right[0]);
+  const damages = sorted.map(entry => entry[0]);
+  const weights = sorted.map(entry => entry[1]);
+  const totalWeight = weights.reduce((sum, value) => sum + value, 0);
+  return { damages, weights, totalWeight };
+}
+
+function getOutcomeRate(result, predicate) {
+  const distribution = getRollDistribution(result);
+  if (!distribution.totalWeight) return 0;
+  let successWeight = 0;
+  distribution.damages.forEach((damage, index) => {
+    if (predicate(damage)) successWeight += distribution.weights[index];
+  });
+  return successWeight / distribution.totalWeight;
+}
+
+function renderResult(result, input = null, calcInput = null) {
   const forEachResultNode = (baseId, callback) => {
     [$(baseId), $(`${baseId}-mobile`)].filter(Boolean).forEach(callback);
   };
@@ -2488,13 +4264,13 @@ function renderResult(result, input = null) {
   };
   const renderImpactItem = itemId => itemId ? renderItemVisual(itemId) : '';
   const formatKoSummary = (rolls, defenderHp, hitCount, koRate) => {
-    if (!Array.isArray(rolls) || !rolls.length || !defenderHp) return '-';
+    if (!defenderHp) return '-';
 
     if (koRate >= 100) return state.lang === 'ja' ? '確定1発' : 'Guaranteed OHKO';
     if (koRate > 0) return state.lang === 'ja' ? `${koRate.toFixed(1)}%で1発` : `${koRate.toFixed(1)}% to OHKO`;
 
-    const minRoll = Math.min(...rolls);
-    const maxRoll = Math.max(...rolls);
+    const minRoll = toNumber(result.min, 0);
+    const maxRoll = toNumber(result.max, 0);
     if (minRoll <= 0 || maxRoll <= 0) return '-';
 
     const fastestHits = Math.max(1, Math.ceil(defenderHp / maxRoll));
@@ -2508,53 +4284,83 @@ function renderResult(result, input = null) {
     return `Possible ${fastestHits}HKO`;
   };
 
+  const effectiveInput = calcInput || input;
   const minPct = result.defenderHp ? (result.min / result.defenderHp) * 100 : 0;
   const maxPct = result.defenderHp ? (result.max / result.defenderHp) * 100 : 0;
-  const getDamageClassByRatio = ratio => {
-    if (ratio >= 1) return 'result-dmg-deep-red';
-    if (ratio >= 0.8) return 'result-dmg-red';
-    if (ratio >= 0.5) return 'result-dmg-yellow';
-    return 'result-dmg-green';
-  };
 
   if (!input || !hasCalcPage()) {
     forEachResultNode('result-main', node => { node.textContent = '-'; });
     forEachResultNode('result-extra', node => { node.textContent = '-'; });
     forEachResultNode('result-stab-effect', node => { node.textContent = '-'; node.classList.remove('is-on', 'is-off'); });
+    forEachResultNode('result-attacker-compact', node => { node.textContent = '-'; });
+    forEachResultNode('result-defender-compact', node => { node.textContent = '-'; });
+    if ($('result-attacker-factors')) $('result-attacker-factors').innerHTML = '';
+    if ($('result-defender-factors')) $('result-defender-factors').innerHTML = '';
     ['result-attacker-item-impact', 'result-defender-item-impact', 'result-attacker-modifiers', 'result-defender-modifiers', 'result-move-item-impact', 'result-move-modifiers'].forEach(id => {
       forEachResultNode(id, node => { node.innerHTML = ''; });
     });
+    renderMoveConditionControls(null);
+    renderResultModifierControls(null);
     return;
   }
 
-  const move = result.move || state.movesById.get(input.moveId);
-  const attackerSpecies = getEffectiveSpecies(input.attackerSpeciesId, input.attackerMegaEnabled, input.attackerItemId);
-  const defenderSpecies = getEffectiveSpecies(input.defenderSpeciesId, input.defenderMegaEnabled, input.defenderItemId);
+  const move = result.move || state.movesById.get(effectiveInput.moveId);
+  const attackerSpecies = getEffectiveSpecies(effectiveInput.attackerSpeciesId, effectiveInput.attackerMegaEnabled, effectiveInput.attackerItemId);
+  const defenderSpecies = getEffectiveSpecies(effectiveInput.defenderSpeciesId, effectiveInput.defenderMegaEnabled, effectiveInput.defenderItemId);
   const attackerTypes = attackerSpecies?.types || [];
-  const attackerStab = getStabMultiplier(input.moveType, attackerTypes, hasAbility(result.attackerAbilityId, ['Adaptability']));
-  const attackerImpactItemBoost = getOffensiveItemDamageModifier(input.attackerItemId, input.moveCategory, input.moveType, Number(result.typeMultiplier || 0));
+  const resultMoveType = result.effectiveMoveType || effectiveInput.moveType;
+  const resultMoveCategory = result.effectiveMoveCategory || effectiveInput.moveCategory;
+  const attackerStab = getStabMultiplier(resultMoveType, attackerTypes, hasAbility(result.attackerAbilityId, ['Adaptability']));
+  const attackerImpactItemBoost = getOffensiveItemDamageModifier(effectiveInput.attackerItemId, resultMoveCategory, resultMoveType, Number(result.typeMultiplier || 0));
   const attackerItemAffectsDamage = Boolean(
-    input.attackerItemId && (
+    effectiveInput.attackerItemId && (
       attackerImpactItemBoost.multiplier !== 1
-      || (input.moveCategory === 'Physical' && input.attackerItemId === 'choiceband')
-      || (input.moveCategory === 'Special' && input.attackerItemId === 'choicespecs')
+      || (resultMoveCategory === 'Physical' && effectiveInput.attackerItemId === 'choiceband')
+      || (resultMoveCategory === 'Special' && effectiveInput.attackerItemId === 'choicespecs')
     )
   );
   const defenderItemAffectsDamage = Boolean(
-    input.defenderItemId && (
-      (input.moveCategory === 'Special' && input.defenderItemId === 'assaultvest')
-      || (input.defenderItemId === 'eviolite' && defenderSpecies?.nfe)
-    )
+    effectiveInput.defenderItemId && getDefensiveItemModifierMeta(effectiveInput.defenderItemId, resultMoveCategory, resultMoveType, Number(result.typeMultiplier || 1), defenderSpecies).applicable
   );
   forEachResultNode('result-attacker-icons', node => {
-    node.innerHTML = renderPokemonOnlyIcon(input.attackerSpeciesId, input.attackerMegaEnabled, input.attackerItemId);
+    node.innerHTML = renderPokemonOnlyIcon(effectiveInput.attackerSpeciesId, effectiveInput.attackerMegaEnabled, effectiveInput.attackerItemId);
   });
   forEachResultNode('result-defender-icons', node => {
-    node.innerHTML = renderPokemonOnlyIcon(input.defenderSpeciesId, input.defenderMegaEnabled, input.defenderItemId);
+    node.innerHTML = renderPokemonOnlyIcon(effectiveInput.defenderSpeciesId, effectiveInput.defenderMegaEnabled, effectiveInput.defenderItemId);
   });
 
-  const atkLabel = input.moveCategory === 'Special' ? 'C' : 'A';
-  const defLabel = input.moveCategory === 'Special' ? 'D' : 'B';
+  const signRank = value => {
+    const numeric = toNumber(value);
+    if (!numeric) return '';
+    return numeric > 0 ? `+${numeric}` : `${numeric}`;
+  };
+  const buildCompact = side => {
+    const role = getCalcRoleForViewSide(side);
+    if (role === 'attacker') {
+      const offensiveStat = effectiveInput.moveCategory === 'Special' ? 'spa' : 'atk';
+      const label = offensiveStat === 'spa' ? 'C' : 'A';
+      const statValue = toNumber($(`${side}-inline-${offensiveStat}`)?.textContent, 0);
+      const evValue = toNumber($(`${side}-ev-${offensiveStat}`)?.value, 0);
+      const rankValue = signRank($(`${side}-rank-${offensiveStat}`)?.value);
+      return `${label}${rankValue}${statValue} (${evValue})`;
+    }
+    const defensiveStat = effectiveInput.moveCategory === 'Special' ? 'spd' : 'def';
+    const defenseLabel = defensiveStat === 'spd' ? 'D' : 'B';
+    const hpValue = toNumber($(`${side}-inline-hp`)?.textContent, 0);
+    const hpEvValue = toNumber($(`${side}-ev-hp`)?.value, 0);
+    const defenseValue = toNumber($(`${side}-inline-${defensiveStat}`)?.textContent, 0);
+    const defenseEvValue = toNumber($(`${side}-ev-${defensiveStat}`)?.value, 0);
+    const defenseRankValue = signRank($(`${side}-rank-${defensiveStat}`)?.value);
+    return `H${hpValue} (${hpEvValue}) ${defenseLabel}${defenseRankValue}${defenseValue} (${defenseEvValue})`;
+  };
+  forEachResultNode('result-attacker-compact', node => { node.textContent = buildCompact('attacker'); });
+  forEachResultNode('result-defender-compact', node => { node.textContent = buildCompact('defender'); });
+  if ($('result-flow-swap-button')) $('result-flow-swap-button').textContent = state.resultFlowDirection === 'to' ? 'TO' : 'FROM';
+  renderSideFactorBadges('attacker', effectiveInput, result);
+  renderSideFactorBadges('defender', effectiveInput, result);
+
+  const atkLabel = resultMoveCategory === 'Special' ? 'C' : 'A';
+  const defLabel = resultMoveCategory === 'Special' ? 'D' : 'B';
   const attackerMods = Array.isArray(result.attackerModifiers) ? result.attackerModifiers : [];
   const defenderMods = Array.isArray(result.defenderModifiers) ? result.defenderModifiers : [];
   const weatherPrefix = `${t('weather')}:`;
@@ -2571,24 +4377,24 @@ function renderResult(result, input = null) {
     return `R:${label}${sign}`;
   };
   const attackerRankBadgeMods = [
-    buildRankBadgeText('A', input.attackerRankAtk),
-    buildRankBadgeText('B', input.attackerRankDef),
-    buildRankBadgeText('C', input.attackerRankSpa),
-    buildRankBadgeText('D', input.attackerRankSpd),
-    buildRankBadgeText('S', input.attackerRankSpe),
+    buildRankBadgeText('A', effectiveInput.attackerRankAtk),
+    buildRankBadgeText('B', effectiveInput.attackerRankDef),
+    buildRankBadgeText('C', effectiveInput.attackerRankSpa),
+    buildRankBadgeText('D', effectiveInput.attackerRankSpd),
+    buildRankBadgeText('S', effectiveInput.attackerRankSpe),
   ].filter(Boolean);
   const defenderRankBadgeMods = [
-    buildRankBadgeText('A', input.defenderRankAtk),
-    buildRankBadgeText('B', input.defenderRankDef),
-    buildRankBadgeText('C', input.defenderRankSpa),
-    buildRankBadgeText('D', input.defenderRankSpd),
-    buildRankBadgeText('S', input.defenderRankSpe),
+    buildRankBadgeText('A', effectiveInput.defenderRankAtk),
+    buildRankBadgeText('B', effectiveInput.defenderRankDef),
+    buildRankBadgeText('C', effectiveInput.defenderRankSpa),
+    buildRankBadgeText('D', effectiveInput.defenderRankSpd),
+    buildRankBadgeText('S', effectiveInput.defenderRankSpe),
   ].filter(Boolean);
   attackerPokemonRowMods.push(...attackerRankBadgeMods);
   defenderPokemonRowMods.push(...defenderRankBadgeMods);
-  if (input.reflect && input.moveCategory === 'Physical' && !defenderPokemonRowMods.includes(t('reflect'))) defenderPokemonRowMods.push(t('reflect'));
-  if (input.lightScreen && input.moveCategory === 'Special' && !defenderPokemonRowMods.includes(t('lightScreen'))) defenderPokemonRowMods.push(t('lightScreen'));
-  if (input.isFriendGuard && !defenderPokemonRowMods.includes(t('friendGuard'))) defenderPokemonRowMods.push(t('friendGuard'));
+  if (effectiveInput.reflect && resultMoveCategory === 'Physical' && !defenderPokemonRowMods.includes(t('reflect'))) defenderPokemonRowMods.push(t('reflect'));
+  if (effectiveInput.lightScreen && resultMoveCategory === 'Special' && !defenderPokemonRowMods.includes(t('lightScreen'))) defenderPokemonRowMods.push(t('lightScreen'));
+  if (effectiveInput.isFriendGuard && !defenderPokemonRowMods.includes(t('friendGuard'))) defenderPokemonRowMods.push(t('friendGuard'));
   forEachResultNode('result-attacker-meta', node => {
     node.textContent = `${atkLabel}${toNumber(result.attackStatUsed)}`;
   });
@@ -2597,9 +4403,9 @@ function renderResult(result, input = null) {
   });
   const excludedAttackerMods = new Set();
   if (attackerItemAffectsDamage) {
-    const atkItem = state.itemsById.get(input.attackerItemId);
+    const atkItem = state.itemsById.get(effectiveInput.attackerItemId);
     const itemLabel = state.lang === 'ja'
-      ? (atkItem?.nameJa || ITEM_NAME_JA_FALLBACK[input.attackerItemId] || attackerImpactItemBoost.label)
+      ? (atkItem?.nameJa || ITEM_NAME_JA_FALLBACK[effectiveInput.attackerItemId] || attackerImpactItemBoost.label)
       : (atkItem?.name || attackerImpactItemBoost.label);
     if (itemLabel) excludedAttackerMods.add(itemLabel);
   }
@@ -2607,10 +4413,10 @@ function renderResult(result, input = null) {
     node.innerHTML = '';
   });
   forEachResultNode('result-defender-item-impact', node => {
-    node.innerHTML = defenderItemAffectsDamage ? renderImpactItem(input.defenderItemId) : '';
+    node.innerHTML = defenderItemAffectsDamage ? renderImpactItem(effectiveInput.defenderItemId) : '';
   });
   forEachResultNode('result-move-item-impact', node => {
-    node.innerHTML = attackerItemAffectsDamage ? renderImpactItem(input.attackerItemId) : '';
+    node.innerHTML = attackerItemAffectsDamage ? renderImpactItem(effectiveInput.attackerItemId) : '';
   });
   forEachResultNode('result-move-modifiers', node => {
     node.innerHTML = renderResultModifierIcons(moveRowMods, 'positive', excludedAttackerMods);
@@ -2624,38 +4430,38 @@ function renderResult(result, input = null) {
 
   const moveName = move ? displayEntryName(move) : '-';
   const moveTypeName = state.lang === 'ja'
-    ? ((state.data.types || []).find(type => type.name === input.moveType)?.nameJa || input.moveType || '-')
-    : (input.moveType || '-');
+    ? ((state.data.types || []).find(type => type.name === resultMoveType)?.nameJa || resultMoveType || '-')
+    : (resultMoveType || '-');
   const categoryName = state.lang === 'ja'
-    ? ({ Physical: '物理', Special: '特殊', Status: '変化' }[input.moveCategory] || input.moveCategory || '-')
-    : (input.moveCategory || '-');
+    ? ({ Physical: '物理', Special: '特殊', Status: '変化' }[resultMoveCategory] || resultMoveCategory || '-')
+    : (resultMoveCategory || '-');
   const powerLabel = state.lang === 'ja' ? '威力' : 'Power';
-  forEachResultNode('result-move', node => { node.textContent = moveName; });
+  forEachResultNode('result-move', node => { node.textContent = `${moveName} (${moveTypeName} / ${categoryName} / ${powerLabel} ${toNumber(result.power)})`; });
   forEachResultNode('result-move-meta', node => {
-    node.innerHTML = `<span>${escapeHtml(moveTypeName)}</span><span class="result-move-meta-sep">/</span><span>${escapeHtml(categoryName)}</span><span class="result-move-meta-sep">/</span><span class="result-move-power mono">${escapeHtml(powerLabel)} ${toNumber(result.power)}</span>`;
+    node.innerHTML = '';
   });
   forEachResultNode('result-stab-effect', node => {
     node.classList.toggle('is-on', attackerStab > 1);
     node.classList.toggle('is-off', !(attackerStab > 1));
     node.textContent = attackerStab > 1
-      ? (state.lang === 'ja' ? `一致 x${attackerStab}` : `STAB x${attackerStab}`)
+      ? (state.lang === 'ja' ? `一致 ${formatModifierMultiplier(attackerStab)}` : `STAB ${formatModifierMultiplier(attackerStab)}`)
       : (state.lang === 'ja' ? '一致なし' : 'No STAB');
   });
 
-  let typeLabel = state.lang === 'ja' ? '等倍' : 'Neutral';
+  let typeLabel = state.lang === 'ja' ? `等倍 ${formatModifierMultiplier(1)}` : `Neutral ${formatModifierMultiplier(1)}`;
   let typeLevel = 'neutral';
   let typeIconClass = 'bi-record-circle';
   const multiplier = Number(result.typeMultiplier || 0);
   if (multiplier === 0) {
-    typeLabel = state.lang === 'ja' ? '無効 x0' : 'Immune x0';
+    typeLabel = state.lang === 'ja' ? `無効 ${formatModifierMultiplier(0)}` : `Immune ${formatModifierMultiplier(0)}`;
     typeLevel = 'immune';
     typeIconClass = 'bi-slash-circle-fill';
   } else if (multiplier > 1) {
-    typeLabel = state.lang === 'ja' ? `弱点 x${multiplier}` : `Super x${multiplier}`;
+    typeLabel = state.lang === 'ja' ? `弱点 ${formatModifierMultiplier(multiplier)}` : `Super ${formatModifierMultiplier(multiplier)}`;
     typeLevel = 'super';
     typeIconClass = 'bi-exclamation-diamond-fill';
   } else if (multiplier < 1) {
-    typeLabel = state.lang === 'ja' ? `半減 x${multiplier}` : `Resist x${multiplier}`;
+    typeLabel = state.lang === 'ja' ? `半減 ${formatModifierMultiplier(multiplier)}` : `Resist ${formatModifierMultiplier(multiplier)}`;
     typeLevel = 'resist';
     typeIconClass = 'bi-shield-fill-minus';
   }
@@ -2671,8 +4477,7 @@ function renderResult(result, input = null) {
   });
 
   const rolls = Array.isArray(result.rolls) ? result.rolls : [];
-  const koCount = rolls.filter(value => value >= (result.defenderHp || Infinity)).length;
-  const koRate = rolls.length ? (koCount / rolls.length) * 100 : 0;
+  const koRate = getOutcomeRate(result, value => value >= (result.defenderHp || Infinity)) * 100;
   const koSummary = formatKoSummary(rolls, result.defenderHp, result.hitCount, koRate);
   forEachResultNode('result-ko-rate', node => { node.textContent = koSummary; });
 
@@ -2691,23 +4496,46 @@ function renderResult(result, input = null) {
     const pills = rolls.map(value => {
       const ratio = result.defenderHp ? (value / result.defenderHp) : 0;
       const cls = getDamageClassByRatio(ratio);
-      return `<span class="result-random-pill ${cls}">${value}</span>`;
+      const isKo = value >= (result.defenderHp || Infinity);
+      return `<span class="result-random-pill ${cls}${isKo ? ' is-ko' : ''}">${value}</span>`;
     }).join('');
     node.innerHTML = pills;
   });
+
+  renderMoveConditionControls(effectiveInput);
+  renderResultModifierControls(effectiveInput);
 }
 
 function calculateAndRender() {
   if (!hasCalcPage()) return;
   try {
+    ensureFactorOverridesShape();
     const input = collectInput();
-    renderResult(calculateDamageRange(input), input);
+    const flowInput = getFlowCalcInput(input);
+    renderResult(calculateDamageRange(flowInput), input, flowInput);
     saveLastSelectedSides();
     const currentDetail = getCurrentDetailPokemon();
     if (currentDetail && state.detail.modal && $('pokemon-detail-modal')?.classList.contains('show')) renderDetailCalcHistory(currentDetail);
   } catch (_error) {
-    renderResult({ min: 0, max: 0, defenderHp: 1, hitCount: 1, notes: [I18N[state.lang].invalidError], rolls: [], typeMultiplier: 1 }, collectInput());
+    const input = collectInput();
+    renderResult({ min: 0, max: 0, defenderHp: 1, hitCount: 1, notes: [I18N[state.lang].invalidError], rolls: [], typeMultiplier: 1 }, input, getFlowCalcInput(input));
   }
+}
+
+function ensureFactorOverridesShape() {
+  if (!state.factorOverrides || typeof state.factorOverrides !== 'object') {
+    state.factorOverrides = { attacker: { ability: true, item: true, mega: true }, defender: { ability: true, item: true, mega: true } };
+    return;
+  }
+  ['attacker', 'defender'].forEach(side => {
+    if (!state.factorOverrides[side] || typeof state.factorOverrides[side] !== 'object') {
+      state.factorOverrides[side] = { ability: true, item: true, mega: true };
+      return;
+    }
+    if (!Object.prototype.hasOwnProperty.call(state.factorOverrides[side], 'ability')) state.factorOverrides[side].ability = true;
+    if (!Object.prototype.hasOwnProperty.call(state.factorOverrides[side], 'item')) state.factorOverrides[side].item = true;
+    if (!Object.prototype.hasOwnProperty.call(state.factorOverrides[side], 'mega')) state.factorOverrides[side].mega = true;
+  });
 }
 
 function apply11nHighlight(side, plusStats, stats) {
@@ -3652,11 +5480,11 @@ function buildHistoryInputForPokemon(pokemon, entry) {
 }
 
 function formatKoSummaryText(rolls, defenderHp, koRate) {
-  if (!Array.isArray(rolls) || !rolls.length || !defenderHp) return '-';
+  if (!defenderHp) return '-';
   if (koRate >= 100) return state.lang === 'ja' ? '確定1発' : 'Guaranteed OHKO';
   if (koRate > 0) return state.lang === 'ja' ? `${koRate.toFixed(1)}%で1発` : `${koRate.toFixed(1)}% to OHKO`;
-  const minRoll = Math.min(...rolls);
-  const maxRoll = Math.max(...rolls);
+  const minRoll = Array.isArray(rolls) && rolls.length ? Math.min(...rolls) : 0;
+  const maxRoll = Array.isArray(rolls) && rolls.length ? Math.max(...rolls) : 0;
   if (minRoll <= 0 || maxRoll <= 0) return '-';
   const fastestHits = Math.max(1, Math.ceil(defenderHp / maxRoll));
   const guaranteedHits = Math.max(fastestHits, Math.ceil(defenderHp / minRoll));
@@ -3666,42 +5494,43 @@ function formatKoSummaryText(rolls, defenderHp, koRate) {
 
 function buildEmbeddedResultCaptureHtml(input, result) {
   const move = result.move || state.movesById.get(input.moveId);
-  const atkLabel = input.moveCategory === 'Special' ? 'C' : 'A';
-  const defLabel = input.moveCategory === 'Special' ? 'D' : 'B';
+  const resultMoveType = result.effectiveMoveType || input.moveType;
+  const resultMoveCategory = result.effectiveMoveCategory || input.moveCategory;
+  const atkLabel = resultMoveCategory === 'Special' ? 'C' : 'A';
+  const defLabel = resultMoveCategory === 'Special' ? 'D' : 'B';
   const minPct = result.defenderHp ? (result.min / result.defenderHp) * 100 : 0;
   const maxPct = result.defenderHp ? (result.max / result.defenderHp) * 100 : 0;
   const moveTypeName = state.lang === 'ja'
-    ? ((state.data.types || []).find(type => type.name === input.moveType)?.nameJa || input.moveType || '-')
-    : (input.moveType || '-');
+    ? ((state.data.types || []).find(type => type.name === resultMoveType)?.nameJa || resultMoveType || '-')
+    : (resultMoveType || '-');
   const categoryName = state.lang === 'ja'
-    ? ({ Physical: '物理', Special: '特殊', Status: '変化' }[input.moveCategory] || input.moveCategory || '-')
-    : (input.moveCategory || '-');
+    ? ({ Physical: '物理', Special: '特殊', Status: '変化' }[resultMoveCategory] || resultMoveCategory || '-')
+    : (resultMoveCategory || '-');
   const powerLabel = state.lang === 'ja' ? '威力' : 'Power';
   const attackerSpecies = getEffectiveSpecies(input.attackerSpeciesId, input.attackerMegaEnabled, input.attackerItemId);
   const attackerTypes = attackerSpecies?.types || [];
-  const attackerStab = getStabMultiplier(input.moveType, attackerTypes, hasAbility(result.attackerAbilityId, ['Adaptability']));
+  const attackerStab = getStabMultiplier(resultMoveType, attackerTypes, hasAbility(result.attackerAbilityId, ['Adaptability']));
 
-  let typeLabel = state.lang === 'ja' ? '等倍' : 'Neutral';
+  let typeLabel = state.lang === 'ja' ? `等倍 ${formatModifierMultiplier(1)}` : `Neutral ${formatModifierMultiplier(1)}`;
   let typeLevel = 'neutral';
   let typeIconClass = 'bi-record-circle';
   const multiplier = Number(result.typeMultiplier || 0);
   if (multiplier === 0) {
-    typeLabel = state.lang === 'ja' ? '無効 x0' : 'Immune x0';
+    typeLabel = state.lang === 'ja' ? `無効 ${formatModifierMultiplier(0)}` : `Immune ${formatModifierMultiplier(0)}`;
     typeLevel = 'immune';
     typeIconClass = 'bi-slash-circle-fill';
   } else if (multiplier > 1) {
-    typeLabel = state.lang === 'ja' ? `弱点 x${multiplier}` : `Super x${multiplier}`;
+    typeLabel = state.lang === 'ja' ? `弱点 ${formatModifierMultiplier(multiplier)}` : `Super ${formatModifierMultiplier(multiplier)}`;
     typeLevel = 'super';
     typeIconClass = 'bi-exclamation-diamond-fill';
   } else if (multiplier < 1) {
-    typeLabel = state.lang === 'ja' ? `半減 x${multiplier}` : `Resist x${multiplier}`;
+    typeLabel = state.lang === 'ja' ? `半減 ${formatModifierMultiplier(multiplier)}` : `Resist ${formatModifierMultiplier(multiplier)}`;
     typeLevel = 'resist';
     typeIconClass = 'bi-shield-fill-minus';
   }
 
   const rolls = Array.isArray(result.rolls) ? result.rolls : [];
-  const koCount = rolls.filter(value => value >= (result.defenderHp || Infinity)).length;
-  const koRate = rolls.length ? (koCount / rolls.length) * 100 : 0;
+  const koRate = getOutcomeRate(result, value => value >= (result.defenderHp || Infinity)) * 100;
   const koSummary = formatKoSummaryText(rolls, result.defenderHp, koRate);
   const pills = rolls.map(value => {
     const ratio = result.defenderHp ? (value / result.defenderHp) : 0;
@@ -3727,7 +5556,7 @@ function buildEmbeddedResultCaptureHtml(input, result) {
         <span class="result-row-head-icon" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></span>
         <span class="result-move-name">${escapeHtml(move ? displayEntryName(move) : '-')}</span>
         <span class="result-move-inline mono"><span>${escapeHtml(moveTypeName)}</span><span class="result-move-meta-sep">/</span><span>${escapeHtml(categoryName)}</span><span class="result-move-meta-sep">/</span><span class="result-move-power mono">${escapeHtml(powerLabel)} ${toNumber(result.power)}</span></span>
-        <span class="result-inline-badge result-stab-effect ${attackerStab > 1 ? 'is-on' : 'is-off'}">${attackerStab > 1 ? (state.lang === 'ja' ? `一致 x${attackerStab}` : `STAB x${attackerStab}`) : (state.lang === 'ja' ? '一致なし' : 'No STAB')}</span>
+        <span class="result-inline-badge result-stab-effect ${attackerStab > 1 ? 'is-on' : 'is-off'}">${attackerStab > 1 ? (state.lang === 'ja' ? `一致 ${formatModifierMultiplier(attackerStab)}` : `STAB ${formatModifierMultiplier(attackerStab)}`) : (state.lang === 'ja' ? '一致なし' : 'No STAB')}</span>
         <span class="result-type-effect" data-level="${typeLevel}">${escapeHtml(typeLabel)}</span>
       </div>
       <div class="result-damage-row result-row-shell">
@@ -3813,6 +5642,178 @@ function renderDetailMoveList(pokemon) {
     refreshDetailMoveButton(fieldId);
     $(buttonId).addEventListener('click', () => openPicker(fieldId));
   }
+}
+
+function updateDetailMoveHelper() {
+  const helper = $('detail-move-helper');
+  if (!helper || !hasCalcPage()) return;
+  const move = state.movesById.get($('move-select')?.value || '');
+  if (!move) {
+    helper.classList.add('d-none');
+    helper.textContent = '';
+    return;
+  }
+  const parameterWrap = $('move-parameter-wrap');
+  const visible = parameterWrap && !parameterWrap.classList.contains('d-none');
+  if (!visible) {
+    helper.classList.add('d-none');
+    helper.textContent = '';
+    return;
+  }
+  const paramValue = toNumber($('move-parameter-value')?.value, 0);
+  helper.classList.remove('d-none');
+  helper.textContent = `補助UI: ${displayEntryName(move)} の補正値 ${paramValue}`;
+}
+
+function updateDetailRequiredStatRows() {
+  const container = document.querySelector('#pokemon-detail-modal .detail-compact-stat-editor');
+  if (!container) return;
+  container.querySelectorAll('.detail-compact-stat-row').forEach(row => {
+    row.classList.remove('d-none');
+  });
+}
+
+function getDetailLinkedSide() {
+  const pokemonId = state.detail.editingPokemonId;
+  if (!pokemonId) return '';
+  if (state.storage.calcLinks.attacker === pokemonId) return 'attacker';
+  if (state.storage.calcLinks.defender === pokemonId) return 'defender';
+  return '';
+}
+
+function applyDetailFormToCalcInput(baseInput, side) {
+  const detailPokemon = readDetailPokemonFromForm() || getCurrentDetailPokemon();
+  if (!detailPokemon) return baseInput;
+  const next = { ...baseInput };
+  next[`${side}SpeciesId`] = detailPokemon.speciesId;
+  next[`${side}Nature`] = detailPokemon.nature;
+  next[`${side}AbilityId`] = detailPokemon.abilityId;
+  next[`${side}ItemId`] = detailPokemon.itemId;
+  next[`${side}MegaEnabled`] = Boolean(detailPokemon.megaEnabled && hasMega(detailPokemon.speciesId) && isMegaStoneItem(detailPokemon.itemId));
+  next[`${side}EvHp`] = clamp(toNumber(detailPokemon.evs.hp), 0, 32);
+  next[`${side}EvAtk`] = clamp(toNumber(detailPokemon.evs.atk), 0, 32);
+  next[`${side}EvDef`] = clamp(toNumber(detailPokemon.evs.def), 0, 32);
+  next[`${side}EvSpa`] = clamp(toNumber(detailPokemon.evs.spa), 0, 32);
+  next[`${side}EvSpd`] = clamp(toNumber(detailPokemon.evs.spd), 0, 32);
+  next[`${side}EvSpe`] = clamp(toNumber(detailPokemon.evs.spe), 0, 32);
+  return next;
+}
+
+function parseRateRequirement(rawRate) {
+  const text = String(rawRate || '16/16');
+  const parts = text.split('/');
+  const numerator = clamp(toNumber(parts[0], 16), 1, 16);
+  return numerator;
+}
+
+function buildAutoAllocateCandidates() {
+  if (!hasCalcPage()) return { candidates: [], reason: '計算画面でのみ利用できます。' };
+  const detailSide = getDetailLinkedSide();
+  if (!detailSide) return { candidates: [], reason: 'このポケモンは計算画面の味方/敵に紐付いていません。' };
+  const calcAttackerSide = getFlowAttackerSide();
+  if (detailSide !== calcAttackerSide) return { candidates: [], reason: '現在の攻撃側ではないため、自動配分の対象外です。' };
+  const baseInput = applyDetailFormToCalcInput(collectInput(), detailSide);
+  const flowBase = getFlowCalcInput(baseInput);
+  const move = state.movesById.get(flowBase.moveId);
+  const moveCategory = flowBase.moveCategory;
+  if (!['Physical', 'Special'].includes(moveCategory)) return { candidates: [], reason: '変化技では自動配分を計算できません。' };
+  const targetPercent = clamp(toNumber($('detail-auto-target-percent')?.value, 100), 50, 200);
+  const requiredHits = parseRateRequirement($('detail-auto-target-rate')?.value || '16/16');
+  const targetRatio = targetPercent / 100;
+  const offenseStat = getOffenseReferenceStat(move, moveCategory);
+  const offenseEvKey = `${detailSide}Ev${offenseStat.charAt(0).toUpperCase()}${offenseStat.slice(1)}`;
+  const natureKey = `${detailSide}Nature`;
+  const naturePlusKey = `${detailSide}NaturePlusStats`;
+  const natureMinusKey = `${detailSide}NatureMinusStats`;
+  const boostedNatureByStat = { atk: 'adamant', def: 'impish', spa: 'modest', spd: 'calm', spe: 'timid' };
+  const boostedNature = boostedNatureByStat[offenseStat] || (moveCategory === 'Physical' ? 'adamant' : 'modest');
+  const patterns = [
+    { mode: '性格補正なし', nature: 'hardy' },
+    { mode: '性格補正あり', nature: boostedNature },
+  ];
+  const candidates = [];
+  patterns.forEach(pattern => {
+    for (let ev = 0; ev <= 32; ev += 1) {
+      const candidateInput = {
+        ...baseInput,
+        [natureKey]: pattern.nature,
+        [naturePlusKey]: [],
+        [natureMinusKey]: [],
+        [offenseEvKey]: ev,
+      };
+      const result = calculateDamageRange(getFlowCalcInput(candidateInput));
+      const thresholdDamage = result.defenderHp * targetRatio;
+      const success = getOutcomeRate(result, value => value >= thresholdDamage) * 16;
+      if (success >= requiredHits) {
+        candidates.push({
+          mode: pattern.mode,
+          nature: pattern.nature,
+          stat: offenseStat,
+          ev,
+          success,
+          min: result.min,
+          max: result.max,
+          hp: result.defenderHp,
+          attackUsed: result.attackStatUsed,
+        });
+        break;
+      }
+    }
+  });
+  return { candidates, reason: candidates.length ? '' : '条件を満たす配分が見つかりませんでした。' };
+}
+
+function applyAutoAllocateCandidate(index) {
+  const candidate = state.autoAllocate.candidates[index];
+  if (!candidate) return;
+  if ($('detail-nature')) {
+    $('detail-nature').value = candidate.nature;
+    updatePickerButtonLabel('detail-nature');
+    syncDetailNatureButtonsFromNature();
+  }
+  const evId = `detail-ev-${candidate.stat}`;
+  if ($(evId)) $(evId).value = String(candidate.ev);
+  updateDetailStatSummaries();
+  const pokemon = readDetailPokemonFromForm() || getCurrentDetailPokemon();
+  if (pokemon) refreshDetailDerivedViews(pokemon);
+  state.autoAllocate.modal?.hide();
+}
+
+function renderAutoAllocateResult(candidates, reason = '') {
+  if (!$('detail-auto-result-list') || !$('detail-auto-result-summary')) return;
+  const list = $('detail-auto-result-list');
+  const summary = $('detail-auto-result-summary');
+  if (!candidates.length) {
+    summary.textContent = reason || '候補なし';
+    list.innerHTML = '';
+    return;
+  }
+  const targetPercent = clamp(toNumber($('detail-auto-target-percent')?.value, 100), 50, 200);
+  const rate = $('detail-auto-target-rate')?.value || '16/16';
+  summary.textContent = `条件: 与ダメージ ${targetPercent}% 以上 / ${rate}`;
+  list.innerHTML = candidates.map((candidate, index) => {
+    const minRatio = candidate.hp ? ((candidate.min / candidate.hp) * 100).toFixed(1) : '0.0';
+    const maxRatio = candidate.hp ? ((candidate.max / candidate.hp) * 100).toFixed(1) : '0.0';
+    const nature = getNatureById(candidate.nature);
+    const natureLabel = state.lang === 'ja'
+      ? (nature?.ja || nature?.en || candidate.nature)
+      : (nature?.en || nature?.ja || candidate.nature);
+    return `
+      <div class="list-group-item d-flex justify-content-between align-items-center gap-2">
+        <div>
+          <div class="fw-semibold">${escapeHtml(candidate.mode)}</div>
+          <div class="small text-muted">性格: ${escapeHtml(natureLabel)} / ${candidate.stat.toUpperCase()} EV ${candidate.ev} / 実数値 ${candidate.attackUsed}</div>
+          <div class="small text-muted">ダメージ: ${candidate.min} - ${candidate.max} (${minRatio}% - ${maxRatio}%) / 成功 ${candidate.success}/16</div>
+        </div>
+        <button class="btn btn-sm btn-primary" type="button" data-auto-apply-index="${index}">適用</button>
+      </div>
+    `;
+  }).join('');
+  list.querySelectorAll('[data-auto-apply-index]').forEach(button => {
+    button.addEventListener('click', () => {
+      applyAutoAllocateCandidate(toNumber(button.getAttribute('data-auto-apply-index'), -1));
+    });
+  });
 }
 
 function refreshDetailMoveButton(fieldId) {
@@ -4179,6 +6180,8 @@ function populateDetailForm(pokemon) {
   updateDetailStatSummaries();
   refreshDetailDerivedViews(pokemon);
   renderDetailMoveList(pokemon);
+  updateDetailMoveHelper();
+  updateDetailRequiredStatRows();
   $('pokemon-detail-title').textContent = state.lang === 'ja' ? 'ポケモン編集' : 'Edit Pokemon';
 }
 
@@ -4192,18 +6195,6 @@ function openPokemonDetail(pokemonId) {
   if (!pokemon) return;
   state.detail.editingPokemonId = pokemonId;
   populateDetailForm(pokemon);
-  if (isDetailEmbedMode()) {
-    emitDetailEmbedDebug('openPokemonDetail-embed-branch', { pokemonId });
-    showEmbedDetailModal();
-    window.parent?.postMessage({ type: 'champions-detail-ready' }, window.location.origin);
-    transitions.pageReady();
-    return;
-  }
-  if (isDetailStandaloneMode()) {
-    showStandaloneDetailModal();
-    transitions.pageReady();
-    return;
-  }
   if (!state.detail.modal) return;
   state.detail.modal.show();
   transitions.pageReady();
@@ -4308,7 +6299,7 @@ function shouldShowPickerSources(fieldId) {
 function getPickerSourcesForField(fieldId) {
   if (fieldId === 'attacker-species' || fieldId === 'defender-species') return ['list', 'box', 'party'];
   if (fieldId === 'move-select') {
-    const linked = getPokemonById(state.storage.calcLinks.attacker);
+    const linked = getFlowAttackerLinkedPokemon();
     const hasLinkedMoves = Boolean(linked && linked.moveIds?.length);
     return hasLinkedMoves ? ['list', 'linked'] : ['list'];
   }
@@ -4328,12 +6319,35 @@ function refreshPickerSourceTabs() {
 }
 
 function createPickerOptionsFromLinkedAttackerMoves() {
-  const linked = getPokemonById(state.storage.calcLinks.attacker);
+  const linked = getFlowAttackerLinkedPokemon();
   if (!linked || !Array.isArray(linked.moveIds)) return [];
   return linked.moveIds
     .map(moveId => state.movesById.get(moveId))
     .filter(move => Boolean(move) && move.category !== 'Status')
     .map(move => ({ value: move.id, label: displayEntryName(move) }));
+}
+
+function syncMoveSelectionForCurrentFlow() {
+  if (!hasCalcPage() || !$('move-select')) return;
+  const linkedMoves = createPickerOptionsFromLinkedAttackerMoves();
+  if (!linkedMoves.length) {
+    if (state.picker.currentField === 'move-select' && state.picker.source === 'linked') {
+      refreshPickerSourceTabs();
+      renderPickerList($('picker-search')?.value || '');
+    }
+    return;
+  }
+  const allowedMoveIds = new Set(linkedMoves.map(option => option.value));
+  const currentMoveId = $('move-select').value;
+  if (!allowedMoveIds.has(currentMoveId)) {
+    $('move-select').value = linkedMoves[0].value;
+    updatePickerButtonLabel('move-select');
+    recalcMoveFields();
+  }
+  if (state.picker.currentField === 'move-select' && state.picker.source === 'linked') {
+    refreshPickerSourceTabs();
+    renderPickerList($('picker-search')?.value || '');
+  }
 }
 
 function renderMovePickerItem(option) {
@@ -4522,7 +6536,8 @@ function openPicker(fieldId) {
   $('picker-search').value = '';
   renderPickerList('');
   const detailVisible = fieldId.startsWith('detail-') && state.detail.modal && $('pokemon-detail-modal')?.classList.contains('show');
-  $('picker-modal').dataset.layered = detailVisible ? '1' : '0';
+  const editorVisible = Boolean(state.editor.modal && $('calc-editor-modal')?.classList.contains('show'));
+  $('picker-modal').dataset.layered = (detailVisible || editorVisible) ? '1' : '0';
   state.picker.modal.show();
 }
 
@@ -4579,7 +6594,7 @@ function setupDefaults() {
     if (remembered.moveType) $('move-type').value = remembered.moveType;
     if (remembered.moveCategory) $('move-category').value = remembered.moveCategory;
     if ($('move-power')) $('move-power').value = String(clamp(toNumber(remembered.movePower, 80), 0, 400));
-    if ($('move-parameter-value')) $('move-parameter-value').value = String(clamp(toNumber(remembered.moveParamValue, 0), 0, 99));
+    if ($('move-parameter-value')) $('move-parameter-value').value = String(clamp(toNumber(remembered.moveParamValue, 0), 0, 400));
     setActiveToggle('weather', remembered.weather || 'none');
     setActiveToggle('terrain', remembered.terrain || 'none');
     if ($('is-crit')) $('is-crit').checked = Boolean(remembered.isCrit);
@@ -4780,6 +6795,12 @@ function swapSides() {
   calculateAndRender();
 }
 
+function toggleResultFlowDirection() {
+  state.resultFlowDirection = state.resultFlowDirection === 'to' ? 'from' : 'to';
+  syncMoveSelectionForCurrentFlow();
+  calculateAndRender();
+}
+
 function applyPresetToSide(side, preset) {
   if (!hasCalcPage() || !preset) return;
   const evs = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0, ...(preset.evs || {}) };
@@ -4955,6 +6976,8 @@ function initPickerModal() {
     if (topBackdrop) topBackdrop.style.zIndex = String(backdropZ);
   });
   $('picker-modal').addEventListener('hidden.bs.modal', () => {
+    const activeKind = state.editor.activeKind;
+    const editorVisible = Boolean(state.editor.modal && $('calc-editor-modal')?.classList.contains('show'));
     state.picker.currentField = '';
     state.picker.partySlotTarget = null;
     $('picker-search').value = '';
@@ -4964,6 +6987,11 @@ function initPickerModal() {
     document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
       backdrop.style.zIndex = '';
     });
+    if (editorVisible && (activeKind === 'attacker' || activeKind === 'defender')) {
+      clearCalcEditorModalContent();
+      renderCalcEditorSideModal(activeKind);
+      ensureCalcEditorModalFooter();
+    }
   });
   document.querySelectorAll('#picker-source-tabs [data-source]').forEach(button => {
     button.addEventListener('click', () => {
@@ -5016,8 +7044,25 @@ function initDetailModal() {
     const pokemon = readDetailPokemonFromForm() || getCurrentDetailPokemon();
     if (pokemon) refreshDetailDerivedViews(pokemon);
   });
+  if ($('detail-auto-target-percent') && $('detail-auto-target-percent-value')) {
+    $('detail-auto-target-percent').addEventListener('input', () => {
+      $('detail-auto-target-percent-value').textContent = `${clamp(toNumber($('detail-auto-target-percent').value, 100), 50, 200)}%`;
+    });
+  }
+  if ($('detail-auto-calc')) {
+    $('detail-auto-calc').addEventListener('click', () => {
+      const { candidates, reason } = buildAutoAllocateCandidates();
+      state.autoAllocate.candidates = candidates;
+      renderAutoAllocateResult(candidates, reason);
+      state.autoAllocate.modal?.show();
+    });
+  }
+  if ($('detail-save-box')) {
+    $('detail-save-box').addEventListener('click', () => {
+      saveDetailPokemon();
+    });
+  }
   $('detail-save').addEventListener('click', () => {
-    if (!window.confirm('データを保存しますか？')) return;
     const saved = saveDetailPokemon();
     if (!saved) return;
     if (isDetailStandaloneMode()) {
@@ -5028,7 +7073,7 @@ function initDetailModal() {
   });
   if ($('detail-open-pokedex')) $('detail-open-pokedex').addEventListener('click', openDetailPokedex);
   if ($('detail-export-pokepaste')) $('detail-export-pokepaste').addEventListener('click', openDetailPokepasteExportModal);
-  $('detail-delete').addEventListener('click', removeDetailPokemon);
+  if ($('detail-delete')) $('detail-delete').addEventListener('click', removeDetailPokemon);
   $('detail-apply-attacker').addEventListener('click', () => {
     const pokemon = saveDetailPokemon();
     if (!pokemon) return;
@@ -5065,11 +7110,15 @@ function initDetailModal() {
     if (!node) return;
     node.addEventListener('input', () => {
       updateDetailStatSummaries();
+      updateDetailMoveHelper();
+      updateDetailRequiredStatRows();
       const pokemon = readDetailPokemonFromForm();
       if (pokemon) refreshDetailDerivedViews(pokemon);
     });
     node.addEventListener('change', () => {
       updateDetailStatSummaries();
+      updateDetailMoveHelper();
+      updateDetailRequiredStatRows();
       const pokemon = readDetailPokemonFromForm();
       if (pokemon) refreshDetailDerivedViews(pokemon);
     });
@@ -5086,10 +7135,6 @@ function initDetailModal() {
   $('pokemon-detail-modal').addEventListener('shown.bs.modal', () => {
     if (isDetailEmbedMode()) {
       window.parent?.postMessage({ type: 'champions-detail-ready' }, window.location.origin);
-      return;
-    }
-    if (isDetailStandaloneMode()) {
-      showStandaloneDetailModal();
     }
   });
 
@@ -5110,6 +7155,13 @@ function initDetailModal() {
       });
     });
   }
+  updateDetailMoveHelper();
+  updateDetailRequiredStatRows();
+}
+
+function initAutoAllocateModal() {
+  if (!$('detail-auto-result-modal')) return;
+  state.autoAllocate.modal = new bootstrap.Modal($('detail-auto-result-modal'));
 }
 
 function initDetailExportModal() {
@@ -5172,11 +7224,84 @@ function bindEvents() {
   if ($('save-calc-memo')) $('save-calc-memo').addEventListener('click', openCalcMemoSaveSelector);
   if ($('attacker-open-linked-detail')) $('attacker-open-linked-detail').addEventListener('click', () => openLinkedPokemonDetailFromCalc('attacker'));
   if ($('defender-open-linked-detail')) $('defender-open-linked-detail').addEventListener('click', () => openLinkedPokemonDetailFromCalc('defender'));
-  if ($('result-attacker-icons')) $('result-attacker-icons').addEventListener('click', () => openOrCreateLinkedPokemonDetailFromCalc('attacker'));
-  if ($('result-defender-icons')) $('result-defender-icons').addEventListener('click', () => openOrCreateLinkedPokemonDetailFromCalc('defender'));
-  if ($('result-flow-swap-button')) $('result-flow-swap-button').addEventListener('click', swapSides);
-  if ($('result-move')) $('result-move').addEventListener('click', () => openPicker('move-select'));
-  if ($('result-move-meta')) $('result-move-meta').addEventListener('click', () => openPicker('move-select'));
+  if ($('result-attacker-icons')) $('result-attacker-icons').addEventListener('click', () => openCalcEditorModal('attacker'));
+  if ($('result-defender-icons')) $('result-defender-icons').addEventListener('click', () => openCalcEditorModal('defender'));
+  if ($('result-flow-swap-button')) $('result-flow-swap-button').addEventListener('click', toggleResultFlowDirection);
+  if ($('result-move')) $('result-move').addEventListener('click', () => openCalcEditorModal('move'));
+  if ($('result-move-meta')) $('result-move-meta').addEventListener('click', () => openCalcEditorModal('move'));
+  if ($('result-attacker-modifiers')) $('result-attacker-modifiers').addEventListener('click', () => openCalcEditorModal('settings'));
+  if ($('result-defender-modifiers')) $('result-defender-modifiers').addEventListener('click', () => openCalcEditorModal('settings'));
+  if ($('result-move-modifiers')) $('result-move-modifiers').addEventListener('click', () => openCalcEditorModal('settings'));
+  const bindFactorBadgeToggle = containerId => {
+    const container = $(containerId);
+    if (!container) return;
+    container.addEventListener('click', event => {
+      const badge = event.target instanceof Element ? event.target.closest('.result-factor-badge') : null;
+      if (!badge || badge.classList.contains('is-disabled')) return;
+      ensureFactorOverridesShape();
+      const targetId = badge.getAttribute('data-target');
+      const [side, factor] = String(targetId || '').split('-');
+      if (side && factor && state.factorOverrides[side] && Object.prototype.hasOwnProperty.call(state.factorOverrides[side], factor)) {
+        state.factorOverrides[side][factor] = !state.factorOverrides[side][factor];
+        calculateAndRender();
+      }
+    });
+  };
+  bindFactorBadgeToggle('result-attacker-factors');
+  bindFactorBadgeToggle('result-defender-factors');
+  const handleNumberCycleClick = (chip, targetId) => {
+    const input = $(targetId);
+    if (!input) return;
+    const min = clamp(toNumber(chip.getAttribute('data-min'), 0), 0, 999);
+    const max = clamp(toNumber(chip.getAttribute('data-max'), min), min, 999);
+    const current = clamp(toNumber(input.value, min), min, max);
+    const next = current >= max ? min : (current + 1);
+    input.value = String(next);
+    if (targetId === 'move-parameter-value') updateMoveParameterUI();
+  };
+  if ($('result-move-condition-controls')) $('result-move-condition-controls').addEventListener('click', event => {
+    const chip = event.target instanceof Element ? event.target.closest('.result-mod-chip') : null;
+    if (!chip || chip.classList.contains('is-disabled')) return;
+    const kind = chip.getAttribute('data-kind');
+    const targetId = chip.getAttribute('data-target');
+    if (kind === 'number-cycle' && targetId) handleNumberCycleClick(chip, targetId);
+    calculateAndRender();
+  });
+  if ($('result-modifier-controls')) $('result-modifier-controls').addEventListener('click', event => {
+    const chip = event.target instanceof Element ? event.target.closest('.result-mod-chip') : null;
+    if (!chip || chip.classList.contains('is-disabled')) return;
+    const kind = chip.getAttribute('data-kind');
+    const targetId = chip.getAttribute('data-target');
+    if (kind === 'cycle' && targetId) {
+      const group = targetId === 'weather' ? 'weather' : (targetId === 'terrain' ? 'terrain' : '');
+      if (group) {
+        const values = group === 'weather'
+          ? ['none', 'sun', 'rain', 'sand', 'snow']
+          : ['none', 'electric', 'grassy', 'psychic', 'misty'];
+        const current = getActiveToggleValue(group);
+        const next = values[(values.indexOf(current) + 1) % values.length];
+        setActiveToggle(group, next);
+      }
+    } else if (kind === 'factor' && targetId) {
+      const [side, factor] = targetId.split('-');
+      if (side && factor && state.factorOverrides[side] && Object.prototype.hasOwnProperty.call(state.factorOverrides[side], factor)) {
+        state.factorOverrides[side][factor] = !state.factorOverrides[side][factor];
+      }
+    } else if (kind === 'number-cycle' && targetId) {
+      handleNumberCycleClick(chip, targetId);
+    } else {
+      const input = targetId ? $(targetId) : null;
+      if (input && input instanceof HTMLInputElement && input.type === 'checkbox' && !input.disabled) {
+        input.checked = !input.checked;
+      }
+    }
+    calculateAndRender();
+  });
+  if ($('quick-open-attacker')) $('quick-open-attacker').addEventListener('click', () => openCalcEditorModal('attacker'));
+  if ($('quick-open-defender')) $('quick-open-defender').addEventListener('click', () => openCalcEditorModal('defender'));
+  if ($('quick-open-move')) $('quick-open-move').addEventListener('click', () => openCalcEditorModal('move'));
+  if ($('quick-open-settings')) $('quick-open-settings').addEventListener('click', () => openCalcEditorModal('settings'));
+  if ($('quick-swap-sides')) $('quick-swap-sides').addEventListener('click', swapSides);
   if ($('update-attacker-pokemon')) $('update-attacker-pokemon').addEventListener('click', () => {
     if (!window.confirm('データを保存しますか？')) return;
     updateLinkedPokemonFromSide('attacker');
@@ -5243,15 +7368,29 @@ function bindEvents() {
       const labelMap = { hp: 'H', atk: 'A', def: 'B', spa: 'C', spd: 'D', spe: 'S' };
       const base = labelMap[stat] || stat.toUpperCase();
       const current = button.dataset.state || 'neutral';
+      
+      // For attacker/defender side, cycle through: neutral -> plus -> minus -> neutral
+      // For detail side, cycle through: neutral -> plus -> minus -> neutral (with ▲▼ display)
       const next = current === 'neutral' ? 'plus' : (current === 'plus' ? 'minus' : 'neutral');
       button.dataset.state = next;
+      
       if (side === 'detail') {
+        // Detail side uses ▲▼ percent display
         if (next === 'plus') button.textContent = '▲10%';
         else if (next === 'minus') button.textContent = '▼10%';
-        else button.textContent = '+-0%';
+        else button.textContent = '±0%';
+      } else if (side === 'calc') {
+        // Calc modal uses ±X% display
+        if (next === 'plus') button.textContent = '+10%';
+        else if (next === 'minus') button.textContent = '-10%';
+        else button.textContent = '±0%';
       } else {
-        button.textContent = next === 'plus' ? `${base}+` : (next === 'minus' ? `${base}-` : base);
+        // Attacker/defender side on main calc page uses + / - display with stat letter
+        if (next === 'neutral') button.textContent = base;
+        else if (next === 'plus') button.textContent = `${base}+`;
+        else button.textContent = `${base}-`;
       }
+      
       applyNatureFromModifierSelectors(side);
       if (side === 'detail') {
         updateDetailStatSummaries();
@@ -5321,10 +7460,14 @@ async function initialize() {
   initPickerModal();
   initPickerImportModal();
   initDetailModal();
+  initAutoAllocateModal();
   initDetailExportModal();
   initPartyActionModal();
   initConfirmSaveModal();
   initPresetModal();
+  initCalcAutoResultModal();
+  enableCalcModalEditorMode();
+  initCalcEditorModal();
   initMobileBattleTabs();
   applyI18n();
   refreshConditionToggleLabels();
@@ -5334,6 +7477,7 @@ async function initialize() {
   setupDetailEmbedLayout();
   setupDetailStandaloneLayout();
   bindEvents();
+  setupCrossTabSync();
   if (hasCalcPage()) {
     try {
       const pending = JSON.parse(localStorage.getItem(PENDING_APPLY_KEY) || 'null');

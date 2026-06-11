@@ -4,3 +4,6 @@
 [submodule "library/pokeapi"]
 	path = library/pokeapi
 	url = git@github.com:kosakasakas/pokeapi.git
+[submodule "library/damage-calc"]
+	path = library/damage-calc
+	url = git@github.com:kosakasakas/damage-calc.git
