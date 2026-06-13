@@ -7,3 +7,6 @@
 [submodule "library/damage-calc"]
 	path = library/damage-calc
 	url = git@github.com:kosakasakas/damage-calc.git
+[submodule "kosakasakas-app"]
+	path = kosakasakas-app
+	url = git@github.com:kosakasakas/kosakasakas-app.git
