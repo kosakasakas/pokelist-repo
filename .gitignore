@@ -21,8 +21,15 @@ lerna-debug.log*
 .DS_Store
 Thumbs.db
 
-# Local workspace (managed as a separate project/repo)
-/kosakasakas-app/
+# kosakasakas-app generated files
+/kosakasakas-app/.git/
+/kosakasakas-app/node_modules/
+/kosakasakas-app/dist/
+/kosakasakas-app/.astro/
+/kosakasakas-app/.vercel/
+/kosakasakas-app/.env
+/kosakasakas-app/.env.*
+!/kosakasakas-app/.env.template
 
 # Local Copilot agent configuration
 /.github/agents/
