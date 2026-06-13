@@ -35,6 +35,11 @@
 - サブモジュール内変更時: `npm --prefix library/pokemon-showdown test`
 - フロント変更時: `npm run server` で該当ページを目視確認
 
+## 5.1) UI実装ルール（追加）
+
+- タイプアイコンと技の性質（Physical/Special/Status）は、Showdownの画像スプライトではなく、文字 + カラーバッジで実装すること。
+- 表示言語が `ja` / `en` で切り替わるときは、バッジ内テキストも同じ言語に切り替えること。
+
 ## 6) 参照先（詳細はリンク先を正とする）
 
 - プロジェクト方針: [GEMINI.md](./GEMINI.md)
