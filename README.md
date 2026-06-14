@@ -1,14 +1,37 @@
 # Pokelist 開発手順
 
 このリポジトリには、ルートの静的ツール群と、`kosakasakas-app` のAstroアプリがあります。
-`kosakasakas-app` はルート側で生成したデータを参照するため、単体起動の前にデータ生成が必要です。
+`kosakasakas-app` はルート側の `public/db/*.json` を参照します。
+ウェブアプリの起動に必要なビルド済みデータはリポジトリに含めてあるため、Showdownのビルドができない環境でも、まずはそのまま起動できます。
 
 ## 前提
 
 - Node.js / npm が利用できること
 - リポジトリのルートで作業すること
 
-## 初回セットアップから起動まで
+## まず動かす手順
+
+Showdownのビルドやデータ再生成をしなくても、以下だけで `kosakasakas-app` を起動できます。
+
+### 1. Astroアプリ依存関係インストール
+
+```bash
+cd kosakasakas-app
+npm install
+```
+
+### 2. 開発サーバー起動
+
+```bash
+npm run dev
+```
+
+`npm run dev` の事前処理で `sync:tool-assets` が実行され、
+ルートの `public/db` から `kosakasakas-app/public/db` へコミット済みのデータが同期されます。
+
+## データを再生成したい場合の手順
+
+Showdown由来データを最新化したい場合だけ、ルートで以下を実行してください。
 
 ### 1. サブモジュール初期化
 
