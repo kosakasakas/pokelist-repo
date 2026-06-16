@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-06-16T07:36:35.247Z",
+    "generatedAt": "2026-06-16T15:06:27.455Z",
     "source": "champions-calc-data",
     "locale": "ja"
   },
@@ -936,4647 +936,4647 @@
   "moves": {
     "accelerock": {
       "nameJa": "アクセルロック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。追加効果なし。"
     },
     "acidarmor": {
       "nameJa": "とける",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御を2段階上げる。",
+      "descJa": "自分の防御ランクを2段階上げる。"
     },
     "acidspray": {
       "nameJa": "アシッドボム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の特防を2段階下げる。",
+      "descJa": "100%の確率で相手の特防ランクを2段階下げる。"
     },
     "acrobatics": {
       "nameJa": "アクロバット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持ち物がないと威力が2倍になる。",
+      "descJa": "持ち物を持っていない場合、威力が2倍になる。"
     },
     "acupressure": {
       "nameJa": "つぼをつく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分か味方の能力をランダムに2段階上げる。",
+      "descJa": "自分または隣接する味方の能力をランダムに2段階上げる。既に6段階上がっている能力は選ばれない。身代わり状態の味方には失敗する。"
     },
     "aerialace": {
       "nameJa": "つばめがえし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必中攻撃。",
+      "descJa": "必ず命中する。"
     },
     "afteryou": {
       "nameJa": "おさきにどうぞ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の行動順を自分の直後にする。",
+      "descJa": "対象のポケモンを、そのターンの自分の行動の直後に行動させる。対象が既にそのターン行動している場合や、次に行動する予定の場合は失敗する。"
     },
     "agility": {
       "nameJa": "こうそくいどう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の素早さを2段階上げる。",
+      "descJa": "自分の素早さランクを2段階上げる。"
     },
     "aircutter": {
       "nameJa": "エアカッター",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。隣接する相手全員を攻撃する。"
     },
     "airslash": {
       "nameJa": "エアスラッシュ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で相手をひるませる。",
+      "descJa": "30%の確率で相手をひるませる。"
     },
     "alluringvoice": {
       "nameJa": "みわくのボイス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力が上がった相手を100%混乱させる。",
+      "descJa": "そのターンに能力ランクが上がっている相手を100%の確率で混乱させる。"
     },
     "allyswitch": {
       "nameJa": "サイドチェンジ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方と位置を入れ替える。",
+      "descJa": "自分と隣接する味方の位置を入れ替える。連続で使うと失敗しやすくなる。"
     },
     "amnesia": {
       "nameJa": "ドわすれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の特防を2段階上げる。",
+      "descJa": "自分の特防ランクを2段階上げる。"
     },
     "ancientpower": {
       "nameJa": "げんしのちから",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%ですべての能力が1段階上がる。",
+      "descJa": "10%の確率で自分の全能力ランク（攻撃・防御・特攻・特防・素早さ）を1段階上げる。"
     },
     "appleacid": {
       "nameJa": "りんごさん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の特防を1段階下げる。",
+      "descJa": "100%の確率で相手の特防ランクを1段階下げる。"
     },
     "aquacutter": {
       "nameJa": "アクアカッター",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "aquajet": {
       "nameJa": "アクアジェット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。追加効果なし。"
     },
     "aquaring": {
       "nameJa": "アクアリング",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毎ターン最大HPの1/16を回復。",
+      "descJa": "毎ターン終了時に最大HPの1/16を回復する。回復量は「おおきなねっこ」で1.3倍になる。交代しても引き継がれる。"
     },
     "aquastep": {
       "nameJa": "アクアステップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で自分の素早さが1段階上がる。",
+      "descJa": "100%の確率で自分の素早さランクが1段階上がる。"
     },
     "aquatail": {
       "nameJa": "アクアテール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "特に追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "armorcannon": {
       "nameJa": "アーマーキャノン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御と特防が1段階下がる。",
+      "descJa": "自分の防御ランクと特防ランクをそれぞれ1段階ずつ下げる。"
     },
     "aromaticmist": {
       "nameJa": "アロマミスト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の特防を1段階上げる。",
+      "descJa": "味方の特防ランクを1段階上げる。"
     },
     "assurance": {
       "nameJa": "ダメおし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このターン相手がダメージを受けていると威力2倍。",
+      "descJa": "このターン、対象が既にダメージを受けていると威力が2倍になる。"
     },
     "attract": {
       "nameJa": "メロメロ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "異性をメロメロにする。",
+      "descJa": "対象をメロメロ状態にし、50%の確率で攻撃できなくする。性別が同じ、性別不明、または既にメロメロ状態の場合は失敗。"
     },
     "aurasphere": {
       "nameJa": "はどうだん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必中攻撃。",
+      "descJa": "必ず命中する。"
     },
     "aurawheel": {
       "nameJa": "オーラぐるま",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "モルペコのフォルムでタイプ変化、素早さ1段階UP。",
+      "descJa": "100%の確率で自分の素早さランクが1段階上がる。モルペコが「まんぷくもよう」ならでんきタイプ、「ハングリーもよう」ならあくタイプになる。"
     },
     "auroraveil": {
       "nameJa": "オーロラベール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雪天時、5ターン味方の受けるダメージ半減。",
+      "descJa": "天気が「ゆき」の時のみ使用可能。5ターンの間、味方全員が受けるダメージを半減する（ダブルバトルでは0.66倍）。「ひかりのねんど」で8ターン持続。"
     },
     "avalanche": {
       "nameJa": "ゆきなだれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このターンダメージを受けると威力2倍。",
+      "descJa": "このターン、相手からダメージを受けていると威力が2倍になる。"
     },
     "axekick": {
       "nameJa": "かかとおとし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で混乱。外すと最大HPの50%の反動。",
+      "descJa": "30%の確率で相手を混乱させる。攻撃を外すと自分は最大HPの50%のダメージを受ける。"
     },
     "babydolleyes": {
       "nameJa": "つぶらなひとみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃を1段階下げる。",
+      "descJa": "相手の攻撃ランクを1段階下げる。"
     },
     "banefulbunker": {
       "nameJa": "トーチカ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を防ぐ。触れた相手を毒にする。",
+      "descJa": "相手の技を防ぐ。接触した相手を「どく」状態にする。連続で使うと失敗しやすくなる。"
     },
     "batonpass": {
       "nameJa": "バトンタッチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代して能力変化などを引き継ぐ。",
+      "descJa": "控えのポケモンと交代する。その際、能力変化、混乱状態、各種補助効果を引き継ぐ。"
     },
     "beakblast": {
       "nameJa": "くちばしキャノン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "受ける前に接触されると相手を火傷にする。",
+      "descJa": "この技を出す前に接触技を受けると、相手を「やけど」状態にする。"
     },
     "beatup": {
       "nameJa": "ふくろだたき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方全員で攻撃。",
+      "descJa": "パーティの味方全員で攻撃する。状態異常のポケモンは参加しない。攻撃回数は味方の数に依存する。"
     },
     "belch": {
       "nameJa": "ゲップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "きのみを食べた後のみ使用可能。",
+      "descJa": "自分が木の実を食べた後でなければ失敗する。一度条件を満たせば、交代してもそのバトル中は使用可能。"
     },
     "bellydrum": {
       "nameJa": "はらだいこ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最大HPの半分を削り攻撃を最大にする。",
+      "descJa": "自分の最大HPの半分を削り、攻撃ランクを最大（6段階）まで上げる。"
     },
     "bind": {
       "nameJa": "しめつける",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "4〜5ターン拘束してダメージ。",
+      "descJa": "4〜5ターンの間、相手を逃げられなくし、毎ターン終了時に最大HPの1/8のダメージを与える。"
     },
     "bite": {
       "nameJa": "かみつく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%でひるませる。",
+      "descJa": "30%の確率で相手をひるませる。"
     },
     "bitterblade": {
       "nameJa": "むねんのつるぎ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの50%を回復。",
+      "descJa": "与えたダメージの半分のHPを回復する。"
     },
     "bittermalice": {
       "nameJa": "うらみつらみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の攻撃を1段階下げる。",
+      "descJa": "100%の確率で相手の攻撃ランクを1段階下げる。"
     },
     "blastburn": {
       "nameJa": "ブラストバーン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "出した次のターンは行動できない。",
+      "descJa": "使用した次のターンは行動できなくなる。"
     },
     "blazekick": {
       "nameJa": "ブレイズキック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすく10%で火傷。",
+      "descJa": "10%の確率で相手を「やけど」状態にし、急所に当たりやすい。"
     },
     "blizzard": {
       "nameJa": "ふぶき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で凍らせる。雪天時必中。",
+      "descJa": "10%の確率で相手を「こおり」状態にする。天気が「ゆき」の時は必中。"
     },
     "block": {
       "nameJa": "とおせんぼう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を逃げられなくする。",
+      "descJa": "相手を逃げられなくする。"
     },
     "bodypress": {
       "nameJa": "ボディプレス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "防御の数値を攻撃に用いる。",
+      "descJa": "自分の防御の数値を攻撃として扱いダメージ計算を行う。"
     },
     "bodyslam": {
       "nameJa": "のしかかり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で麻痺させる。",
+      "descJa": "30%の確率で相手を「まひ」状態にする。相手が「ちいさくなる」状態だと必中し威力が2倍になる。"
     },
     "bonerush": {
       "nameJa": "ボーンラッシュ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜5回連続攻撃。",
+      "descJa": "2〜5回連続で攻撃する。"
     },
     "boomburst": {
       "nameJa": "ばくおんぱ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。周囲のすべてのポケモンを攻撃する。"
     },
     "bounce": {
       "nameJa": "とびはねる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に跳ね、2ターン目に攻撃。30%で麻痺。",
+      "descJa": "1ターン目に空へ飛び、2ターン目に攻撃する。30%の確率で相手を「まひ」状態にする。"
     },
     "bravebird": {
       "nameJa": "ブレイブバード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの33%の反動を受ける。",
+      "descJa": "与えたダメージの約33%の反動ダメージを自分が受ける。"
     },
     "breakingswipe": {
       "nameJa": "ワイドブレイカー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の攻撃を1段階下げる。",
+      "descJa": "100%の確率で相手の攻撃ランクを1段階下げる。"
     },
     "brickbreak": {
       "nameJa": "かわらわり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "壁を破壊する。",
+      "descJa": "「リフレクター」「ひかりのかべ」「オーロラベール」を破壊する。"
     },
     "brutalswing": {
       "nameJa": "ぶんまわす",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。周囲のポケモン全員を攻撃する。"
     },
     "bugbite": {
       "nameJa": "むしくい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手のきのみを奪って食べる。",
+      "descJa": "相手の木の実を奪って食べる。"
     },
     "bugbuzz": {
       "nameJa": "むしのさざめき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の特防を1段階下げる。",
+      "descJa": "10%の確率で相手の特防ランクを1段階下げる。"
     },
     "bulkup": {
       "nameJa": "ビルドアップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の攻撃と防御を1段階上げる。",
+      "descJa": "自分の攻撃ランクと防御ランクを1段階ずつ上げる。"
     },
     "bulldoze": {
       "nameJa": "じならし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の素早さを1段階下げる。",
+      "descJa": "100%の確率で相手の素早さランクを1段階下げる。"
     },
     "bulletpunch": {
       "nameJa": "バレットパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。追加効果なし。"
     },
     "bulletseed": {
       "nameJa": "タネマシンガン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜5回連続攻撃。",
+      "descJa": "2〜5回連続で攻撃する。"
     },
     "burnup": {
       "nameJa": "もえつきる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ほのおタイプを失う。ほのおタイプのみ使用可能。",
+      "descJa": "使用後、自分は「ほのお」タイプを失う。ほのおタイプのポケモンでなければ失敗する。"
     },
     "burningjealousy": {
       "nameJa": "しっとのほのお",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力が上がった相手を100%火傷にする。",
+      "descJa": "そのターンに能力ランクが上がっている相手を100%の確率で「やけど」状態にする。"
     },
     "calmmind": {
       "nameJa": "めいそう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の特攻と特防を1段階上げる。",
+      "descJa": "自分の特攻ランクと特防ランクを1段階ずつ上げる。"
     },
     "ceaselessedge": {
       "nameJa": "ひけん・ちえなみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の場に「まきびし」を撒く。",
+      "descJa": "攻撃後、相手の場に「まきびし」を設置する。"
     },
     "charge": {
       "nameJa": "じゅうでん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の特防を上げ、次の電気技の威力を2倍に。",
+      "descJa": "自分の特防ランクを1段階上げ、次の電気技の威力を2倍にする。"
     },
     "chargebeam": {
       "nameJa": "チャージビーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "70%で自分の特攻が1段階上がる。",
+      "descJa": "70%の確率で自分の特攻ランクが1段階上がる。"
     },
     "charm": {
       "nameJa": "あまえる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃を2段階下げる。",
+      "descJa": "相手の攻撃ランクを2段階下げる。"
     },
     "chillingwater": {
       "nameJa": "ひやみず",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の攻撃を1段階下げる。",
+      "descJa": "100%の確率で相手の攻撃ランクを1段階下げる。"
     },
     "chillyreception": {
       "nameJa": "さむいギャグ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天気を雪にし、控えと交代。",
+      "descJa": "天気を「ゆき」にする。その後、自分は控えのポケモンと交代する。"
     },
     "circlethrow": {
       "nameJa": "ともえなげ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を強制交代させる。",
+      "descJa": "相手を強制的に交代させる。身代わり状態には無効。"
     },
     "clangingscales": {
       "nameJa": "スケイルノイズ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御が1段階下がる。",
+      "descJa": "自分の防御ランクが1段階下がる。"
     },
     "clangoroussoul": {
       "nameJa": "ソウルビート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPを削り、全能力を1段階上げる。",
+      "descJa": "自分の最大HPの33%を消費して、全能力ランクを1段階上げる。"
     },
     "clearsmog": {
       "nameJa": "クリアスモッグ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の能力変化を元に戻す。",
+      "descJa": "相手の能力ランクをすべて0に戻す。"
     },
     "closecombat": {
       "nameJa": "インファイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御と特防が1段階下がる。",
+      "descJa": "自分の防御ランクと特防ランクをそれぞれ1段階ずつ下げる。"
     },
     "coaching": {
       "nameJa": "コーチング",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の攻撃と防御を1段階上げる。",
+      "descJa": "味方の攻撃ランクと防御ランクをそれぞれ1段階ずつ上げる。"
     },
     "coil": {
       "nameJa": "とぐろをまく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃、防御、命中を1段階上げる。",
+      "descJa": "自分の攻撃ランク、防御ランク、命中率を1段階ずつ上げる。"
     },
     "comeuppance": {
       "nameJa": "ほうふく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "受けたダメージの1.5倍で反撃。",
+      "descJa": "このターン、自分に物理または特殊技でダメージを与えた相手に対し、受けたダメージの1.5倍の威力で反撃する。"
     },
     "confuseray": {
       "nameJa": "あやしいひかり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を混乱させる。",
+      "descJa": "相手を混乱状態にする。"
     },
     "copycat": {
       "nameJa": "まねっこ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最後に出た技を自分も出す。",
+      "descJa": "直前に使用された技を自分も同じ技として出す。"
     },
     "corrosivegas": {
       "nameJa": "ふしょくガス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "周囲のポケモンの持ち物をなくす。",
+      "descJa": "周囲のポケモンの持っている道具をなくす（一部の特殊な持ち物を除く）。"
     },
     "cosmicpower": {
       "nameJa": "コスモパワー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御と特防を1段階上げる。",
+      "descJa": "自分の防御ランクと特防ランクをそれぞれ1段階ずつ上げる。"
     },
     "cottonguard": {
       "nameJa": "コットンガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御を3段階上げる。",
+      "descJa": "自分の防御ランクを3段階上げる。"
     },
     "cottonspore": {
       "nameJa": "わたほうし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の素早さを2段階下げる。",
+      "descJa": "相手の素早さランクを2段階下げる。"
     },
     "counter": {
       "nameJa": "カウンター",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "物理攻撃を受けたら2倍にして反撃。",
+      "descJa": "このターン、自分に物理技でダメージを与えた相手に対し、受けたダメージの2倍の威力で反撃する。"
     },
     "covet": {
       "nameJa": "ほしがる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持ち物がない時、相手の持ち物を奪う。",
+      "descJa": "自分が道具を持っていない場合、攻撃が成功すると相手の持っている道具を奪う。"
     },
     "crabhammer": {
       "nameJa": "クラブハンマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "crosschop": {
       "nameJa": "クロスチョップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "crosspoison": {
       "nameJa": "クロスポイズン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすく10%で毒にする。",
+      "descJa": "10%の確率で相手を「どく」状態にし、急所に当たりやすい。"
     },
     "crunch": {
       "nameJa": "かみくだく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で相手の防御を1段階下げる。",
+      "descJa": "20%の確率で相手の防御ランクを1段階下げる。"
     },
     "crushclaw": {
       "nameJa": "ブレイククロー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "50%で相手の防御を1段階下げる。",
+      "descJa": "50%の確率で相手の防御ランクを1段階下げる。"
     },
     "curse": {
       "nameJa": "のろい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ゴーストはHPを削り呪う。他は素早さ-1、攻撃・防御+1。",
+      "descJa": "自分がゴーストタイプなら最大HPの1/2を削り、相手を呪い状態にする。それ以外なら自分の素早さランクを1段階下げ、攻撃・防御ランクを1段階ずつ上げる。"
     },
     "darkpulse": {
       "nameJa": "あくのはどう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で相手をひるませる。",
+      "descJa": "20%の確率で相手をひるませる。"
     },
     "darkestlariat": {
       "nameJa": "ＤＤラリアット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の能力変化を無視。",
+      "descJa": "相手の能力ランク変化を無視してダメージを与える。"
     },
     "dazzlinggleam": {
       "nameJa": "マジカルシャイン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。周囲の相手全員を攻撃する。"
     },
     "decorate": {
       "nameJa": "デコレーション",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃と特攻を2段階上げる。",
+      "descJa": "対象の攻撃ランクと特攻ランクを2段階ずつ上げる。"
     },
     "defog": {
       "nameJa": "きりばらい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "回避率を下げ、壁・場・地形の効果を消す。",
+      "descJa": "相手の回避率を1段階下げ、両方の場の壁・場・地形の効果を解除する。"
     },
     "destinybond": {
       "nameJa": "みちづれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "倒されると相手も道連れにする。",
+      "descJa": "この技を使った後、相手の攻撃で倒されると相手も道連れにする。"
     },
     "detect": {
       "nameJa": "みきり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃をかわす。",
+      "descJa": "このターンの相手の技をすべて無効にする。連続で使うと失敗しやすい。"
     },
     "dig": {
       "nameJa": "あなをほる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に潜り、2ターン目に攻撃。",
+      "descJa": "1ターン目に地中に潜り、2ターン目に攻撃する。"
     },
     "direclaw": {
       "nameJa": "フェイタルクロー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で眠り・毒・麻痺のいずれかにする。",
+      "descJa": "30%の確率で、相手を「ねむり」「どく」「まひ」のいずれかの状態にする。"
     },
     "disable": {
       "nameJa": "かなしばり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "4ターンの間、相手の最後に出した技を封じる。",
+      "descJa": "4ターンの間、対象が最後に使った技を封印して使えなくする。"
     },
     "discharge": {
       "nameJa": "ほうでん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で相手を麻痺させる。",
+      "descJa": "30%の確率で相手を「まひ」状態にする。"
     },
     "dive": {
       "nameJa": "ダイビング",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に潜り、2ターン目に攻撃。",
+      "descJa": "1ターン目に水中に潜り、2ターン目に攻撃する。"
     },
     "doublehit": {
       "nameJa": "ダブルアタック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2回連続攻撃。",
+      "descJa": "2回連続で攻撃する。"
     },
     "doubleteam": {
       "nameJa": "かげぶんしん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の回避率を1段階上げる。",
+      "descJa": "自分の回避率ランクを1段階上げる。"
     },
     "doubleedge": {
       "nameJa": "すてみタックル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの33%の反動。",
+      "descJa": "与えたダメージの約33%の反動ダメージを自分が受ける。"
     },
     "dracometeor": {
       "nameJa": "りゅうせいぐん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の特攻を2段階下げる。",
+      "descJa": "自分の特攻ランクを2段階下げる。"
     },
     "dragoncheer": {
       "nameJa": "ドラゴンエール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の急所率を上げる。ドラゴンなら2段階。",
+      "descJa": "味方の急所ランクを1段階上げる。味方がドラゴンタイプなら2段階上げる。"
     },
     "dragonclaw": {
       "nameJa": "ドラゴンクロー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "dragondance": {
       "nameJa": "りゅうのまい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の攻撃と素早さを1段階上げる。",
+      "descJa": "自分の攻撃ランクと素早さランクを1段階ずつ上げる。"
     },
     "dragondarts": {
       "nameJa": "ドラゴンアロー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2回連続攻撃。ダブルでは相手2体を1回ずつ。",
+      "descJa": "2回連続で攻撃する。ダブルバトルでは、相手のポケモン2体をそれぞれ1回ずつ攻撃する。"
     },
     "dragonpulse": {
       "nameJa": "りゅうのはどう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "dragonrush": {
       "nameJa": "ドラゴンダイブ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で相手をひるませる。",
+      "descJa": "20%の確率で相手をひるませる。相手が「ちいさくなる」状態だと必中しダメージが2倍になる。"
     },
     "dragontail": {
       "nameJa": "ドラゴンテール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を強制交代させる。",
+      "descJa": "相手を強制的に交代させる。"
     },
     "drainpunch": {
       "nameJa": "ドレインパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの50%を回復。",
+      "descJa": "与えたダメージの半分のHPを回復する。"
     },
     "drainingkiss": {
       "nameJa": "ドレインキッス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの75%を回復。",
+      "descJa": "与えたダメージの3/4のHPを回復する。"
     },
     "drillpeck": {
       "nameJa": "ドリルくちばし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "drillrun": {
       "nameJa": "ドリルライナー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "dualwingbeat": {
       "nameJa": "ダブルウイング",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2回連続攻撃。",
+      "descJa": "2回連続で攻撃する。"
     },
     "dynamicpunch": {
       "nameJa": "ばくれつパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手を混乱させる。",
+      "descJa": "100%の確率で相手を混乱状態にする。"
     },
     "earthpower": {
       "nameJa": "だいちのちから",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の特防を1段階下げる。",
+      "descJa": "10%の確率で相手の特防ランクを1段階下げる。"
     },
     "earthquake": {
       "nameJa": "じしん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "周囲のポケモンを攻撃。潜っている相手には2倍。",
+      "descJa": "周囲のポケモン全員を攻撃する。地中に潜っている相手にはダメージが2倍になる。"
     },
     "eerieimpulse": {
       "nameJa": "かいでんぱ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特攻を2段階下げる。",
+      "descJa": "相手の特攻ランクを2段階下げる。"
     },
     "eeriespell": {
       "nameJa": "ぶきみなじゅもん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の最後に出した技のPPを3減らす。",
+      "descJa": "相手が最後に使った技のPPを3減らす。"
     },
     "electricterrain": {
       "nameJa": "エレキフィールド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、電気を帯びる。眠らず電気技強化。",
+      "descJa": "5ターンの間、足がついているポケモンは眠らなくなり、電気タイプの技の威力が1.3倍になる。"
     },
     "electrify": {
       "nameJa": "そうでん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の技を電気タイプに変える。",
+      "descJa": "対象のそのターンの技を電気タイプに変える。"
     },
     "electroball": {
       "nameJa": "エレキボール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の方が素早いほど威力が上がる。",
+      "descJa": "自分の方が素早さが高いほど威力が上がる（最大威力150）。"
     },
     "electroshot": {
       "nameJa": "エレクトロビーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "特攻を上げ、次ターン攻撃。雨時は即時攻撃。",
+      "descJa": "1ターン目に特攻ランクを1段階上げ、2ターン目に攻撃する。雨の時はチャージなしで攻撃できる。"
     },
     "electroweb": {
       "nameJa": "エレキネット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の素早さを1段階下げる。",
+      "descJa": "100%の確率で相手の素早さランクを1段階下げる。"
     },
     "encore": {
       "nameJa": "アンコール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "3ターンの間、相手の技を繰り返させる。",
+      "descJa": "3ターンの間、相手が最後に使った技しか出せなくなる。"
     },
     "endeavor": {
       "nameJa": "がむしゃら",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分のHPと同じになるよう相手のHPを削る。",
+      "descJa": "相手のHPを自分と同じになるまで減らす。"
     },
     "endure": {
       "nameJa": "こらえる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必ずHP1残して耐える。",
+      "descJa": "そのターンの攻撃を必ずHP1だけ残して耐える。連続で使うと失敗しやすい。"
     },
     "energyball": {
       "nameJa": "エナジーボール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の特防を1段階下げる。",
+      "descJa": "10%の確率で相手の特防ランクを1段階下げる。"
     },
     "entrainment": {
       "nameJa": "なかまづくり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特性を自分と同じにする。",
+      "descJa": "対象の特性を自分と同じにする。"
     },
     "eruption": {
       "nameJa": "ふんか",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分のHPが減るほど威力が下がる。",
+      "descJa": "自分の残りHPが多いほど威力が上がる（最大威力150）。"
     },
     "expandingforce": {
       "nameJa": "ワイドフォース",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "サイコフィールド時は1.5倍、全体攻撃に。",
+      "descJa": "サイコフィールド時、威力1.5倍で相手全体を攻撃する。"
     },
     "explosion": {
       "nameJa": "だいばくはつ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "使用後、自分は倒れる。",
+      "descJa": "使用後、自分はひんし状態になる。"
     },
     "extrasensory": {
       "nameJa": "じんつうりき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手をひるませる。",
+      "descJa": "10%の確率で相手をひるませる。"
     },
     "extremespeed": {
       "nameJa": "しんそく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+2の先制技。追加効果なし。"
     },
     "facade": {
       "nameJa": "からげんき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "状態異常の時威力2倍。",
+      "descJa": "自分が「やけど」「まひ」「どく」状態の時、威力が2倍になる。"
     },
     "fairylock": {
       "nameJa": "フェアリーロック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次のターン、全員交代できなくなる。",
+      "descJa": "次のターンの間、すべてのポケモンが交代できなくなる。"
     },
     "fakeout": {
       "nameJa": "ねこだまし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制技。場に出て最初のターンのみ使用可能。",
+      "descJa": "優先度+3の先制技。場に出て最初のターンのみ成功し、100%の確率でひるませる。"
     },
     "faketears": {
       "nameJa": "うそなき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特防を2段階下げる。",
+      "descJa": "相手の特防ランクを2段階下げる。"
     },
     "featherdance": {
       "nameJa": "フェザーダンス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃を2段階下げる。",
+      "descJa": "相手の攻撃ランクを2段階下げる。"
     },
     "feint": {
       "nameJa": "フェイント",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "守りを解除する。",
+      "descJa": "相手の「まもる」などの守り状態を解除する。"
     },
     "fellstinger": {
       "nameJa": "とどめばり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "倒すと自分の攻撃が3段階上がる。",
+      "descJa": "この技で相手をひんし状態にすると、自分の攻撃ランクが3段階上がる。"
     },
     "ficklebeam": {
       "nameJa": "きまぐレーザー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%の確率で威力が2倍になる。",
+      "descJa": "30%の確率で、この技の威力が2倍になる。"
     },
     "fierydance": {
       "nameJa": "ほのおのまい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "50%で自分の特攻が1段階上がる。",
+      "descJa": "50%の確率で自分の特攻ランクが1段階上がる。"
     },
     "finalgambit": {
       "nameJa": "いのちがけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HP分だけダメージを与え、自身は倒れる。",
+      "descJa": "自分の残りHPと同等のダメージを相手に与え、自分はひんし状態になる。"
     },
     "fireblast": {
       "nameJa": "だいもんじ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手を火傷にする。",
+      "descJa": "10%の確率で相手を「やけど」状態にする。"
     },
     "firefang": {
       "nameJa": "ほのおのキバ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で火傷、10%でひるませる。",
+      "descJa": "10%の確率で相手を「やけど」状態にし、10%の確率でひるませる。"
     },
     "firelash": {
       "nameJa": "ほのおのムチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の防御を1段階下げる。",
+      "descJa": "100%の確率で相手の防御ランクを1段階下げる。"
     },
     "firepunch": {
       "nameJa": "ほのおのパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手を火傷にする。",
+      "descJa": "10%の確率で相手を「やけど」状態にする。"
     },
     "firespin": {
       "nameJa": "ほのおのうず",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "4〜5ターン拘束してダメージ。",
+      "descJa": "4〜5ターンの間、相手を逃げられなくし、毎ターン終了時に最大HPの1/8のダメージを与える。"
     },
     "firstimpression": {
       "nameJa": "であいがしら",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃。場に出て最初のターンのみ使用可能。",
+      "descJa": "優先度+2の先制技。場に出て最初のターンのみ成功する。"
     },
     "fissure": {
       "nameJa": "じわれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "一撃必殺。レベルが低いと失敗。",
+      "descJa": "一撃必殺技。相手をひんし状態にする。自分のレベルが相手より低いと失敗する。"
     },
     "flail": {
       "nameJa": "じたばた",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分のHPが少ないほど威力が上がる。",
+      "descJa": "自分の残りHPが少ないほど威力が上がる（最大威力200）。"
     },
     "flamecharge": {
       "nameJa": "ニトロチャージ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で自分の素早さが1段階上がる。",
+      "descJa": "100%の確率で自分の素早さランクが1段階上がる。"
     },
     "flamethrower": {
       "nameJa": "かえんほうしゃ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手を火傷にする。",
+      "descJa": "10%の確率で相手を「やけど」状態にする。"
     },
     "flareblitz": {
       "nameJa": "フレアドライブ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "33%の反動、10%で火傷、自身の凍結解除。",
+      "descJa": "10%の確率で相手を「やけど」状態にする。与えたダメージの約33%の反動ダメージを受け、自分が凍っている場合は氷が溶ける。"
     },
     "flashcannon": {
       "nameJa": "ラスターカノン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の特防を1段階下げる。",
+      "descJa": "10%の確率で相手の特防ランクを1段階下げる。"
     },
     "flatter": {
       "nameJa": "おだてる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特攻を1段階上げ、混乱させる。",
+      "descJa": "相手の特攻ランクを1段階上げ、相手を混乱状態にする。"
     },
     "fling": {
       "nameJa": "なげつける",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持ち物を投げつける。威力は持ち物依存。",
+      "descJa": "持っている道具を投げつけて攻撃する。道具によって威力が異なり、投げた道具はなくなる。"
     },
     "flipturn": {
       "nameJa": "クイックターン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃後、控えと交代する。",
+      "descJa": "攻撃後、控えのポケモンと交代する。"
     },
     "flowertrick": {
       "nameJa": "トリックフラワー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必ず急所に当たり、必中。",
+      "descJa": "必ず急所に当たり、かつ必ず命中する。"
     },
     "fly": {
       "nameJa": "そらをとぶ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に空へ飛び、2ターン目に攻撃。",
+      "descJa": "1ターン目に空へ飛び、2ターン目に攻撃する。"
     },
     "flyingpress": {
       "nameJa": "フライングプレス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ひこうタイプも加えた相性で攻撃。",
+      "descJa": "ひこうタイプの相性も加えて攻撃する。相手が「ちいさくなる」状態だと必中しダメージが2倍になる。"
     },
     "focusblast": {
       "nameJa": "きあいだま",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の特防を1段階下げる。",
+      "descJa": "10%の確率で相手の特防ランクを1段階下げる。"
     },
     "focusenergy": {
       "nameJa": "きあいだめ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の急所率を2段階上げる。",
+      "descJa": "自分の急所ランクを2段階上げる。既に効果がある場合は失敗する。バトンタッチで効果を引き継げる。"
     },
     "focuspunch": {
       "nameJa": "きあいパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を受けると失敗する。",
+      "descJa": "このターン、攻撃を受ける前にダメージを受けると失敗する。"
     },
     "followme": {
       "nameJa": "このゆびとまれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の技を自分に引き寄せる。",
+      "descJa": "そのターンの間、相手の単体対象の技をすべて自分に向ける。ダブルバトルやバトルロイヤルでのみ有効。"
     },
     "forestscurse": {
       "nameJa": "もりののろい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手に草タイプを追加する。",
+      "descJa": "相手のタイプに草タイプを追加する。既に草タイプの場合は失敗する。"
     },
     "foulplay": {
       "nameJa": "イカサマ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃ステータスでダメージ計算。",
+      "descJa": "相手の攻撃ランクを反映した攻撃ステータスを使ってダメージを計算する。"
     },
     "freezedry": {
       "nameJa": "フリーズドライ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水タイプに対して抜群。",
+      "descJa": "タイプ相性に関わらず、水タイプに対して常に抜群になる。"
     },
     "frenzyplant": {
       "nameJa": "ハードプラント",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次ターン、自分は行動不能。",
+      "descJa": "この技が成功すると、次のターンは反動で行動できない。"
     },
     "frostbreath": {
       "nameJa": "こおりのいぶき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必ず急所に当たる。",
+      "descJa": "相手が「おまじない」状態や、特性「カブトアーマー」「シェルアーマー」でない限り、必ず急所に当たる。"
     },
     "futuresight": {
       "nameJa": "みらいよち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2ターン後にダメージを与える。",
+      "descJa": "使用した2ターン後に攻撃する。使用時の対象の位置に対してダメージが発生する。"
     },
     "gastroacid": {
       "nameJa": "いえき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特性を無効化する。",
+      "descJa": "相手が場にいる間、その特性を無効化する。バトンタッチで効果は引き継がれる。"
     },
     "gigadrain": {
       "nameJa": "ギガドレイン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの50%を回復。",
+      "descJa": "与えたダメージの1/2のHPを回復する（根の化石で1.3倍）。"
     },
     "gigaimpact": {
       "nameJa": "ギガインパクト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次ターン、自分は行動不能。",
+      "descJa": "この技が成功すると、次のターンは反動で行動できない。"
     },
     "gigatonhammer": {
       "nameJa": "デカハンマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次ターン使用不可。",
+      "descJa": "この技を使った次のターンは、この技を選択できない。"
     },
     "glare": {
       "nameJa": "へびにらみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を麻痺にする。",
+      "descJa": "相手を「まひ」状態にする。"
     },
     "grassknot": {
       "nameJa": "くさむすび",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手が重いほど威力が上がる。",
+      "descJa": "相手の体重が重いほど威力が上がる（威力20〜120）。"
     },
     "grassyglide": {
       "nameJa": "グラススライダー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "グラスフィールド時、先制技になる。",
+      "descJa": "グラスフィールド時、優先度が+1される。"
     },
     "grassyterrain": {
       "nameJa": "グラスフィールド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、草地にする。",
+      "descJa": "5ターンの間、足がついているポケモンは草技1.3倍、毎ターン最大HPの1/16回復。地震系技の威力0.5倍。"
     },
     "gravapple": {
       "nameJa": "Ｇのちから",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の防御を1段階下げる。重力時1.5倍。",
+      "descJa": "100%の確率で相手の防御ランクを1段階下げる。重力状態の時は威力が1.5倍になる。"
     },
     "gravity": {
       "nameJa": "じゅうりょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、重力状態にする。",
+      "descJa": "5ターンの間、飛行状態を無効化し、回避率を0.6倍、命中率を約1.67倍にする。浮遊や飛行タイプにも地面技が当たるようになる。"
     },
     "growth": {
       "nameJa": "せいちょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃・特攻を1段階、晴れ時は2段階上げる。",
+      "descJa": "自分の攻撃・特攻ランクを1段階上げる。晴れ時は2段階上がる。"
     },
     "guardsplit": {
       "nameJa": "ガードシェア",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "防御と特防を相手と平均化する。",
+      "descJa": "自分の防御・特防と相手の防御・特防の値を合計して2で割った値にする。"
     },
     "guardswap": {
       "nameJa": "ガードスワップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "防御・特防のランク変化を相手と入れ替える。",
+      "descJa": "自分の防御ランク変化と特防ランク変化を、相手のそれらと入れ替える。"
     },
     "guillotine": {
       "nameJa": "ハサミギロチン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "一撃必殺。レベルが低いと失敗。",
+      "descJa": "相手を一撃でひんしにする。自分のレベルが低いと失敗する。"
     },
     "gunkshot": {
       "nameJa": "ダストシュート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%の確率で相手を毒にする。",
+      "descJa": "30%の確率で相手を「どく」状態にする。"
     },
     "gyroball": {
       "nameJa": "ジャイロボール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の方が遅いほど威力が上がる。",
+      "descJa": "自分の方が素早さが低いほど威力が上がる（最大威力150）。"
     },
     "hammerarm": {
       "nameJa": "アームハンマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の素早さを1段階下げる。",
+      "descJa": "自分の素早さランクを1段階下げる。"
     },
     "hardpress": {
       "nameJa": "ハードプレス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の残りHPが多いほど威力が上がる。",
+      "descJa": "相手の残りHPが多いほど威力が上がる（最大威力100）。"
     },
     "haze": {
       "nameJa": "くろいきり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "すべての能力変化をリセットする。",
+      "descJa": "場にいるすべてのポケモンの能力ランク変化を0に戻す。"
     },
     "headsmash": {
       "nameJa": "もろはのずつき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの1/2の反動。",
+      "descJa": "与えたダメージの1/2の反動ダメージを受ける。"
     },
     "headlongrush": {
       "nameJa": "ぶちかまし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御・特防を1段階下げる。",
+      "descJa": "自分の防御ランクと特防ランクを1段階ずつ下げる。"
     },
     "healbell": {
       "nameJa": "いやしのすず",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方全員の状態異常を治す。",
+      "descJa": "自分と味方全員の状態異常を治す（防音のポケモンは対象外）。"
     },
     "healpulse": {
       "nameJa": "いやしのはどう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手のHPを最大HPの50%回復。",
+      "descJa": "相手の最大HPの1/2を回復させる（メガランチャー時は3/4）。"
     },
     "healingwish": {
       "nameJa": "いやしのねがい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分は倒れ、交代した味方のHP・状態異常を全快。",
+      "descJa": "自分はひんし状態になるが、次に場に出た味方のHPと状態異常を全快させる。"
     },
     "heatcrash": {
       "nameJa": "ヒートスタンプ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の方が重いほど威力が上がる。",
+      "descJa": "自分の方が体重が重いほど威力が上がる（最大威力120）。"
     },
     "heatwave": {
       "nameJa": "ねっぷう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%の確率で相手を火傷にする。",
+      "descJa": "10%の確率で相手を「やけど」状態にする。"
     },
     "heavyslam": {
       "nameJa": "ヘビーボンバー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の方が重いほど威力が上がる。",
+      "descJa": "自分の方が体重が重いほど威力が上がる（最大威力120）。"
     },
     "helpinghand": {
       "nameJa": "てだすけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の技の威力を1.5倍にする。",
+      "descJa": "そのターンの間、味方の攻撃技の威力を1.5倍にする。"
     },
     "hex": {
       "nameJa": "たたりめ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手が状態異常なら威力2倍。",
+      "descJa": "相手が状態異常の時、威力が2倍になる。"
     },
     "highhorsepower": {
       "nameJa": "１０まんばりき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "highjumpkick": {
       "nameJa": "とびひざげり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "外れると最大HPの50%のダメージ。",
+      "descJa": "技が外れると、自分は最大HPの1/2のダメージを受ける。"
     },
     "horndrill": {
       "nameJa": "つのドリル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "一撃必殺。レベルが低いと失敗。",
+      "descJa": "相手を一撃でひんしにする。自分のレベルが低いと失敗する。"
     },
     "hornleech": {
       "nameJa": "ウッドホーン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの50%を回復。",
+      "descJa": "与えたダメージの1/2のHPを回復する。"
     },
     "howl": {
       "nameJa": "とおぼえ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と味方の攻撃を1段階上げる。",
+      "descJa": "自分と味方の攻撃ランクを1段階上げる。"
     },
     "hurricane": {
       "nameJa": "ぼうふう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で混乱。雨時は必中。",
+      "descJa": "30%の確率で混乱させる。雨の時は必中し、晴れの時は命中率が50%になる。"
     },
     "hydrocannon": {
       "nameJa": "ハイドロカノン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次ターン、自分は行動不能。",
+      "descJa": "この技が成功すると、次のターンは反動で行動できない。"
     },
     "hydropump": {
       "nameJa": "ハイドロポンプ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "hyperbeam": {
       "nameJa": "はかいこうせん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次ターン、自分は行動不能。",
+      "descJa": "この技が成功すると、次のターンは反動で行動できない。"
     },
     "hypervoice": {
       "nameJa": "ハイパーボイス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "hypnosis": {
       "nameJa": "さいみんじゅつ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を眠りにする。",
+      "descJa": "相手を「ねむり」状態にする。"
     },
     "icebeam": {
       "nameJa": "れいとうビーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%の確率で相手を凍らせる。",
+      "descJa": "10%の確率で相手を「こおり」状態にする。"
     },
     "icefang": {
       "nameJa": "こおりのキバ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で凍り、10%で怯ませる。",
+      "descJa": "10%の確率で相手を「こおり」状態にし、10%の確率で怯ませる。"
     },
     "icehammer": {
       "nameJa": "アイスハンマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の素早さを1段階下げる。",
+      "descJa": "自分の素早さランクを1段階下げる。"
     },
     "icepunch": {
       "nameJa": "れいとうパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%の確率で相手を凍らせる。",
+      "descJa": "10%の確率で相手を「こおり」状態にする。"
     },
     "iceshard": {
       "nameJa": "こおりのつぶて",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。"
     },
     "icespinner": {
       "nameJa": "アイススピナー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "地形の効果を解除する。",
+      "descJa": "場の地形効果（フィールド）を解除する。"
     },
     "iciclecrash": {
       "nameJa": "つららおとし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%の確率で怯ませる。",
+      "descJa": "30%の確率で相手を怯ませる。"
     },
     "iciclespear": {
       "nameJa": "つららばり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜5回連続攻撃。",
+      "descJa": "2〜5回連続で攻撃する（スキルリンクなら5回）。"
     },
     "icywind": {
       "nameJa": "こごえるかぜ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の素早さを1段階下げる。",
+      "descJa": "100%の確率で相手の素早さランクを1段階下げる。"
     },
     "imprison": {
       "nameJa": "ふういん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の覚えている技を相手は使えない。",
+      "descJa": "自分が場にいる間、相手は自分が覚えている技を使えなくなる。"
     },
     "infernalparade": {
       "nameJa": "ひゃっきやこう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で火傷。相手が状態異常なら威力2倍。",
+      "descJa": "30%の確率で「やけど」にする。相手が状態異常なら威力が2倍になる。"
     },
     "inferno": {
       "nameJa": "れんごく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%の確率で火傷にする。",
+      "descJa": "100%の確率で相手を「やけど」状態にする。"
     },
     "infestation": {
       "nameJa": "まとわりつく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "4〜5ターン拘束してダメージ。",
+      "descJa": "4〜5ターンの間、相手を逃げられなくし、毎ターン最大HPの1/8のダメージを与える。"
     },
     "ingrain": {
       "nameJa": "ねをはる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代不可。毎ターン最大HP1/16回復。",
+      "descJa": "交代できなくなる代わりに、毎ターン最大HPの1/16を回復する。"
     },
     "instruct": {
       "nameJa": "さいはい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "対象に最後に出した技をもう一度出させる。",
+      "descJa": "対象が最後に使った技をその場でもう一度出させる。"
     },
     "irondefense": {
       "nameJa": "てっぺき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御を2段階上げる。",
+      "descJa": "自分の防御ランクを2段階上げる。"
     },
     "ironhead": {
       "nameJa": "アイアンヘッド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%の確率で怯ませる。",
+      "descJa": "20%の確率で相手を怯ませる。"
     },
     "irontail": {
       "nameJa": "アイアンテール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%の確率で防御を1段階下げる。",
+      "descJa": "30%の確率で相手の防御ランクを1段階下げる。"
     },
     "jetpunch": {
       "nameJa": "ジェットパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。"
     },
     "kingsshield": {
       "nameJa": "キングシールド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "守りを固める。接触時は攻撃1段階低下。",
+      "descJa": "相手の攻撃を防ぐ。接触した相手の攻撃ランクを1段階下げる。"
     },
     "knockoff": {
       "nameJa": "はたきおとす",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持ち物があれば威力1.5倍、叩き落とす。",
+      "descJa": "持ち物がある相手に威力1.5倍。攻撃後、相手の持ち物を落とさせる。"
     },
     "kowtowcleave": {
       "nameJa": "ドゲザン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必中。",
+      "descJa": "必ず命中する。"
     },
     "lashout": {
       "nameJa": "うっぷんばらし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力が下がっていれば威力2倍。",
+      "descJa": "このターンに自分の能力ランクが下がっていると威力が2倍になる。"
     },
     "lastresort": {
       "nameJa": "とっておき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "他全ての技を使わないと失敗する。",
+      "descJa": "覚えている他の技をすべて一度ずつ使った後にのみ成功する。"
     },
     "lastrespects": {
       "nameJa": "おはかまいり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "控えの瀕死ポケモン×50威力が上がる。",
+      "descJa": "控えの瀕死の味方の数×50、威力が加算される。"
     },
     "lavaplume": {
       "nameJa": "ふんえん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%の確率で火傷にする。",
+      "descJa": "30%の確率で相手を「やけど」状態にする。"
     },
     "leafblade": {
       "nameJa": "リーフブレード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "leafstorm": {
       "nameJa": "リーフストーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の特攻を2段階下げる。",
+      "descJa": "自分の特攻ランクを2段階下げる。"
     },
     "leechlife": {
       "nameJa": "きゅうけつ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの50%を回復。",
+      "descJa": "与えたダメージの1/2のHPを回復する。"
     },
     "leechseed": {
       "nameJa": "やどりぎのタネ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毎ターン相手の最大HP1/8を吸収。",
+      "descJa": "毎ターン終了時、相手の最大HPの1/8を吸収して回復する。"
     },
     "lifedew": {
       "nameJa": "いのちのしずく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と味方のHPを1/4回復。",
+      "descJa": "自分と味方全員の最大HPの1/4を回復させる。"
     },
     "lightofruin": {
       "nameJa": "はめつのひかり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの1/2の反動。",
+      "descJa": "与えたダメージの1/2の反動ダメージを受ける。"
     },
     "lightscreen": {
       "nameJa": "ひかりのかべ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、特殊ダメージ半減。",
+      "descJa": "5ターンの間、味方が受ける特殊攻撃のダメージを半減する（光の粘土で8ターン）。"
     },
     "liquidation": {
       "nameJa": "アクアブレイク",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で相手の防御を1段階下げる。",
+      "descJa": "20%の確率で相手の防御ランクを1段階下げる。"
     },
     "lockon": {
       "nameJa": "ロックオン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次の自分の技が必中になる。",
+      "descJa": "次のターンの終わりまで、相手は自分の技を回避できなくなる。"
     },
     "lowkick": {
       "nameJa": "けたぐり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手が重いほど威力が上がる。",
+      "descJa": "相手の体重が重いほど威力が上がる（威力20〜120）。"
     },
     "lowsweep": {
       "nameJa": "ローキック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の素早さを1段階下げる。",
+      "descJa": "100%の確率で相手の素早さランクを1段階下げる。"
     },
     "luminacrash": {
       "nameJa": "ルミナコリジョン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の特防を2段階下げる。",
+      "descJa": "100%の確率で相手の特防ランクを2段階下げる。"
     },
     "lunge": {
       "nameJa": "とびかかる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の攻撃を1段階下げる。",
+      "descJa": "100%の確率で相手の攻撃ランクを1段階下げる。"
     },
     "machpunch": {
       "nameJa": "マッハパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。"
     },
     "magicpowder": {
       "nameJa": "まほうのこな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手をエスパータイプに変える。",
+      "descJa": "相手のタイプをエスパータイプに変える。"
     },
     "magicroom": {
       "nameJa": "マジックルーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、持ち物の効果を消す。",
+      "descJa": "5ターンの間、場にいるすべてのポケモンの持ち物の効果を無効化する。"
     },
     "magnetrise": {
       "nameJa": "でんじふゆう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、地面技を無効化。",
+      "descJa": "5ターンの間、地面技や設置技を無効にする（浮遊状態になる）。"
     },
     "magneticflux": {
       "nameJa": "じばそうさ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "プラス・マイナスの味方の防御・特防を1段階上げる。",
+      "descJa": "特性「プラス」または「マイナス」を持つ味方の防御・特防ランクを1段階上げる。"
     },
     "matchagotcha": {
       "nameJa": "シャカシャカほう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で火傷。与えたダメージの50%回復。",
+      "descJa": "20%の確率で「やけど」状態にし、与えたダメージの1/2を回復する。相手が凍っていたら溶かす。"
     },
     "meanlook": {
       "nameJa": "くろいまなざし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を逃げられなくする。",
+      "descJa": "相手を交代できなくする。"
     },
     "megakick": {
       "nameJa": "メガトンキック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "megahorn": {
       "nameJa": "メガホーン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "memento": {
       "nameJa": "おきみやげ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃・特攻を2段階下げ、自分は倒れる。",
+      "descJa": "相手の攻撃・特攻ランクを2段階ずつ下げ、自分はひんし状態になる。"
     },
     "metalburst": {
       "nameJa": "メタルバースト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "受けたダメージを1.5倍にして返す。",
+      "descJa": "このターンに受けたダメージの1.5倍を相手に返す。"
     },
     "metalsound": {
       "nameJa": "きんぞくおん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特防を2段階下げる。",
+      "descJa": "相手の特防ランクを2段階下げる。"
     },
     "meteorbeam": {
       "nameJa": "メテオビーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に特攻を上げ、2ターン目に攻撃。",
+      "descJa": "1ターン目に特攻ランクを1段階上げ、2ターン目に攻撃する。"
     },
     "meteormash": {
       "nameJa": "コメットパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で自分の攻撃が1段階上がる。",
+      "descJa": "20%の確率で自分の攻撃ランクが1段階上がる。"
     },
     "milkdrink": {
       "nameJa": "ミルクのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最大HPの50%回復。",
+      "descJa": "最大HPの1/2を回復する。"
     },
     "minimize": {
       "nameJa": "ちいさくなる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の回避率を2段階上げる。",
+      "descJa": "自分の回避率ランクを2段階上げる。"
     },
     "mirrorcoat": {
       "nameJa": "ミラーコート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "受けた特殊ダメージを2倍にして返す。",
+      "descJa": "このターンに受けた特殊技のダメージの2倍を相手に返す。"
     },
     "mistyexplosion": {
       "nameJa": "ミストバースト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "使用後、自分は倒れる。ミストフィールド時1.5倍。",
+      "descJa": "使用後、自分はひんし状態になる。ミストフィールド時は威力が1.5倍になる。"
     },
     "mistyterrain": {
       "nameJa": "ミストフィールド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、状態異常を防ぐ。",
+      "descJa": "5ターンの間、足がついているポケモンは状態異常と混乱を防ぎ、ドラゴン技の威力が0.5倍になる。"
     },
     "moonblast": {
       "nameJa": "ムーンフォース",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の特攻を1段階下げる。",
+      "descJa": "10%の確率で相手の特攻ランクを1段階下げる。"
     },
     "moonlight": {
       "nameJa": "つきのひかり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天気に応じてHPを回復。",
+      "descJa": "天候に応じて最大HPの1/4〜2/3を回復する（デフォルトは1/2）。"
     },
     "morningsun": {
       "nameJa": "あさのひざし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天気に応じてHPを回復。",
+      "descJa": "天候に応じて最大HPの1/4〜2/3を回復する（デフォルトは1/2）。"
     },
     "mortalspin": {
       "nameJa": "キラースピン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を毒にし、自分は拘束や設置技を解除。",
+      "descJa": "相手を毒状態にする。自分にかかっている拘束、寄生種子、設置技を解除する。"
     },
     "mountaingale": {
       "nameJa": "ひょうざんおろし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%の確率で怯ませる。",
+      "descJa": "30%の確率で相手を怯ませる。"
     },
     "mudshot": {
       "nameJa": "マッドショット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の素早さを1段階下げる。",
+      "descJa": "100%の確率で相手の素早さランクを1段階下げる。"
     },
     "mudslap": {
       "nameJa": "どろかけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の命中率を1段階下げる。",
+      "descJa": "100%の確率で相手の命中率ランクを1段階下げる。"
     },
     "muddywater": {
       "nameJa": "だくりゅう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で相手の命中率を1段階下げる。",
+      "descJa": "30%の確率で相手の命中率ランクを1段階下げる。"
     },
     "mysticalfire": {
       "nameJa": "マジカルフレイム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の特攻を1段階下げる。",
+      "descJa": "100%の確率で相手の特攻ランクを1段階下げる。"
     },
     "nastyplot": {
       "nameJa": "わるだくみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の特攻を2段階上げる。",
+      "descJa": "自分の特攻ランクを2段階上げる。"
     },
     "nightdaze": {
       "nameJa": "ナイトバースト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "40%で相手の命中率を1段階下げる。",
+      "descJa": "40%の確率で相手の命中率ランクを1段階下げる。"
     },
     "nightshade": {
       "nameJa": "ナイトヘッド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分のレベルと同じダメージを与える。",
+      "descJa": "自分のレベルと同じ値のダメージを与える。"
     },
     "nightslash": {
       "nameJa": "つじぎり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "nobleroar": {
       "nameJa": "おたけび",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃・特攻を1段階下げる。",
+      "descJa": "相手の攻撃・特攻ランクを1段階ずつ下げる。"
     },
     "nuzzle": {
       "nameJa": "ほっぺすりすり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%の確率で麻痺にする。",
+      "descJa": "100%の確率で相手を「まひ」状態にする。"
     },
     "outrage": {
       "nameJa": "げきりん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜3ターン攻撃し、その後混乱。",
+      "descJa": "2〜3ターン連続で攻撃し、終了後に自分を混乱状態にする。"
     },
     "overheat": {
       "nameJa": "オーバーヒート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の特攻を2段階下げる。",
+      "descJa": "自分の特攻ランクを2段階下げる。"
     },
     "painsplit": {
       "nameJa": "いたみわけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "お互いのHPを足して半分にする。",
+      "descJa": "お互いの残りHPを合計し、平均した値にする。"
     },
     "paraboliccharge": {
       "nameJa": "パラボラチャージ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "与えたダメージの50%を回復。",
+      "descJa": "与えたダメージの1/2のHPを回復する。"
     },
     "partingshot": {
       "nameJa": "すてゼリフ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃・特攻を下げ、交代する。",
+      "descJa": "相手の攻撃・特攻ランクを1段階下げてから交代する。"
     },
     "payback": {
       "nameJa": "しっぺがえし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "後攻なら威力2倍。",
+      "descJa": "相手より後に行動すると威力が2倍になる。"
     },
     "perishsong": {
       "nameJa": "ほろびのうた",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "3ターン後に全員倒れる。",
+      "descJa": "3ターン後に場にいるポケモン全員がひんし状態になる。"
     },
     "petalblizzard": {
       "nameJa": "はなふぶき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。全体攻撃。",
+      "descJa": "特に追加効果なし。周囲のポケモン全員を攻撃する。"
     },
     "petaldance": {
       "nameJa": "はなびらのまい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜3ターン攻撃し、その後混乱。",
+      "descJa": "2〜3ターン連続で攻撃し、終了後に自分を混乱状態にする。"
     },
     "phantomforce": {
       "nameJa": "ゴーストダイブ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に消え、2ターン目に攻撃。守り無効。",
+      "descJa": "1ターン目に姿を消し、2ターン目に攻撃する。相手の「まもる」状態を無効化する。"
     },
     "pinmissile": {
       "nameJa": "ミサイルばり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜5回連続攻撃。",
+      "descJa": "2〜5回連続で攻撃する（スキルリンクなら5回）。"
     },
     "playrough": {
       "nameJa": "じゃれつく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の攻撃を1段階下げる。",
+      "descJa": "10%の確率で相手の攻撃ランクを1段階下げる。"
     },
     "pluck": {
       "nameJa": "ついばむ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の木の実を奪って食べる。",
+      "descJa": "相手の持っている木の実を奪ってすぐ食べる。"
     },
     "poisonfang": {
       "nameJa": "どくどくのキバ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "50%で相手を猛毒にする。",
+      "descJa": "50%の確率で相手を「もうどく」状態にする。"
     },
     "poisonjab": {
       "nameJa": "どくづき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で相手を毒にする。",
+      "descJa": "30%の確率で相手を「どく」状態にする。"
     },
     "poisonpowder": {
       "nameJa": "どくのこな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を毒にする。",
+      "descJa": "相手を「どく」状態にする。"
     },
     "pollenpuff": {
       "nameJa": "かふんだんご",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方ならHPを50%回復。",
+      "descJa": "対象が味方なら最大HPの1/2を回復させる。"
     },
     "poltergeist": {
       "nameJa": "ポルターガイスト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手に持ち物がないと失敗。",
+      "descJa": "相手が持ち物を持っていないと失敗する。"
     },
     "populationbomb": {
       "nameJa": "ネズミざん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最大10回連続攻撃。",
+      "descJa": "最大10回連続で攻撃する（スキルリンクなら10回）。"
     },
     "pounce": {
       "nameJa": "とびつく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の素早さを1段階下げる。",
+      "descJa": "100%の確率で相手の素早さランクを1段階下げる。"
     },
     "pound": {
       "nameJa": "はたく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "powergem": {
       "nameJa": "パワージェム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "powershift": {
       "nameJa": "パワーシフト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の攻撃と防御の数値を入れ替える。",
+      "descJa": "自分の攻撃と防御の値を入れ替える。"
     },
     "powersplit": {
       "nameJa": "パワーシェア",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と相手の攻撃・特攻を平均化する。",
+      "descJa": "自分と相手の攻撃・特攻の値を合計して2で割った値にする。"
     },
     "powerswap": {
       "nameJa": "パワースワップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と相手の攻撃・特攻ランクを入れ替える。",
+      "descJa": "自分の攻撃・特攻ランク変化を相手と入れ替える。"
     },
     "powertrick": {
       "nameJa": "パワートリック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の攻撃と防御の数値を入れ替える。",
+      "descJa": "自分の攻撃と防御の値を入れ替える。"
     },
     "powertrip": {
       "nameJa": "つけあがる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力が上がるごとに威力+20。",
+      "descJa": "自分の能力ランクが上がるごとに威力が20ずつ加算される。"
     },
     "powerwhip": {
       "nameJa": "パワーウィップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "protect": {
       "nameJa": "まもる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このターンの相手の技を無効にする。",
+      "descJa": "このターンの攻撃をすべて無効にする（連続使用で失敗しやすくなる）。"
     },
     "psychup": {
       "nameJa": "じこあんじ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の能力変化をコピーする。",
+      "descJa": "相手の能力ランク変化をすべて自分のものにする。"
     },
     "psychic": {
       "nameJa": "サイコキネシス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手の特防を1段階下げる。",
+      "descJa": "10%の確率で相手の特防ランクを1段階下げる。"
     },
     "psychicfangs": {
       "nameJa": "サイコファング",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "壁を破壊する。",
+      "descJa": "攻撃前に相手の場の壁（リフレクター・光の壁・オーロラベール）を破壊する。"
     },
     "psychicnoise": {
       "nameJa": "サイコノイズ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2ターンの間、回復できなくなる。",
+      "descJa": "2ターンの間、対象はHPを回復できなくなる。"
     },
     "psychicterrain": {
       "nameJa": "サイコフィールド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、先制技を無効化。",
+      "descJa": "5ターンの間、地面にいるポケモンは先制技を受けなくなり、エスパー技が強化される。"
     },
     "psychocut": {
       "nameJa": "サイコカッター",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "psyshieldbash": {
       "nameJa": "バリアーラッシュ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で自分の防御が1段階上がる。",
+      "descJa": "100%の確率で自分の防御ランクが1段階上がる。"
     },
     "psyshock": {
       "nameJa": "サイコショック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の防御でダメージ計算。",
+      "descJa": "相手の防御ステータスを使ってダメージを計算する。"
     },
     "quash": {
       "nameJa": "さきおくり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の行動を最後にする。",
+      "descJa": "対象をそのターンの最後に行動させる。"
     },
     "quickattack": {
       "nameJa": "でんこうせっか",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。"
     },
     "quickguard": {
       "nameJa": "ファストガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方への先制技を防ぐ。",
+      "descJa": "そのターンの間、味方が受ける先制技をすべて防ぐ。"
     },
     "quiverdance": {
       "nameJa": "ちょうのまい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "特攻・特防・素早さを1段階上げる。",
+      "descJa": "自分の特攻・特防・素早さランクを1段階ずつ上げる。"
     },
     "ragepowder": {
       "nameJa": "いかりのこな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の技を自分に引き寄せる。",
+      "descJa": "そのターンの間、相手の単体対象の技をすべて自分に向ける。"
     },
     "ragingbull": {
       "nameJa": "レイジングブル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "壁を破壊し、フォルムでタイプが変わる。",
+      "descJa": "攻撃前に壁を破壊する。パルデアケンタロスの場合はフォルムに応じてタイプが変わる。"
     },
     "ragingfury": {
       "nameJa": "だいふんげき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜3ターン攻撃し、その後混乱。",
+      "descJa": "2〜3ターン連続で攻撃し、終了後に自分を混乱状態にする。"
     },
     "raindance": {
       "nameJa": "あまごい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、雨を降らせる。",
+      "descJa": "5ターンの間、天候を「あめ」にする。水技の威力が1.5倍、炎技の威力が0.5倍になる（しめったいわ所持時は8ターン）。"
     },
     "rapidspin": {
       "nameJa": "こうそくスピン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の拘束や設置技を解除し、素早さ1段階UP。",
+      "descJa": "自分にかかっている拘束、寄生種子、設置技を解除し、自分の素早さランクを1段階上げる。"
     },
     "razorshell": {
       "nameJa": "シェルブレード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "50%で相手の防御を1段階下げる。",
+      "descJa": "50%の確率で相手の防御ランクを1段階下げる。"
     },
     "recover": {
       "nameJa": "じこさいせい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最大HPの50%回復。",
+      "descJa": "最大HPの1/2を回復する。"
     },
     "recycle": {
       "nameJa": "リサイクル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "消費した持ち物を拾って再利用する。",
+      "descJa": "消費した持ち物を拾って再び持てるようにする。"
     },
     "reflect": {
       "nameJa": "リフレクター",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、物理ダメージを半減。",
+      "descJa": "5ターンの間、味方が受ける物理ダメージを半減する（光の粘土所持時は8ターン）。"
     },
     "reflecttype": {
       "nameJa": "ミラータイプ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手と同じタイプになる。",
+      "descJa": "自分のタイプを相手と同じタイプに変化させる。"
     },
     "rest": {
       "nameJa": "ねむる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2ターン眠り、HPと状態異常を全回復。",
+      "descJa": "2ターンの間眠り、HPと状態異常をすべて回復する。"
     },
     "reversal": {
       "nameJa": "きしかいせい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の残りHPが少ないほど威力が上がる。",
+      "descJa": "自分の残りHPが少ないほど威力が上がる（威力20〜200）。"
     },
     "risingvoltage": {
       "nameJa": "ライジングボルト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "エレキフィールド時、接地相手に威力2倍。",
+      "descJa": "エレキフィールドかつ相手が地面にいる場合、威力が2倍になる。"
     },
     "roar": {
       "nameJa": "ほえる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を強制的に交代させる。",
+      "descJa": "相手を強制的に交代させ、控えのポケモンと入れ替える。"
     },
     "rockblast": {
       "nameJa": "ロックブラスト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜5回連続攻撃。",
+      "descJa": "2〜5回連続で攻撃する（スキルリンクなら5回）。"
     },
     "rockpolish": {
       "nameJa": "ロックカット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の素早さを2段階上げる。",
+      "descJa": "自分の素早さランクを2段階上げる。"
     },
     "rockslide": {
       "nameJa": "いわなだれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%の確率で怯ませる。",
+      "descJa": "30%の確率で相手を怯ませる。"
     },
     "rocktomb": {
       "nameJa": "がんせきふうじ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の素早さを1段階下げる。",
+      "descJa": "100%の確率で相手の素早さランクを1段階下げる。"
     },
     "rockwrecker": {
       "nameJa": "がんせきほう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃後、次のターン動けなくなる。",
+      "descJa": "攻撃した次のターンは行動不能になる。"
     },
     "roleplay": {
       "nameJa": "なりきり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特性をコピーする。",
+      "descJa": "相手と同じ特性になる。"
     },
     "roost": {
       "nameJa": "はねやすめ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPを50%回復。このターンのみ飛行タイプを失う。",
+      "descJa": "最大HPの1/2を回復する。このターンの終了まで飛行タイプを失う（純飛行タイプはノーマルタイプになる）。"
     },
     "round": {
       "nameJa": "りんしょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "他の使用者がいると威力UP。",
+      "descJa": "このターンに他のポケモンが「りんしょう」を使うと、続けて攻撃し威力が120になる。"
     },
     "sacredsword": {
       "nameJa": "せいなるつるぎ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の能力変化を無視して攻撃。",
+      "descJa": "相手の能力ランク変化（回避率含む）を無視してダメージを与える。"
     },
     "safeguard": {
       "nameJa": "しんぴのまもり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、状態異常を防ぐ。",
+      "descJa": "5ターンの間、味方は状態異常と混乱にならなくなる。"
     },
     "saltcure": {
       "nameJa": "しおづけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毎ターンHPを削る。鋼・水にはダメージ増。",
+      "descJa": "毎ターン終了時に最大HPの1/16のダメージを与える（鋼・水タイプには1/8）。"
     },
     "sandtomb": {
       "nameJa": "すなじごく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を4〜5ターン拘束し、毎ターン削る。",
+      "descJa": "4〜5ターンの間、相手を逃げられなくし、毎ターン最大HPの1/8のダメージを与える（締め付けバンド所持時は1/6）。"
     },
     "sandstorm": {
       "nameJa": "すなあらし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、砂嵐を起こす。",
+      "descJa": "5ターンの間、天候を「すなあらし」にする。岩タイプは特防が1.5倍になる（さらさらいわ所持時は8ターン）。"
     },
     "scald": {
       "nameJa": "ねっとう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で火傷にする。氷を溶かす。",
+      "descJa": "30%の確率で「やけど」状態にし、氷状態を解除する。"
     },
     "scaleshot": {
       "nameJa": "スケイルショット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜5回連続攻撃。防御ダウン、素早さUP。",
+      "descJa": "2〜5回連続で攻撃し、終了後に自分の防御ランクが1段階下がり、素早さランクが1段階上がる。"
     },
     "scaryface": {
       "nameJa": "こわいかお",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の素早さを2段階下げる。",
+      "descJa": "相手の素早さランクを2段階下げる。"
     },
     "scorchingsands": {
       "nameJa": "ねっさのだいち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で火傷にする。氷を溶かす。",
+      "descJa": "30%の確率で「やけど」状態にし、氷状態を解除する。"
     },
     "screech": {
       "nameJa": "いやなおと",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の防御を2段階下げる。",
+      "descJa": "相手の防御ランクを2段階下げる。"
     },
     "seedbomb": {
       "nameJa": "タネばくだん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "seismictoss": {
       "nameJa": "ちきゅうなげ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分のレベルと同じダメージを与える。",
+      "descJa": "自分のレベルと同じ値のダメージを与える。"
     },
     "selfdestruct": {
       "nameJa": "じばく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "使用後、自分は倒れる。周囲を攻撃。",
+      "descJa": "周囲のポケモン全員を攻撃し、自分はひんし状態になる。"
     },
     "shadowball": {
       "nameJa": "シャドーボール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で相手の特防を1段階下げる。",
+      "descJa": "20%の確率で相手の特防ランクを1段階下げる。"
     },
     "shadowclaw": {
       "nameJa": "シャドークロー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "shadowpunch": {
       "nameJa": "シャドーパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必中。",
+      "descJa": "必ず命中する。"
     },
     "shadowsneak": {
       "nameJa": "かげうち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃を行う。",
+      "descJa": "優先度+1の先制技。"
     },
     "shedtail": {
       "nameJa": "しっぽきり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPの半分を使い、身代わりを残して交代。",
+      "descJa": "最大HPの1/2を消費して身代わりを作り、控えのポケモンと交代する。"
     },
     "sheercold": {
       "nameJa": "ぜったいれいど",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "一撃必殺。氷タイプ以外に有効。",
+      "descJa": "相手を一撃でひんし状態にする。相手のレベルが自分より高いと失敗する。"
     },
     "shellsidearm": {
       "nameJa": "シェルアームズ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で毒。状況により物理攻撃になる。",
+      "descJa": "20%の確率で毒状態にする。ダメージ効率が良い方（物理か特殊か）で攻撃する。"
     },
     "shellsmash": {
       "nameJa": "からをやぶる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "防御・特防を下げ、攻撃・特攻・素早さを上げる。",
+      "descJa": "自分の防御・特防ランクを1段階ずつ下げ、攻撃・特攻・素早さランクを2段階ずつ上げる。"
     },
     "shelter": {
       "nameJa": "たてこもる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の防御を2段階上げる。",
+      "descJa": "自分の防御ランクを2段階上げる。"
     },
     "simplebeam": {
       "nameJa": "シンプルビーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特性を「たんじゅん」にする。",
+      "descJa": "相手の特性を「たんじゅん」に変える。"
     },
     "sing": {
       "nameJa": "うたう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を眠らせる。",
+      "descJa": "相手を「ねむり」状態にする。"
     },
     "skillswap": {
       "nameJa": "スキルスワップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と相手の特性を入れ替える。",
+      "descJa": "自分と相手の特性を入れ替える。"
     },
     "skittersmack": {
       "nameJa": "はいよるいちげき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の特攻を1段階下げる。",
+      "descJa": "100%の確率で相手の特攻ランクを1段階下げる。"
     },
     "skyattack": {
       "nameJa": "ゴッドバード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に溜め、2ターン目に攻撃。",
+      "descJa": "1ターン目に力を溜め、2ターン目に攻撃する。30%で怯ませ、急所に当たりやすい。"
     },
     "slackoff": {
       "nameJa": "なまける",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最大HPの50%回復。",
+      "descJa": "最大HPの1/2を回復する。"
     },
     "sleeppowder": {
       "nameJa": "ねむりごな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を眠らせる。",
+      "descJa": "相手を「ねむり」状態にする。"
     },
     "sleeptalk": {
       "nameJa": "ねごと",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "眠っている間、自分の技をランダムで出す。",
+      "descJa": "眠っている間に、自分の覚えている技をランダムで1つ出す。"
     },
     "sludgebomb": {
       "nameJa": "ヘドロばくだん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で相手を毒にする。",
+      "descJa": "30%の確率で相手を「どく」状態にする。"
     },
     "sludgewave": {
       "nameJa": "ヘドロウェーブ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手を毒にする。",
+      "descJa": "10%の確率で相手を「どく」状態にする。"
     },
     "smackdown": {
       "nameJa": "うちおとす",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "飛行状態を解除し、地面技を当てられるようにする。",
+      "descJa": "相手を撃ち落とし、飛行状態や「ふゆう」を無効化して地面技が当たるようにする。"
     },
     "smartstrike": {
       "nameJa": "スマートホーン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必中。",
+      "descJa": "必ず命中する。"
     },
     "snaptrap": {
       "nameJa": "トラバサミ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を4〜5ターン拘束し、毎ターン削る。",
+      "descJa": "4〜5ターンの間、相手を逃げられなくし、毎ターン最大HPの1/8のダメージを与える（締め付けバンド所持時は1/6）。"
     },
     "snarl": {
       "nameJa": "バークアウト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の特攻を1段階下げる。",
+      "descJa": "100%の確率で相手の特攻ランクを1段階下げる。"
     },
     "snore": {
       "nameJa": "いびき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "眠っている時のみ使用可。30%で怯ませる。",
+      "descJa": "眠っている時にのみ使える。30%の確率で相手を怯ませる。"
     },
     "snowscape": {
       "nameJa": "ゆきげしき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、雪を降らせる。",
+      "descJa": "5ターンの間、天候を「ゆき」にする。氷タイプは物理防御が1.5倍になる（つららのいわ所持時は8ターン）。"
     },
     "soak": {
       "nameJa": "みずびたし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を水タイプに変える。",
+      "descJa": "相手のタイプを水タイプに変える。"
     },
     "softboiled": {
       "nameJa": "タマゴうみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最大HPの50%回復。",
+      "descJa": "最大HPの1/2を回復する。"
     },
     "solarbeam": {
       "nameJa": "ソーラービーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に溜め、2ターン目に攻撃。晴れなら即時。",
+      "descJa": "1ターン目に力を溜め、2ターン目に攻撃する。晴れ状態なら即時発動する。"
     },
     "solarblade": {
       "nameJa": "ソーラーブレード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターン目に溜め、2ターン目に攻撃。晴れなら即時。",
+      "descJa": "1ターン目に力を溜め、2ターン目に攻撃する。晴れ状態なら即時発動する。"
     },
     "sparklingaria": {
       "nameJa": "うたかたのアリア",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の火傷を治す。",
+      "descJa": "相手の「やけど」状態を治す。"
     },
     "speedswap": {
       "nameJa": "スピードスワップ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と相手の素早さを入れ替える。",
+      "descJa": "自分の素早さ実数値を相手と入れ替える。"
     },
     "spicyextract": {
       "nameJa": "ハバネロエキス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃を2段階上げ、防御を2段階下げる。",
+      "descJa": "相手の攻撃ランクを2段階上げ、防御ランクを2段階下げる。"
     },
     "spikes": {
       "nameJa": "まきびし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代してきた相手にダメージ。最大3回。",
+      "descJa": "交代してくる相手にダメージを与える罠を設置する。最大3回まで重ねがけ可能。"
     },
     "spikyshield": {
       "nameJa": "ニードルガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を防ぎ、接触技なら1/8のダメージ。",
+      "descJa": "このターンの攻撃を無効化する。接触してきた相手に最大HPの1/8のダメージを与える。"
     },
     "spiritshackle": {
       "nameJa": "かげぬい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を逃げられなくする。",
+      "descJa": "相手を交代できなくする。"
     },
     "spitup": {
       "nameJa": "はきだす",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "蓄えた分だけ威力UP。",
+      "descJa": "「たくわえる」で蓄えた回数×100の威力を出す。使用後、蓄えはリセットされる。"
     },
     "spite": {
       "nameJa": "うらみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の最後に使った技のPPを4減らす。",
+      "descJa": "相手が最後に使った技のPPを4減らす。"
     },
     "spore": {
       "nameJa": "キノコのほうし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を眠らせる。",
+      "descJa": "相手を「ねむり」状態にする。"
     },
     "stealthrock": {
       "nameJa": "ステルスロック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代してきた相手に岩の弱点に応じたダメージ。",
+      "descJa": "交代してくる相手に岩タイプ耐性に応じたダメージを与える罠を設置する。"
     },
     "steelbeam": {
       "nameJa": "てっていこうせん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "使用後、自分のHPが半分減る。",
+      "descJa": "使用後、自分は最大HPの1/2のダメージを受ける。"
     },
     "steelroller": {
       "nameJa": "アイアンローラー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フィールドがある時のみ有効。解除する。",
+      "descJa": "フィールドが出ていないと失敗する。出ているフィールドの効果を解除する。"
     },
     "steelwing": {
       "nameJa": "はがねのつばさ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で自分の防御が1段階上がる。",
+      "descJa": "10%の確率で自分の防御ランクが1段階上がる。"
     },
     "stickyweb": {
       "nameJa": "ねばねばネット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代してきた相手の素早さを1段階下げる。",
+      "descJa": "交代してくる相手の素早さランクを1段階下げる罠を設置する。"
     },
     "stockpile": {
       "nameJa": "たくわえる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "防御と特防を1段階上げる。最大3回まで。",
+      "descJa": "自分の防御・特防ランクを1段階ずつ上げ、蓄える回数を増やす（最大3回）。"
     },
     "stompingtantrum": {
       "nameJa": "じだんだ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "前の技が失敗していたら威力2倍。",
+      "descJa": "前のターンに技が失敗していた場合、威力が2倍になる。"
     },
     "stoneaxe": {
       "nameJa": "がんせきアックス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃後、ステルスロックを設置する。",
+      "descJa": "攻撃終了後、相手の場に「ステルスロック」を設置する。"
     },
     "stoneedge": {
       "nameJa": "ストーンエッジ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。",
+      "descJa": "急所に当たりやすい。"
     },
     "storedpower": {
       "nameJa": "アシストパワー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力が上がるごとに威力+20。",
+      "descJa": "自分の能力ランクが上がるごとに威力が20ずつ加算される。"
     },
     "stormthrow": {
       "nameJa": "やまあらし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必ず急所に当たる。",
+      "descJa": "攻撃は必ず急所に当たる。"
     },
     "strengthsap": {
       "nameJa": "ちからをすいとる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃を下げ、その数値分HPを回復。",
+      "descJa": "相手の攻撃ランクを1段階下げ、下がった攻撃の実数値分、自分のHPを回復する。"
     },
     "stringshot": {
       "nameJa": "いとをはく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の素早さを2段階下げる。",
+      "descJa": "相手の素早さランクを2段階下げる。"
     },
     "struggle": {
       "nameJa": "わるあがき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "反動で最大HPの1/4ダメージを受ける。",
+      "descJa": "タイプなしのダメージを相手に与え、自分は最大HPの1/4のダメージを受ける（特性『いしあたま』でも防げない）。"
     },
     "strugglebug": {
       "nameJa": "むしのていこう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の特攻を1段階下げる。",
+      "descJa": "100%の確率で相手の特攻ランクを1段階下げる。"
     },
     "stuffcheeks": {
       "nameJa": "ほおばる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "きのみを食べて防御を2段階上げる。",
+      "descJa": "持ち物のきのみを食べて、自分の防御ランクを2段階上げる。"
     },
     "stunspore": {
       "nameJa": "しびれごな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を麻痺させる。",
+      "descJa": "相手を「まひ」状態にする。"
     },
     "substitute": {
       "nameJa": "みがわり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPの1/4を使い、身代わりを作る。",
+      "descJa": "最大HPの1/4を消費して身代わりを作る。身代わりは本体の代わりにダメージや状態異常を防ぐ。"
     },
     "suckerpunch": {
       "nameJa": "ふいうち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃。相手が攻撃技を選んでいないと失敗。",
+      "descJa": "優先度+1の先制技。相手が攻撃技を選択していない場合や、先に動いた場合は失敗する。"
     },
     "sunnyday": {
       "nameJa": "にほんばれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、晴れにする。",
+      "descJa": "5ターンの間、天候を「ひざしがつよい」にする。炎技の威力が1.5倍、水技の威力が0.5倍になる（あついいわ所持時は8ターン）。"
     },
     "superfang": {
       "nameJa": "いかりのまえば",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の残りHPを半分にする。",
+      "descJa": "相手の残りHPの1/2のダメージを与える。"
     },
     "supercellslam": {
       "nameJa": "サンダーダイブ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "外すと最大HPの50%の反動ダメージ。",
+      "descJa": "技が外れた場合、自分は最大HPの1/2のダメージを受ける。"
     },
     "superpower": {
       "nameJa": "ばかぢから",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃と防御が1段階下がる。",
+      "descJa": "攻撃と防御ランクを1段階ずつ下げる。"
     },
     "surf": {
       "nameJa": "なみのり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "周囲のポケモンを攻撃。ダイビング相手に2倍。",
+      "descJa": "周囲のポケモン全員を攻撃する。相手が「ダイビング」状態ならダメージが2倍になる。"
     },
     "swagger": {
       "nameJa": "いばる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃を2段階上げ、混乱させる。",
+      "descJa": "相手の攻撃ランクを2段階上げ、混乱状態にする。"
     },
     "swallow": {
       "nameJa": "のみこむ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "蓄えた分に応じてHPを回復。",
+      "descJa": "蓄えた回数に応じて最大HPの1/4〜すべてを回復し、蓄えをリセットする。"
     },
     "sweetkiss": {
       "nameJa": "てんしのキッス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を混乱させる。",
+      "descJa": "相手を混乱状態にする。"
     },
     "sweetscent": {
       "nameJa": "あまいかおり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の回避率を2段階下げる。",
+      "descJa": "相手の回避率ランクを2段階下げる。"
     },
     "switcheroo": {
       "nameJa": "すりかえ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と相手の持ち物を入れ替える。",
+      "descJa": "自分と相手の持ち物を入れ替える。"
     },
     "swordsdance": {
       "nameJa": "つるぎのまい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の攻撃を2段階上げる。",
+      "descJa": "自分の攻撃ランクを2段階上げる。"
     },
     "synthesis": {
       "nameJa": "こうごうせい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天候に応じてHPを回復。",
+      "descJa": "天候に応じて最大HPの1/4〜2/3を回復する。"
     },
     "syrupbomb": {
       "nameJa": "みずあめボム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "3ターンの間、毎ターン相手の素早さを下げる。",
+      "descJa": "3ターンの間、毎ターン終了時に相手の素早さランクを1段階下げる。"
     },
     "tailslap": {
       "nameJa": "スイープビンタ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜5回連続攻撃。",
+      "descJa": "2〜5回連続で攻撃する（スキルリンクなら5回）。"
     },
     "tailwind": {
       "nameJa": "おいかぜ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "4ターンの間、味方の素早さを2倍にする。",
+      "descJa": "4ターンの間、味方の素早さを2倍にする。"
     },
     "taunt": {
       "nameJa": "ちょうはつ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "3ターンの間、相手の変化技を封じる。",
+      "descJa": "3ターンの間、相手は変化技しか使えなくなる。"
     },
     "tearfullook": {
       "nameJa": "なみだめ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の攻撃と特攻を1段階下げる。",
+      "descJa": "相手の攻撃と特攻ランクを1段階ずつ下げる。"
     },
     "teatime": {
       "nameJa": "おちゃかい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "場のポケモン全員がきのみを食べる。",
+      "descJa": "場のすべてのポケモンが持っているきのみを食べる。"
     },
     "teeterdance": {
       "nameJa": "フラフラダンス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "周囲のポケモンを混乱させる。",
+      "descJa": "周囲のすべてのポケモンを混乱状態にする。"
     },
     "temperflare": {
       "nameJa": "やけっぱち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "前の技が失敗していたら威力2倍。",
+      "descJa": "前のターンに技が失敗していた場合、威力が2倍になる。"
     },
     "terrainpulse": {
       "nameJa": "だいちのはどう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フィールド時、威力2倍かつタイプ変化。",
+      "descJa": "フィールドに出ている時、威力が2倍になり、対応するタイプに変化する。"
     },
     "thief": {
       "nameJa": "どろぼう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃と同時に相手の持ち物を盗む。",
+      "descJa": "相手にダメージを与え、持ち物を持っていない場合はそれを盗む。"
     },
     "thrash": {
       "nameJa": "あばれる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2〜3ターン攻撃し、その後混乱。",
+      "descJa": "2〜3ターン連続で攻撃し、終了後に自分を混乱状態にする。"
     },
     "throatchop": {
       "nameJa": "じごくづき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2ターンの間、相手の音技を封じる。",
+      "descJa": "2ターンの間、相手は音系の技を使えなくなる。"
     },
     "thunder": {
       "nameJa": "かみなり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で麻痺。雨なら必中。",
+      "descJa": "30%の確率で「まひ」にする。雨の時は必中。"
     },
     "thunderfang": {
       "nameJa": "かみなりのキバ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で麻痺、10%で怯ませる。",
+      "descJa": "10%の確率で相手を「まひ」状態にし、10%の確率で怯ませる。"
     },
     "thunderpunch": {
       "nameJa": "かみなりパンチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で麻痺。",
+      "descJa": "10%の確率で相手を「まひ」状態にする。"
     },
     "thunderwave": {
       "nameJa": "でんじは",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を麻痺させる。",
+      "descJa": "相手を「まひ」状態にする。"
     },
     "thunderbolt": {
       "nameJa": "１０まんボルト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で麻痺。",
+      "descJa": "10%の確率で相手を「まひ」状態にする。"
     },
     "tickle": {
       "nameJa": "くすぐる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃と防御を1段階下げる。",
+      "descJa": "相手の攻撃と防御ランクを1段階ずつ下げる。"
     },
     "tidyup": {
       "nameJa": "おかたづけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃と素早さを1段階上げ、場を掃除する。",
+      "descJa": "自分の攻撃と素早さランクを1段階ずつ上げ、双方の場の設置物や身代わりを解除する。"
     },
     "torchsong": {
       "nameJa": "フレアソング",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で自分の特攻が1段階上がる。",
+      "descJa": "100%の確率で自分の特攻ランクが1段階上がる。"
     },
     "torment": {
       "nameJa": "いちゃもん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の同じ技の連続使用を封じる。",
+      "descJa": "相手は同じ技を連続して出せなくなる。"
     },
     "toxic": {
       "nameJa": "どくどく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を猛毒にする。毒タイプなら必中。",
+      "descJa": "相手を「もうどく」状態にする。毒タイプが使うと必中。"
     },
     "toxicspikes": {
       "nameJa": "どくびし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒の撒き菱を設置。最大2回。",
+      "descJa": "毒の罠を設置する。1回で毒、2回で猛毒にする。"
     },
     "toxicthread": {
       "nameJa": "どくのいと",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "素早さを2段階下げ、毒にする。",
+      "descJa": "相手の素早さランクを2段階下げ、毒状態にする。"
     },
     "trailblaze": {
       "nameJa": "くさわけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で自分の素早さが1段階上がる。",
+      "descJa": "100%の確率で自分の素早さランクが1段階上がる。"
     },
     "transform": {
       "nameJa": "へんしん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手に変身する。",
+      "descJa": "相手の姿・能力・技・特性をコピーして変身する。"
     },
     "triattack": {
       "nameJa": "トライアタック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で麻痺、火傷、氷のいずれかにする。",
+      "descJa": "20%の確率で相手を「まひ」「やけど」「こおり」状態のいずれかにする。"
     },
     "trick": {
       "nameJa": "トリック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と相手の持ち物を入れ替える。",
+      "descJa": "自分と相手の持ち物を入れ替える。"
     },
     "trickroom": {
       "nameJa": "トリックルーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、素早さ順を逆にする。",
+      "descJa": "5ターンの間、遅いポケモンから攻撃するようになる。"
     },
     "trickortreat": {
       "nameJa": "ハロウィン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手をゴーストタイプにする。",
+      "descJa": "相手のタイプにゴーストタイプを追加する。"
     },
     "triplearrows": {
       "nameJa": "３ぼんのや",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすい。防御下げ・怯みの追加効果。",
+      "descJa": "急所に当たりやすく、50%で防御ランクを1段階下げ、30%で怯ませる。"
     },
     "tripleaxel": {
       "nameJa": "トリプルアクセル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "3回攻撃。威力は回数ごとに上昇。",
+      "descJa": "3回連続で攻撃する。命中するたびに威力が上がる。"
     },
     "tropkick": {
       "nameJa": "トロピカルキック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で相手の攻撃を1段階下げる。",
+      "descJa": "100%の確率で相手の攻撃ランクを1段階下げる。"
     },
     "twinbeam": {
       "nameJa": "ツインビーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "2回攻撃。",
+      "descJa": "2回連続で攻撃する。"
     },
     "uturn": {
       "nameJa": "とんぼがえり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃後、控えと交代する。",
+      "descJa": "攻撃した後に控えのポケモンと交代する。"
     },
     "upperhand": {
       "nameJa": "はやてがえし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の先制技を封じて怯ませる。",
+      "descJa": "相手が先制技を選択している時のみ成功し、100%怯ませる。"
     },
     "uproar": {
       "nameJa": "さわぐ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "3ターンの間騒ぎ立て、眠りを防ぐ。",
+      "descJa": "3ターンの間、場を騒ぎ立て、すべてのポケモンを眠れなくし、眠っているポケモンを起こす。"
     },
     "vacuumwave": {
       "nameJa": "しんくうは",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制技。",
+      "descJa": "優先度+1の先制技。"
     },
     "venoshock": {
       "nameJa": "ベノムショック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手が毒状態なら威力2倍。",
+      "descJa": "相手が「どく」「もうどく」状態なら威力が2倍になる。"
     },
     "voltswitch": {
       "nameJa": "ボルトチェンジ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃後、控えと交代する。",
+      "descJa": "攻撃した後に控えのポケモンと交代する。"
     },
     "volttackle": {
       "nameJa": "ボルテッカー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "反動33%、10%で麻痺。",
+      "descJa": "10%の確率で「まひ」にし、相手に与えたダメージの1/3の反動を受ける。"
     },
     "waterpulse": {
       "nameJa": "みずのはどう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で混乱。",
+      "descJa": "20%の確率で相手を混乱状態にする。"
     },
     "watershuriken": {
       "nameJa": "みずしゅりけん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "先制攻撃。2〜5回連続攻撃。",
+      "descJa": "優先度+1の先制技。2〜5回連続で攻撃する。"
     },
     "waterspout": {
       "nameJa": "しおふき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "残りHPが少ないほど威力が下がる。",
+      "descJa": "自分の残りHPが多いほど威力が上がる。"
     },
     "waterfall": {
       "nameJa": "たきのぼり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で怯ませる。",
+      "descJa": "20%の確率で相手を怯ませる。"
     },
     "wavecrash": {
       "nameJa": "ウェーブタックル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "反動33%。",
+      "descJa": "相手に与えたダメージの1/3の反動を受ける。"
     },
     "weatherball": {
       "nameJa": "ウェザーボール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天候で威力2倍、タイプ変化。",
+      "descJa": "天候に応じて威力が2倍になり、タイプが変化する。"
     },
     "whirlpool": {
       "nameJa": "うずしお",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を4〜5ターン拘束し、削る。",
+      "descJa": "4〜5ターンの間、相手を逃げられなくし、毎ターンダメージを与える。"
     },
     "whirlwind": {
       "nameJa": "ふきとばし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を強制的に交代させる。",
+      "descJa": "相手を強制的に交代させ、控えのポケモンと入れ替える。"
     },
     "wideguard": {
       "nameJa": "ワイドガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と味方を全体攻撃から守る。",
+      "descJa": "自分と味方を全体を対象にする技から守る。"
     },
     "wildcharge": {
       "nameJa": "ワイルドボルト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "反動1/4。",
+      "descJa": "相手に与えたダメージの1/4の反動を受ける。"
     },
     "willowisp": {
       "nameJa": "おにび",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を火傷にする。",
+      "descJa": "相手を「やけど」状態にする。"
     },
     "wish": {
       "nameJa": "ねがいごと",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次ターンにHPを50%回復。",
+      "descJa": "次のターンの終了時、場に出ているポケモンの最大HPの1/2を回復する。"
     },
     "wonderroom": {
       "nameJa": "ワンダールーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "5ターンの間、防御と特防を入れ替える。",
+      "descJa": "5ターンの間、すべてのポケモンの防御と特防の実数値を入れ替える。"
     },
     "woodhammer": {
       "nameJa": "ウッドハンマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "反動33%。",
+      "descJa": "相手に与えたダメージの1/3の反動を受ける。"
     },
     "worryseed": {
       "nameJa": "なやみのタネ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特性を「ふみん」に変える。",
+      "descJa": "相手の特性を「ふみん」に変える。"
     },
     "wrap": {
       "nameJa": "まきつく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を4〜5ターン拘束し、削る。",
+      "descJa": "4〜5ターンの間、相手を逃げられなくし、毎ターンダメージを与える。"
     },
     "xscissor": {
       "nameJa": "シザークロス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果なし。",
+      "descJa": "特に追加効果なし。"
     },
     "yawn": {
       "nameJa": "あくび",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "次のターンに相手を眠らせる。",
+      "descJa": "次のターンの終了時に相手を「ねむり」状態にする。"
     },
     "zapcannon": {
       "nameJa": "でんじほう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "100%で麻痺。",
+      "descJa": "100%の確率で相手を「まひ」状態にする。"
     },
     "zenheadbutt": {
       "nameJa": "しねんのずつき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "20%で怯ませる。",
+      "descJa": "20%の確率で相手を怯ませる。"
     }
   },
   "abilities": {
     "adaptability": {
       "nameJa": "てきおうりょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このポケモンのタイプ一致技の威力が1.5倍ではなく2倍になる。",
+      "descJa": "このポケモンのタイプ一致技の威力が1.5倍ではなく2倍になる。"
     },
     "aerilate": {
       "nameJa": "スカイスキン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このポケモンのノーマルタイプの技がひこうタイプになり、威力が1.2倍になる。",
+      "descJa": "このポケモンのノーマルタイプの技がひこうタイプになり、威力が1.2倍になる。他のタイプ変化効果の後、かつ「プラズマシャワー」「でんきスキン」等の効果の前に適用される。"
     },
     "aftermath": {
       "nameJa": "ゆうばく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このポケモンが直接攻撃でひんしになると、相手の最大HPの1/4のダメージを与える。",
+      "descJa": "このポケモンが直接攻撃でひんしになると、相手の最大HPの1/4のダメージを与える。相手が「マジックガード」を持っているか、場に「しめりけ」を持つポケモンがいる場合は無効。"
     },
     "airlock": {
       "nameJa": "エアロック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このポケモンが場に出ている間、天候の影響を無効化する。",
+      "descJa": "このポケモンが場に出ている間、天候の影響を無効化する。"
     },
     "analytic": {
       "nameJa": "アナライズ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "このターンの最後に攻撃すると、技の威力が1.3倍になる。",
+      "descJa": "このターンの最後に攻撃すると、技の威力が1.3倍になる。「はめつのねがい」には影響しない。"
     },
     "angerpoint": {
       "nameJa": "いかりのつぼ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たると攻撃が最大になる。",
+      "descJa": "自分や味方の攻撃が急所に当たると『こうげき』ランクが最大まで上がる。"
     },
     "angershell": {
       "nameJa": "いかりのこうら",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが半分以下になると能力が変化する。",
+      "descJa": "HPが半分以下になった時、『こうげき』『とくこう』『すばやさ』ランクが1段階上がり、『ぼうぎょ』『とくぼう』ランクが1段階下がる。"
     },
     "anticipation": {
       "nameJa": "きけんよち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の弱点や一撃必殺技がわかる。",
+      "descJa": "バトルに出た時、相手が持っている、自分に対して効果抜群の技や、一撃必殺の技がわかると身震いする。"
     },
     "arenatrap": {
       "nameJa": "ありじごく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手は逃げられなくなる。",
+      "descJa": "地面にいる相手は逃げられなくなる。"
     },
     "armortail": {
       "nameJa": "テイルアーマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の先制技を防ぐ。",
+      "descJa": "自分や味方は、相手の先制技を受けなくなる。"
     },
     "aromaveil": {
       "nameJa": "アロマベール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方を状態異常から守る。",
+      "descJa": "自分や味方は、相手から魅了、アンコール、金縛り、挑発、回復封じ、悩み種などの状態を受けなくなる。"
     },
     "asoneglastrier": {
       "nameJa": "じんばいったい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "きんちょうかんとしろのいななきの効果。",
+      "descJa": "『きんちょうかん』と『しろのいななき』の両方の効果を持つ。"
     },
     "asonespectrier": {
       "nameJa": "じんばいったい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "きんちょうかんとくろのいななきの効果。",
+      "descJa": "『きんちょうかん』と『くろのいななき』の両方の効果を持つ。"
     },
     "aurabreak": {
       "nameJa": "オーラブレイク",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "オーラの効果を反転させる。",
+      "descJa": "『ダークオーラ』や『フェアリーオーラ』による技の威力上昇効果を反転させ、威力を下げる。"
     },
     "baddreams": {
       "nameJa": "ナイトメア",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "眠っている相手のHPを減らす。",
+      "descJa": "眠っている相手のHPを毎ターン終了時に最大HPの1/8ずつ減らす。"
     },
     "ballfetch": {
       "nameJa": "たまひろい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ボールを拾ってくる。",
+      "descJa": "戦闘で使ったモンスターボールを拾ってくることがある（対戦効果なし）。"
     },
     "battery": {
       "nameJa": "バッテリー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の特殊攻撃の威力を上げる。",
+      "descJa": "自分以外の味方の特殊技の威力が1.3倍になる。"
     },
     "battlearmor": {
       "nameJa": "カブトアーマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たらない。",
+      "descJa": "相手の技が急所に当たらなくなる。"
     },
     "battlebond": {
       "nameJa": "きずなへんげ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を倒すと強くなる。",
+      "descJa": "相手を倒すと、攻撃、特攻、素早さが上がる（バトル中1回のみ）。"
     },
     "beadsofruin": {
       "nameJa": "わざわいのたま",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特防を下げる。",
+      "descJa": "自分以外の場にいるポケモンの特防が0.75倍になる。"
     },
     "beastboost": {
       "nameJa": "ビーストブースト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を倒すと能力が上がる。",
+      "descJa": "相手を倒すと、自分の最も高い能力ランクが1段階上がる。"
     },
     "berserk": {
       "nameJa": "ぎゃくじょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが半分以下で特攻が上がる。",
+      "descJa": "HPが半分以下になった時、特攻が1段階上がる。"
     },
     "bigpecks": {
       "nameJa": "はとむね",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "防御が下がらない。",
+      "descJa": "相手の技や特性で防御が下がらない。"
     },
     "blaze": {
       "nameJa": "もうか",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ピンチで炎技が強くなる。",
+      "descJa": "HPが3分の1以下になると、炎技の威力が1.5倍になる。"
     },
     "bulletproof": {
       "nameJa": "ぼうだん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "弾や爆弾を防ぐ。",
+      "descJa": "球や弾などの技を受けない。"
     },
     "cheekpouch": {
       "nameJa": "ほおぶくろ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "木の実を食べるとHPが回復する。",
+      "descJa": "木の実を食べた時、通常の効果に加え、HPも回復する。"
     },
     "chillingneigh": {
       "nameJa": "しろのいななき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を倒すと攻撃が上がる。",
+      "descJa": "相手を倒すと攻撃が1段階上がる。"
     },
     "chlorophyll": {
       "nameJa": "ようりょくそ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "晴れで素早さが上がる。",
+      "descJa": "晴れの時、素早さが2倍になる。"
     },
     "clearbody": {
       "nameJa": "クリアボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力が下がらない。",
+      "descJa": "相手の技や特性で能力が下がらない。"
     },
     "cloudnine": {
       "nameJa": "ノーてんき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天候の影響を受けない。",
+      "descJa": "天候による効果がすべてなくなる。"
     },
     "colorchange": {
       "nameJa": "へんしょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "受けた技のタイプになる。",
+      "descJa": "受けた技のタイプに自分のタイプが変化する。"
     },
     "comatose": {
       "nameJa": "ぜったいねむり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "いつも寝ている。",
+      "descJa": "常に眠り状態と同じ扱いになり、他の状態異常にならない。"
     },
     "commander": {
       "nameJa": "しれいとう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "シャリタツと合体する。",
+      "descJa": "味方のヘイラッシャの中に入り、ヘイラッシャの全能力を上げる。"
     },
     "competitive": {
       "nameJa": "かちき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力を下げられると特攻が上がる。",
+      "descJa": "相手に能力を下げられた時、特攻が2段階上がる。"
     },
     "compoundeyes": {
       "nameJa": "ふくがん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "命中率が上がる。",
+      "descJa": "技の命中率が1.3倍になる。"
     },
     "contrary": {
       "nameJa": "あまのじゃく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力変化が逆になる。",
+      "descJa": "能力を上げる効果で下がり、下げる効果で上がる。"
     },
     "corrosion": {
       "nameJa": "ふしょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "鋼や毒タイプも毒にできる。",
+      "descJa": "すべての相手を毒状態にできる。"
     },
     "costar": {
       "nameJa": "きょうえん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の能力変化をコピーする。",
+      "descJa": "登場時、味方の能力変化と同じ状態になる。"
     },
     "cottondown": {
       "nameJa": "わたげ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を受けると素早さを下げる。",
+      "descJa": "攻撃を受けると、場にいる全てのポケモンの素早さを下げる。"
     },
     "cudchew": {
       "nameJa": "はんすう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "木の実を二度食べる。",
+      "descJa": "食べた木の実を、次のターンの終了時にもう一度食べる。"
     },
     "curiousmedicine": {
       "nameJa": "きみょうなくすり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の能力ランクを元に戻す。",
+      "descJa": "登場時、味方の能力変化を元に戻す。"
     },
     "cursedbody": {
       "nameJa": "のろわれボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "技をかなしばりにする。",
+      "descJa": "攻撃を受けると、30%の確率でその技を『かなしばり』状態にする。"
     },
     "cutecharm": {
       "nameJa": "メロメロボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れた相手をメロメロにする。",
+      "descJa": "接触した相手を30%の確率でメロメロ状態にする。"
     },
     "damp": {
       "nameJa": "しめりけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自爆などを防ぐ。",
+      "descJa": "周囲のポケモンは自爆系の技を使えなくなる。"
     },
     "dancer": {
       "nameJa": "おどりこ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "踊りを真似する。",
+      "descJa": "他のポケモンが踊り技を使うと、自分も同じ技を繰り出す。"
     },
     "darkaura": {
       "nameJa": "ダークオーラ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "悪技の威力を上げる。",
+      "descJa": "場にいるポケモンの悪タイプの技の威力が上がる。"
     },
     "dauntlessshield": {
       "nameJa": "ふくつのたて",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に防御が上がる。",
+      "descJa": "登場すると防御が1段階上がる（バトル中1回のみ）。"
     },
     "dazzling": {
       "nameJa": "ビビッドボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の先制技を防ぐ。",
+      "descJa": "自分や味方は、相手の先制技を受けなくなる。"
     },
     "defeatist": {
       "nameJa": "よわき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが減ると能力が下がる。",
+      "descJa": "HPが半分以下になると、攻撃と特攻が半分になる。"
     },
     "defiant": {
       "nameJa": "まけんき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力を下げられると攻撃が上がる。",
+      "descJa": "相手に能力を下げられた時、攻撃が2段階上がる。"
     },
     "deltastream": {
       "nameJa": "デルタストリーム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ひこうタイプの弱点を消す。",
+      "descJa": "ひこうタイプの弱点となるタイプへのダメージを等倍にする。"
     },
     "desolateland": {
       "nameJa": "おわりのだいち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "非常に強い日差しにする。",
+      "descJa": "水タイプの技が無効になり、非常に強い日差しになる。"
     },
     "disguise": {
       "nameJa": "ばけのかわ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を一度だけ防ぐ。",
+      "descJa": "受けた攻撃を一度だけ無効化し、姿が変化する。"
     },
     "download": {
       "nameJa": "ダウンロード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の防御で能力が上がる。",
+      "descJa": "登場時、相手の防御か特防の低い方に応じて、攻撃か特攻が上がる。"
     },
     "dragonsmaw": {
       "nameJa": "りゅうのあぎと",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ドラゴン技の威力を上げる。",
+      "descJa": "ドラゴンタイプの技の威力が1.5倍になる。"
     },
     "dragonize": {
       "nameJa": "ドラゴンスキン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ノーマル技がドラゴンになる。",
+      "descJa": "ノーマルタイプの技がドラゴンタイプになり、威力が1.2倍になる。"
     },
     "drizzle": {
       "nameJa": "あめふらし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雨を降らせる。",
+      "descJa": "登場すると、天候を雨にする。"
     },
     "drought": {
       "nameJa": "ひでり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "日差しを強くする。",
+      "descJa": "登場すると、天候を晴れにする。"
     },
     "dryskin": {
       "nameJa": "かんそうはだ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水で回復、炎に弱い。",
+      "descJa": "水技を受けるとHPが回復するが、炎技のダメージが1.25倍になる。"
     },
     "earlybird": {
       "nameJa": "はやおき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "早く目が覚める。",
+      "descJa": "眠り状態から目覚めるのが早くなる。"
     },
     "eartheater": {
       "nameJa": "どしょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "地面技で回復する。",
+      "descJa": "地面タイプの技を受けると、ダメージが無効化され、HPが回復する。"
     },
     "effectspore": {
       "nameJa": "ほうし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れた相手を状態異常にする。",
+      "descJa": "接触した相手を30%の確率で、毒・麻痺・眠りのいずれかにする。"
     },
     "electricsurge": {
       "nameJa": "エレキメイカー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "電気のフィールドにする。",
+      "descJa": "登場すると、天候をエレキフィールドにする。"
     },
     "electromorphosis": {
       "nameJa": "でんきにかえる",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を受けると充電する。",
+      "descJa": "攻撃を受けると『じゅうでん』状態になり、次に使う電気技の威力が上がる。"
     },
     "embodyaspectcornerstone": {
       "nameJa": "Embody Aspect (Cornerstone)",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に防御が上がる。",
+      "descJa": "テラスタルした時、防御が上がる。"
     },
     "embodyaspecthearthflame": {
       "nameJa": "Embody Aspect (Hearthflame)",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に攻撃が上がる。",
+      "descJa": "テラスタルした時、攻撃が上がる。"
     },
     "embodyaspectteal": {
       "nameJa": "Embody Aspect (Teal)",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に素早さが上がる。",
+      "descJa": "テラスタルした時、素早さが上がる。"
     },
     "embodyaspectwellspring": {
       "nameJa": "Embody Aspect (Wellspring)",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に特防が上がる。",
+      "descJa": "テラスタルした時、特防が上がる。"
     },
     "emergencyexit": {
       "nameJa": "ききかいひ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが減ると交代する。",
+      "descJa": "HPが半分以下になると、控えのポケモンと交代する。"
     },
     "fairyaura": {
       "nameJa": "フェアリーオーラ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "妖精技の威力を上げる。",
+      "descJa": "場にいるポケモンのフェアリータイプの技の威力が上がる。"
     },
     "filter": {
       "nameJa": "フィルター",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "抜群のダメージを抑える。",
+      "descJa": "効果抜群の技を受けた時のダメージが少し減る。"
     },
     "flamebody": {
       "nameJa": "ほのおのからだ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れた相手を火傷にする。",
+      "descJa": "接触した相手を30%の確率で火傷状態にする。"
     },
     "flareboost": {
       "nameJa": "ねつぼうそう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "火傷で特殊技が強くなる。",
+      "descJa": "火傷状態の時、特殊技の威力が上がる。"
     },
     "flashfire": {
       "nameJa": "もらいび",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎技を無効化する。",
+      "descJa": "炎タイプの技を受けるとダメージを無効化し、以降の炎技の威力が上がる。"
     },
     "flowergift": {
       "nameJa": "フラワーギフト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "晴れで味方の能力を上げる。",
+      "descJa": "天気が晴れの時、自分と味方の攻撃と特防が上がる。"
     },
     "flowerveil": {
       "nameJa": "フラワーベール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "草タイプの味方を守る。",
+      "descJa": "味方の草タイプのポケモンは、能力が下がらず、状態異常にならない。"
     },
     "fluffy": {
       "nameJa": "もふもふ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れる技に強くなる。",
+      "descJa": "接触技のダメージを半減するが、炎技のダメージは2倍になる。"
     },
     "forecast": {
       "nameJa": "てんきや",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天候でタイプが変わる。",
+      "descJa": "天候に応じて自分のタイプが変化する。"
     },
     "forewarn": {
       "nameJa": "よちむ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の強力な技がわかる。",
+      "descJa": "バトルに出た時、相手が持っている最も威力の高い技がわかる。"
     },
     "friendguard": {
       "nameJa": "フレンドガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方へのダメージを減らす。",
+      "descJa": "味方が受けるダメージを減らす。"
     },
     "frisk": {
       "nameJa": "おみとおし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の持ち物がわかる。",
+      "descJa": "バトルに出た時、相手の持ち物を確認できる。"
     },
     "fullmetalbody": {
       "nameJa": "メタルプロテクト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力が下がらない。",
+      "descJa": "相手の技や特性で能力が下がらない。"
     },
     "furcoat": {
       "nameJa": "ファーコート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "防御が2倍になる。",
+      "descJa": "防御が2倍になる。"
     },
     "galewings": {
       "nameJa": "はやてのつばさ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HP満タンで飛行技が先制になる。",
+      "descJa": "HPが満タンの時、飛行タイプの技の優先度が上がる。"
     },
     "galvanize": {
       "nameJa": "エレキスキン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ノーマル技が電気になる。",
+      "descJa": "ノーマルタイプの技が電気タイプになり、威力が1.2倍になる。"
     },
     "gluttony": {
       "nameJa": "くいしんぼう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "早く木の実を食べる。",
+      "descJa": "HPが半分以下になると、本来より早く木の実を使う。"
     },
     "goodasgold": {
       "nameJa": "おうごんのからだ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "変化技を無効にする。",
+      "descJa": "相手の変化技をすべて無効にする。"
     },
     "gooey": {
       "nameJa": "ぬめぬめ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れた相手の素早さを下げる。",
+      "descJa": "接触した相手の素早さを下げる。"
     },
     "gorillatactics": {
       "nameJa": "ごりむちゅう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃が上がるが技が固定される。",
+      "descJa": "攻撃が上がるが、同じ技しか出せなくなる。"
     },
     "grasspelt": {
       "nameJa": "くさのけがわ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "グラスフィールドで防御が上がる。",
+      "descJa": "グラスフィールドの時、防御が上がる。"
     },
     "grassysurge": {
       "nameJa": "グラスメイカー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "グラスフィールドにする。",
+      "descJa": "登場すると、天候をグラスフィールドにする。"
     },
     "grimneigh": {
       "nameJa": "くろのいななき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を倒すと特攻が上がる。",
+      "descJa": "相手を倒すと特攻が1段階上がる。"
     },
     "guarddog": {
       "nameJa": "ばんけん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "威嚇で攻撃が上がる。",
+      "descJa": "威嚇を無効にして攻撃を上げ、相手の交代技などを防ぐ。"
     },
     "gulpmissile": {
       "nameJa": "うのミサイル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を受けると反撃する。",
+      "descJa": "「なみのり」か「ダイビング」で獲物をくわえた後、攻撃を受けると、相手に最大HPの1/4のダメージを与え、さらに防御を1段階下げるか麻痺状態にする。"
     },
     "guts": {
       "nameJa": "こんじょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "状態異常で攻撃1.5倍。",
+      "descJa": "状態異常の時、攻撃が1.5倍になり、火傷による攻撃半減の効果も受けない。"
     },
     "hadronengine": {
       "nameJa": "ハドロンエンジン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "エレキフィールド展開時特攻1.3333倍。",
+      "descJa": "場に出るとエレキフィールドを展開する。エレキフィールド中は特攻が1.3333倍になる。"
     },
     "harvest": {
       "nameJa": "しゅうかく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "きのみを50%で再回収。",
+      "descJa": "ターン終了時、使ったきのみを50%の確率で拾う。晴れ状態なら確率は100%になる。"
     },
     "healer": {
       "nameJa": "いやしのこころ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "50%で味方の状態異常を治す。",
+      "descJa": "ターン終了時、50%の確率で味方の状態異常を治す。"
     },
     "heatproof": {
       "nameJa": "たいねつ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎技のダメージと火傷を半減。",
+      "descJa": "炎タイプの技のダメージを半減し、火傷状態によるダメージも半減する。"
     },
     "heavymetal": {
       "nameJa": "ヘヴィメタル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "体重が2倍になる。",
+      "descJa": "自分の体重が2倍になる。"
     },
     "honeygather": {
       "nameJa": "みつあつめ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "あまいミツを見つける。",
+      "descJa": "戦闘終了後にあまいミツを拾ってくることがある（対戦での効果なし）。"
     },
     "hospitality": {
       "nameJa": "おもてなし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方のHPを1/4回復。",
+      "descJa": "場に出た時、味方の最大HPの1/4を回復する。"
     },
     "hugepower": {
       "nameJa": "ちからもち",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃が2倍になる。",
+      "descJa": "自分の攻撃が2倍になる。"
     },
     "hungerswitch": {
       "nameJa": "はらぺこスイッチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ターン毎に姿が変わる。",
+      "descJa": "ターン終了ごとに「まんぷくもよう」と「はらぺこもよう」が入れ替わる。"
     },
     "hustle": {
       "nameJa": "はりきり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃1.5倍、物理命中0.8倍。",
+      "descJa": "攻撃が1.5倍になるが、物理技の命中率が0.8倍になる。"
     },
     "hydration": {
       "nameJa": "うるおいボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雨で状態異常が治る。",
+      "descJa": "天気が雨の時、ターン終了時に状態異常が治る。"
     },
     "hypercutter": {
       "nameJa": "かいりきバサミ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃が下がらない。",
+      "descJa": "相手の技や特性で攻撃ランクが下がらない。"
     },
     "icebody": {
       "nameJa": "アイスボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雪でHPが1/16回復。",
+      "descJa": "雪状態の時、ターン終了ごとに最大HPの1/16を回復する。"
     },
     "iceface": {
       "nameJa": "アイスフェイス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "物理ダメージを1回無効化。",
+      "descJa": "物理攻撃を1回だけ無効化し姿が変わる。雪状態になると元に戻る。"
     },
     "icescales": {
       "nameJa": "こおりのりんぷん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "特殊ダメージを半減。",
+      "descJa": "特殊攻撃を受けるダメージが半分になる。"
     },
     "illuminate": {
       "nameJa": "はっこう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "命中が下がらず相手の回避を無視。",
+      "descJa": "自分の命中率が下がらず、相手の回避率の変化を無視して攻撃する。"
     },
     "illusion": {
       "nameJa": "イリュージョン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "最後の手持ちに化ける。",
+      "descJa": "最後の手持ちのポケモンに化けてバトルに出る。攻撃を受けると元に戻る。"
     },
     "immunity": {
       "nameJa": "めんえき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒状態にならない。",
+      "descJa": "毒状態にならない。"
     },
     "imposter": {
       "nameJa": "かわりもの",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に対面に変身。",
+      "descJa": "バトルに出た時、対面の相手に変身する。"
     },
     "infiltrator": {
       "nameJa": "すりぬけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "壁や身代わりを無視する。",
+      "descJa": "相手の「リフレクター」「ひかりのかべ」「オーロラベール」「しんぴのまもり」「みがわり」を無視して攻撃できる。"
     },
     "innardsout": {
       "nameJa": "とびだすなかみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "倒されると受けた分を反撃。",
+      "descJa": "倒された時、自分を倒した相手に、自分が受けたダメージと同量のダメージを与える。"
     },
     "innerfocus": {
       "nameJa": "せいしんりょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ひるまない＆威嚇無効。",
+      "descJa": "相手の技でひるまなくなる。また「いかく」の効果も受けない。"
     },
     "insomnia": {
       "nameJa": "ふみん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "眠り状態にならない。",
+      "descJa": "眠り状態にならない。"
     },
     "intimidate": {
       "nameJa": "いかく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に相手の攻撃1段階ダウン。",
+      "descJa": "バトルに出た時、相手の攻撃を1段階下げる。"
     },
     "intrepidsword": {
       "nameJa": "ふとうのけん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時に攻撃が1段階上がる。",
+      "descJa": "バトルに出た時、自分の攻撃が1段階上がる（バトル中1回のみ）。"
     },
     "ironbarbs": {
       "nameJa": "てつのトゲ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触した相手に1/8のダメージ。",
+      "descJa": "接触技を受けた時、相手に最大HPの1/8のダメージを与える。"
     },
     "ironfist": {
       "nameJa": "てつのこぶし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "パンチ技の威力1.2倍。",
+      "descJa": "パンチ系の技の威力が1.2倍になる。"
     },
     "justified": {
       "nameJa": "せいぎのこころ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "悪技で攻撃が1段階上がる。",
+      "descJa": "悪タイプの技を受けた時、攻撃が1段階上がる。"
     },
     "keeneye": {
       "nameJa": "するどいめ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "命中ダウン無効、相手の回避無視。",
+      "descJa": "相手の技や特性で命中率が下がらない。相手の回避率の変化も無視する。"
     },
     "klutz": {
       "nameJa": "ぶきよう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持ち物の効果を発揮しない。",
+      "descJa": "持っている道具が使えない（きょうせいギプス等は例外）。"
     },
     "leafguard": {
       "nameJa": "リーフガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "晴れで状態異常にならない。",
+      "descJa": "天気が晴れの時、状態異常にならない。"
     },
     "levitate": {
       "nameJa": "ふゆう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "地面技を無効化。",
+      "descJa": "地面タイプの技を受けない。"
     },
     "libero": {
       "nameJa": "リベロ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "使う技と同じタイプになる。",
+      "descJa": "自分が使う技と同じタイプに変化する（バトル中1回のみ）。"
     },
     "lightmetal": {
       "nameJa": "ライトメタル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "体重が半分になる。",
+      "descJa": "自分の体重が半分になる。"
     },
     "lightningrod": {
       "nameJa": "ひらいしん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "電気技無効、特攻1段階アップ。",
+      "descJa": "電気タイプの技を無効化し、受けると特攻が1段階上がる。他のポケモンへの電気技も引き寄せる。"
     },
     "limber": {
       "nameJa": "じゅうなん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "麻痺状態にならない。",
+      "descJa": "麻痺状態にならない。"
     },
     "lingeringaroma": {
       "nameJa": "とれないにおい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触した相手の特性を移す。",
+      "descJa": "接触した相手の特性をこの特性（とれないにおい）に変える。"
     },
     "liquidooze": {
       "nameJa": "ヘドロえき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HP吸収技をダメージにする。",
+      "descJa": "HPを吸い取る技を受けると、回復させる代わりにダメージを与える。"
     },
     "liquidvoice": {
       "nameJa": "うるおいボイス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "音の技が水タイプになる。",
+      "descJa": "自分が使う音系の技が水タイプになる。"
     },
     "longreach": {
       "nameJa": "えんかく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "非接触攻撃になる。",
+      "descJa": "すべての技を接触せずに繰り出す。"
     },
     "magicbounce": {
       "nameJa": "マジックミラー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "変化技を跳ね返す。",
+      "descJa": "相手から受けた変化技をそのまま跳ね返す。"
     },
     "magicguard": {
       "nameJa": "マジックガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "直接攻撃以外でダメージを受けない。",
+      "descJa": "攻撃技以外のダメージを受けない。"
     },
     "magician": {
       "nameJa": "マジシャン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃した相手の道具を奪う。",
+      "descJa": "技でダメージを与えた相手の持ち物を奪う（自分の持ち物がない時）。"
     },
     "magmaarmor": {
       "nameJa": "マグマのよろい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "凍り状態にならない。",
+      "descJa": "凍り状態にならない。"
     },
     "magnetpull": {
       "nameJa": "じりょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の鋼タイプのポケモンは交代できなくなる。（「ヌケニン」の持つ「ぬけがら」やゴーストタイプを除く）",
+      "descJa": "相手の鋼タイプのポケモンは交代できなくなる。（「ヌケニン」の持つ「ぬけがら」やゴーストタイプを除く）"
     },
     "marvelscale": {
       "nameJa": "ふしぎなうろこ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "状態異常のとき、防御が1.5倍になる。",
+      "descJa": "状態異常のとき、防御が1.5倍になる。"
     },
     "megalauncher": {
       "nameJa": "メガランチャー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "波動系の技の威力が1.5倍になる。「いやしのはどう」の回復量が最大HPの3/4になる。",
+      "descJa": "波動系の技の威力が1.5倍になる。「いやしのはどう」の回復量が最大HPの3/4になる。"
     },
     "megasol": {
       "nameJa": "メガソーラー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天候が「ひざしがつよい」状態であるかのように技を使用できる。",
+      "descJa": "天候が「ひざしがつよい」状態であるかのように技を使用できる。"
     },
     "merciless": {
       "nameJa": "ひとでなし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手が毒状態のとき、攻撃が必ず急所に当たる。",
+      "descJa": "相手が毒状態のとき、攻撃が必ず急所に当たる。"
     },
     "mimicry": {
       "nameJa": "ぎたい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フィールドに対応してタイプが変化する。フィールドが終了すると元に戻る。",
+      "descJa": "フィールドに対応してタイプが変化する。エレキフィールドならでんき、グラスフィールドならくさ、ミストフィールドならフェアリー、サイコフィールドならエスパータイプになる。フィールドがない場合や終了時は元のタイプに戻る。"
     },
     "mindseye": {
       "nameJa": "しんがん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ノーマル・かくとう技がゴーストタイプに当たる。命中率を下げられず、相手の回避率を無視する。",
+      "descJa": "ノーマルタイプとかくとうタイプの技で、ゴーストタイプの相手にも攻撃できるようになる。また、相手の技や特性で自分の命中率を下げられず、相手の回避率の変化を無視して攻撃できる。"
     },
     "minus": {
       "nameJa": "マイナス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の「プラス」か「マイナス」が場に出ていると特攻が1.5倍になる。",
+      "descJa": "味方のポケモンが「プラス」または「マイナス」の特性を持っている場合、自分の特攻が1.5倍になる。"
     },
     "mirrorarmor": {
       "nameJa": "ミラーアーマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力ランクを下げる技や特性を受けると、相手の能力ランクを下げる。",
+      "descJa": "相手の技や特性によって自分の能力ランクを下げられるとき、その効果を跳ね返し、相手の能力ランクを下げる。自分が既にランク-6の場合は跳ね返せない。相手が身代わり状態の場合はどちらの能力も変化しない。"
     },
     "mistysurge": {
       "nameJa": "ミストメイカー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "場に出た時、ミストフィールドを展開する。",
+      "descJa": "場に出た時、5ターンの間、場を「ミストフィールド」にする。"
     },
     "moldbreaker": {
       "nameJa": "かたやぶり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特性を無視して技を出せる。",
+      "descJa": "相手の特性を無視して技を出すことができる。"
     },
     "moody": {
       "nameJa": "ムラっけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毎ターン終了時、ランダムに能力が上がり、ランダムに能力が下がる。",
+      "descJa": "毎ターン終了時、自身の能力（命中・回避以外）の中から1つが2段階上がり、別の1つが1段階下がる。"
     },
     "motordrive": {
       "nameJa": "でんきエンジン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "電気技を受けると素早さが上がる。電気技は無効。",
+      "descJa": "電気タイプの技を受けると、ダメージが無効化され、素早さが1段階上がる。"
     },
     "moxie": {
       "nameJa": "じしんかじょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手を倒すと攻撃が上がる。",
+      "descJa": "相手を倒すと、攻撃が1段階上がる。"
     },
     "multiscale": {
       "nameJa": "マルチスケイル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが満タンの時、受けるダメージが半分になる。",
+      "descJa": "自分のHPが満タンの時、相手から受けるダメージが半分になる。"
     },
     "multitype": {
       "nameJa": "マルチタイプ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持っているプレートでタイプが変わる。",
+      "descJa": "持っているプレートにより、自身のタイプが変わる。"
     },
     "mummy": {
       "nameJa": "ミイラ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代すると状態異常が治る。",
+      "descJa": "手持ちに戻ると、状態異常がすべて治る。"
     },
     "myceliummight": {
       "nameJa": "きんしのちから",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "変化技は後攻になるが特性無視。",
+      "descJa": "変化技は必ず後攻になるが、相手の特性を無視して技が出せる。"
     },
     "naturalcure": {
       "nameJa": "しぜんかいふく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "手持ちに戻ると治る。",
+      "descJa": "手持ちに戻ると状態異常が治る。"
     },
     "neuroforce": {
       "nameJa": "ブレインフォース",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "Abilities have no effect.,This Pokemon while this Pokemon is active, Abilities have no effect. This Ability activates before...",
+      "descJa": "場にいる限り、特性の効果を無効化する。"
     },
     "neutralizinggas": {
       "nameJa": "かがくへんかガス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "場に出ているポケモンの特性を無効化。",
+      "descJa": "場にいる全ポケモンの特性をすべて無効化する。"
     },
     "noguard": {
       "nameJa": "ノーガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分の技がすべてノーマルタイプになり威力が上がる。",
+      "descJa": "自分の出す技がすべてノーマルタイプになり、威力が1.2倍になる。"
     },
     "normalize": {
       "nameJa": "ノーマルスキン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "すべての技がノーマルで威力上昇。",
+      "descJa": "自分の使う技がすべてノーマルタイプになり、威力が1.2倍になる。"
     },
     "oblivious": {
       "nameJa": "どんかん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "this Pokemon copies the effect.,When an opposing Pokemon has a stat stage raised, this Pokemon copies the effect.",
+      "descJa": "相手の能力が上がると、自分も同じ能力を上げる。"
     },
     "opportunist": {
       "nameJa": "びんじょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の能力アップをコピーする。",
+      "descJa": "相手の能力が上がると、自分も同じ能力を上げる。"
     },
     "orichalcumpulse": {
       "nameJa": "ひひいろのこどう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "summons Sunny Day. During Sunny Day",
+      "descJa": "Attack is 1.3333x.,場に出ると天候を晴れにし、晴れ時は攻撃が上がる。,場に出ると天候を「晴れ」にする。天候が「晴れ」の間は攻撃が1.33倍になる。\nabilities,overcoat,Overcoat,ぼうじん,This Pokemon is immune to powder moves"
     },
     "overcoat": {
       "nameJa": "ぼうじん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "粉技と天候ダメージを防ぐ。",
+      "descJa": "粉系の技や天候によるダメージを受けない。"
     },
     "overgrow": {
       "nameJa": "しんりょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "rounded down",
+      "descJa": "its offensive stat is multiplied by 1.5 while using a Grass-type attack.,HPが減ると草技の威力が上がる。,HPが3分の1以下になると、くさタイプの技の威力が1.5倍になる。\nabilities,owntempo,Own Tempo,マイペース,This Pokemon cannot be confused. Immune to Intimidate.,This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
     },
     "owntempo": {
       "nameJa": "マイペース",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "混乱せず威嚇も無効。",
+      "descJa": "混乱状態にならない。また「いかく」の効果も受けない。"
     },
     "parentalbond": {
       "nameJa": "おやこあい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃技が2回になる。",
+      "descJa": "攻撃技が2回連続で繰り出される。2回目の攻撃はダメージが1/4になる。"
     },
     "pastelveil": {
       "nameJa": "パステルベール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と味方が毒状態にならない。",
+      "descJa": "自分と味方が毒状態にならなくなる。場に出た時、味方の毒を治す。"
     },
     "perishbody": {
       "nameJa": "ほろびのボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触した相手と滅びの歌状態になる。",
+      "descJa": "接触した相手と自分を「ほろびのうた」状態にする。"
     },
     "pickpocket": {
       "nameJa": "わるいてぐせ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触した相手の持ち物を盗む。",
+      "descJa": "接触技を受けた時、相手の持ち物を盗む。"
     },
     "pickup": {
       "nameJa": "ものひろい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "他人が使った道具を拾う。",
+      "descJa": "ターン終了時、そのターンに他のポケモンが使った道具を拾うことがある。"
     },
     "piercingdrill": {
       "nameJa": "かんつうドリル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "守りを無視して攻撃する。",
+      "descJa": "相手の守り系技を無視して攻撃する。"
     },
     "pixilate": {
       "nameJa": "フェアリースキン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ノーマル技がフェアリーで威力上昇。",
+      "descJa": "自分のノーマルタイプの技がフェアリータイプになり、威力が1.2倍になる。"
     },
     "plus": {
       "nameJa": "プラス",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の特性で特攻1.5倍。",
+      "descJa": "特性が「プラス」か「マイナス」の味方がいると、特攻が1.5倍になる。"
     },
     "poisonheal": {
       "nameJa": "ポイズンヒール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒で毎ターンHPが1/8回復。",
+      "descJa": "毒状態の時、HPが減る代わりに最大HPの1/8ずつ回復する。"
     },
     "poisonpoint": {
       "nameJa": "どくのトゲ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触した相手を30%で毒にする。",
+      "descJa": "接触した相手を30%の確率で毒状態にする。"
     },
     "poisonpuppeteer": {
       "nameJa": "どくくぐつ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒にした相手を混乱させる。",
+      "descJa": "自分が毒か猛毒状態にした相手を、混乱状態にする。"
     },
     "poisontouch": {
       "nameJa": "どくしゅ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触技に30%で毒追加。",
+      "descJa": "接触技を使った時、相手を30%の確率で毒状態にする。"
     },
     "powerconstruct": {
       "nameJa": "スワームチェンジ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが半分以下で姿が変わる。",
+      "descJa": "HPが最大HPの半分以下になると、パーフェクトフォルムになる。"
     },
     "powerofalchemy": {
       "nameJa": "かがくのちから",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方が倒れると特性を継ぐ。",
+      "descJa": "味方が倒れた時、その特性を引き継ぐ。"
     },
     "powerspot": {
       "nameJa": "パワースポット",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方の技の威力を1.3倍にする。",
+      "descJa": "自分以外の味方が使う技の威力を1.3倍にする。"
     },
     "prankster": {
       "nameJa": "いたずらごころ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "変化技の優先度+1（悪には無効）。",
+      "descJa": "変化技の優先度が1上がる。ただし、悪タイプには無効。"
     },
     "pressure": {
       "nameJa": "プレッシャー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の技のPPを2倍減らす。",
+      "descJa": "相手が自分に技を使う際、そのPPをさらに1多く減らす。"
     },
     "primordialsea": {
       "nameJa": "はじまりのうみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "大雨を降らせる（炎技無効）。",
+      "descJa": "バトルに出ると大雨状態にする。炎タイプの技を無効化する。"
     },
     "prismarmor": {
       "nameJa": "プリズムアーマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "効果抜群のダメージを3/4にする。",
+      "descJa": "効果抜群のダメージを軽減する（3/4倍にする）。"
     },
     "propellertail": {
       "nameJa": "スクリューおびれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の技引き寄せを無視。",
+      "descJa": "自分の技が、相手の特性による引き寄せ効果を受けずに攻撃できる。"
     },
     "protean": {
       "nameJa": "へんげんじざい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "技のタイプに変身（1回のみ）。",
+      "descJa": "自分が使う技と同じタイプに変化する（バトル中1回のみ）。"
     },
     "protosynthesis": {
       "nameJa": "こだいかっせい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "晴れかブーストで一番高い能力アップ。",
+      "descJa": "天気が晴れか「ブーストエナジー」を持つ時、一番高い能力が1.3倍（素早さなら1.5倍）になる。"
     },
     "psychicsurge": {
       "nameJa": "サイコメイカー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "サイコフィールドを展開。",
+      "descJa": "バトルに出るとサイコフィールドを展開する。"
     },
     "punkrock": {
       "nameJa": "パンクロック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "音技威力1.3倍、音技被ダメ半減。",
+      "descJa": "音系の技の威力が1.3倍になり、受ける音系技のダメージを半減する。"
     },
     "purepower": {
       "nameJa": "ヨガパワー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃が2倍になる。",
+      "descJa": "自分の攻撃が2倍になる。"
     },
     "purifyingsalt": {
       "nameJa": "きよめのしお",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "状態異常無効、ゴースト技半減。",
+      "descJa": "状態異常にならず、ゴーストタイプの技を受けるダメージが半分になる。"
     },
     "quarkdrive": {
       "nameJa": "クォークチャージ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フィールドかブーストで能力アップ。",
+      "descJa": "エレキフィールドか「ブーストエナジー」を持つ時、一番高い能力が1.3倍（素早さなら1.5倍）になる。"
     },
     "queenlymajesty": {
       "nameJa": "じょおうのいげん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分と味方が先制技を受けない。",
+      "descJa": "自分や味方は、相手の先制技を受けなくなる。"
     },
     "quickdraw": {
       "nameJa": "クイックドロウ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "30%で先制攻撃できる。",
+      "descJa": "攻撃技を30%の確率で先制して出せる。"
     },
     "quickfeet": {
       "nameJa": "はやあし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "状態異常で素早さ1.5倍。",
+      "descJa": "状態異常の時、素早さが1.5倍になる。麻痺による素早さ低下も受けない。"
     },
     "raindish": {
       "nameJa": "あめうけざら",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雨で毎ターンHP1/16回復。",
+      "descJa": "天気が雨の時、ターン終了時に最大HPの1/16を回復する。"
     },
     "rattled": {
       "nameJa": "びびり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "特定技か威嚇で素早さ1段階アップ。",
+      "descJa": "虫・悪・ゴースト技を受けるか、「いかく」を受けると素早さが1段階上がる。"
     },
     "receiver": {
       "nameJa": "レシーバー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方が倒れると特性を継ぐ。",
+      "descJa": "味方が倒れた時、その特性を引き継ぐ。"
     },
     "reckless": {
       "nameJa": "すてみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "反動技の威力1.2倍。",
+      "descJa": "反動を受ける技（一部除く）の威力が1.2倍になる。"
     },
     "refrigerate": {
       "nameJa": "フリーズスキン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ノーマル技が氷で威力上昇。",
+      "descJa": "自分のノーマルタイプの技が氷タイプになり、威力が1.2倍になる。"
     },
     "regenerator": {
       "nameJa": "さいせいりょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "手持ちに戻ると最大HPの1/3回復。",
+      "descJa": "手持ちに戻ると、最大HPの1/3を回復する。"
     },
     "ripen": {
       "nameJa": "じゅくせい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "木の実の効果が2倍になる。",
+      "descJa": "食べるきのみの効果が2倍になる（回復量、能力上昇、半減効果などが倍加）。"
     },
     "rivalry": {
       "nameJa": "とうそうしん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "異性には弱く同性には強くなる。",
+      "descJa": "自分と同性の相手には技の威力が1.25倍、異性の相手には0.75倍になる。"
     },
     "rkssystem": {
       "nameJa": "ＡＲシステム",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持っているメモリでタイプが変わる。",
+      "descJa": "持っている「メモリ」によって、自分のタイプが変わる。"
     },
     "rockhead": {
       "nameJa": "いしあたま",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "反動技を受けても平気。",
+      "descJa": "反動ダメージを受ける技を使っても、反動を受けない（「わるあがき」を除く）。"
     },
     "rockypayload": {
       "nameJa": "いわはこび",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "岩技の威力が1.5倍になる。",
+      "descJa": "岩タイプの技を使う時、威力が1.5倍になる。"
     },
     "roughskin": {
       "nameJa": "さめはだ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れた相手に1/8のダメージ。",
+      "descJa": "接触技を受けた時、相手に最大HPの1/8のダメージを与える。"
     },
     "runaway": {
       "nameJa": "にげあし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "必ず逃げられる。",
+      "descJa": "野生のポケモンから必ず逃げられる（対戦での効果なし）。"
     },
     "sandforce": {
       "nameJa": "すなのちから",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "砂嵐で岩・地面・鋼技の威力1.3倍。",
+      "descJa": "天気が砂嵐の時、岩・地面・鋼タイプの技の威力が1.3倍になり、砂嵐のダメージも受けない。"
     },
     "sandrush": {
       "nameJa": "すなかき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "砂嵐で素早さが2倍になる。",
+      "descJa": "天気が砂嵐の時、素早さが2倍になり、砂嵐のダメージも受けない。"
     },
     "sandspit": {
       "nameJa": "すなはき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を受けると砂嵐を起こす。",
+      "descJa": "攻撃を受けると天気が砂嵐になる。"
     },
     "sandstream": {
       "nameJa": "すなおこし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "バトルに出ると砂嵐を起こす。",
+      "descJa": "バトルに出た時、天気が砂嵐になる。"
     },
     "sandveil": {
       "nameJa": "すながくれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "砂嵐で回避率が1.25倍になる。",
+      "descJa": "天気が砂嵐の時、相手の技の命中率が0.8倍（回避率が実質1.25倍）になり、砂嵐のダメージも受けない。"
     },
     "sapsipper": {
       "nameJa": "そうしょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "草技を無効化し攻撃1段階アップ。",
+      "descJa": "草タイプの技を受けると無効化し、攻撃が1段階上がる。"
     },
     "schooling": {
       "nameJa": "ぎょぐん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが1/4を超えると群れになる。",
+      "descJa": "HPが最大HPの1/4より多いと「群れの姿」になり、1/4以下になると元の姿に戻る。"
     },
     "scrappy": {
       "nameJa": "きもったま",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ゴーストに格闘・ノーマル技が当たる。",
+      "descJa": "ゴーストタイプにノーマル・格闘技が当たるようになり、「いかく」も無効化する。"
     },
     "screencleaner": {
       "nameJa": "バリアフリー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "場に出ると壁を破壊する。",
+      "descJa": "バトルに出ると両方の場の「リフレクター」「ひかりのかべ」「オーロラベール」を解除する。"
     },
     "seedsower": {
       "nameJa": "こぼれダネ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を受けるとグラスフィールドになる。",
+      "descJa": "攻撃を受けると、場がグラスフィールドになる。"
     },
     "serenegrace": {
       "nameJa": "てんのめぐみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果の確率が2倍になる。",
+      "descJa": "技の追加効果が出る確率が2倍になる。"
     },
     "shadowshield": {
       "nameJa": "ファントムガード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HP満タンでダメージ半減。",
+      "descJa": "HPが満タンの時、受けるダメージを半分にする。"
     },
     "shadowtag": {
       "nameJa": "かげふみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手は交代・逃走不可。",
+      "descJa": "相手は交代も逃走もできなくなる。"
     },
     "sharpness": {
       "nameJa": "きれあじ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "斬る技の威力が1.5倍になる。",
+      "descJa": "切り刻むような技の威力が1.5倍になる。"
     },
     "shedskin": {
       "nameJa": "だっぴ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ターン終了時33%で状態異常治癒。",
+      "descJa": "ターン終了時に約33%の確率で状態異常が治る。"
     },
     "sheerforce": {
       "nameJa": "ちからずく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "追加効果を捨てて威力1.3倍。",
+      "descJa": "技の追加効果が出なくなる代わりに、威力が1.3倍になる。"
     },
     "shellarmor": {
       "nameJa": "シェルアーマー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たらない。",
+      "descJa": "相手の技が急所に当たらなくなる。"
     },
     "shielddust": {
       "nameJa": "りんぷん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の技の追加効果を受けない。",
+      "descJa": "相手の技の追加効果を受けない。"
     },
     "shieldsdown": {
       "nameJa": "リミットシールド",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが半分以下でコアの姿になる。",
+      "descJa": "HPが最大HPの半分以下になると「コアの姿」になり、半分より多いと「メテオの姿」になる。"
     },
     "simple": {
       "nameJa": "たんじゅん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力変化が2倍になる。",
+      "descJa": "能力ランクの変化量が2倍になる。"
     },
     "skilllink": {
       "nameJa": "スキルリンク",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "連続技が必ず最大回数当たる。",
+      "descJa": "連続攻撃技が必ず最大回数（2～5回の技なら5回）当たる。"
     },
     "slowstart": {
       "nameJa": "スロースタート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場から5ターン攻撃・素早さ半減。",
+      "descJa": "バトルに出てから5ターンの間、攻撃と素早さが半分になる。"
     },
     "slushrush": {
       "nameJa": "ゆきかき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雪で素早さが2倍になる。",
+      "descJa": "天気が雪の時、素早さが2倍になる。"
     },
     "sniper": {
       "nameJa": "スナイパー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所時のダメージ1.5倍。",
+      "descJa": "技が急所に当たった時のダメージが1.5倍になる。"
     },
     "snowcloak": {
       "nameJa": "ゆきがくれ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雪で回避率が1.25倍になる。",
+      "descJa": "天気が雪の時、相手の技の命中率が0.8倍（回避率が実質1.25倍）になる。"
     },
     "snowwarning": {
       "nameJa": "ゆきふらし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "バトルに出ると雪を降らせる。",
+      "descJa": "バトルに出た時、天気が雪になる。"
     },
     "solarpower": {
       "nameJa": "サンパワー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "晴れで特攻1.5倍、毎ターンHP1/8減少。",
+      "descJa": "天気が晴れの時、特攻が1.5倍になるが、ターン終了ごとに最大HPの1/8のダメージを受ける。"
     },
     "solidrock": {
       "nameJa": "ハードロック",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "効果抜群のダメージを3/4にする。",
+      "descJa": "効果抜群の技を受けた時のダメージを3/4に軽減する。"
     },
     "soulheart": {
       "nameJa": "ソウルハート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "場にポケモンが倒れると特攻アップ。",
+      "descJa": "他のポケモンが倒れるたびに、特攻が1段階上がる。"
     },
     "soundproof": {
       "nameJa": "ぼうおん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "音技を受けない。",
+      "descJa": "音系の技をすべて無効化する。"
     },
     "speedboost": {
       "nameJa": "かそく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毎ターン終了時に素早さアップ。",
+      "descJa": "毎ターン終了時に素早さが1段階上がる。"
     },
     "spicyspray": {
       "nameJa": "とびだすハバネロ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃を受けると相手を火傷にする。",
+      "descJa": "攻撃を受けると、攻撃してきた相手を火傷状態にする。"
     },
     "stakeout": {
       "nameJa": "はりこみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代相手にダメージ2倍。",
+      "descJa": "交代して出てきた相手に対しては、技の威力が2倍になる。"
     },
     "stall": {
       "nameJa": "あとだし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "技の引き寄せ効果を無視。",
+      "descJa": "相手の特性による技の引き寄せ効果を無視して攻撃できる。"
     },
     "stalwart": {
       "nameJa": "すじがねいり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "引き寄せ効果を無視する。",
+      "descJa": "相手の特性による技の引き寄せ効果を無視して攻撃できる。"
     },
     "stamina": {
       "nameJa": "じきゅうりょく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "changes Forme to Blade before attacks and Shield before King's Shield.,If this Pokemon is an Aegislash",
+      "descJa": "it changes to Blade Forme before using an attacking move"
     },
     "stancechange": {
       "nameJa": "バトルスイッチ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃と防御の姿が入れ替わる。",
+      "descJa": "攻撃技で攻撃フォルムに、キングシールドで防御フォルムに変わる。"
     },
     "static": {
       "nameJa": "せいでんき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れた相手を麻痺させる。",
+      "descJa": "接触した相手を30%の確率で『まひ』状態にする。"
     },
     "steadfast": {
       "nameJa": "ふくつのこころ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "怯むと素早さが上がる。",
+      "descJa": "ひるむと素早さが1段階上がる。"
     },
     "steamengine": {
       "nameJa": "じょうききかん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "鋼技の威力が1.5倍になる。",
+      "descJa": "鋼タイプの技を使う時、威力が1.5倍になる。"
     },
     "steelworker": {
       "nameJa": "はがねつかい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "鋼技の威力が上がる。",
+      "descJa": "鋼タイプの技を使う時、威力が1.5倍になる。"
     },
     "steelyspirit": {
       "nameJa": "はがねのせいしん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "10%で相手を怯ませる。",
+      "descJa": "攻撃した時、10%の確率で相手をひるませる。"
     },
     "stench": {
       "nameJa": "あくしゅう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃が怯みやすくなる。",
+      "descJa": "相手をひるませることがある。"
     },
     "stickyhold": {
       "nameJa": "ねんちゃく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持ち物が盗まれない。",
+      "descJa": "相手の技や特性で持ち物を盗まれなくなる。"
     },
     "stormdrain": {
       "nameJa": "よびみず",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水技無効、特攻1段階アップ。",
+      "descJa": "水タイプの技を受けると無効化し、特攻が1段階上がる。他のポケモンへの水技も引き寄せる。"
     },
     "strongjaw": {
       "nameJa": "がんじょうあご",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "it survives one hit with at least 1 HP. Immune to OHKO.,If this Pokemon is at full HP",
+      "descJa": "it survives one hit with at least 1 HP. OHKO moves fail when used against this Perfect.,一撃で倒れない。一撃必殺も無効。,HPが満タンの時、一撃で倒れる技を受けても必ずHP1で耐える。一撃必殺技も無効。\nabilities,suctioncups,Suction Cups,きゅうばん,This Pokemon cannot be forced to switch out by another Pokemon's attack or item.,This Pokemon cannot be forced to switch out by another Pokemon's attack or item."
     },
     "sturdy": {
       "nameJa": "がんじょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "一撃で倒れない。",
+      "descJa": "HPが満タンの時、一撃で倒される技を受けても必ず1残る。一撃必殺技も無効。"
     },
     "suctioncups": {
       "nameJa": "きゅうばん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "交代させられない。",
+      "descJa": "相手の技やアイテムで、強制的に交代させられない。"
     },
     "superluck": {
       "nameJa": "きょううん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "this Pokemon lowers the evasiveness of opponents 1 stage. Once per battle.,On switch-in",
+      "descJa": "this Pokemon lowers the evasiveness of opponents 1 stage. Once per battle.,登場時相手の回避率を1段階下げる。,バトルに出た時、相手の回避率を1段階下げる（バトル中1回のみ）。\nabilities,supremeoverlord,Supreme Overlord,そうだいしょう,This Pokemon's moves have 10% more power for each fainted ally"
     },
     "supersweetsyrup": {
       "nameJa": "かんろなミツ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の回避率を下げる。",
+      "descJa": "バトルに出た時、相手の回避率を下げる。"
     },
     "supremeoverlord": {
       "nameJa": "そうだいしょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "倒れた仲間の数だけ攻撃アップ。",
+      "descJa": "味方が倒れるたびに、技の威力が上がる。"
     },
     "surgesurfer": {
       "nameJa": "サーフテール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フィールドで素早さが上がる。",
+      "descJa": "エレキフィールドの時、『すばやさ』が2倍になる。"
     },
     "swarm": {
       "nameJa": "むしのしらせ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "虫技の威力が上がる。",
+      "descJa": "HPが少なくなると虫タイプの技の威力が上がる。"
     },
     "sweetveil": {
       "nameJa": "スイートベール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方は眠らない。",
+      "descJa": "自分と味方は『ねむり』状態にならなくなる。"
     },
     "swiftswim": {
       "nameJa": "すいすい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "雨で素早さが2倍になる。",
+      "descJa": "天気が雨の時、素早さが2倍になる。"
     },
     "swordofruin": {
       "nameJa": "わざわいのつるぎ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "this Pokemon gives its item to that ally immediately.,If an ally uses its item",
+      "descJa": "this Pokemon gives its item to that ally immediately.,味方に持ち物を渡す。,味方が道具を使うと、自分の道具をその味方に渡す。\nabilities,synchronize,Synchronize,シンクロ,If another Pokemon burns/poisons/paralyzes this Pokemon"
     },
     "symbiosis": {
       "nameJa": "きょうせい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "持ち物を味方に渡す。",
+      "descJa": "味方が道具を使うと、自分の道具をその味方に渡す。"
     },
     "synchronize": {
       "nameJa": "シンクロ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "状態異常を相手に移す。",
+      "descJa": "自分が状態異常になると、相手も同じ状態異常にする。"
     },
     "tabletsofruin": {
       "nameJa": "わざわいのおふだ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "場全体の攻撃が下がる。",
+      "descJa": "自分以外のポケモンの『こうげき』が下がる。"
     },
     "tangledfeet": {
       "nameJa": "ちどりあし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触した相手の素早さを1段階下げる。",
+      "descJa": "接触した相手の素早さを1段階下げる。"
     },
     "tanglinghair": {
       "nameJa": "カーリーヘアー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "触れた相手の素早さを下げる。",
+      "descJa": "接触した相手の『すばやさ』を下げる。"
     },
     "technician": {
       "nameJa": "テクニシャン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "威力60以下の技の威力1.5倍。",
+      "descJa": "威力が60以下の技の威力が1.5倍になる。"
     },
     "telepathy": {
       "nameJa": "テレパシー",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天候・フィールドを消し去る。",
+      "descJa": "テラスタルした時、場の天候とフィールドの効果を全て消し去る（バトル中1回のみ）。"
     },
     "terashell": {
       "nameJa": "テラスシェル",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HP満タンでダメージが0.5倍になる。",
+      "descJa": "HPが満タンの時、受ける攻撃の相性が全て0.5倍（いまひとつ）になる。"
     },
     "terashift": {
       "nameJa": "テラスチェンジ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "登場時にテラスタルフォルムになる。",
+      "descJa": "バトルに出るとテラスタルフォルムに姿が変わる。"
     },
     "teraformzero": {
       "nameJa": "ゼロフォーミング",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "天候とフィールドを消す。",
+      "descJa": "テラスタルした時、場の天候とフィールドの効果を消し去る。"
     },
     "teravolt": {
       "nameJa": "テラボルテージ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎技で攻撃アップし火傷にならない。",
+      "descJa": "炎タイプの技を受けると攻撃が1段階上がり、火傷状態にならない。"
     },
     "thermalexchange": {
       "nameJa": "ねつこうかん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎技で攻撃アップし火傷にならない。",
+      "descJa": "炎タイプの技を受けると『こうげき』が上がり、『やけど』状態にならない。"
     },
     "thickfat": {
       "nameJa": "あついしぼう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎と氷のダメージを半減する。",
+      "descJa": "炎と氷タイプの技で受けるダメージを半分にする。"
     },
     "tintedlens": {
       "nameJa": "いろめがね",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "this Pokemon's offensive stat is 1.5x with Water attacks.,When this Pokemon has 1/3 or less of its maximum HP",
+      "descJa": "rounded down"
     },
     "torrent": {
       "nameJa": "げきりゅう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水技の威力が上がる。",
+      "descJa": "HPが少なくなると水タイプの技の威力が上がる。"
     },
     "toughclaws": {
       "nameJa": "かたいツメ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触技の威力が上がる。",
+      "descJa": "接触技の威力が上がる。"
     },
     "toxicboost": {
       "nameJa": "どくぼうそう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒状態で物理技の威力1.5倍。",
+      "descJa": "毒状態の時、物理技の威力が1.5倍になる。"
     },
     "toxicchain": {
       "nameJa": "どくのくさり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "Toxic Spikes are set on the opposing side.,If this Pokemon is hit by a physical attack",
+      "descJa": "Toxic Spikes are set on the opposing side.,物理攻撃を受けると毒菱を撒く。,物理攻撃を受けると、相手の足元に毒菱を撒く。\nabilities,trace,Trace,トレース,On switch-in"
     },
     "toxicdebris": {
       "nameJa": "どくげしょう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "物理攻撃を受けると毒菱を撒く。",
+      "descJa": "物理攻撃を受けると相手の足元に毒菱を撒く。"
     },
     "trace": {
       "nameJa": "トレース",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手の特性をコピーする。",
+      "descJa": "登場時、相手の特性を同じにする。"
     },
     "transistor": {
       "nameJa": "トランジスタ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "電気技の威力が上がる。",
+      "descJa": "電気タイプの技を使う時、威力が上がる。"
     },
     "triage": {
       "nameJa": "ヒーリングシフト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターンおきに動けない。",
+      "descJa": "1ターンおきにしか攻撃できない。"
     },
     "truant": {
       "nameJa": "なまけ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "1ターンおきにしか動けない。",
+      "descJa": "1ターンおきにしか攻撃できない。"
     },
     "turboblaze": {
       "nameJa": "ターボブレイズ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "Aroma Veil",
+      "descJa": "Aura Break"
     },
     "unaware": {
       "nameJa": "てんねん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "Special Attack",
+      "descJa": "and accuracy stat stages when taking damage"
     },
     "unburden": {
       "nameJa": "かるわざ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "道具を失うと素早さが2倍になる。",
+      "descJa": "持っている道具がなくなると素早さが2倍になる。道具を新しく持ったり交代すると元に戻る。"
     },
     "unnerve": {
       "nameJa": "きんちょうかん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "相手はきのみを使えなくなる。",
+      "descJa": "場に出ている限り、相手は「きのみ」を使うことができなくなる。"
     },
     "unseenfist": {
       "nameJa": "ふかしのこぶし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "直接攻撃は守りを貫通する。",
+      "descJa": "直接攻撃（接触技）を使うとき、相手が「まもる」などで守っていてもダメージを与えることができる。"
     },
     "vesselofruin": {
       "nameJa": "わざわいのうつわ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "自分以外の特攻が下がる。",
+      "descJa": "場に出ている自分以外のポケモンの特攻が3/4になる。"
     },
     "victorystar": {
       "nameJa": "しょうりのほし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "味方全体の命中率が上がる。",
+      "descJa": "自分と味方の技の命中率が1.1倍になる。"
     },
     "vitalspirit": {
       "nameJa": "やるき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "眠らなくなる。",
+      "descJa": "眠り状態にならない。"
     },
     "voltabsorb": {
       "nameJa": "ちくでん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "電気技を受けると回復する。",
+      "descJa": "電気タイプの技を受けるとダメージを受けず、最大HPの1/4を回復する。"
     },
     "wanderingspirit": {
       "nameJa": "さまようたましい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "接触してきた相手と特性を入れ替える。",
+      "descJa": "直接攻撃を受けたとき、その相手と自分の特性を入れ替える。"
     },
     "waterabsorb": {
       "nameJa": "ちょすい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水技を受けると回復する。",
+      "descJa": "水タイプの技を受けるとダメージを受けず、最大HPの1/4を回復する。"
     },
     "waterbubble": {
       "nameJa": "すいほう",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水技が強化され火傷しない。炎技に強くなる。",
+      "descJa": "水タイプの技の威力が2倍になる。火傷状態にならない。自分に対する炎タイプの技のダメージが半減する。"
     },
     "watercompaction": {
       "nameJa": "みずがため",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水技を受けると防御が上がる。",
+      "descJa": "水タイプの技を受けると防御が2段階上がる。"
     },
     "waterveil": {
       "nameJa": "みずのベール",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "火傷状態にならない。",
+      "descJa": "火傷状態にならない。"
     },
     "weakarmor": {
       "nameJa": "くだけるよろい",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "物理攻撃を受けると防御が下がり素早さが上がる。",
+      "descJa": "物理攻撃を受けると防御が1段階下がり、素早さが2段階上がる。"
     },
     "wellbakedbody": {
       "nameJa": "こんがりボディ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎技を受けると防御が上がる。",
+      "descJa": "炎タイプの技を受けるとダメージを受けず、防御が2段階上がる。"
     },
     "whitesmoke": {
       "nameJa": "しろいけむり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "能力を下げられない。",
+      "descJa": "他のポケモンの技や特性で能力ランクを下げられない。"
     },
     "wimpout": {
       "nameJa": "にげごし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが半分以下になると交代する。",
+      "descJa": "HPが最大HPの半分以下になると、控えのポケモンと交代する。"
     },
     "windpower": {
       "nameJa": "ふうりょくでんき",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "風の技を受けると充電状態になる。",
+      "descJa": "風技を受けるか「おいかぜ」が発動すると「じゅうでん」状態になり、次に使う電気技の威力が上がる。"
     },
     "windrider": {
       "nameJa": "かぜのり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "風の技を受けると攻撃が上がる。",
+      "descJa": "風技を受けるか「おいかぜ」が発動すると、ダメージを受けずに攻撃が1段階上がる。"
     },
     "wonderguard": {
       "nameJa": "ふしぎなまもり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "効果抜群の技しか受けない。",
+      "descJa": "効果抜群の技以外のダメージを受けない。"
     },
     "wonderskin": {
       "nameJa": "ミラクルスキン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "変化技が当たりにくくなる。",
+      "descJa": "相手の変化技が命中するとき、その命中率を50%にする。"
     },
     "zenmode": {
       "nameJa": "ダルマモード",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPが減るとフォルムチェンジする。",
+      "descJa": "HPが最大HPの半分以下になると、ダルマモードへフォルムチェンジする。"
     },
     "zerotohero": {
       "nameJa": "マイティチェンジ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "控えに戻るとフォルムチェンジする。",
+      "descJa": "控えに戻るとマイティフォルムへフォルムチェンジする。"
     }
   },
   "items": {
     "abomasite": {
       "nameJa": "ユキノオーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ユキノオーがメガシンカする。",
+      "descJa": "ユキノオーに持たせると戦闘中にメガシンカできる。"
     },
     "absolite": {
       "nameJa": "アブソルナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "アブソルがメガシンカする。",
+      "descJa": "アブソルに持たせると戦闘中にメガシンカできる。"
     },
     "aerodactylite": {
       "nameJa": "プテラナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "プテラがメガシンカする。",
+      "descJa": "プテラに持たせると戦闘中にメガシンカできる。"
     },
     "aggronite": {
       "nameJa": "ボスゴドラナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ボスゴドラがメガシンカする。",
+      "descJa": "ボスゴドラに持たせると戦闘中にメガシンカできる。"
     },
     "alakazite": {
       "nameJa": "フーディンナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フーディンがメガシンカする。",
+      "descJa": "フーディンに持たせると戦闘中にメガシンカできる。"
     },
     "altarianite": {
       "nameJa": "チルタリスナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "チルタリスがメガシンカする。",
+      "descJa": "チルタリスに持たせると戦闘中にメガシンカできる。"
     },
     "ampharosite": {
       "nameJa": "デンリュウナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "デンリュウがメガシンカする。",
+      "descJa": "デンリュウに持たせると戦闘中にメガシンカできる。"
     },
     "aspearberry": {
       "nameJa": "ナナシのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "氷状態を治す。",
+      "descJa": "持たせると氷状態の時に自動的に使い、氷状態を治す。"
     },
     "audinite": {
       "nameJa": "タブンネナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "タブンネがメガシンカする。",
+      "descJa": "タブンネに持たせると戦闘中にメガシンカできる。"
     },
     "babiriberry": {
       "nameJa": "リリバのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "鋼技のダメージを半減する。",
+      "descJa": "効果抜群の鋼タイプの技を受けた時、そのダメージを半減する。"
     },
     "banettite": {
       "nameJa": "ジュペッタナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ジュペッタがメガシンカする。",
+      "descJa": "ジュペッタに持たせると戦闘中にメガシンカできる。"
     },
     "beedrillite": {
       "nameJa": "スピアーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "スピアーがメガシンカする。",
+      "descJa": "スピアーに持たせると戦闘中にメガシンカできる。"
     },
     "blackbelt": {
       "nameJa": "くろおび",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "格闘技の威力が上がる。",
+      "descJa": "持たせると格闘タイプの技の威力が1.2倍になる。"
     },
     "blackglasses": {
       "nameJa": "くろいメガネ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "悪技の威力が上がる。",
+      "descJa": "持たせると悪タイプの技の威力が1.2倍になる。"
     },
     "blastoisinite": {
       "nameJa": "カメックスナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "カメックスがメガシンカする。",
+      "descJa": "カメックスに持たせると戦闘中にメガシンカできる。"
     },
     "brightpowder": {
       "nameJa": "ひかりのこな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃が当たりにくくなる。",
+      "descJa": "持たせると、相手が自分に対して出す技の命中率が0.9倍になる。"
     },
     "cameruptite": {
       "nameJa": "バクーダナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "バクーダがメガシンカする。",
+      "descJa": "バクーダに持たせると戦闘中にメガシンカできる。"
     },
     "chandelurite": {
       "nameJa": "シャンデラナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "シャンデラがメガシンカする。",
+      "descJa": "シャンデラに持たせると戦闘中にメガシンカできる。"
     },
     "charcoal": {
       "nameJa": "もくたん",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎技の威力が上がる。",
+      "descJa": "持たせると炎タイプの技の威力が1.2倍になる。"
     },
     "charizarditex": {
       "nameJa": "リザードンナイトＸ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "リザードンがメガＸにシンカする。",
+      "descJa": "リザードンに持たせると戦闘中にメガリザードンＸにメガシンカできる。"
     },
     "charizarditey": {
       "nameJa": "リザードンナイトＹ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "リザードンがメガＹにシンカする。",
+      "descJa": "リザードンに持たせると戦闘中にメガリザードンＹにメガシンカできる。"
     },
     "chartiberry": {
       "nameJa": "ヨロギのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "岩技のダメージを半減する。",
+      "descJa": "効果抜群の岩タイプの技を受けた時、そのダメージを半減する。"
     },
     "cheriberry": {
       "nameJa": "クラボのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "麻痺状態を治す。",
+      "descJa": "持たせると麻痺状態の時に自動的に使い、麻痺状態を治す。"
     },
     "chesnaughtite": {
       "nameJa": "ブリガロンナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ブリガロンがメガシンカする。",
+      "descJa": "ブリガロンに持たせると戦闘中にメガシンカできる。"
     },
     "chestoberry": {
       "nameJa": "カゴのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "眠り状態を治す。",
+      "descJa": "持たせると眠り状態の時に自動的に使い、眠り状態を治す。"
     },
     "chilanberry": {
       "nameJa": "ホズのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ノーマル技のダメージを半減する。",
+      "descJa": "ノーマルタイプの技を受けた時、そのダメージを半減する。"
     },
     "chimechite": {
       "nameJa": "チリーンナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "チリーンがメガシンカする。",
+      "descJa": "チリーンに持たせると戦闘中にメガシンカできる。"
     },
     "choicescarf": {
       "nameJa": "こだわりスカーフ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "素早さが上がるが技が制限される。",
+      "descJa": "素早さが1.5倍になるが、最初に出した技しか出せなくなる。"
     },
     "chopleberry": {
       "nameJa": "ヨプのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "格闘技のダメージを半減する。",
+      "descJa": "効果抜群の格闘タイプの技を受けた時、そのダメージを半減する。"
     },
     "clefablite": {
       "nameJa": "ピクシーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ピクシーがメガシンカする。",
+      "descJa": "ピクシーに持たせると戦闘中にメガシンカできる。"
     },
     "cobaberry": {
       "nameJa": "バコウのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "飛行技のダメージを半減する。",
+      "descJa": "効果抜群の飛行タイプの技を受けた時、そのダメージを半減する。"
     },
     "colburberry": {
       "nameJa": "ナモのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "悪技のダメージを半減する。",
+      "descJa": "効果抜群の悪タイプの技を受けた時、そのダメージを半減する。"
     },
     "crabominite": {
       "nameJa": "ケケンカニナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ケケンカニがメガシンカする。",
+      "descJa": "ケケンカニに持たせると戦闘中にメガシンカできる。"
     },
     "delphoxite": {
       "nameJa": "マフォクシーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "マフォクシーがメガシンカする。",
+      "descJa": "マフォクシーに持たせると戦闘中にメガシンカできる。"
     },
     "dragonfang": {
       "nameJa": "りゅうのキバ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "竜技の威力が上がる。",
+      "descJa": "持たせるとドラゴンタイプの技の威力が1.2倍になる。"
     },
     "dragoninite": {
       "nameJa": "カイリューナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "カイリューがメガシンカする。",
+      "descJa": "カイリューに持たせると戦闘中にメガシンカできる。"
     },
     "drampanite": {
       "nameJa": "ジジーロンナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ジジーロンがメガシンカする。",
+      "descJa": "ジジーロンに持たせると戦闘中にメガシンカできる。"
     },
     "emboarite": {
       "nameJa": "エンブオーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "エンブオーがメガシンカする。",
+      "descJa": "エンブオーに持たせると戦闘中にメガシンカできる。"
     },
     "excadrite": {
       "nameJa": "ドリュウズナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ドリュウズがメガシンカする。",
+      "descJa": "ドリュウズに持たせると戦闘中にメガシンカできる。"
     },
     "fairyfeather": {
       "nameJa": "ようせいのハネ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "妖精技の威力が上がる。",
+      "descJa": "持たせるとフェアリータイプの技の威力が1.2倍になる。"
     },
     "feraligite": {
       "nameJa": "オーダイルナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "オーダイルがメガシンカする。",
+      "descJa": "オーダイルに持たせると戦闘中にメガシンカできる。"
     },
     "floettite": {
       "nameJa": "フラエッテナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フラエッテがメガシンカする。",
+      "descJa": "フラエッテに持たせると戦闘中にメガシンカできる。"
     },
     "focusband": {
       "nameJa": "きあいのハチマキ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "稀に倒れずに持ちこたえる。",
+      "descJa": "持たせると倒される攻撃を受けても、10%の確率でHPを1残して耐える。"
     },
     "focussash": {
       "nameJa": "きあいのタスキ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HP満タン時、一撃耐える。",
+      "descJa": "持たせると、HPが満タンの時、倒される攻撃を受けても1回だけHPを1残して耐える。"
     },
     "froslassite": {
       "nameJa": "ユキメノコナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ユキメノコがメガシンカする。",
+      "descJa": "ユキメノコに持たせると戦闘中にメガシンカできる。"
     },
     "galladite": {
       "nameJa": "エルレイドナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "エルレイドがメガシンカする。",
+      "descJa": "エルレイドに持たせると戦闘中にメガシンカできる。"
     },
     "garchompite": {
       "nameJa": "ガブリアスナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ガブリアスがメガシンカする。",
+      "descJa": "ガブリアスに持たせると戦闘中にメガシンカできる。"
     },
     "gardevoirite": {
       "nameJa": "サーナイトナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "サーナイトがメガシンカする。",
+      "descJa": "サーナイトに持たせると戦闘中にメガシンカできる。"
     },
     "gengarite": {
       "nameJa": "ゲンガーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ゲンガーがメガシンカする。",
+      "descJa": "ゲンガーに持たせると戦闘中にメガシンカできる。"
     },
     "glalitite": {
       "nameJa": "オニゴーリナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "オニゴーリがメガシンカする。",
+      "descJa": "オニゴーリに持たせると戦闘中にメガシンカできる。"
     },
     "glimmoranite": {
       "nameJa": "キラフロルナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "キラフロルがメガシンカする。",
+      "descJa": "キラフロルに持たせると戦闘中にメガシンカできる。"
     },
     "golurkite": {
       "nameJa": "ゴルーグナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ゴルーグがメガシンカする。",
+      "descJa": "ゴルーグに持たせると戦闘中にメガシンカできる。"
     },
     "greninjite": {
       "nameJa": "ゲッコウガナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ゲッコウガがメガシンカする。",
+      "descJa": "ゲッコウガに持たせると戦闘中にメガシンカできる。"
     },
     "gyaradosite": {
       "nameJa": "ギャラドスナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ギャラドスがメガシンカする。",
+      "descJa": "ギャラドスに持たせると戦闘中にメガシンカできる。"
     },
     "habanberry": {
       "nameJa": "ハバンのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "竜技のダメージを半減する。",
+      "descJa": "効果抜群のドラゴンタイプの技を受けた時、そのダメージを半減する。"
     },
     "hardstone": {
       "nameJa": "かたいいし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "岩技の威力が上がる。",
+      "descJa": "持たせると岩タイプの技の威力が1.2倍になる。"
     },
     "hawluchanite": {
       "nameJa": "ルチャブルナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ルチャブルがメガシンカする。",
+      "descJa": "ルチャブルに持たせると戦闘中にメガシンカできる。"
     },
     "heracronite": {
       "nameJa": "ヘラクロスナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ヘラクロスがメガシンカする。",
+      "descJa": "ヘラクロスに持たせると戦闘中にメガシンカできる。"
     },
     "houndoominite": {
       "nameJa": "ヘルガーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ヘルガーがメガシンカする。",
+      "descJa": "ヘルガーに持たせると戦闘中にメガシンカできる。"
     },
     "kangaskhanite": {
       "nameJa": "ガルーラナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ガルーラがメガシンカする。",
+      "descJa": "ガルーラに持たせると戦闘中にメガシンカできる。"
     },
     "kasibberry": {
       "nameJa": "カシブのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "霊技のダメージを半減する。",
+      "descJa": "効果抜群のゴーストタイプの技を受けた時、そのダメージを半減する。"
     },
     "kebiaberry": {
       "nameJa": "ビアーのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒技のダメージを半減する。",
+      "descJa": "効果抜群の毒タイプの技を受けた時、そのダメージを半減する。"
     },
     "kingsrock": {
       "nameJa": "おうじゃのしるし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃すると相手が怯むことがある。",
+      "descJa": "攻撃したとき、たまに相手をひるませる。通信交換で進化を促す効果もある。"
     },
     "leftovers": {
       "nameJa": "たべのこし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毎ターンHPを回復する。",
+      "descJa": "持たせると、毎ターン終了時に最大HPの1/16が回復する。"
     },
     "leppaberry": {
       "nameJa": "ヒメリのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "技のPPを回復する。",
+      "descJa": "持たせると、技のPPが0になった時に自動的に使い、その技のPPを10回復する。"
     },
     "lightball": {
       "nameJa": "でんきだま",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ピカチュウの攻撃と特攻が上がる。",
+      "descJa": "ピカチュウに持たせると攻撃と特攻が2倍になる。"
     },
     "lopunnite": {
       "nameJa": "ミミロップナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ミミロップがメガシンカする。",
+      "descJa": "ミミロップに持たせると戦闘中にメガシンカできる。"
     },
     "lucarionite": {
       "nameJa": "ルカリオナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ルカリオがメガシンカする。",
+      "descJa": "ルカリオに持たせると戦闘中にメガシンカできる。"
     },
     "lumberry": {
       "nameJa": "ラムのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "状態異常と混乱を治す。",
+      "descJa": "持たせると状態異常や混乱の時に自動的に使い、それを治す。"
     },
     "magnet": {
       "nameJa": "じしゃく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "電気技の威力が上がる。",
+      "descJa": "持たせると電気タイプの技の威力が1.2倍になる。"
     },
     "manectite": {
       "nameJa": "ライボルトナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ライボルトがメガシンカする。",
+      "descJa": "ライボルトに持たせると戦闘中にメガシンカできる。"
     },
     "medichamite": {
       "nameJa": "チャーレムナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "チャーレムがメガシンカする。",
+      "descJa": "チャーレムに持たせると戦闘中にメガシンカできる。"
     },
     "meganiumite": {
       "nameJa": "メガニウムナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "メガニウムがメガシンカする。",
+      "descJa": "メガニウムに持たせると戦闘中にメガシンカできる。"
     },
     "mentalherb": {
       "nameJa": "メンタルハーブ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "行動制限系を治す。",
+      "descJa": "メロメロやアンコールなど行動を制限する状態になった時、自動的に使い回復する。"
     },
     "meowsticite": {
       "nameJa": "ニャオニクス(オスのすがた)ナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ニャオニクスがメガシンカする。",
+      "descJa": "ニャオニクスに持たせると戦闘中にメガシンカできる。"
     },
     "metalcoat": {
       "nameJa": "メタルコート",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "鋼技の威力が上がる。",
+      "descJa": "持たせると鋼タイプの技の威力が1.2倍になる。通信交換で進化を促す。"
     },
     "miracleseed": {
       "nameJa": "きせきのタネ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "草技の威力が上がる。",
+      "descJa": "持たせると草タイプの技の威力が1.2倍になる。"
     },
     "mysticwater": {
       "nameJa": "しんぴのしずく",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水技の威力が上がる。",
+      "descJa": "持たせると水タイプの技の威力が1.2倍になる。"
     },
     "nevermeltice": {
       "nameJa": "とけないこおり",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "氷技の威力が上がる。",
+      "descJa": "持たせると氷タイプの技の威力が1.2倍になる。"
     },
     "occaberry": {
       "nameJa": "オッカのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "炎技のダメージを半減する。",
+      "descJa": "効果抜群の炎タイプの技を受けた時、そのダメージを半減する。"
     },
     "oranberry": {
       "nameJa": "オレンのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPを少し回復する。",
+      "descJa": "HPが最大HPの半分以下になった時に自動的に使い、HPを10回復する。"
     },
     "passhoberry": {
       "nameJa": "イトケのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "水技のダメージを半減する。",
+      "descJa": "効果抜群の水タイプの技を受けた時、そのダメージを半減する。"
     },
     "payapaberry": {
       "nameJa": "ウタンのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "超技のダメージを半減する。",
+      "descJa": "効果抜群の超タイプの技を受けた時、そのダメージを半減する。"
     },
     "pechaberry": {
       "nameJa": "モモンのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒状態を治す。",
+      "descJa": "持たせると毒状態の時に自動的に使い、毒状態を治す。"
     },
     "persimberry": {
       "nameJa": "キーのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "混乱を治す。",
+      "descJa": "持たせると混乱状態の時に自動的に使い、混乱を治す。"
     },
     "pidgeotite": {
       "nameJa": "ピジョットナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ピジョットがメガシンカする。",
+      "descJa": "ピジョットに持たせると戦闘中にメガシンカできる。"
     },
     "pinsirite": {
       "nameJa": "カイロスナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "カイロスがメガシンカする。",
+      "descJa": "カイロスに持たせると戦闘中にメガシンカできる。"
     },
     "poisonbarb": {
       "nameJa": "どくバリ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "毒技の威力が上がる。",
+      "descJa": "持たせると毒タイプの技の威力が1.2倍になる。"
     },
     "quickclaw": {
       "nameJa": "せんせいのツメ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "稀に先制できる。",
+      "descJa": "持たせると、たまに先制攻撃ができるようになる。"
     },
     "raichunitex": {
       "nameJa": "ライチュウナイトＸ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ライチュウがメガＸにシンカする。",
+      "descJa": "ライチュウに持たせると戦闘中にメガライチュウＸにメガシンカできる。"
     },
     "raichunitey": {
       "nameJa": "ライチュウナイトＹ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ライチュウがメガＹにシンカする。",
+      "descJa": "ライチュウに持たせると戦闘中にメガライチュウＹにメガシンカできる。"
     },
     "rawstberry": {
       "nameJa": "チーゴのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "火傷状態を治す。",
+      "descJa": "持たせると火傷状態の時に自動的に使い、火傷状態を治す。"
     },
     "rindoberry": {
       "nameJa": "リンドのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "草技のダメージを半減する。",
+      "descJa": "効果抜群の草タイプの技を受けた時、そのダメージを半減する。"
     },
     "roseliberry": {
       "nameJa": "ロゼルのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "妖精技のダメージを半減する。",
+      "descJa": "効果抜群のフェアリータイプの技を受けた時、そのダメージを半減する。"
     },
     "sablenite": {
       "nameJa": "ヤミラミナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ヤミラミがメガシンカする。",
+      "descJa": "ヤミラミに持たせると戦闘中にメガシンカできる。"
     },
     "scizorite": {
       "nameJa": "ハッサムナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ハッサムがメガシンカする。",
+      "descJa": "ハッサムに持たせると戦闘中にメガシンカできる。"
     },
     "scopelens": {
       "nameJa": "ピントレンズ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "急所に当たりやすくなる。",
+      "descJa": "持たせると攻撃が急所に当たりやすくなる。"
     },
     "scovillainite": {
       "nameJa": "スコヴィランナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "スコヴィランがメガシンカする。",
+      "descJa": "スコヴィランに持たせると戦闘中にメガシンカできる。"
     },
     "sharpbeak": {
       "nameJa": "するどいくちばし",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "飛行技の威力が上がる。",
+      "descJa": "持たせると飛行タイプの技の威力が1.2倍になる。"
     },
     "sharpedonite": {
       "nameJa": "サメハダーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "サメハダーがメガシンカする。",
+      "descJa": "サメハダーに持たせると戦闘中にメガシンカできる。"
     },
     "shellbell": {
       "nameJa": "かいがらのすず",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "攻撃するとHPが回復する。",
+      "descJa": "持たせると、相手に攻撃を当てた時、与えたダメージの1/8だけHPが回復する。"
     },
     "shucaberry": {
       "nameJa": "シュカのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "地面技のダメージを半減する。",
+      "descJa": "効果抜群の地面タイプの技を受けた時、そのダメージを半減する。"
     },
     "silkscarf": {
       "nameJa": "シルクのスカーフ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ノーマル技の威力が上がる。",
+      "descJa": "持たせるとノーマルタイプの技の威力が1.2倍になる。"
     },
     "silverpowder": {
       "nameJa": "ぎんのこな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "虫技の威力が上がる。",
+      "descJa": "持たせると虫タイプの技の威力が1.2倍になる。"
     },
     "sitrusberry": {
       "nameJa": "オボンのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "HPを最大HPの1/4回復する。",
+      "descJa": "HPが最大HPの半分以下になった時に自動的に使い、最大HPの1/4を回復する。"
     },
     "skarmorite": {
       "nameJa": "エアームドナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "エアームドがメガシンカする。",
+      "descJa": "エアームドに持たせると戦闘中にメガシンカできる。"
     },
     "slowbronite": {
       "nameJa": "ヤドランナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ヤドランのメガシンカ用。",
+      "descJa": "ヤドランに持たせると戦闘中にメガシンカできる。"
     },
     "softsand": {
       "nameJa": "やわらかいすな",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "地面技の威力が上がる。",
+      "descJa": "持たせると地面タイプの技の威力が1.2倍になる。"
     },
     "spelltag": {
       "nameJa": "のろいのおふだ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "霊技の威力が上がる。",
+      "descJa": "持たせるとゴーストタイプの技の威力が1.2倍になる。"
     },
     "starminite": {
       "nameJa": "スターミーナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "スターミーがメガシンカする。",
+      "descJa": "スターミーに持たせると戦闘中にメガシンカできる。"
     },
     "steelixite": {
       "nameJa": "ハガネールナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ハガネールがメガシンカする。",
+      "descJa": "ハガネールに持たせると戦闘中にメガシンカできる。"
     },
     "tangaberry": {
       "nameJa": "タンガのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "虫技のダメージを半減する。",
+      "descJa": "効果抜群の虫タイプの技を受けた時、そのダメージを半減する。"
     },
     "twistedspoon": {
       "nameJa": "まがったスプーン",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "超技の威力が上がる。",
+      "descJa": "持たせるとエスパータイプの技の威力が1.2倍になる。"
     },
     "tyranitarite": {
       "nameJa": "バンギラスナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "バンギラスがメガシンカする。",
+      "descJa": "バンギラスに持たせると戦闘中にメガシンカできる。"
     },
     "venusaurite": {
       "nameJa": "フシギバナナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "フシギバナがメガシンカする。",
+      "descJa": "フシギバナに持たせると戦闘中にメガシンカできる。"
     },
     "victreebelite": {
       "nameJa": "ウツボットナイト",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "ウツボットがメガシンカする。",
+      "descJa": "ウツボットに持たせると戦闘中にメガシンカできる。"
     },
     "wacanberry": {
       "nameJa": "ソクノのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "電気技のダメージを半減する。",
+      "descJa": "効果抜群の電気タイプの技を受けた時、そのダメージを半減する。"
     },
     "whiteherb": {
       "nameJa": "しろいハーブ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "下がった能力を元に戻す。",
+      "descJa": "能力が下がった時に自動的に使い、下がった分を元に戻す。"
     },
     "yacheberry": {
       "nameJa": "ヤチェのみ",
-      "shortDescJa": "",
-      "descJa": ""
+      "shortDescJa": "氷技のダメージを半減する。",
+      "descJa": "効果抜群の氷タイプの技を受けた時、そのダメージを半減する。"
     }
   },
   "moveTargets": {
