@@ -58,10 +58,103 @@ const DEFAULT_JA_OVERRIDES = {
   meta: {
     description: 'Fill nameJa / shortDescJa / descJa here. This file overrides generated data.',
   },
-  species: {},
-  moves: {},
-  abilities: {},
-  items: {},
+  species: [],
+  moves: [],
+  abilities: [],
+  items: [],
+  moveTargets: [],
+  typeNames: [],
+  moveCategories: [],
+  moveFlags: [],
+  moveTags: [],
+};
+
+const MOVE_TARGET_JA = {
+  normal: '1体を選ぶ',
+  self: '自分',
+  any: '任意の対象',
+  adjacentFoe: '相手1体',
+  adjacentAlly: '隣の味方1体',
+  adjacentAllyOrSelf: '自分または隣の味方1体',
+  allAdjacent: '場にいる全員',
+  allAdjacentFoes: '相手全体',
+  all: '全体',
+  allies: '味方1体',
+  allySide: '自分の場',
+  allyTeam: '自分と味方全員',
+  foeSide: '相手の場',
+  randomNormal: 'ランダムな相手1体',
+  scripted: 'スクリプト対象',
+};
+
+const MOVE_TARGET_EN = {
+  normal: 'One target',
+  self: 'User',
+  any: 'Any target',
+  adjacentFoe: 'Adjacent foe',
+  adjacentAlly: 'Adjacent ally',
+  adjacentAllyOrSelf: 'User or adjacent ally',
+  allAdjacent: 'All adjacent Pokémon',
+  allAdjacentFoes: 'All adjacent foes',
+  all: 'All Pokémon',
+  allies: 'Ally',
+  allySide: "User's side",
+  allyTeam: 'User and allies',
+  foeSide: "Foe's side",
+  randomNormal: 'Random target',
+  scripted: 'Scripted target',
+};
+
+const MOVE_CATEGORY_JA = {
+  Physical: '物理',
+  Special: '特殊',
+  Status: '変化',
+};
+
+const MOVE_FLAG_JA = {
+  allyanim: '味方演出',
+  bite: 'かみつき技',
+  bullet: 'だん技',
+  bypasssub: 'みがわり貫通',
+  cantusetwice: '連続使用不可',
+  charge: 'ため技',
+  contact: '接触技',
+  dance: 'おどり技',
+  defrost: 'こおり解除',
+  distance: '遠距離対象可',
+  failcopycat: 'ねこのて不可',
+  failencore: 'アンコール不可',
+  failinstruct: 'さいはい不可',
+  failmefirst: 'さきどり不可',
+  failmimic: 'ものまね不可',
+  futuremove: '未来技',
+  gravity: 'じゅうりょく対象',
+  heal: '回復技',
+  metronome: 'メトロノーム',
+  minimize: 'ちいさくなる対象',
+  mirror: 'ミラー',
+  mustpressure: 'プレッシャー対象',
+  noassist: 'ねこのて不可',
+  nonsky: 'スカイバトル不可',
+  noparentalbond: 'おやこあい対象外',
+  nosketch: 'スケッチ不可',
+  nosleeptalk: 'ねごと不可',
+  powder: '粉技',
+  protect: 'まもる',
+  pulse: 'はどう技',
+  punch: 'パンチ技',
+  recharge: '反動で行動不能',
+  reflectable: 'マジックコート反射可',
+  slicing: 'きれあじ対象',
+  snatch: 'よこどり対象',
+  sound: '音技',
+  wind: 'かぜ技',
+};
+
+const MOVE_TAG_JA = {
+  ignoreAbility: '無効化する特性',
+  ignoreImmunity: 'タイプ相性無視',
+  breaksProtect: 'まもる貫通',
 };
 
 const UPCOMING_INCLUDE_IDS = new Set([
@@ -86,17 +179,66 @@ function ensureJaOverridesFile() {
 }
 
 function normalizeJaOverrides(raw) {
+  const normalizeSection = section => {
+    if (Array.isArray(section)) {
+      return section
+        .filter(entry => entry && typeof entry === 'object')
+        .map(entry => ({ ...entry, id: String(entry.id || '').trim() }))
+        .filter(entry => entry.id);
+    }
+    if (section && typeof section === 'object') {
+      return Object.entries(section)
+        .map(([id, value]) => ({ id: String(id || '').trim(), ...(value && typeof value === 'object' ? value : {}) }))
+        .filter(entry => entry.id);
+    }
+    return [];
+  };
+
+  const species = normalizeSection(raw?.species);
+  const moves = normalizeSection(raw?.moves);
+  const abilities = normalizeSection(raw?.abilities);
+  const items = normalizeSection(raw?.items);
+  const moveTargets = normalizeSection(raw?.moveTargets);
+  const typeNames = normalizeSection(raw?.typeNames);
+  const moveCategories = normalizeSection(raw?.moveCategories);
+  const moveFlags = normalizeSection(raw?.moveFlags);
+  const moveTags = normalizeSection(raw?.moveTags);
+
+  const buildIndex = list => {
+    const index = {};
+    (list || []).forEach(entry => {
+      index[entry.id] = entry;
+    });
+    return index;
+  };
+
   return {
     meta: raw?.meta || DEFAULT_JA_OVERRIDES.meta,
-    species: raw?.species && typeof raw.species === 'object' ? raw.species : {},
-    moves: raw?.moves && typeof raw.moves === 'object' ? raw.moves : {},
-    abilities: raw?.abilities && typeof raw.abilities === 'object' ? raw.abilities : {},
-    items: raw?.items && typeof raw.items === 'object' ? raw.items : {},
+    species,
+    moves,
+    abilities,
+    items,
+    moveTargets,
+    typeNames,
+    moveCategories,
+    moveFlags,
+    moveTags,
+    _index: {
+      species: buildIndex(species),
+      moves: buildIndex(moves),
+      abilities: buildIndex(abilities),
+      items: buildIndex(items),
+      moveTargets: buildIndex(moveTargets),
+      typeNames: buildIndex(typeNames),
+      moveCategories: buildIndex(moveCategories),
+      moveFlags: buildIndex(moveFlags),
+      moveTags: buildIndex(moveTags),
+    },
   };
 }
 
 function getOverrideString(overrides, section, id, key) {
-  const value = overrides?.[section]?.[id]?.[key];
+  const value = overrides?._index?.[section]?.[id]?.[key];
   if (typeof value !== 'string') return null;
   const trimmed = value.trim();
   return trimmed || null;
@@ -109,6 +251,18 @@ function pickLocalizedValue(overrideValue, fallbackValue, defaultValue) {
   const normalizedFallback = String(fallbackValue || '').trim();
   if (normalizedFallback) return normalizedFallback;
   return normalizedDefault;
+}
+
+function pickLocalizedJaValue(overrideValue, fallbackValue) {
+  const normalizedOverride = String(overrideValue || '').trim();
+  if (normalizedOverride) return normalizedOverride;
+  const normalizedFallback = String(fallbackValue || '').trim();
+  if (normalizedFallback) return normalizedFallback;
+  return '';
+}
+
+function normalizeCompareText(value) {
+  return String(value || '').normalize('NFKC').trim().toLowerCase();
 }
 
 function isUsableData(entry) {
@@ -187,7 +341,13 @@ function buildJaFallbackMaps() {
     return new Map([...first, ...rest].map((id, index) => [id, index]));
   };
   const nameLanguageOrder = buildLanguageOrder([11, 1, 9]);
+  const jaOnlyNameLanguageOrder = new Map(
+    [11, 1].filter(id => jaLanguageIds.includes(id)).map((id, index) => [id, index])
+  );
   const textLanguageOrder = buildLanguageOrder([11, 1, 9]);
+  const jaOnlyTextLanguageOrder = new Map(
+    [11, 1].filter(id => jaLanguageIds.includes(id)).map((id, index) => [id, index])
+  );
 
   const pickBestByResourceId = (rows, resourceIdKey, pickValue, languageOrder) => {
     const map = new Map();
@@ -326,6 +486,22 @@ function buildJaFallbackMaps() {
     if (base.endsWith('male')) aliases.add(`${base.slice(0, -4)}m`);
     if (base.includes('familyofthree')) aliases.add(base.replace('familyofthree', 'three'));
     if (base.includes('familyoffour')) aliases.add(base.replace('familyoffour', 'four'));
+
+    // Showdown keeps Alcremie color forms without sweet suffix, while PokeAPI form IDs include sweet variants.
+    const alcremieSweetSuffixes = [
+      'strawberrysweet',
+      'berrysweet',
+      'lovesweet',
+      'starsweet',
+      'cloversweet',
+      'flowersweet',
+      'ribbonsweet',
+    ];
+    if (base.startsWith('alcremie')) {
+      for (const suffix of alcremieSweetSuffixes) {
+        if (base.endsWith(suffix)) aliases.add(base.slice(0, -suffix.length));
+      }
+    }
     return [...aliases].filter(Boolean);
   };
   const setSpeciesJaName = (identifier, jaName) => {
@@ -356,7 +532,7 @@ function buildJaFallbackMaps() {
     readCsvRows(POKEAPI_SPECIES_NAMES_FILE),
     'pokemon_species_id',
     row => String(row.name || '').trim(),
-    nameLanguageOrder
+    jaOnlyNameLanguageOrder
   );
   speciesRows.forEach(row => {
     const identifier = toId(row.identifier);
@@ -371,14 +547,23 @@ function buildJaFallbackMaps() {
     readCsvRows(POKEAPI_FORM_NAMES_FILE),
     'pokemon_form_id',
     row => String(row.pokemon_name || '').trim(),
-    nameLanguageOrder
+    jaOnlyNameLanguageOrder
   );
   const formNameFallback = pickBestByResourceId(
     readCsvRows(POKEAPI_FORM_NAMES_FILE),
     'pokemon_form_id',
     row => String(row.form_name || '').trim(),
-    nameLanguageOrder
+    jaOnlyNameLanguageOrder
   );
+
+  const combineBaseAndFormJaName = (baseJa, formLabel) => {
+    const base = String(baseJa || '').trim();
+    const form = String(formLabel || '').trim();
+    if (!form) return '';
+    if (!base) return form;
+    if (form.includes(base)) return form;
+    return `${base}(${form})`;
+  };
   formRows.forEach(row => {
     const identifier = toId(row.identifier);
     const formId = Number(row.id);
@@ -392,12 +577,14 @@ function buildJaFallbackMaps() {
     if (!jaName) jaName = buildRotomFormJaName(row.identifier, formIdentifier);
     if (!jaName) jaName = buildRegionalFormJaName(baseJa, formIdentifier);
     if (!jaName) jaName = buildSpecialFormJaName(baseJa, formIdentifier, row.identifier, selectedFormName || selectedPokemonName);
-    if (!jaName) jaName = selectedPokemonName;
+    if (!jaName && selectedPokemonName) {
+      jaName = combineBaseAndFormJaName(baseJa, selectedPokemonName);
+    }
     if (!jaName && selectedFormName && baseJa) {
       if (/^mega(-[xyz])?$/.test(formIdentifier)) {
         jaName = normalizeMegaFormJaName(selectedFormName, baseJa, formIdentifier);
       } else {
-        jaName = `${baseJa}(${selectedFormName})`;
+        jaName = combineBaseAndFormJaName(baseJa, selectedFormName);
       }
     }
     if (!jaName) jaName = selectedFormName;
@@ -460,7 +647,7 @@ function buildJaFallbackMaps() {
     readCsvRows(POKEAPI_MOVE_EFFECT_PROSE_FILE),
     'move_effect_id',
     row => ({ shortDesc: String(row.short_effect || '').trim(), desc: String(row.effect || '').trim() }),
-    textLanguageOrder
+    jaOnlyTextLanguageOrder
   );
   moveRows.forEach(row => {
     const identifier = toId(row.identifier);
@@ -475,7 +662,7 @@ function buildJaFallbackMaps() {
     readCsvRows(POKEAPI_ABILITY_PROSE_FILE),
     'ability_id',
     row => ({ shortDesc: String(row.short_effect || '').trim(), desc: String(row.effect || '').trim() }),
-    textLanguageOrder
+    jaOnlyTextLanguageOrder
   );
   abilityRows.forEach(row => {
     const identifier = toId(row.identifier);
@@ -490,7 +677,7 @@ function buildJaFallbackMaps() {
     readCsvRows(POKEAPI_ITEM_PROSE_FILE),
     'item_id',
     row => ({ shortDesc: String(row.short_effect || '').trim(), desc: String(row.effect || '').trim() }),
-    textLanguageOrder
+    jaOnlyTextLanguageOrder
   );
   itemRows.forEach(row => {
     const identifier = toId(row.identifier);
@@ -547,7 +734,11 @@ function getMegaBaseId(entry, allSpeciesIds) {
 
 function buildMissingTranslations(data) {
   const species = [...(data.species || []), ...(data.megaSpecies || [])]
-    .filter(entry => !entry.nameJa)
+    .filter(entry => {
+      const nameJa = String(entry.nameJa || '').trim();
+      if (!nameJa) return true;
+      return normalizeCompareText(nameJa) === normalizeCompareText(entry.name || '');
+    })
     .map(entry => ({
       id: entry.id,
       name: entry.name,
@@ -555,7 +746,11 @@ function buildMissingTranslations(data) {
     }));
 
   const moves = (data.moves || [])
-    .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
+    .filter(entry => {
+      const nameJa = String(entry.nameJa || '').trim();
+      if (!nameJa) return true;
+      return normalizeCompareText(nameJa) === normalizeCompareText(entry.name || '');
+    })
     .map(entry => ({
       id: entry.id,
       name: entry.name,
@@ -567,7 +762,13 @@ function buildMissingTranslations(data) {
     }));
 
   const abilities = (data.abilities || [])
-    .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
+    .filter(entry => {
+      const nameJa = String(entry.nameJa || '').trim();
+      if (!nameJa) return true;
+      if (normalizeCompareText(nameJa) === normalizeCompareText(entry.name || '')) return true;
+      if (!entry.shortDescJa || !entry.descJa) return true;
+      return false;
+    })
     .map(entry => ({
       id: entry.id,
       name: entry.name,
@@ -579,7 +780,13 @@ function buildMissingTranslations(data) {
     }));
 
   const items = (data.items || [])
-    .filter(entry => !entry.nameJa || !entry.shortDescJa || !entry.descJa)
+    .filter(entry => {
+      const nameJa = String(entry.nameJa || '').trim();
+      if (!nameJa) return true;
+      if (normalizeCompareText(nameJa) === normalizeCompareText(entry.name || '')) return true;
+      if (!entry.shortDescJa || !entry.descJa) return true;
+      return false;
+    })
     .map(entry => ({
       id: entry.id,
       name: entry.name,
@@ -590,6 +797,38 @@ function buildMissingTranslations(data) {
       descJa: '',
     }));
 
+  const moveTargets = [...new Set((data.moves || []).map(entry => String(entry.target || '').trim()).filter(Boolean))]
+    .sort((left, right) => {
+      const order = ['normal', 'self', 'any', 'adjacentFoe', 'adjacentAlly', 'adjacentAllyOrSelf', 'allAdjacent', 'allAdjacentFoes', 'all', 'allies', 'allySide', 'allyTeam', 'foeSide', 'randomNormal', 'scripted'];
+      return (order.indexOf(left) === -1 ? 999 : order.indexOf(left)) - (order.indexOf(right) === -1 ? 999 : order.indexOf(right)) || left.localeCompare(right);
+    })
+    .filter(id => !MOVE_TARGET_JA[id])
+    .map(id => ({
+      id,
+      name: MOVE_TARGET_EN[id] || id,
+      nameJa: '',
+    }));
+
+  const typeNames = Object.keys(TYPE_NAME_JA)
+    .sort((a, b) => a.localeCompare(b))
+    .filter(id => !TYPE_NAME_JA[id])
+    .map(id => ({ id, name: id, nameJa: '' }));
+
+  const moveCategories = Object.keys(MOVE_CATEGORY_JA)
+    .sort((a, b) => a.localeCompare(b))
+    .filter(id => !MOVE_CATEGORY_JA[id])
+    .map(id => ({ id, name: id, nameJa: '' }));
+
+  const moveFlags = Object.keys(MOVE_FLAG_JA)
+    .sort((a, b) => a.localeCompare(b))
+    .filter(id => !MOVE_FLAG_JA[id])
+    .map(id => ({ id, name: id, nameJa: '' }));
+
+  const moveTags = Object.keys(MOVE_TAG_JA)
+    .sort((a, b) => a.localeCompare(b))
+    .filter(id => !MOVE_TAG_JA[id])
+    .map(id => ({ id, name: id, nameJa: '' }));
+
   return {
     meta: {
       generatedAt: new Date().toISOString(),
@@ -599,10 +838,15 @@ function buildMissingTranslations(data) {
     moves,
     abilities,
     items,
+    moveTargets,
+    typeNames,
+    moveCategories,
+    moveFlags,
+    moveTags,
   };
 }
 
-function buildJaTranslations(data) {
+function buildJaTranslations(data, jaOverrides) {
   const translations = {
     meta: {
       generatedAt: new Date().toISOString(),
@@ -613,6 +857,11 @@ function buildJaTranslations(data) {
     moves: {},
     abilities: {},
     items: {},
+    moveTargets: {},
+    typeNames: {},
+    moveCategories: {},
+    moveFlags: {},
+    moveTags: {},
   };
 
   [...(data.species || []), ...(data.megaSpecies || [])].forEach(entry => {
@@ -641,48 +890,60 @@ function buildJaTranslations(data) {
       descJa: entry.descJa || '',
     };
   });
+  [...new Set((data.moves || []).map(entry => String(entry.target || '').trim()).filter(Boolean))]
+    .sort((left, right) => {
+      const order = ['normal', 'self', 'any', 'adjacentFoe', 'adjacentAlly', 'adjacentAllyOrSelf', 'allAdjacent', 'allAdjacentFoes', 'all', 'allies', 'allySide', 'allyTeam', 'foeSide', 'randomNormal', 'scripted'];
+      return (order.indexOf(left) === -1 ? 999 : order.indexOf(left)) - (order.indexOf(right) === -1 ? 999 : order.indexOf(right)) || left.localeCompare(right);
+    })
+    .forEach(id => {
+      translations.moveTargets[id] = {
+        nameJa: getOverrideString(jaOverrides, 'moveTargets', id, 'nameJa') || MOVE_TARGET_JA[id] || '',
+      };
+    });
+
+  Object.keys(TYPE_NAME_JA).forEach(id => {
+    translations.typeNames[id] = {
+      nameJa: getOverrideString(jaOverrides, 'typeNames', id, 'nameJa') || TYPE_NAME_JA[id] || id,
+    };
+  });
+
+  Object.keys(MOVE_CATEGORY_JA).forEach(id => {
+    translations.moveCategories[id] = {
+      nameJa: getOverrideString(jaOverrides, 'moveCategories', id, 'nameJa') || MOVE_CATEGORY_JA[id] || id,
+    };
+  });
+
+  Object.keys(MOVE_FLAG_JA).forEach(id => {
+    translations.moveFlags[id] = {
+      nameJa: getOverrideString(jaOverrides, 'moveFlags', id, 'nameJa') || MOVE_FLAG_JA[id] || id,
+    };
+  });
+
+  Object.keys(MOVE_TAG_JA).forEach(id => {
+    translations.moveTags[id] = {
+      nameJa: getOverrideString(jaOverrides, 'moveTags', id, 'nameJa') || MOVE_TAG_JA[id] || id,
+    };
+  });
 
   return translations;
 }
 
 function buildOverridesTemplateFromMissing(missing) {
-  const overrides = {
+  return {
     meta: {
-      description: 'Fill nameJa / shortDescJa / descJa here. This file overrides generated data.',
+      description: 'Copy from champions-ja-missing.json and fill blank translations. Keep the same structure as missing.',
       generatedFromMissingAt: new Date().toISOString(),
     },
-    species: {},
-    moves: {},
-    abilities: {},
-    items: {},
+    species: (missing.species || []).map(entry => ({ ...entry })),
+    moves: (missing.moves || []).map(entry => ({ ...entry })),
+    abilities: (missing.abilities || []).map(entry => ({ ...entry })),
+    items: (missing.items || []).map(entry => ({ ...entry })),
+    moveTargets: (missing.moveTargets || []).map(entry => ({ ...entry })),
+    typeNames: (missing.typeNames || []).map(entry => ({ ...entry })),
+    moveCategories: (missing.moveCategories || []).map(entry => ({ ...entry })),
+    moveFlags: (missing.moveFlags || []).map(entry => ({ ...entry })),
+    moveTags: (missing.moveTags || []).map(entry => ({ ...entry })),
   };
-
-  (missing.species || []).forEach(entry => {
-    overrides.species[entry.id] = { nameJa: entry.nameJa || '' };
-  });
-  (missing.moves || []).forEach(entry => {
-    overrides.moves[entry.id] = {
-      nameJa: entry.nameJa || '',
-      shortDescJa: entry.shortDescJa || '',
-      descJa: entry.descJa || '',
-    };
-  });
-  (missing.abilities || []).forEach(entry => {
-    overrides.abilities[entry.id] = {
-      nameJa: entry.nameJa || '',
-      shortDescJa: entry.shortDescJa || '',
-      descJa: entry.descJa || '',
-    };
-  });
-  (missing.items || []).forEach(entry => {
-    overrides.items[entry.id] = {
-      nameJa: entry.nameJa || '',
-      shortDescJa: entry.shortDescJa || '',
-      descJa: entry.descJa || '',
-    };
-  });
-
-  return overrides;
 }
 
 function getTypeEffectivenessTable(dex) {
@@ -851,15 +1112,13 @@ function buildData() {
       target: entry.target,
       shortDesc: entry.shortDesc || null,
       desc: entry.desc || null,
-      shortDescJa: pickLocalizedValue(
+      shortDescJa: pickLocalizedJaValue(
         getOverrideString(jaOverrides, 'moves', entry.id, 'shortDescJa'),
-        jaFallback.moveDescById.get(entry.id)?.shortDesc || entry.shortDescJa,
-        entry.shortDesc
+        jaFallback.moveDescById.get(entry.id)?.shortDesc
       ),
-      descJa: pickLocalizedValue(
+      descJa: pickLocalizedJaValue(
         getOverrideString(jaOverrides, 'moves', entry.id, 'descJa'),
-        jaFallback.moveDescById.get(entry.id)?.desc || entry.descJa,
-        entry.desc
+        jaFallback.moveDescById.get(entry.id)?.desc
       ),
       ignoreAbility: Boolean(entry.ignoreAbility),
       ignoreImmunity: Boolean(entry.ignoreImmunity),
@@ -889,15 +1148,13 @@ function buildData() {
       ),
       shortDesc: entry.shortDesc || null,
       desc: entry.desc || null,
-      shortDescJa: pickLocalizedValue(
+      shortDescJa: pickLocalizedJaValue(
         getOverrideString(jaOverrides, 'abilities', entry.id, 'shortDescJa'),
-        jaFallback.abilityDescById.get(entry.id)?.shortDesc || entry.shortDescJa,
-        entry.shortDesc
+        jaFallback.abilityDescById.get(entry.id)?.shortDesc || entry.shortDescJa
       ),
-      descJa: pickLocalizedValue(
+      descJa: pickLocalizedJaValue(
         getOverrideString(jaOverrides, 'abilities', entry.id, 'descJa'),
-        jaFallback.abilityDescById.get(entry.id)?.desc || entry.descJa,
-        entry.desc
+        jaFallback.abilityDescById.get(entry.id)?.desc || entry.descJa
       ),
       rating: entry.rating,
     }))
@@ -921,15 +1178,13 @@ function buildData() {
         isBerry: Boolean(entry.isBerry),
         shortDesc: entry.shortDesc || null,
         desc: entry.desc || null,
-        shortDescJa: pickLocalizedValue(
+        shortDescJa: pickLocalizedJaValue(
           getOverrideString(jaOverrides, 'items', entry.id, 'shortDescJa'),
-          jaFallback.itemDescById.get(entry.id)?.shortDesc || entry.shortDescJa,
-          entry.shortDesc
+          jaFallback.itemDescById.get(entry.id)?.shortDesc || entry.shortDescJa
         ),
-        descJa: pickLocalizedValue(
+        descJa: pickLocalizedJaValue(
           getOverrideString(jaOverrides, 'items', entry.id, 'descJa'),
-          jaFallback.itemDescById.get(entry.id)?.desc || entry.descJa,
-          entry.desc
+          jaFallback.itemDescById.get(entry.id)?.desc || entry.descJa
         ),
         fling: entry.fling || null,
       };
@@ -975,7 +1230,8 @@ function buildData() {
 
 const data = buildData();
 const missing = buildMissingTranslations(data);
-const jaTranslations = buildJaTranslations(data);
+const jaOverrides = normalizeJaOverrides(readJsonFile(JA_OVERRIDES_FILE, DEFAULT_JA_OVERRIDES));
+const jaTranslations = buildJaTranslations(data, jaOverrides);
 const shouldResetJaOverrides = process.argv.includes('--reset-ja');
 
 fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });

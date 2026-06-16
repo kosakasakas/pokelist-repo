@@ -39,6 +39,8 @@
 
 - タイプアイコンと技の性質（Physical/Special/Status）は、Showdownの画像スプライトではなく、文字 + カラーバッジで実装すること。
 - 表示言語が `ja` / `en` で切り替わるときは、バッジ内テキストも同じ言語に切り替えること。
+- 日本語翻訳（タイプ名・分類・対象・フラグ・タグ・名称など）はUIでハードコードせず、`scripts/export-champions-calc-data.js` -> `public/db/champions-ja-translations.json` のデータを参照すること。
+- `public/db/champions-ja-missing.json` と `public/db/champions-ja-overrides.json` は同一スキーマ（配列ベース）を維持し、`missing` を `overrides` にコピーして空欄を埋める運用を前提にすること。
 
 ## 6) 参照先（詳細はリンク先を正とする）
 
